@@ -9,67 +9,8 @@ import datetime
 from calendar import monthrange
 from scipy.io import FortranFile
 
-from ptse_sub import CORRECT, add_PMS, check_nan, check_landsea, FillNan, WGS_TWD, Elev_YPM
-
-def pv_nc(dfi,spec):
-  sdt,ix,iy=(np.zeros(shape=(ntm*NREC),dtype=int) for i in range(3))
-  for t in range(ntm):
-    t1,t2=t*NREC,(t+1)*NREC
-    ix[t1:t2]=list(dfi.IX)
-    iy[t1:t2]=list(dfi.IY)
-  for t in range(ntm):
-    t1,t2=t*NREC,(t+1)*NREC
-    sdt[t1:t2]=idatetime[t]
-  col=[i for i in dfi.columns if i not in ['YJH','IX','IY']]
-  dfT=DataFrame({'YJH':sdt,'IX':ix,'IY':iy}) 
-  if len(spec.shape)==2:
-    for c in col: 
-      ic=col.index(c)
-      dfT[c]=spec[:,ic] 
-  else:
-    for c in col: 
-      dfT[c]=spec[:] 
-  pv=pivot_table(dfT,index=['YJH','IX','IY'],values=col,aggfunc=sum).reset_index()
-  pv.IX=[int(i) for i in pv.IX]
-  pv.IY=[int(i) for i in pv.IY]
-  pv.YJH=[int(i) for i in pv.YJH]
-  imn,jmn=min(pv.IX),min(pv.IY)
-  imx,jmx=max(max(pv.IX)+abs(imn)*2+1,ncol), max(max(pv.IY)+abs(jmn)*2+1,nrow)
-  if imn<0 and imx+imn<ncol:sys.exit('negative indexing error in i') 
-  if jmn<0 and jmx+jmn<nrow:sys.exit('negative indexing error in j') 
-  idx=pv.index
-  idt=np.array(pv.loc[idx,'YJH'])
-  iy=np.array(pv.loc[idx,'IY'])
-  ix=np.array(pv.loc[idx,'IX'])
-  for c in col:
-    if c not in V[3]:continue
-    if sum(pv[c])==0:continue
-    z=np.zeros(shape=(ntm,jmx,imx))
-    ss=np.array(pv.loc[idx,c])
-    #Note that negative indices are not bothersome and are only at the end of the axis.
-    z[idt,iy,ix]=ss
-#also mapping whole matrix, NOT by parts
-    nc.variables[c][:,0,:,:]=z[:,:nrow,:ncol]
-  return
-
-def disc(dm):
-#discretizations
-  dm['IX']=np.array((dm.UTM_E-Xcent-nc.XORIG)/nc.XCELL,dtype=int)
-  dm['IY']=np.array((dm.UTM_N-Ycent-nc.YORIG)/nc.YCELL,dtype=int)
-  return dm 
-
-def jul2dt(jultm):
-  jul,tm=jultm[:]
-  yr=int(jul/1000)
-  ih=int(tm/10000.)
-  return datetime.datetime(yr,1,1)+datetime.timedelta(days=int(jul-yr*1000-1))+datetime.timedelta(hours=ih)
-
-def dt2jul(dt):
-  yr=dt.year
-  deltaT=dt-datetime.datetime(yr,1,1)
-  deltaH=int((deltaT.total_seconds()-deltaT.days*24*3600)/3600.)
-  return (yr*1000+deltaT.days+1,deltaH*10000)
-
+from ptse_sub import *# CORRECT, add_PMS, check_nan, check_landsea, FillNan, WGS_TWD, Elev_YPM,  disc, DF2Mat, Mat2DF, pv_nc
+from ioapi_dates import jul2dt, dt2jul
 
 #Main
 hmp=subprocess.check_output('pwd',shell=True).decode('utf8').strip('\n').split('/')[1]
@@ -119,23 +60,29 @@ for v in V[3]:
 
 #Input the TEDS csv file
 try:
-  df = read_csv('point.csv', encoding='big5')
+  df = read_csv('point.csv', encoding='utf8')
 except:
   df = read_csv('point.csv')
-# check_NOPandSCC(0)
 df = check_nan(df)
-# check and correct the X coordinates for isolated islands
 df = check_landsea(df)
 df = WGS_TWD(df)
 df = Elev_YPM(df)
+#shorter stack or all NO_S other than 'P'
 boo=(df.HEI<Hs) | (df.NO_S.map(lambda x:x[0]!='P')) 
 df=df.loc[boo].reset_index(drop=True)
+#delete the zero emission sources
 df['SUM']=[i+j+k+l+m for i,j,k,l,m in zip(df.SOX_EMI,df.NOX_EMI,df.CO_EMI,df.PM_EMI,df.NMHC_EMI)]
 df=df.loc[df.SUM>0].reset_index(drop=True)
-df['CP_NO'] = [i + j for i, j in zip(list(df['C_NO']), list(df['NO_S']))]
 df['DY1']=[i*j for i,j in zip(df.DW1,df.WY1)]
 df['HY1']=[i*j for i,j in zip(df.HD1,df.DY1)]
-df.SCC=[str(i) for i in df.SCC]
+df=CORRECT(df)
+df['CP_NO'] = [i + j for i, j in zip(list(df['C_NO']), list(df['NO_S']))]
+
+#
+#Coordinate translation
+df.UTM_E=df.UTM_E-Xcent
+df.UTM_N=df.UTM_N-Ycent
+df.SCC=[str(int(i)) for i in df.SCC]
 df.loc[df.SCC=='0','SCC']='0'*10
 print('NMHC expanding')
 dfV=df.loc[df.NMHC_EMI>0].reset_index(drop=True)
@@ -214,15 +161,15 @@ for s in set(dfV.SCC):
     j=cbm.index(c)
     dfV.loc[idx,c]=[prod[i,j]*k for k in dfV.loc[idx,'NMHC_EMI']]
 if 'IY' not in dfV.columns:
-  dfV=disc(dfV)
+  dfV=disc(dfV,nc)
 
 #matching of the bin filenames
 fns0={
 'NMHC':'NMHC_CP9348_MDH8760_ONS.bin',
 'SNCP':'SNCP_CP4072_MDH8760_ONS.bin'}
 fns10={
-'NMHC':'NMHC_CP10066_MDH8784_ONS.bin',
-'SNCP':'SNCP_CP10845_MDH8784_ONS.bin'}
+'NMHC':'NMHC_CP9897_MDH8760_ONS.bin',
+'SNCP':'SNCP_CP9188_MDH8760_ONS.bin'}
 fns30={
 'NMHC':'NMHC_CP12581_MDH8784_ONS.bin',
 'SNCP':'SNCP_CP22614_MDH8784_ONS.bin'}
@@ -252,14 +199,15 @@ else:
   ons2=ons[:,ibdate:iedate]
 
 NREC,NC=len(dfV2),len(cbm)
-VOC=np.zeros(shape=(ntm*NREC,NC))
-for t in range(ntm):
-  t1,t2=t*NREC,(t+1)*NREC
-  for c in cbm:
-    ic=cbm.index(c)
-    VOC[t1:t2,ic]=dfV2[c]*ons2[:,t]
+VOC,a,b=(np.zeros(shape=(NREC,ntm,NC)) for i in range(3))
+for c in cbm:
+  ic=cbm.index(c)
+  a[:,:,ic]=np.array(dfV2[c])[:,None]
+b[:,:,:]=ons2[:,:,None]
+VOC[:,:,:]=a[:,:,:]*b[:,:,:]
 col=['IX','IY']+cbm
-pv_nc(dfV2[col],VOC)
+pv_nc(dfV2[col],nc,VOC)
+a,b,VOC=0,0,0
 print('SNCP expanding')
 c2s={'SOX':'SO2','NOX':'NO2','CO':'CO','PM':'PM'}
 boo2=(df.SOX_EMI+df.NOX_EMI+df.CO_EMI+df.PM_EMI)>0
@@ -268,7 +216,7 @@ col=['C_NO','CP_NO','HD1','DY1','HY1','UTM_E','UTM_N']+cole
 colT=['HD1','DY1','HY1']
 dfS=df[col].loc[boo2].reset_index(drop=True)
 if 'IY' not in dfS.columns:
-  dfS=disc(dfS)
+  dfS=disc(dfS,nc)
 for c in cole:
     dfS[c]=[i*1E6/j/k for i,j,k in zip(dfS[c],dfS.DY1,dfS.HD1)]
 dfS_cp=pivot_table(dfS,index='CP_NO',values=cole,aggfunc=sum).reset_index()
@@ -291,28 +239,21 @@ if ibdate>iedate:
 else:
   ons2=ons[:,ibdate:iedate]
 
-
 c2m={'SOX':64,'NOX':46,'CO':28,'PM':1}
 colc=['CCRS','FCRS','CPRM','FPRM']
-for sp in ['SOX','NOX','CO','PM']:
-  if sp=='PM':
-    dfS2=add_PMS(dfS2)
+for sp in ['SOX','NOX','CO']:
   dfS2[c2s[sp]]=np.array(dfS2[sp+'_EMI'])/c2m[sp]
-  col=['IX','IY',c2s[sp]]
-  if sp=='PM':
-    col=['IX','IY']+colc
-    val=np.zeros(shape=(ntm*NREC,len(colc)))
-    for t in range(ntm):
-      t1,t2=t*NREC,(t+1)*NREC
-      for c in colc:
-        ic=colc.index(c)
-        val[t1:t2,ic]=dfS2[c]*ons2[:,t]
-  else:
-    val=np.zeros(shape=(ntm*NREC))
-    for t in range(ntm):
-      t1,t2=t*NREC,(t+1)*NREC
-      val[t1:t2]=dfS2[c2s[sp]]*ons2[:,t]
-  pv_nc(dfS2[col],val)
+dfS2=add_PMS(dfS2)
+col=['IX','IY']+[c2s[sp] for sp in ['SOX','NOX','CO']]+colc
+spc=col[2:]
+NC=len(spc)
+SPC,a,b=(np.zeros(shape=(NREC,ntm,NC)) for i in range(3))
+for c in spc:
+  ic=spc.index(c)
+  a[:,:,ic]=np.array(dfS2[c])[:,None]
+b[:,:,:]=ons2[:,:,None]
+SPC[:,:,:]=a[:,:,:]*b[:,:,:]
+pv_nc(dfS2[col],nc,SPC)
 nox=nc.variables['NO'][:]+nc.variables['NO2'][:]
 nc.variables['NO'][:,0,:,:]=nox*0.9
 nc.variables['NO2'][:,0,:,:]=nox-nc.variables['NO'][:]
