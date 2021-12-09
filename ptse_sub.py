@@ -172,45 +172,37 @@ def Elev_YPM(df):
 
 def pv_nc(dfi,nc,spec):
   NREC=len(dfi)
+  col=[i for i in dfi.columns if i not in ['IX','IY']]
+  if len(col)!=spec.shape[-1]:sys.exit('last dimension must be ic')
   ntm,nrow,ncol=(nc.dimensions[c].size for c in ['TSTEP','ROW', 'COL'])
   V=[list(filter(lambda x:nc.variables[x].ndim==j, [i for i in nc.variables])) for j in [1,2,3,4]]
-  sdt,ix,iy=(np.zeros(shape=(ntm*NREC),dtype=int) for i in range(3))
-  for t in range(ntm):
-    t1,t2=t*NREC,(t+1)*NREC
-    ix[t1:t2]=list(dfi.IX)
-    iy[t1:t2]=list(dfi.IY)
-  for t in range(ntm):
-    sdt[t*NREC:(t+1)*NREC]=t
-  col=[i for i in dfi.columns if i not in ['YJH','IX','IY']]
-  dfT=DataFrame({'YJH':sdt,'IX':ix,'IY':iy})
-  if len(spec.shape)==2:
-    for c in col:
-      ic=col.index(c)
-      dfT[c]=spec[:,ic]
-  else:
-    for c in col:
-      dfT[c]=spec[:]
-  pv=pivot_table(dfT,index=['YJH','IX','IY'],values=col,aggfunc=sum).reset_index()
-  pv.IX=[int(i) for i in pv.IX]
-  pv.IY=[int(i) for i in pv.IY]
-  pv.YJH=[int(i) for i in pv.YJH]
-  imn,jmn=min(pv.IX),min(pv.IY)
-  imx,jmx=max(max(pv.IX)+abs(imn)*2+1,ncol), max(max(pv.IY)+abs(jmn)*2+1,nrow)
-  if imn<0 and imx+imn<ncol:sys.exit('negative indexing error in i')
-  if jmn<0 and jmx+jmn<nrow:sys.exit('negative indexing error in j')
-  idx=pv.index
-  idt=np.array(pv.loc[idx,'YJH'])
-  iy=np.array(pv.loc[idx,'IY'])
-  ix=np.array(pv.loc[idx,'IX'])
-  for c in col:
+  z=np.zeros(shape=spec.shape[:-1],dtype=int)
+  z[:,:]=np.array([i for i in range(NREC)])[:,None]
+  z=z.flatten()
+  #Using dict, not DataFrame filtering, not list_indexing relatives methods
+  dIX, dIY={i:dfi.IX[i] for i in range(NREC)}, {i:dfi.IY[i] for i in range(NREC)}
+  ix,iy=[dIX[i] for i in z],[dIY[i] for i in z] 
+  for ic in range(len(col)):
+    c=col[ic]
     if c not in V[3]:continue
-    if sum(pv[c])==0:continue
-    z=np.zeros(shape=(ntm,jmx,imx))
-    ss=np.array(pv.loc[idx,c])
+    if np.sum(spec[:,:,ic])==0.: continue
+    dfT=Mat2DF(spec[:,:,ic])
+    dfT['IX'],dfT['IY']=ix,iy
+    dfT=dfT.loc[dfT.val>0].reset_index(drop=True) 
+    boo=(dfT.IX>=0) & (dfT.IY>=0) & (dfT.IX<ncol) & (dfT.IY<nrow)
+    dfT=dfT.loc[boo].reset_index(drop=True) 
+    pv=pivot_table(dfT,index=['col_2','IY','IX'],values='val',aggfunc=sum).reset_index()
+    var,lst=DF2Mat(pv,['col_2','IY','IX'],'val')
+    i0,i1,i2=(np.zeros(shape=var.shape,dtype=int) for i in range(3)) 
+    i0[:]=lst[0][:,None,None]
+    i1[:]=lst[1][None,:,None]
+    i2[:]=lst[2][None,None,:]
     #Note that negative indices are not bothersome and are only at the end of the axis.
-    z[idt,iy,ix]=ss
+    z=np.zeros(shape=(ntm,nrow,ncol))
+    z[i0.flatten(),i1.flatten(),i2.flatten()]=var.flatten()
 #also mapping whole matrix, NOT by parts
-    nc.variables[c][:,0,:,:]=z[:,:nrow,:ncol]
+    nc.variables[c][:,0,:,:]=z[:,:,:]
+    print(c)
   return
 
 def disc(dm,nc):
@@ -232,9 +224,10 @@ def DF2Mat(dd,idx_lst,vname):
   from pandas import DataFrame
   ret_lst, num_lst=[],[]
   for c in idx_lst:
-    lst=eval('list(set(dd.'+c+'))');lst.sort()
+#mac    lst=eval('list(set(dd.'+c+'))');lst.sort()
+    lst=list(set(dd[c]));lst.sort()
     n=len(lst)
-    ret_lst.append(lst);num_lst.append(n)
+    ret_lst.append(np.array(lst));num_lst.append(n)
     dct={lst[i]:i for i in range(n)}
     dd['i'+c]=[dct[i] for i in dd[c]]
   mat=np.zeros(shape=num_lst)
@@ -263,8 +256,9 @@ def Mat2DF(a):
   DD={}
   for i in range(ndim):
     var=np.zeros(shape=a.shape,dtype=int)
-    var[:]=eval('np.array([j for j in range(a.shape[i])],dtype=int)'+ranks[i],locals())
-	DD['col_'+str(i+1)]=var[:].flatten()
+#mac    var[:]=eval('np.array([j for j in range(a.shape[i])],dtype=int)'+ranks[i],locals())
+    exec('var[:]=np.array([j for j in range(a.shape[i])],dtype=int)'+ranks[i],locals())
+    DD['col_'+str(i+1)]=var[:].flatten()
   DD['val']=a.flatten()
   return DataFrame(DD)
 
