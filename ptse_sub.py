@@ -170,4 +170,103 @@ def Elev_YPM(df):
       df.loc[boo2,v]=[as_p[v] for i in range(nb2)]
   return df 
 
+def pv_nc(dfi,nc,spec):
+  NREC=len(dfi)
+  ntm,nrow,ncol=(nc.dimensions[c].size for c in ['TSTEP','ROW', 'COL'])
+  V=[list(filter(lambda x:nc.variables[x].ndim==j, [i for i in nc.variables])) for j in [1,2,3,4]]
+  sdt,ix,iy=(np.zeros(shape=(ntm*NREC),dtype=int) for i in range(3))
+  for t in range(ntm):
+    t1,t2=t*NREC,(t+1)*NREC
+    ix[t1:t2]=list(dfi.IX)
+    iy[t1:t2]=list(dfi.IY)
+  for t in range(ntm):
+    sdt[t*NREC:(t+1)*NREC]=t
+  col=[i for i in dfi.columns if i not in ['YJH','IX','IY']]
+  dfT=DataFrame({'YJH':sdt,'IX':ix,'IY':iy})
+  if len(spec.shape)==2:
+    for c in col:
+      ic=col.index(c)
+      dfT[c]=spec[:,ic]
+  else:
+    for c in col:
+      dfT[c]=spec[:]
+  pv=pivot_table(dfT,index=['YJH','IX','IY'],values=col,aggfunc=sum).reset_index()
+  pv.IX=[int(i) for i in pv.IX]
+  pv.IY=[int(i) for i in pv.IY]
+  pv.YJH=[int(i) for i in pv.YJH]
+  imn,jmn=min(pv.IX),min(pv.IY)
+  imx,jmx=max(max(pv.IX)+abs(imn)*2+1,ncol), max(max(pv.IY)+abs(jmn)*2+1,nrow)
+  if imn<0 and imx+imn<ncol:sys.exit('negative indexing error in i')
+  if jmn<0 and jmx+jmn<nrow:sys.exit('negative indexing error in j')
+  idx=pv.index
+  idt=np.array(pv.loc[idx,'YJH'])
+  iy=np.array(pv.loc[idx,'IY'])
+  ix=np.array(pv.loc[idx,'IX'])
+  for c in col:
+    if c not in V[3]:continue
+    if sum(pv[c])==0:continue
+    z=np.zeros(shape=(ntm,jmx,imx))
+    ss=np.array(pv.loc[idx,c])
+    #Note that negative indices are not bothersome and are only at the end of the axis.
+    z[idt,iy,ix]=ss
+#also mapping whole matrix, NOT by parts
+    nc.variables[c][:,0,:,:]=z[:,:nrow,:ncol]
+  return
+
+def disc(dm,nc):
+#discretizations
+  if min(dm.UTM_N)<0:
+    dm['IX']=np.array((dm.UTM_E-nc.XORIG)/nc.XCELL,dtype=int)
+    dm['IY']=np.array((dm.UTM_N-nc.YORIG)/nc.YCELL,dtype=int)
+  else:
+    dm['IX']=np.array((dm.UTM_E-Xcent-nc.XORIG)/nc.XCELL,dtype=int)
+    dm['IY']=np.array((dm.UTM_N-Ycent-nc.YORIG)/nc.YCELL,dtype=int)
+  return dm
+
+
+# input df, index cols(list), value cols name(str)
+# return matrix, index lists (in cols order)
+def DF2Mat(dd,idx_lst,vname):
+  import sys
+  import numpy as np
+  from pandas import DataFrame
+  ret_lst, num_lst=[],[]
+  for c in idx_lst:
+    lst=eval('list(set(dd.'+c+'))');lst.sort()
+    n=len(lst)
+    ret_lst.append(lst);num_lst.append(n)
+    dct={lst[i]:i for i in range(n)}
+    dd['i'+c]=[dct[i] for i in dd[c]]
+  mat=np.zeros(shape=num_lst)
+  s='mat['+''.join(['dd.i'+c+'[:],' for c in idx_lst]).strip(',')+']=dd.'+vname+'[:]' 
+  exec(s,locals())
+  return mat, ret_lst
+
+
+# input any ranks of matrix a
+# return df which columns is [col_1,col_2 ... col_ndim, val]
+def Mat2DF(a):
+  import sys
+  import numpy as np
+  from pandas import DataFrame
+  ndim=a.ndim
+  if ndim<2:sys.exit('ndim too small, no need to convert')
+  H,T,C,N='[', ']', ':,', 'None,'
+  ranks=[]
+  for n in range(ndim):
+    s=H
+    for i in range(ndim):
+      m=N
+      if i==n:m=C
+      s+=m    
+    ranks.append(s.strip(',')+T)
+  DD={}
+  for i in range(ndim):
+    var=np.zeros(shape=a.shape,dtype=int)
+    var[:]=eval('np.array([j for j in range(a.shape[i])],dtype=int)'+ranks[i],locals())
+	DD['col_'+str(i+1)]=var[:].flatten()
+  DD['val']=a.flatten()
+  return DataFrame(DD)
+
+
 
