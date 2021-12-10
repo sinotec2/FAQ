@@ -1,4 +1,8 @@
-
+'''
+Purpose: Generate CAMx Elev. PtSe. NC file from dfMM.fth (MM=01~12)
+Usage: python wrtE.py YYMM
+see descriptions at https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/wrtE/
+'''
 #! crding = utf8
 from pandas import *
 import numpy as np
