@@ -102,8 +102,8 @@ color_scheme: light_blue #dark_blue not found
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
-ga_tracking: G-LWS0H2N7N3 #seems not work
-ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
+ga_tracking: # G-LWS0H2N7N3 #seems not work after long connection time
+ga_tracking_anonymize_ip: #true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
 plugins:
   - jekyll-seo-tag
