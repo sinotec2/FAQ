@@ -16,7 +16,7 @@ last_modified_date: 2022-06-03 17:15:36
 [News at 2022-06-22](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/POST/5IncProc/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [sinotec2.github.io](https://sinotec2.github.io/){: .btn .fs-5 .mb-4 .mb-md-0 } [Leave messages at GitHub](https://sinotec2.github.io/Focus-on-Air-Quality/discussions/){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
-
+   
 ## What's New
 - 2022-06-22 電廠造成環境中O<sub>3</sub>或PM局部濃度的降低(負的增量)，這在法規中的增量分析該如何看待?學界和開發單位(顧問公司)立場不一。公版模式的後處理是景丰做的，這讓我們在審查時遭遇困難，因為教授不認為負值增量是開發單位的優惠。這一題關係到後處理該怎麼做，整理在 [增量濃度分析程序與檢討](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/POST/5IncProc/) 也提出策略建議，請參考。
 - 2022-06-04 把[2018/3/31~4/8 東亞地區解析度15Km之沙塵暴模擬分析](https://sinotec2.github.io/cmaqprog/NCL_China_WBDust/)整理在一起，也用[imageMagicks](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/Graphics/imageMagicks)改善了VERDI圖檔留太多空白、背景重現的問題。
