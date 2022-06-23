@@ -79,7 +79,7 @@ nav_sort: case_sensitive # Capital letters sorted before lowercase
 
 # Back to top link
 back_to_top: true
-back_to_top_text: "Back to top"
+back_to_top_text: "TOC"
 
 footer_content: "Copyright &copy; 2021- Dr. Yunchuan Kuang. Distributed by an <a href=\"https://github.com/sinotec2/FAQ/LICENSE.txt\">MIT license.</a>"
 
