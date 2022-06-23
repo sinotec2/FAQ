@@ -18,7 +18,8 @@ last_modified_date: 2022-06-23 14:10:17
 ---
 
 {% include note.html content="Add your note here." %}
-
+{% include tip.html content="Add your tip here." %}
+{% include warning.html content="Add your warning here." %}
 
 ### Document Style
 - amzn-tomjoht
