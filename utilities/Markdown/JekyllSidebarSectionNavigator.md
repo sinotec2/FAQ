@@ -6,7 +6,7 @@ grand_parent: Utilities
 last_modified_date: 2022-06-23 14:10:17
 ---
 
-# note in Jakyll
+# note in Jekyll
 {: .no_toc }
 
 ## Table of contents
