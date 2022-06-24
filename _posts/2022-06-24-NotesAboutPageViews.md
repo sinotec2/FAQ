@@ -52,9 +52,9 @@ sidebar:
 ### 文字色框功能
 - JTD的文字框真的是很「樸素」，連網友都看不下去，自己也寫了一些改變。需要下面元件
   1. 文字框的模版，將其放在`_include`目錄下，讓`liquid`可以包括進來。html檔範例如下：
-  1.
+  1. 結果如附
 
-```liquid
+```bash
 {% include note.html content="Add your note here." %}
 {% include tip.html content="Add your tip here." %}
 {% include warning.html content="Add your warning here." %}
@@ -65,3 +65,8 @@ sidebar:
 ```html
 <div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> {{include.content}}</div>
 ```
+{% include note.html content="Add your note here." %}
+{% include tip.html content="Add your tip here." %}
+{% include warning.html content="Add your warning here." %}
+{% include download.html content="Add your [download]() here." %}
+{% include important.html content="Add your remindings here." %}
