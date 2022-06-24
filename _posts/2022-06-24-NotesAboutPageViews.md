@@ -1,6 +1,6 @@
 ---
 title: 關於網頁
-tags: markdown Jekyll
+tags: markdown Jekyll html
 layout: article
 aside:
   toc: true
@@ -71,7 +71,9 @@ sidebar:
 {% include download.html content="Add your [download]() here." %}
 {% include important.html content="Add your remindings here." %}
 
--(好像[pdmosses](https://pdmosses.github.io/just-the-docs-tests/docs/css/admonitions.html)有精進版)
+- (好像[pdmosses](https://pdmosses.github.io/just-the-docs-tests/docs/css/admonitions.html)有精進版)
+  - work in JTD's, not in TeXt
+  - $blue-000 not found
 
 {: .caution }
 Do not blah blah blah...
