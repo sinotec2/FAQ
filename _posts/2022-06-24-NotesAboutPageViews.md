@@ -24,7 +24,7 @@ sidebar:
 |topnav|無|有|有|有個topnav很像一般的網頁對使用者來講有很高的親切感。但topnav的撰寫也是一件繁雜的事。|
 |編譯速度|慢|中|快|當檔案多了速度自然會變慢，但如果還要就Tags或Keywords重編，那肯定是不行的。|
 
-
+## 局部功能新增調整
 ### 閱讀量計數
 - 用不蒜子的2行已經非常有用且足夠，對龐大的系統效率還可接受，但總是不好看，想在JTD裏更新成像TeXt的樣式
 - leancloud(TeXt內設使用)
@@ -48,3 +48,20 @@ sidebar:
 </p>
 ```
 - 結果：![fa-eye.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/fa-eye.PNG)
+
+### 文字色框功能
+- JTD的文字框真的是很「樸素」，連網友都看不下去，自己也寫了一些改變。需要下面元件
+  1. 文字框的模版，將其放在`_include`目錄下，讓`liquid`可以包括進來。html檔範例如下：
+  1.
+
+```liquid
+{% include note.html content="Add your note here." %}
+{% include tip.html content="Add your tip here." %}
+{% include warning.html content="Add your warning here." %}
+{% include download.html content="Add your [download]() here." %}
+{% include important.html content="Add your remindings here." %}
+```
+
+```html
+<div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> {{include.content}}</div>
+```
