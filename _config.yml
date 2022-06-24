@@ -33,7 +33,7 @@ timezone: 8 # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones f
 ## => Author and Social
 ##############################
 author: sinotec2
-  type      : # "person" (default), "organization"
+  type      : person # "person" (default), "organization"
   name      : yckuang
   url       :
   avatar    : # path or url of avatar image (square)
