@@ -151,7 +151,7 @@ pageview:
 leancloud:
   app_id    : gmbf3dHQEkgISqDFDNB3KrBL-MdYXbMMI # LeanCloud App id
   app_key   : FK47uK9aDfMyFHTpLkoBLd0K7KxhmcXrlghkeEARTrQbf4gbyjRH4ycPuKPPAo6V-us-w1 # LeanCloud App key
-  app_class : Dr. Kuang's Utilities # LeanCloud App class
+  app_class : visited_time # LeanCloud App class
 
 
 ## => Search
