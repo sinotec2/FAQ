@@ -20,7 +20,7 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : https://sinotec2.github.io # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : /FAQ # does not include hostname
-title   : Focus on Air Quality
+title   :  Dr. Kuang's Utilities
 description: FAQ Notes #   Your Site Description
 
 
@@ -31,24 +31,24 @@ timezone: Asia/Taipei # see https://en.wikipedia.org/wiki/List_of_tz_database_ti
 
 ## => Author and Social
 ##############################
-author: sinotec2
-type: person # "person" (default), "organization"
-name: yckuang
-url:
-avatar: # path or url of avatar image (square)
-bio       : 
-email     : sinotec2@gmail.com
-facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
-twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
-weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
-googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
-telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
-medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
-zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
-douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
-linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
-npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+author: 
+  type      : person # "person" (default), "organization"
+  name      : yckuang
+  url:
+  avatar: # path or url of avatar image (square)
+  bio       : 
+  email     : sinotec2@gmail.com
+  facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
+  twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
+  weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
+  googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
+  telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
+  medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
+  zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
+  douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
+  linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
+  github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
 
 ## => GitHub Repository (if the site is hosted by GitHub)
@@ -145,13 +145,13 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: custom # false (default), "leancloud", "custom"
+  provider: leancloud # false (default), "leancloud", "custom"
 
   ## Leancloud
-  leancloud:
-    app_id    : # LeanCloud App id
-    app_key   : # LeanCloud App key
-    app_class : # LeanCloud App class
+leancloud:
+  app_id    : sinotec2 # LeanCloud App id
+  app_key   : FK47uK9aDfMyFHTpLkoBLd0K7KxhmcXrlghkeEARTrQbf4gbyjRH4ycPuKPPAo6V-us-w1 # LeanCloud App key
+  app_class : # LeanCloud App class
 
 
 ## => Search
