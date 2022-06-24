@@ -12,6 +12,13 @@
 #    `--'   `----''--'   '--' `--'
 
 
+remote_theme: pmarsceill/just-the-docs@v0.3.3
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
+  - jekyll-remote-theme
 
 
 ## => Site Settings
@@ -216,11 +223,4 @@ defaults:
 
 ## => Plugins
 ##############################
-remote_theme: pmarsceill/just-the-docs@v0.3.3
-plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jemoji
-  - jekyll-remote-theme
 
