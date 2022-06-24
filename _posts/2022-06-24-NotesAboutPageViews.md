@@ -16,7 +16,7 @@ sidebar:
 ## 主題版本比較評估
 
 |項目|[Just the Docs](https://just-the-docs.github.io/just-the-docs/)|[Theme6](https://idratherbewriting.com/documentation-theme-jekyll/index.html)|[TeXt](https://tianqi.name/jekyll-TeXt-theme/)|評論|
-|-|-|-|-|-|
+|-|:-:|:-:|:-:|-|
 |用途|文件瀏覽|文件/博客|博客|還是要看主要的功能取向才能選擇|
 |左側巡航|會合併、程式自行產生|要自己寫、會隨內容捲動不見|自己寫|自行整理就太辛苦，且與Repository tree(實際檔案儲存的方式)不一致就苦惱了|
 |右側分節瀏覽|無|無|有、反白、且不隨內容捲動|JTD的寬度是Jekyll內設不可能加右線內容|
@@ -47,3 +47,4 @@ sidebar:
 <i class="fa fa-user"></i><span id="busuanzi_container_site_uv"> <span id="busuanzi_value_site_uv"></span> visitors</span>
 </p>
 ```
+- 結果：![fa-eye.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/fa-eye.PNG)
