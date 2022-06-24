@@ -32,10 +32,10 @@ timezone: Asia/Taipei # see https://en.wikipedia.org/wiki/List_of_tz_database_ti
 ## => Author and Social
 ##############################
 author: sinotec2
-  type      : "person" # "person" (default), "organization"
-  name      : yckuang
-  url       :
-  avatar    : # path or url of avatar image (square)
+  type: person # "person" (default), "organization"
+  name: yckuang
+  url:
+  avatar: # path or url of avatar image (square)
   bio       : 
   email     : sinotec2@gmail.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
