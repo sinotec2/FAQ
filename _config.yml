@@ -27,7 +27,7 @@ description: FAQ Notes #   Your Site Description
 ## => Language and Timezone
 ##############################
 lang: zh-tw # the language of your site, default as "en"
-timezone: 8 # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+timezone: Asia/Taipei # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
 ## => Author and Social
