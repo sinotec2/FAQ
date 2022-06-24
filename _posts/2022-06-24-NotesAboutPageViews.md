@@ -26,9 +26,24 @@ sidebar:
 
 
 ### 閱讀量計數
-- 用不蒜子的2行已經非常有用且足夠，對龐大的系統效率還可接受，但總是不好看，想更新
-- leancloud
+- 用不蒜子的2行已經非常有用且足夠，對龐大的系統效率還可接受，但總是不好看，想在JTD裏更新成像TeXt的樣式
+- leancloud(TeXt內設使用)
   - 雖然不是每個網友都推荐，此處也測試了一下。  
   - [jekyll使用LeanCloud记录文章的访问次数/](https://priesttomb.github.io/%E6%97%A5%E5%B8%B8/2017/11/06/jekyll使用LeanCloud记录文章的访问次数/)這篇詳細介紹設定過程，雖然還是沒有成功，但有進步。
-- 
-<!--more-->
+  - 可能是呼叫不到leancloud的數據，views次數一直沒有更換。只能放棄，改回用busuanzi
+- 參考[網站來訪閱讀人次統計](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/Graphics/HTML/ReadVisitCounts/)，導入[FontAwesome](https://fontawesome.com/)標籤，view：fa-eye、site_visits：fa-chrome、visitors：fa-user
+
+- 在`header_custom.html`檔案中要加入：
+
+```html
+  <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl | prepend: site.url }}">
+```
+- `footer_custom.html`引用樣式
+
+```html
+<p class="text-small text-grey-dk-100 mb-0">
+<i class="fa fa-eye"></i> <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"> </span>  views &emsp;</span>
+<i class="fa fa-chrome"></i> <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"> </span>  site_visits &emsp;</span>
+<i class="fa fa-user"></i><span id="busuanzi_container_site_uv"> <span id="busuanzi_value_site_uv"></span> visitors</span>
+</p>
+```
