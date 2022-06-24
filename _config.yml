@@ -29,11 +29,10 @@ description: FAQ Notes #   Your Site Description
 lang: zh-tw # the language of your site, default as "en"
 timezone: Asia/Taipei # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
-
 ## => Author and Social
 ##############################
 author: sinotec2
-  type      : person # "person" (default), "organization"
+  type      : "person" # "person" (default), "organization"
   name      : yckuang
   url       :
   avatar    : # path or url of avatar image (square)
