@@ -145,7 +145,7 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: leancloud # false (default), "leancloud", "custom"
+  provider: custom # false (default), "leancloud", "custom"
 
   ## Leancloud
 leancloud:
