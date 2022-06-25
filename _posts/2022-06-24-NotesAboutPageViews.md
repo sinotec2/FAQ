@@ -8,17 +8,18 @@ sidebar:
   nav: layouts
 ---
 
-其實[JTD][JTD]也是經過一番選擇之後的決定，但半年來隨著文件檔案系統逐漸增加(6月底已經超過350篇文章)，每次更動一小部分、編譯就要5分鐘，似乎不是一個好的筆記系統，感覺是一個文件庫、藏經閣了，失去了靈活度的初衷，需要改變了。
+其實Just the Docs([JTD][JTD])也是經過一番選擇之後的決定，但半年來隨著文件檔案系統逐漸增加(6月底已經超過350篇文章)，每次更動一小部分、GitHubPages編譯就要5分鐘，似乎不是一個好的筆記系統，感覺是一個文件庫、藏經閣，失去了靈活度的初衷，需要改變了。
 
 
 [JTD]: <https://just-the-docs.github.io/just-the-docs> "Focus on writing good documentation. Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
 
-## 主題版本比較評估
+## Jekyll主題版本比較評估
 
-|項目|[Just the Docs](https://just-the-docs.github.io/just-the-docs/)|[Theme6](https://idratherbewriting.com/documentation-theme-jekyll/index.html)|[TeXt](https://tianqi.name/jekyll-TeXt-theme/)|評論|
+|項目|[JTD][JTD]|[Theme6](https://idratherbewriting.com/documentation-theme-jekyll/index.html)|[TeXt](https://tianqi.name/jekyll-TeXt-theme/)|評論|
 |-|:-:|:-:|:-:|-|
 |用途|文件瀏覽|文件/博客|博客|還是要看主要的功能取向才能選擇|
 |存檔方式|目錄層級|pages/mydoc下按字母排序|_post下按日期排序|按日期排序的好處是可以快速找到近期正在編輯的檔案，適合做筆記系統。按字母又無層級恐怕只得放棄，在VScode內尋找會比較快一點。|
+|搜尋|全文檢索出現標題及引述|全文檢索只出現標題|檢索標題|JTD的功能還是比較完整|
 |左側巡航|會合併、程式自行產生|要自己寫、會隨內容捲動不見|自己寫|自行整理就太辛苦，且與Repository tree(實際檔案儲存的方式)不一致就苦惱了。零散的md檔沒有好的瀏覽層級，恐怕會像大海撈針找不到需要的內容。|
 |右側分節瀏覽|無|無|有、反白、且不隨內容捲動|JTD的寬度是Jekyll內設不可能加右線內容，Theme6似乎可以在右側增加個浮動的TOC，還需要加工一下。|
 |tags|無|有|有|JTD似乎Mosses曾經加上tags功能|
