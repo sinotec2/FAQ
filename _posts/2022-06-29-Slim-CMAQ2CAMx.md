@@ -1,5 +1,5 @@
 ---
-title: 垂直40層BCON瘦身至15層後轉成bc檔
+title: BCON轉.bc檔
 tags: CAMx fortran bash python
 layout: article
 aside:
@@ -11,23 +11,30 @@ sidebar:
 ## 背景大要
 - 這項作業是從CMAQ的邊界檔案(BCON)轉寫成CAMx的邊界檔(.bc)。雖然官網有提供轉換程式([cmaq2camx][cmaq2camx])，但是還是有時間與空間上需要調整：
   - BCON檔案有40層，而CAMx模擬只用到15層，因此在垂直向需要進行篩選(slim_bc.py)。
+    - BCON最後一小時是00，不是23，這點也在slim_bc.py內解決。
   - BCON是按照WRF的執行批次，兩個批次之間有重疊一天(需先用[brk_days2.cs][brk]按照日期拆開後、再按照CAMx的執行批次時間範圍、以ncrcat合併成一個BCON大檔)
-  - BCON轉成.bc檔，使用[cmaq2camx][cmaq2camx]進行空品項目對照、格式轉換([conv_bcon.job](https://sinotec2.github.io/FAQ/2022/06/29/Slim-CMAQ2CAMx.html))。
+  - BCON轉成.bc檔，使用[cmaq2camx][cmaq2camx]進行下列對照或轉換
+    - 空品項目對照(對照表環境變數SPECIES_MAPPING，官網提供了幾個反應機制化學物質的名稱對照表)
+    - 時區定義格式轉換。BCON是00Z，.bc是當地時間。
+    - 使用腳本[conv_bcon.job](https://sinotec2.github.io/FAQ/2022/06/29/Slim-CMAQ2CAMx.html)
 - 位置：/nas2/camxruns/2016_v7/ICBC/EC_REAN/
-  - 這表示BCON是自ECWMF的再分析檔案切割出來的。
+  - 這表示BCON是自ECWMF的再分析檔案切割出來的。其時間解析度是3小時。
 
-### 批次檔腳本與python程式如下
+## slim_bc.py
+### 批次檔執行腳本
 - 需要模版檔案：bc_template.nc，為CMAQ之BCON檔案，但垂直已經改成15層。
 
 ```bash
 #kuang@master /nas2/camxruns/2016_v7/ICBC/EC_REAN
-#$ cat rs.cs
+#$ cat rs.cs 引數是2碼月份01～12
 for nc in $(ls BCON_v53_16${1}*);do
 python slim_bc.py $nc
 done
 ```
-- slim_bc.py(2021-05-21 09:00)
-  - 因各批次BCON檔案間會重複1小時，在整併到全月檔案時會出錯，因此時間循環時跳過最後一小時。
+### slim_bc.py程式
+- 程式時間2021-05-21 09:00
+- 因各批次BCON檔案間會重複1小時(自00Z開始、在00Z結束，不是在23Z)，在整併到全月檔案時會出錯，因此時間循環時跳過最後一小時。
+- BCON的濃度場是3階矩陣
 
 ```python
 #kuang@master /nas2/camxruns/2016_v7/ICBC/EC_REAN
@@ -55,7 +62,8 @@ nc1.NLAYS=15
 nc1.SDATE=nc.SDATE
 nc1.close()
 ```
-### [cmaq2camx][cmaq2camx]執行腳本
+### [cmaq2camx][cmaq2camx]執行腳本conv_bcon.job
+- 先執行spcmap，再執行cmaq2camx主程式
 
 ```bash
 #kuang@master /nas2/camxruns/2016_v7/ICBC/EC_REAN
