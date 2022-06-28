@@ -12,7 +12,7 @@ sidebar:
 - 這項作業是從CMAQ的邊界檔案(BCON)轉寫成CAMx的邊界檔(.bc)。雖然官網有提供轉換程式([cmaq2camx][cmaq2camx])，但是還是有時間與空間上需要調整：
   - BCON檔案有40層，而CAMx模擬只用到15層，因此在垂直向需要進行篩選(slim_bc.py)。
   - BCON是按照WRF的執行批次，兩個批次之間有重疊一天(需先用[brk_days2.cs][brk]按照日期拆開後、再按照CAMx的執行批次時間範圍、以ncrcat合併成一個BCON大檔)
-  - BCON轉成.bc檔，使用[cmaq2camx][cmaq2camx]進行空品項目對照、格式轉換([conv_bcon.job]())。
+  - BCON轉成.bc檔，使用[cmaq2camx][cmaq2camx]進行空品項目對照、格式轉換([conv_bcon.job](https://sinotec2.github.io/FAQ/2022/06/29/Slim-CMAQ2CAMx.html))。
 - 位置：/nas2/camxruns/2016_v7/ICBC/EC_REAN/
   - 這表示BCON是自ECWMF的再分析檔案切割出來的。
 
