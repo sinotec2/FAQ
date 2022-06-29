@@ -108,6 +108,7 @@ set OUTPUT_CAMx_BC   = ./base.grd02.16${MON}.bc
 set SPECIES_MAPPING  = ${SRC}/Species_Mapping_Tables/MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC
 set OUTPUT_TIMEZONE  = -8
 ```
+- CMAQ使用UTC，CAMx使用當地時間，時區為較國際換日線提前8小時(0=UTC,5=EST,6=CST,7=MST,8=PST)。
 
 [cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
 [brk]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/brk_day/#brk_day2cs腳本程式> "按日拆分m3.nc檔案(brk_day2.cs)。雖然CCTM的執行批次範圍是數日，但CCTM腳本常將所需的輸入檔切割成逐日檔，考量可方便進行批次範圍的組合，如果要拆散再另行組合成其他起訖日期的批次(如CCTM的邊界條件 之bld_19.cs)，有逐日檔案勢必方便許多。同時這也是MM5/WRF以來的IO習慣，很多也是逐日儲存。最後檔案管理維護比單一大檔容易，壞了某一天檔案只須修復該日檔案即可。"
