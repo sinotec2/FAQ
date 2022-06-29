@@ -16,7 +16,7 @@ sidebar:
   - BCON轉成.bc檔，使用[cmaq2camx][cmaq2camx]進行下列對照或轉換
     - 空品項目對照(對照表環境變數SPECIES_MAPPING，官網提供了幾個反應機制化學物質的名稱對照表)
     - 時區定義格式轉換。BCON是00Z，.bc是當地時間。
-    - 使用腳本[conv_bcon.job](https://sinotec2.github.io/FAQ/2022/06/29/Slim-CMAQ2CAMx.html)
+    - 使用腳本[conv_bcon.job](https://sinotec2.github.io/FAQ/2022/06/29/SlimCMAQ2CAMx.html#cmaq2camx執行腳本conv_bconjob)
 - 位置：/nas2/camxruns/2016_v7/ICBC/EC_REAN/
   - 這表示BCON是自ECWMF的再分析檔案切割出來的。其時間解析度是3小時。
 
@@ -33,8 +33,9 @@ done
 ```
 ### slim_bc.py程式
 - 程式時間2021-05-21 09:00
-- 因各批次BCON檔案間會重複1小時(自00Z開始、在00Z結束，不是在23Z)，在整併到全月檔案時會出錯，因此時間循環時跳過最後一小時。
-- BCON的濃度場是3階矩陣
+- 因各批次BCON檔案間會重複1天+1小時(自00Z開始、在00Z結束，不是在23Z)，重複1天可以將BCON按日拆解、再行組合，但重複1小時在和其他天整併到全月檔案時將會出錯，因此時間迴圈跳過最後一小時不執行，以保持每日都是24個時間框。
+- 高度層的選擇，可以參考wrfcamx的腳本，同樣是由WRF的40層選其中的15層。
+- 注意：BCON的濃度場是3階矩陣
 
 ```python
 #kuang@master /nas2/camxruns/2016_v7/ICBC/EC_REAN
@@ -62,24 +63,43 @@ nc1.NLAYS=15
 nc1.SDATE=nc.SDATE
 nc1.close()
 ```
-### [cmaq2camx][cmaq2camx]執行腳本conv_bcon.job
-- 先執行spcmap，再執行cmaq2camx主程式
+## [cmaq2camx][cmaq2camx]
+### 下載及編譯
+- 下載點：[https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz](https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz)
+- 編譯：
+  - 使用Makefile，修正程式庫位置(配合編譯器)，如
 
 ```bash
-#kuang@master /nas2/camxruns/2016_v7/ICBC/EC_REAN
-#$ cat conv_bcon.job
-#!/bin/csh -f
+IOAPI_INC  = /opt/ioapi-3.2/ioapi/fixed_src
+IOAPI_LIB  = /opt/ioapi-3.2/Linux2_x86_64gfort
+NETCDF_LIB = /opt/netcdf/netcdf4_gcc/lib
+```
+- 編譯器(gfortran)
 
-#
-#   This is a sample runscript to convert CMAQ BCON files to CAMx BC
-#   files.
-#   Set the following file names and run the script:
-#
-#   INPUT_CMAQ_BCON  - CMAQ BCON file name (input)
-#   OUTPUT_CAMx_BC   - CAMx BC file name (output)
-#   SPECIES_MAPPING  - Species Mapping Table file name (input)
-#   OUTPUT_TIMEZONE  - Timezone for output (8 for PST, etc.)
-#
+```bash
+FC  = gfortran
+OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
+LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
+INC = -I$(IOAPI_INC)
+```
+
+### 執行腳本conv_bcon.job
+- 先執行spcmap，再執行cmaq2camx主程式
+- 腳本為執行2016年6~7月之範例
+- $SPECIES_MAPPING的選項
+
+|CAMx版本|CAMx機制|CMAQ機制|排放/邊界|檔名|
+|:-:|:-:|:-:|:-:|:-|
+|CAMx6.2|CB05_CF|CB05_AE5|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_EMIS| 
+|CAMx6.2|CB05_CF|CB05_AE5|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_ICBC|
+|CAMx6.2|CB05_CF|CB05_AE6|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_EMIS|
+|CAMx6.2|CB05_CF|CB05_AE6|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC|
+|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|EMIS|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_EMIS|
+|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|ICBC|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_ICBC|
+
+{% include download.html content="BNDEXTR執行腳本範例[bndex.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/CAMx/ICBC/conv_bcon.job)" %}
+
+```bash
 foreach M (`seq 6  7`)
 set MON=`printf '%02d' $M`
 set SRC = /nas1/camxruns/src/cmaq2camx
@@ -87,61 +107,6 @@ set INPUT_CMAQ_BCON  = ./16$MON/bcon
 set OUTPUT_CAMx_BC   = ./base.grd02.16${MON}.bc
 set SPECIES_MAPPING  = ${SRC}/Species_Mapping_Tables/MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC
 set OUTPUT_TIMEZONE  = -8
-
-######################################################################
-#
-#   SPCMAP creates a new I/O-API file with new variables each of which
-#   is a linear combination of variables from the input I/O-API file.
-#   Units of the new variables are user-defined.
-#
-#   INFILE    - file name for input file
-#   OUTFILE   - file name for output file
-#   MAPTBL    - file name for species mapping table
-#
-######################################################################
-setenv INFILE  $INPUT_CMAQ_BCON
-setenv OUTFILE tmp_bcon
-setenv MAPTBL  $SPECIES_MAPPING
-rm -f $OUTFILE
-
-${SRC}/src/spcmap
-
-######################################################################
-#
-#   CMAQ2UAM converts CMAQ input files (I/O-API) into corresponding
-#   CAMx input files (UAM-IV format). It only converts file formats
-#   and units if needed. No species mapping.
-#
-#   CMAQICON        - file name for CMAQ IC input
-#   CMAQBCON        - file name for CMAQ BC input
-#   CMAQEMIS        - file name for CMAQ Emissions input
-#
-#   BCON_INTRP      - flag to generate hourly BC from X-hourly BC
-#                     T or Y to interpolate BC; otherwise, F or N
-#                     default value is FALSE
-#                     ignored if File Type is not BCON
-#
-#   File Type       - input file type (ICON, BCON, or EMIS)
-#   OutFile1        - first output file name (CAMx IC, BC, or AR)
-#   OutFile2        - second output file name (CAMx TopC or PT)
-#   Output Timezone - timezone for output (8 for PST, etc.)
-#
-######################################################################
-setenv CMAQBCON tmp_bcon
-rm -f $OUTPUT_CAMx_BC
-
-###setenv BCON_INTRP T
-
-${SRC}/src/cmaq2uam << EOF
-File Type          |BCON
-OutFile1 (IC,BC,AR)|$OUTPUT_CAMx_BC
-OutFile2 (TopC,PT) |
-Output Timezone    |$OUTPUT_TIMEZONE
-EOF
-
-rm -f tmp_bcon
-end
-
 ```
 
 [cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
