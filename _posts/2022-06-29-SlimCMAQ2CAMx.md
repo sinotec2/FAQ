@@ -83,6 +83,24 @@ LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
 INC = -I$(IOAPI_INC)
 ```
 
+### macOS
+- 以macOS之gfortran為例，Makefile如下表，重要設定說明如下：
+  - IOAPI_INC  ：特別連結到固定格式之包括檔(fixed_src)
+  - IOAPI_LIB ：按照機器及編譯器的規格設定(preset)
+  - NETCDF_LIB ：除了netcdf(C)之外，也需要有netcdff(FORTRAN)程式庫
+  - gomp ：有的gcc會需要omp程式庫(gomp)
+
+```bash
+IOAPI_INC  = /Users/IOAPI/ioapi-3.2/ioapi/fixed_src
+IOAPI_LIB  = /Users/IOAPI/ioapi-3.2/OSX_x86_gfortran
+NETCDF_LIB = /usr/local/NetCDF4/lib
+...
+FC  = gfortran
+OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
+LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
+INC = -I$(IOAPI_INC)
+```
+
 ### 執行腳本conv_bcon.job
 - 先執行spcmap，再執行cmaq2camx主程式
 - 腳本為執行2016年6~7月之範例
