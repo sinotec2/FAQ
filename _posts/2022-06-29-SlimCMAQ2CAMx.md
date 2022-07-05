@@ -63,73 +63,9 @@ nc1.NLAYS=15
 nc1.SDATE=nc.SDATE
 nc1.close()
 ```
-## [cmaq2camx][cmaq2camx]
-### 下載及編譯
-- 下載點：[https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz](https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz)
-- 編譯：
-  - 使用Makefile，修正程式庫位置(配合編譯器)，如
-
-```bash
-IOAPI_INC  = /opt/ioapi-3.2/ioapi/fixed_src
-IOAPI_LIB  = /opt/ioapi-3.2/Linux2_x86_64gfort
-NETCDF_LIB = /opt/netcdf/netcdf4_gcc/lib
-```
-- 編譯器(gfortran)
-
-```bash
-FC  = gfortran
-OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
-LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
-INC = -I$(IOAPI_INC)
-```
-
-### macOS
-- 以macOS之gfortran為例，Makefile如下表，重要設定說明如下：
-  - IOAPI_INC  ：特別連結到固定格式之包括檔(fixed_src)
-  - IOAPI_LIB ：按照機器及編譯器的規格設定(preset)
-  - NETCDF_LIB ：除了netcdf(C)之外，也需要有netcdff(FORTRAN)程式庫
-  - gomp ：有的gcc會需要omp程式庫(gomp)
-
-```bash
-IOAPI_INC  = /Users/IOAPI/ioapi-3.2/ioapi/fixed_src
-IOAPI_LIB  = /Users/IOAPI/ioapi-3.2/OSX_x86_gfortran
-NETCDF_LIB = /usr/local/NetCDF4/lib
-...
-FC  = gfortran
-OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
-LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
-INC = -I$(IOAPI_INC)
-```
-### 所有腳本內容
-
-項次|處理對象|範本
-:-:|-|-
-1|轉換邊界濃度|[conv_bcon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_bcon.job) 
-2|轉換排放量檔|[conv_emis.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_emis.job) 
-3|轉換初始濃度(1轉2)|[conv_icon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_icon.job) 
-4|轉換點源(2合1)|[conv_ipnt.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_ipnt.job) 
-
-### 點源轉換腳本之設定與選項
-
-環境變數|內容|範例|說明
--|-|-|-
-INPUT_CMAQ_EMIS|CMAQ點源排放量時間序列檔||
-INPUT_STACK_GRP|CMAQ煙囪常數檔案||
-OUTPUT_CAMx_PNT|CAMx點源檔(point_source)||
-SPECIES_MAPPING|物種對照表，如下所示||
-OUTPUT_TIMEZONE|CAMx時區8=PST, -8=TPE||
-
-
-### $SPECIES_MAPPING的選項
-
-|CAMx版本|CAMx機制|CMAQ機制|排放/邊界|檔名|
-|:-:|:-:|:-:|:-:|:-|
-|CAMx6.2|CB05_CF|CB05_AE5|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_EMIS| 
-|CAMx6.2|CB05_CF|CB05_AE5|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_ICBC|
-|CAMx6.2|CB05_CF|CB05_AE6|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_EMIS|
-|CAMx6.2|CB05_CF|CB05_AE6|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC|
-|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|EMIS|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_EMIS|
-|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|ICBC|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_ICBC|
+## 使用cmaq2camx套件
+- cmaq2camx是Ramboll公司提供的套件程式，將CMAQ模式的ICON、BCON、EMIS、PTSE等重要模擬條件檔，轉到CAMx平台上，符合[uamiv][uamiv]、[lateral_boundary][bnd]及[point_source][pnc_camx]之格式。
+- 程式之下載、編譯、輸入環境變數或標準輸入的選項內容，詳參[CMAQ2CAMx之單向轉換][https://sinotec2.github.io/FAQ/2022/07/05/cmaq2camx.html]
 
 ### 執行腳本範例
 - 先執行spcmap，再執行cmaq2camx主程式
@@ -148,9 +84,10 @@ set SPECIES_MAPPING  = ${SRC}/Species_Mapping_Tables/MAPTBL.CAMx6.2_CB05_CF.CMAQ
 set OUTPUT_TIMEZONE  = -8
 ...
 ```
-- CMAQ使用UTC，CAMx使用當地時間，時區為較國際換日線提前8小時(0=UTC,5=EST,6=CST,7=MST,8=PST)。
-
-
+- CMAQ使用UTC，CAMx使用當地時間，臺北時間為較國際換日線提前8小時(0=UTC,美國本土5=EST,6=CST,7=MST,8=PST)。
 
 [cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
 [brk]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/brk_day/#brk_day2cs腳本程式> "按日拆分m3.nc檔案(brk_day2.cs)。雖然CCTM的執行批次範圍是數日，但CCTM腳本常將所需的輸入檔切割成逐日檔，考量可方便進行批次範圍的組合，如果要拆散再另行組合成其他起訖日期的批次(如CCTM的邊界條件 之bld_19.cs)，有逐日檔案勢必方便許多。同時這也是MM5/WRF以來的IO習慣，很多也是逐日儲存。最後檔案管理維護比單一大檔容易，壞了某一天檔案只須修復該日檔案即可。"
+[uamiv]: <https://github.com/sinotec2/camxruns/wiki/CAMx(UAM)的檔案格式> "CAMx所有二進制 I / O文件的格式，乃是遵循早期UAM(城市空氣流域模型EPA，1990年）建立的慣例。 該二進制文件包含4筆不隨時間改變的表頭記錄，其後則為時間序列的數據記錄。詳見CAMx(UAM)的檔案格式"
+[bnd]: <https://sinotec2.github.io/FAQ/2022/06/27/CAMx_BC.html#uamiv與lateral_boundary格式內容之比較> "uamiv與lateral_boundary格式內容之比較"
+[pnc_camx]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/pncgen/#camx> "FAQ -> Utilitie -> NetCDF Relatives -> ncgen & pncgen -> CAMx"
