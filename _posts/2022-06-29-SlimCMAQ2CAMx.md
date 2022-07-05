@@ -100,11 +100,27 @@ OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marke
 LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
 INC = -I$(IOAPI_INC)
 ```
+### 所有腳本內容
 
-### 執行腳本conv_bcon.job
-- 先執行spcmap，再執行cmaq2camx主程式
-- 腳本為執行2016年6~7月之範例
-- $SPECIES_MAPPING的選項
+項次|處理對象|範本
+:-:|-|-
+1|轉換邊界濃度|[conv_bcon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_bcon.job) 
+2|轉換排放量檔|[conv_emis.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_emis.job) 
+3|轉換初始濃度(1轉2)|[conv_icon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_icon.job) 
+4|轉換點源(2合1)|[conv_ipnt.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_ipnt.job) 
+
+### 點源轉換腳本之設定與選項
+
+環境變數|內容|範例|說明
+-|-|-|-
+INPUT_CMAQ_EMIS|CMAQ點源排放量時間序列檔||
+INPUT_STACK_GRP|CMAQ煙囪常數檔案||
+OUTPUT_CAMx_PNT|CAMx點源檔(point_source)||
+SPECIES_MAPPING|物種對照表，如下所示||
+OUTPUT_TIMEZONE|CAMx時區8=PST, -8=TPE||
+
+
+### $SPECIES_MAPPING的選項
 
 |CAMx版本|CAMx機制|CMAQ機制|排放/邊界|檔名|
 |:-:|:-:|:-:|:-:|:-|
@@ -115,9 +131,14 @@ INC = -I$(IOAPI_INC)
 |CAMx6.2|SAPRC99_CF|SAPRC99_AE5|EMIS|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_EMIS|
 |CAMx6.2|SAPRC99_CF|SAPRC99_AE5|ICBC|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_ICBC|
 
+### 執行腳本範例
+- 先執行spcmap，再執行cmaq2camx主程式
+- 腳本為執行2016年6~7月之範例
+
 {% include download.html content="BNDEXTR執行腳本範例[bndex.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/CAMx/ICBC/conv_bcon.job)" %}
 
 ```bash
+...
 foreach M (`seq 6  7`)
 set MON=`printf '%02d' $M`
 set SRC = /nas1/camxruns/src/cmaq2camx
@@ -125,8 +146,11 @@ set INPUT_CMAQ_BCON  = ./16$MON/bcon
 set OUTPUT_CAMx_BC   = ./base.grd02.16${MON}.bc
 set SPECIES_MAPPING  = ${SRC}/Species_Mapping_Tables/MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC
 set OUTPUT_TIMEZONE  = -8
+...
 ```
 - CMAQ使用UTC，CAMx使用當地時間，時區為較國際換日線提前8小時(0=UTC,5=EST,6=CST,7=MST,8=PST)。
+
+
 
 [cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
 [brk]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/brk_day/#brk_day2cs腳本程式> "按日拆分m3.nc檔案(brk_day2.cs)。雖然CCTM的執行批次範圍是數日，但CCTM腳本常將所需的輸入檔切割成逐日檔，考量可方便進行批次範圍的組合，如果要拆散再另行組合成其他起訖日期的批次(如CCTM的邊界條件 之bld_19.cs)，有逐日檔案勢必方便許多。同時這也是MM5/WRF以來的IO習慣，很多也是逐日儲存。最後檔案管理維護比單一大檔容易，壞了某一天檔案只須修復該日檔案即可。"
