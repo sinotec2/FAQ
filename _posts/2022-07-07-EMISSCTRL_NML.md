@@ -6,6 +6,7 @@ aside:
   toc: true
 sidebar:
   nav: layouts
+last_modified_date: 2022-07-08 09:02:56
 ---
 
 ## 背景
@@ -26,9 +27,9 @@ sidebar:
 3|&SizeDistributions|粒徑分布|
 4|&RegionsRegistry|區域定義|
 
-
-## 科學設定排放是否受保護
-- 特定排放類別：風吹砂(WBDUST)、海洋飛沫(SEASPRAY)與氣體(MGEN)、生物VOCs(BIOG)、閃電NOx(LTNG)
+## 科學設定之排放類別
+- 這個段落針對特定排放類別進行保護(Guard)
+- 特定排放類別包括CCTM的科學設定範疇：風吹砂(WBDUST)、海洋飛沫(SEASPRAY)與氣體(MGEN)、生物VOCs(BIOG)、以及閃電NOx(LTNG)
 - 選項
   - .FALSE. ：乘數一樣作用在這些地區及污染項目
   - .TRUE.  ：即使使用'ALL'也不會作用在這些地區或項目
@@ -47,4 +48,16 @@ sidebar:
 7|Basis|計算基準|MOLE當量守恒, MASS質量守恒, UNIT不管單位直接乘|粒狀物比較會有問題
 8|OP|運作方式|a既有規則再加上新規則, m既有相同對象的規則再乘上乘數, o以新乘數取代既有相同對象的規則|
 
-last modified：2022-07-07 17:14:33
+## 粒徑分布
+
+## 區域定義
+這個段落除了定義各項規則應用的地區標籤之外，也是ISAM的地區定義，詳見[run_isam][rgrg]的內容。欄位內容整理成表格形式。
+
+欄次|欄位名稱|內容|範例說明
+-|-|-|-
+1|Region Label||
+2|File_Label||
+3|Variable on File|指在[gridmask][gridmask]檔案內的分區名稱|
+
+[rgrg]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/ISAM/run_isamMM_RR_DM/#emissctrl檔案之地區控制regionsregistry> "FAQ -> CMAQ模式 -> 污染來源之分析 -> 執行CMAQ-ISAM -> EmissCtrl檔案之地區控制(RegionsRegistry)"
+
