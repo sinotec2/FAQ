@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date: 2022-07-07 09:27:32
-modify_date: 2022-07-08 09:02:56
+modify_date: 2022-07-08 10:27:29
 ---
 
 ## 背景
@@ -50,15 +50,23 @@ modify_date: 2022-07-08 09:02:56
 8|OP|運作方式|a既有規則再加上新規則, m既有相同對象的規則再乘上乘數, o以新乘數取代既有相同對象的規則|
 
 ## 粒徑分布
+指定特定類別粒狀物的粒徑
+
+欄次|欄位名稱|內容|範例說明
+-|-|-|-
+1|Stream Label|排放標籤|ALL, WBDUST, SEASPRAY, AIRCRAFT
+2|Surr. Mode|規模檔中粒狀物的粒徑代稱|FINE, COARSE
+3|Ref. Mode|只在AERO_DATA.F程式碼中的`em_aero`內容項目|FINE_REF, ACC_REF, COARSE_REF, UNITY_REF, ZERO_REF, FINE_WBDUST, COARSE_WBDUST, FINE_SEASPRAY, COARSE_SEASPRAY等9類，如要增加須在該程式碼中添加
 
 ## 區域定義
 這個段落除了定義各項規則應用的地區標籤之外，也是ISAM的地區定義，詳見[run_isam][rgrg]的內容。欄位內容整理成表格形式。
 
 欄次|欄位名稱|內容|範例說明
 -|-|-|-
-1|Region Label||
-2|File_Label||
-3|Variable on File|指在[gridmask][gridmask]檔案內的分區名稱|
+1|Region Label|在規則檔中的標籤|(令其與第3欄一致)
+2|File_Label|地區定義檔|ISAM_REGIONS(csh中所指定的gridmask遮罩檔案)
+3|Variable on File|指在[gridmask][gridmask]檔案內的變數名稱|以d1為例，即為檔案中的AQFZ0~AQFZ7
 
 [rgrg]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/ISAM/run_isamMM_RR_DM/#emissctrl檔案之地區控制regionsregistry> "FAQ -> CMAQ模式 -> 污染來源之分析 -> 執行CMAQ-ISAM -> EmissCtrl檔案之地區控制(RegionsRegistry)"
+[gridmask]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/ISAM/withinD1> "d01地理分區檔案之準備"
 
