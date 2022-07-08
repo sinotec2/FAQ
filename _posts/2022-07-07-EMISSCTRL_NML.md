@@ -56,7 +56,7 @@ modify_date: 2022-07-08 10:27:29
 -|-|-|-
 1|Stream Label|排放標籤|ALL, WBDUST, SEASPRAY, AIRCRAFT
 2|Surr. Mode|規模檔中粒狀物的粒徑代稱|FINE, COARSE
-3|Ref. Mode|只在AERO_DATA.F程式碼中的`em_aero`內容項目|FINE_REF, ACC_REF, COARSE_REF, UNITY_REF, ZERO_REF, FINE_WBDUST, COARSE_WBDUST, FINE_SEASPRAY, COARSE_SEASPRAY等9類，如要增加須在該程式碼中添加
+3|Ref. Mode|只在[AERO_DATA.F](https://github.com/USEPA/CMAQ/blob/main/CCTM/src/aero/aero6/AERO_DATA.F)程式碼中的`em_aero`內容項目|FINE_REF, ACC_REF, COARSE_REF, UNITY_REF, ZERO_REF, FINE_WBDUST, COARSE_WBDUST, FINE_SEASPRAY, COARSE_SEASPRAY等9類，如要增加須在該程式碼中添加
 
 ## 區域定義
 這個段落除了定義各項規則應用的地區標籤之外，也是ISAM的地區定義，詳見[run_isam][rgrg]的內容。欄位內容整理成表格形式。
