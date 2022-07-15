@@ -20,7 +20,7 @@ modify_date: 2022-07-15 11:00:42
 ## 檔案準備
 ### 確認ptsE結果檔
 ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
-- 使用ncdump確認CAMx版本：煙囪參數的維度是COL(CAMx7)、或者是NSTK(CAMx6)，見[比較表][CAMx67]。
+- 使用[ncdump](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncdump)確認CAMx版本：煙囪參數的維度是COL(CAMx7)、或者是NSTK(CAMx6)，見[比較表][CAMx67]。
 - COL維度必須是UNLIMITED
 - 如果不是，使用[ncpdq](https://linux.die.net/man/1/ncpdq)及[ncks](https://linux.die.net/man/1/ncks)來[加長一個LIMITED維度][ncqdp]
 
