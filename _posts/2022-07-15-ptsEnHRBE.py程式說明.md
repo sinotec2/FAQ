@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-07-15 
-modify_date: 2022-07-15 09:34:08
+modify_date: 2022-07-15 11:00:42
 ---
 
 # 背景
@@ -65,8 +65,8 @@ ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
 {% include download.html content="點源整併程式：[ptsEnHRBE.py](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/PTSE/ptsEnHRBE.py)" %}
 
 # 結果確認
-- [pt2em_d04.py](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/pt2em_d04/#程式說明)
+- 可以使用[pt2em_d04.py](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/pt2em_d04/#程式說明)以地面排放檔將點源nc檔網格化，再以VERDI檢視是否在港區範圍有增加排放量。
 
-[ncqdp]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncks/#加長一個limited維度> "ncpdq -O -a ROW,TSTEP,LAY,COL $nc a; ncks -O --mk_rec_dmn ROW a $nc"
+[ncqdp]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncks/#加長一個limited維度> "ncpdq -O -a COL,TSTEP,LAY,ROW $nc a; ncks -O --mk_rec_dmn COL a $nc"
 [CAMx67]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/1.pt_constWork/#點源nc檔案煙囪參數之版本差異> "點源NC檔案煙囪參數之版本差異"
 [mask]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/masked> "NC矩陣遮罩之檢查與修改"
