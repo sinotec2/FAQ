@@ -1,0 +1,68 @@
+---
+title: ptsEnHRBE.py程式說明
+tags: CAMx ptse CMAQ
+layout: article
+aside:
+  toc: true
+sidebar:
+  nav: layouts
+date:  2022-07-15 
+modify_date: 2022-07-15 09:34:08
+---
+
+# 背景
+- CAMx及CMAQ模式基本上事可以接受多個點源檔案的，但因CMAQv531還不能接受全月整併成一個檔案，如果再區分許多的點源來源，那檔案個數就會倍數成長，因此需要進行煙囪維度方向的整併。
+- 雖然是不論是輸入或輸出檔案格式，都還是CAMx7的nc格式，然而因是CMAQ點源處理過程，因此歸類在CMAQ的程序之一。
+- 高空點源(ptsE)與港區船舶排放(HRBR)檔案的產生，可以詳見[CAMx高空點源排放檔案之產生](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/ptseE/)與[港區船舶之點源排放](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ship/harb_ptse/)
+- 結果檔案將提供給CMAQ點源程式[pt_const](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/1.pt_constWork/)及[pt_timvar](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/3.pt_timvarWork/)使用。
+
+# 程式之執行
+## 檔案準備
+### 確認ptsE結果檔
+ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
+- 使用ncdump確認CAMx版本：煙囪參數的維度是COL(CAMx7)、或者是NSTK(CAMx6)。
+- COL維度必須是UNLIMITED
+- 如果不是，使用[ncpdq](https://linux.die.net/man/1/ncpdq)及[ncks](https://linux.die.net/man/1/ncks)來[加長一個LIMITED維度](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncks/#加長一個limited維度)
+
+### 確認HRBR檔案
+- 時間的長度，必須與ptsE一致
+- 污染物變數項目，必須全部含括在ptsE檔案之內。
+
+### 確認檔案路徑
+- 因檔案路徑是寫在程式內(`path='/nas1/TEDS/teds11/'`)，需要確認確實找得到檔案，包括
+  - `$path/ptse`路徑下有` P=path+'ptse/fortBE.413_teds10.ptsE'+mm+'.nc'`
+  - `$path/ship`路徑下有` P=path+'ptse/fortBE.413_teds10.HRBR'+mm+'.nc'`
+
+## 引數
+- 因為檔案不小，分月、同步執行較為省時，引數為月份(1~12)
+
+## 執行程式
+- `for m in {1..12};do sub python ptsEnHRBE.py $m`
+
+# 程式說明
+## COL維度之延長
+- 先延長較單純的變數，如`CP_NO`，將結果檔的維度向COL方向拉長，
+- 再依變數的形狀(rank)將HRBR檔案，轉貼在ptsE檔案之後。
+
+```python
+  v='CP_NO'
+  for c in range(noptsp,nopts):
+    nco.variables[v][c,:]=ncs.variables[v][c-noptsp,:]
+  for v in v1:
+    for c in range(noptsp,nopts):
+      nco.variables[v][c]=ncs.variables[v][c-noptsp]
+  for v in v2p1:
+    for c in range(noptsp,nopts):
+      nco.variables[v][:,c]=0.
+      if v in v2s:
+        nco.variables[v][:,c]=ncs.variables[v][:,c-noptsp]
+  nco.NCOLS=nopts
+  nco.close()
+```
+
+# 程式下載
+
+{% include download.html content="點源整併程式：[ptsEnHRBE.py](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/PTSE/ptsEnHRBE.py)" %}
+
+# 結果確認
+- [pt2em_d04.py](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/pt2em_d04/#程式說明)
