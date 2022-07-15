@@ -11,8 +11,8 @@ modify_date: 2022-07-15 09:34:08
 ---
 
 # 背景
-- CAMx及CMAQ模式基本上事可以接受多個點源檔案的，但因CMAQv531還不能接受全月整併成一個檔案，如果再區分許多的點源來源，那檔案個數就會倍數成長，因此需要進行煙囪維度方向的整併。
-- 雖然是不論是輸入或輸出檔案格式，都還是CAMx7的nc格式，然而因是CMAQ點源處理過程，因此歸類在CMAQ的程序之一。
+- CAMx及CMAQ模式基本上是可以接受多個點源檔案的，但因CMAQv531還不能接受全月整併成一個檔案，如果再區分許多的點源來源，那檔案個數就會倍數成長，因此需要進行煙囪維度方向的整併。
+- 雖然是不論是輸入或輸出檔案格式，都還是[CAMx7][CAMx67]的nc格式，然而因是CMAQ點源處理的必要過程，因此歸類在CMAQ的程序之一。
 - 高空點源(ptsE)與港區船舶排放(HRBR)檔案的產生，可以詳見[CAMx高空點源排放檔案之產生](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/ptseE/)與[港區船舶之點源排放](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ship/harb_ptse/)
 - 結果檔案將提供給CMAQ點源程式[pt_const](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/1.pt_constWork/)及[pt_timvar](https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/3.pt_timvarWork/)使用。
 
@@ -20,9 +20,9 @@ modify_date: 2022-07-15 09:34:08
 ## 檔案準備
 ### 確認ptsE結果檔
 ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
-- 使用ncdump確認CAMx版本：煙囪參數的維度是COL(CAMx7)、或者是NSTK(CAMx6)。
+- 使用ncdump確認CAMx版本：煙囪參數的維度是COL(CAMx7)、或者是NSTK(CAMx6)，見[比較表][CAMx67]。
 - COL維度必須是UNLIMITED
-- 如果不是，使用[ncpdq](https://linux.die.net/man/1/ncpdq)及[ncks](https://linux.die.net/man/1/ncks)來[加長一個LIMITED維度](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncks/#加長一個limited維度)
+- 如果不是，使用[ncpdq](https://linux.die.net/man/1/ncpdq)及[ncks](https://linux.die.net/man/1/ncks)來[加長一個LIMITED維度][ncqdp]
 
 ### 確認HRBR檔案
 - 時間的長度，必須與ptsE一致
@@ -40,9 +40,9 @@ ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
 - `for m in {1..12};do sub python ptsEnHRBE.py $m`
 
 # 程式說明
-## COL維度之延長
 - 先延長較單純的變數，如`CP_NO`，將結果檔的維度向COL方向拉長，
 - 再依變數的形狀(rank)將HRBR檔案，轉貼在ptsE檔案之後。
+- 為避免未給定值造成[遮蔽][mask]，即使船舶排放檔沒有排放量內容的變數，也必須給0。
 
 ```python
   v='CP_NO'
@@ -66,3 +66,7 @@ ptsE檔案是用來做為成果的模版，因此需要確認的項目較多
 
 # 結果確認
 - [pt2em_d04.py](https://sinotec2.github.io/Focus-on-Air-Quality/EmisProc/ptse/pt2em_d04/#程式說明)
+
+[ncqdp]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/ncks/#加長一個limited維度> "ncpdq -O -a ROW,TSTEP,LAY,COL $nc a; ncks -O --mk_rec_dmn ROW a $nc"
+[CAMx67]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/1.pt_constWork/#點源nc檔案煙囪參數之版本差異> "點源NC檔案煙囪參數之版本差異"
+[mask]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/masked> "NC矩陣遮罩之檢查與修改"
