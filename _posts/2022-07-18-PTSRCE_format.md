@@ -52,8 +52,7 @@ modify_date: 2022-07-18 09:33:54
 680   CONTINUE
 ```
 
-##　[uamiv][uamiv]與point_source格式內容之比較表(fortran)
-
+## [uamiv][uamiv]與point_source格式內容之比較表(fortran)
 - CAMx的點源排放檔案格式有別於其他所有格式，除了4筆表頭內容一致外，增加了第5~6筆表頭內容，為煙囪個數及煙囪基本條件
 - 時變部分，點源排放具有很大的彈性，每個時間段落的煙囪個數可以不一樣(not tried)，也可以有隨時間改變的流量與煙囪有效高度。
 
@@ -66,7 +65,7 @@ modify_date: 2022-07-18 09:33:54
 </colgroup>
 <thead align="center">
 <tr class="row-odd"><th class="head">項目</th>
-<th class="head">uamiv</th>
+<th class="head">[uamiv][uamiv]</th>
 <th class="head">point_source</th>
 <th class="head">說明</th>
 </tr>
