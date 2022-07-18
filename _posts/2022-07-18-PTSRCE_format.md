@@ -122,7 +122,7 @@ modify_date: 2022-07-18 09:33:54
 <p>DO 500 I=1,NSPEC</p><p>
 &emsp;WRITE (NUPTS) NSEG,(MSPEC(J,I),J=1,10),</p><p>
 &emsp;$      (QPTS(I,IP), IP=1,NOPTS)</p><p>
-500     CONTINUE</p><p></td>
+500     CONTINUE</p></td>
 <td>每筆基本單元前者為一矩陣、後者為一序列</td>
 </tr>
 </tbody>
