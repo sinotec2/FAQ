@@ -1,4 +1,3 @@
-
 ---
 title: CAMx點源格式說明
 tags: CAMx ptse 
@@ -11,11 +10,10 @@ date:  2022-07-18
 modify_date: 2022-07-18 09:33:54
 ---
 
-# 背景
+## 背景
 - CAMx點源檔案的nc版本，已經有很多[說明與列表][CAMx67]。此處說明點源point_source格式(循序讀寫之二進位檔案)之內容。
 - 其他面源、空品及沉降檔之[uamiv格式][uamiv]、以及邊界條件檔案之[lateral_boundary格式][bnd] ，可以詳見[比較表][bnd]。
 
-# [uamiv][uamiv]與point_source格式內容之比較
 ## [pt-emis.f](https://github.com/sinotec2/camxruns/blob/master/pt-emis.f)的輸出部分內容
 - 循序輸出6筆表頭內容，此部分為常數，不隨時間改變。其後為每個時間段落的排放量數據
 - 常數部分
@@ -135,8 +133,6 @@ modify_date: 2022-07-18 09:33:54
 
 ## [uamiv][uamiv]與point_source格式內容之比較(python)
 - 詳見[點源nc檔案煙囪參數之版本差異][CAMx67]
--
-
 
 [CAMx67]: <https://sinotec2.github.io/Focus-on-Air-Quality/GridModels/PTSE/1.pt_constWork/#點源nc檔案煙囪參數之版本差異> "點源NC檔案煙囪參數之版本差異"
 [bnd]: <https://sinotec2.github.io/FAQ/2022/06/27/CAMx_BC.html#uamiv與lateral_boundary格式內容之比較> "uamiv與lateral_boundary格式內容之比較"
