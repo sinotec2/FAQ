@@ -73,46 +73,46 @@ modify_date: 2022-07-18 09:33:54
 <tbody valign="top">
 <tr class="row-even"><td>表頭1檔名標籤與起迄日期時間</td>
 <td>fname, note, NOSEG, NOSPEC,<p>NDATE, TTIME, NDLAST, TTLAST</p></td>
-<td>(same)</td>
+<td><p style="text-align:center;">(same)</p></td>
 <td>前者內容為AIRQUALITY, AVERAGE, EMISSION後者為PTSOURCE</td>
 </tr>
 <tr class="row-odd"><td>表頭2網格系統</td>
 <td>XUTM, YUTM, NZONE, <p>XORG, YORG, DELTAX, DELTAY, </p><p>NOXG, NOYG, NOZ,</p><p>idproj,istag,tlat1,tlat2,rdum</p></td>
-<td>(same)</td>
+<td><p style="text-align:center;">(same)</p></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-even"><td>表頭3 4個整數</td>
-<td>(Itmp(j), J=1,4)</td>
-<td>(same)</td>
+<td><p style="text-align:center;">(Itmp(j), J=1,4)</p></td>
+<td><p style="text-align:center;">(same)</p></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>表頭4污染物名稱</td>
 <td>((SPNAME(I,J), I=1,10), J=1,NOSPEC)</td>
-<td>(same)</td>
+<td><p style="text-align:center;">(same)</p></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-even"><td>表頭5 段落數及點源個數</td>
-<td>(無)</td>
+<td><p style="text-align:center;">(無)</p></td>
 <td>NOSEG, NOPTS</td>
 <td>NOSEG值為1</td>
 </tr>
 <tr class="row-even"><td>表頭6 點源基本參數</td>
-<td>(無)</td>
+<td><p style="text-align:center;">(無)</p></td>
 <td>(X(K), Y(K), H(K), D(K), T(K), V(K),K=1,NOPTS)</td>
 <td>XYHD單位為公尺、T單位K，V單位m/Hr</td>
 </tr>
 <tr class="row-odd"><td>時變部分逐時之表頭1:啟迄日期時間</td>
-<td>jjj,btime, jjn,etime</td>
-<td>(same)</td>
+<td><p style="text-align:center;">jjj,btime, jjn,etime</p></td>
+<td><p style="text-align:center;">(same)</p></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>時變部分逐時之表頭2</td>
-<td>(無)</td>
+<td><p style="text-align:center;">(無)</p></td>
 <td>NOSEG, NOPTS</td>
 <td>段落數及點源個數</td>
 </tr>
 <tr class="row-odd"><td>時變部分逐時之表頭3</td>
-<td>(無)</td>
+<td><p style="text-align:center;">(無)</p></td>
 <td>(ILOC(IP,IT), IJPS(IP,IT), KPTS(IP,IT), FLOW(IP,IT), EFPLH(IP,IT), IP=1,NOPTS)</td>
 <td>點源位置之IJK排氣量與有效高</td>
 </tr>
