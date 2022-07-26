@@ -1,6 +1,6 @@
 ---
-title: earth nullschool套件讀取CWBWRF_3Km數據
-tags: CWBWRF_3Km D3j
+title: earth nullschool套件讀取CWBWRF數據
+tags: CWBWRF D3j
 layout: article
 aside:
   toc: true
@@ -10,73 +10,98 @@ date:  2022-07-26
 modify_date: 2022-07-26 09:28:51
 mermaid: true
 ---
-## diff in gfs and cwbwrf
+## diff of first paramter in gfs and cwbwrf_15Km files
+
+```python
+fname='current-wind-surface-level-gfs-1.0.json'
+with open(fname,'r') as fn:
+  crnt=json.load(fn)
+fname='M-A0061-006.grb2.json'
+with open(fname,'r') as fn:
+  cwb=json.load(fn)
+c=set(cwb[0]['header'])
+g=set(crnt[0]['header'])
+a=[]
+for i in c&g:a.append([i, crnt[0]['header'][i],cwb[0]['header'][i]])
+```
 
 ### grib file
 
-parameter|gfs|cwbwrf
--|:-:|:-:
- productStatusName|Operational products|Operational products
- productStatus| 0|0
+parameter|gfs|cwbwrf|desc.
+-|:-:|:-:|-
+length of json list|2|80|gfs is demo, cwb[70~71] are UV10
  productType| 1|2
- productDefinitionTemplate| 0|0
  productTypeName|Forecast products|Analysis and Forecast products
+ productStatus| 0|0
+ productStatusName|Operational products|Operational products
+ productDefinitionTemplate| 0|0
+ productDefinitionTemplateName|Analysis/forecast at horizontal level/layer at a point in time|Analysis/forecast at horizontal level/layer at a point in time
  winds|true|true
- subcenter| 0|0
  center| 7|0
  centerName|US National Weather Service - NCEP(WMC)|WMO Secretariat
- disciplineName|Meteorological products|Meteorological products
- parameterCategory| 2|3
- parameterUnit|m.s-1|gpm
+ subcenter| 0|0
  parameterNumber| 2|5
+ parameterNumberName|U-component_of_wind|Geopotential_height|first var.
+ parameterCategory| 2|3
  parameterCategoryName|Momentum|Mass
- parameterNumberName|U-component_of_wind|Geopotential_height
- gribLength| 131858|61081802
+ parameterUnit|m.s-1|gpm
  scanMode| 0|64
+ gribLength| 131858|61081802
  gribEdition| 2|2
  discipline| 0|0
+ disciplineName|Meteorological products|Meteorological products
 
 ### grid definition
 
-parameter|gfs|cwbwrf
--|:-:|:-:
+parameter|gfs|cwbwrf|describe
+-|:-:|:-:|-
  shape| 6|6
- gridDefinitionTemplateName|Latitude_Longitude|Lambert_Conformal
- gridDefinitionTemplate| 0|30
  shapeName|Earth spherical with radius of 6,371,229.0 m|Earth spherical with radius of 6,371,229.0 m
- gridUnits|degrees|m
+ gridDefinitionTemplate| 0|30
+ gridDefinitionTemplateName|Latitude_Longitude|Lambert_Conformal  
  nx| 360|661
  ny| 181|385
- numberPoints| 65160|254485
+ numberPoints| 65160|254485|=nx&times;ny
+ gridUnits|degrees|m
  dx| 1|15000.0
  dy| 1|15000.0
- lo1| 0|78.02554
- la1| 90|-5.693676
+ lo1| 0|78.02554|western most
+ la1| 90|-5.693676|southern most
  resolution| 48|0
 
 ### surface
 
-parameter|gfs|cwbwrf
--|:-:|:-:
- surface1TypeName|Specified height level above ground|Isobaric surface  
+parameter|gfs|cwbwrf|desc
+-|:-:|:-:|-
  surface1Type| 103|100
- surface1Value| 10|1e-128
- surface2TypeName|Missing|Missing
+ surface1TypeName|Specified height level above ground|Isobaric surface| 11 levels from 100 to 1000 hPa, also 0, 2, 10 meter  
+ surface1Value| 10|1e-128|gfs in m; cwb strenge unit = 100 hpa
  surface2Type| 255|255
+ surface2TypeName|Missing|Missing
  surface2Value| 0|0.0
 
+```python
+set(surface1Value)
+{0.0, 
+1e-128, 1.5e-128, 2e-128, 2.5e-128, 3.e-128, 4e-128, 
+5e-128, 7.e-128, 8.5e-128, 9.25e-128, 1e-127, 
+2.0, 10.0}
+```
 ### time frame
 parameter|gfs|cwbwrf
 -|:-:|:-:
- genProcessTypeName|Forecast|Forecast
  genProcessType| 2|2
+ genProcessTypeName|Forecast|Forecast
 forecastTime| 3|6
- significanceOfRTName|Start of forecast|Start of forecast
-productDefinitionTemplateName|Analysis/forecast at horizontal level/layer at a point in time|Analysis/forecast at horizontal level/layer at a point in time
- refTime(eg)|2014-01-31T00:00:00.000Z|2021-10-11T06:00:00.000Z
  significanceOfRT| 1|1
+ significanceOfRTName|Start of forecast|Start of forecast
+ refTime(eg)|2014-01-31T00:00:00.000Z|2021-10-11T06:00:00.000Z
 
 
+## modifications of js
+### zoom limits
+- from 3000 to 60,000
+- function scaleExtent in file `./public/libs/earth/1.0.0/globes.js`
 
 ## source
 - cambecc(2016)|earth building|launching and [etc](https://github.com/cambecc/earth). 
