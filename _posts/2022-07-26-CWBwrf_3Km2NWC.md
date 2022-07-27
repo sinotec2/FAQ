@@ -40,7 +40,7 @@ graph TD
   - reload browser
 
 ## diff of first paramter between gfs and cwbwrf_15Km files
-- [earth][ens]套件與gfs檔案的連結靠的是[grib2json][g2j]這支程式，cambecc也將起公開在github上。其下載、編譯、與應用的歷程可以參考[FAQ->json][json]。
+- [earth][ens]套件與gfs檔案的連結靠的是[grib2json][g2j]這支程式，cambecc也將其公開在github上。其下載、編譯、與應用的細節歷程可以參考[FAQ->json][json]。
 - 經由下列簡單的python指令，可以列出gfs與cwb二者grib檔案內容的差異，作為修改([uv10_json.py][uv10_json])的重要指引。
 
 ```python
