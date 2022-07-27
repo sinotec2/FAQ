@@ -14,6 +14,7 @@ mermaid: true
 ### 動機與目的
 - 中央氣象局雖然每天進行[WRF數值預報][wrf_3km]，網路上卻沒有開發者使用來做氣流線等加值應用。雖然過去發展了[高解析度軌跡近5日預報](https://sinotec2.github.io/traj/)、[calpuff每日的預報](https://sinotec2.github.io/cpuff_forecast/)等等，卻還沒有嘗試以[earth.nullschool][ens]套件來加以延伸、展示。
 - 除了每日、即時的展示之外，還有儲存、檢視的內部需求。相較[windy][windy]，[earth.nullschool][ens]可以按照使用者的需要，在url地址列簡單的指令，即可顯示過去特定時間的氣象與(或)濃度場。這個方案目前似乎是網路存取、檢視龐雜的氣象-空品模擬系統成果的最佳平台。
+
 ### [earth][ens]的發展與應用
 - [earth][ens]套件是Cameron Beccario(cambecc)早期為[東京都環境局環境改善部][tkw]撰寫的套件，後來發展成全球的服務網站，同時也被大陸地方選擇做為[氣象預報可視化系統的設計項目][陈晖2016]。
 - [ESRI][esri] 2017年也將其繼續發展成類似[油畫質感](http://esri.github.io/wind-js/)的動畫版本。
@@ -30,10 +31,12 @@ graph TD
     D --> E((products.js))
     E --> F((web rendering))
 ```
-- web intializing by `node dev-server.js 80` or reload browser
 - uv10_json.py
   - [source code](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/wind_models/cwbWRF_3Km/uv10_json.py)
   - [IO and program descriptions][uv10_json]
+- web rendering
+  - intializing by `node dev-server.js 80` or 
+  - reload browser
 
 ## diff of first paramter in gfs and cwbwrf_15Km files
 
@@ -102,6 +105,7 @@ parameter|gfs|cwbwrf|describe
 ```python
 gfs[ir]['data']=list(np.flip(np.where(zz!=zz,0,zz),axis=0).flatten())
 ```
+
 ### surface
 
 parameter|gfs|cwbwrf|desc
@@ -120,6 +124,7 @@ set(surface1Value)
 5e-128, 7.e-128, 8.5e-128, 9.25e-128, 1e-127, 
 2.0, 10.0}
 ```
+
 ### time frame
 
 parameter|gfs|cwbwrf
@@ -150,6 +155,13 @@ forecastTime| 3|6
 - 很多地型效應、台灣東側背風渦漩、小島背風面較低風速等等現象，在CWB風場中都有展現。
 - 內陸風場細節：GFS無法模擬
 
+### TODO
+- other timeframe, fields
+- webGL controler
+- fine resolution shape file
+  - administrative boundies
+  - isopleth for terrain elevation(geotiff to KML, KML to shape file)
+
 ## resource
 
 ### earth package and D3js implements
@@ -158,6 +170,7 @@ forecastTime| 3|6
 - Roger Veciana i Rovira(2018), [Drawing wind barbs with D3js from a GeoTIFF](https://bl.ocks.org/rveciana/206956c3e142040432c477d75b038749), on bl.ocks.org
 - 陈晖, 范玉鑫, 陈杨,及 吴天亭(2016), [吉林省WRF模式数值预报可视化系统设计](https://m.fx361.com/news/2016/1119/9135816.html), 现代农业科技2016年4期.
 - Kuan-Jung, Huang(2019), [透過 D3.js 調用外部資料集](https://mybaseball52.medium.com/d3-js-using-external-datasets-21f12cb386dc), mybaseball52.medium.com
+
 ### about HTTPS
 - 詮力科技(2019),[為您的網站加上「-ssl憑證-」，成為https網頁](https://blog.ite2.com/為您的網站加上「-ssl憑證-」，成為https網頁/),十二月 13,2019/[技術探討](https://blog.ite2.com/category/technical-discussion-tw/)
 - Mangle Kuo(2021),[設定macOS本地端HTTPs/SSL證書](https://manglekuo.medium.com/設定macos本地端https-ssl證書-b2f79bcdedf0)
@@ -174,4 +187,4 @@ forecastTime| 3|6
 [esri]: <https://zh.m.wikipedia.org/zh-tw/美國環境系統研究所公司> "美國環境系統研究所公司Environmental Systems Research Institute, Inc"
 [webgl]: <https://zh.wikipedia.org/zh-tw/WebGL> "WebGL是一種JavaScript API，用於在不使用外掛程式的情況下在任何相容的網頁瀏覽器中呈現互動式2D和3D圖形。"
 [XXHolic]: <https://developpaper.com/how-i-build-a-wind-map-with-webgl/> "How I build a wind map with webgl, 2022-2-12"
-[uv10_json]: <> ""
+[uv10_json]: <https://sinotec2.github.io/FAQ/2022/07/27/uv10_json.html> "地面風wrfout檔轉json "
