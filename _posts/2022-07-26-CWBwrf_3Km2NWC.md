@@ -136,11 +136,25 @@ forecastTime| 3|6
  significanceOfRTName|Start of forecast|Start of forecast
  refTime(eg)|2014-01-31T00:00:00.000Z|2021-10-11T06:00:00.000Z
 
+## installation of [earth][ens]
+### download and compile
+- `git clone https://github.com/cambecc/earth.git` 
+- `cd earth`
+- `npm install`
+
+### initialize the website
+- node dev-server.js 8080 (or 80 for usual port)
 
 ## modifications of js
 ### zoom limits
 - from 3000 to 60,000
 - function scaleExtent in file `./public/libs/earth/1.0.0/globes.js`
+
+### FilePath function
+- 原本(`gfs1p0degPath`)指定檔名的函數，寫死一定要開`current-wind-surface-level-gfs-1.0.json`
+  - 引數只提供`attr, type, surface, level`
+- 增加`src, res` 2個引數，來源（gfs或cwb）與解析度(`'1p90', '15K', '3K'`)
+- in file `./public/libs/earth/1.0.0/products.js`
 
 ## 成果檢討
 ### 3公里解析度範圍與流線場
@@ -176,7 +190,7 @@ forecastTime| 3|6
 - Mangle Kuo(2021),[設定macOS本地端HTTPs/SSL證書](https://manglekuo.medium.com/設定macos本地端https-ssl證書-b2f79bcdedf0)
 - Bharath(2021) [How to install the Securly SSL certificate on Mac OSX ?](https://support.securly.com/hc/en-us/articles/206058318-How-to-install-the-Securly-SSL-certificate-on-Mac-OSX-),support.securly.com
 
-### about json
+### about json TypeError
 - 咸魚(2020), [TypeError: Object of type 'float32' is not JSON serializable解决方案](https://blog.csdn.net/yitanjiong4414/article/details/105902697), blog.csdn.net
 
 [wrf_3km]: <https://sinotec2.github.io/Focus-on-Air-Quality/wind_models/cwbWRF_3Km/> "中央氣象局WRF_3Km數值預報產品"
