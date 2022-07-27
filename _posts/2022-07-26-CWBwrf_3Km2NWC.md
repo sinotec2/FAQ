@@ -1,5 +1,5 @@
 ---
-title: earth nullschool套件讀取CWBWRF數據
+title: earth套件讀取CWB_WRF數據
 tags: CWBWRF D3j
 layout: article
 aside:
@@ -30,7 +30,10 @@ graph TD
     D --> E((products.js))
     E --> F((web rendering))
 ```
-- 
+- web intializing by `node dev-server.js 80` or reload browser
+- uv10_json.py
+  - [source code](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/wind_models/cwbWRF_3Km/uv10_json.py)
+  - [IO and program descriptions][uv10_json]
 
 ## diff of first paramter in gfs and cwbwrf_15Km files
 
@@ -171,3 +174,4 @@ forecastTime| 3|6
 [esri]: <https://zh.m.wikipedia.org/zh-tw/美國環境系統研究所公司> "美國環境系統研究所公司Environmental Systems Research Institute, Inc"
 [webgl]: <https://zh.wikipedia.org/zh-tw/WebGL> "WebGL是一種JavaScript API，用於在不使用外掛程式的情況下在任何相容的網頁瀏覽器中呈現互動式2D和3D圖形。"
 [XXHolic]: <https://developpaper.com/how-i-build-a-wind-map-with-webgl/> "How I build a wind map with webgl, 2022-2-12"
+[uv10_json]: <> ""
