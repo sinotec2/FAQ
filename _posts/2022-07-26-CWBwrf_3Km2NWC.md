@@ -34,11 +34,14 @@ graph TD
 - uv10_json.py
   - [source code](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/wind_models/cwbWRF_3Km/uv10_json.py)
   - [IO and program descriptions][uv10_json]
+- [earth][ens]套件讀取gfs檔案的核心程式在[products.js](https://sinotec2.github.io/FAQ/2022/07/26/CWBwrf_3Km2NWC.html#filepath-function)，必須讓它能夠讀取cwb轉成的json檔。
 - web rendering
   - intializing by `node dev-server.js 80` or 
   - reload browser
 
-## diff of first paramter in gfs and cwbwrf_15Km files
+## diff of first paramter between gfs and cwbwrf_15Km files
+- [earth][ens]套件與gfs檔案的連結靠的是[grib2json][g2j]這支程式，cambecc也將起公開在github上。其下載、編譯、與應用的歷程可以參考[FAQ->json][json]。
+- 經由下列簡單的python指令，可以列出gfs與cwb二者grib檔案內容的差異，作為修改([uv10_json.py][uv10_json])的重要指引。
 
 ```python
 fname='current-wind-surface-level-gfs-1.0.json'
@@ -202,3 +205,5 @@ forecastTime| 3|6
 [webgl]: <https://zh.wikipedia.org/zh-tw/WebGL> "WebGL是一種JavaScript API，用於在不使用外掛程式的情況下在任何相容的網頁瀏覽器中呈現互動式2D和3D圖形。"
 [XXHolic]: <https://developpaper.com/how-i-build-a-wind-map-with-webgl/> "How I build a wind map with webgl, 2022-2-12"
 [uv10_json]: <https://sinotec2.github.io/FAQ/2022/07/27/uv10_json.html> "地面風wrfout檔轉json "
+[g2j]: <https://github.com/cambecc/grib2json> "grib2json"
+[json]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/netcdf2json/> "FAQ -> utilities -> netCDF -> grib2json"
