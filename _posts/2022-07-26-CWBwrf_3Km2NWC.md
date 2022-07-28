@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-07-26
-modify_date: 2022-07-27 21:09:36
+modify_date: 2022-07-28 15:49:26
 mermaid: true
 ---
 ## 背景
@@ -185,12 +185,25 @@ forecastTime| 3|6
 ## resource
 
 ### earth package and D3js implements
-- cambecc(2016), earth building, launching and [etc](https://github.com/cambecc/earth) on GitHub. 
+- cambecc(2016), [earth building, launching and etc](https://github.com/cambecc/earth) on GitHub. 
 - cambecc(2017), [grib2json](https://github.com/cambecc/grib2json) on GitHub.
 - Roger Veciana i Rovira(2018), [Drawing wind barbs with D3js from a GeoTIFF](https://bl.ocks.org/rveciana/206956c3e142040432c477d75b038749), on bl.ocks.org
 - 陈晖, 范玉鑫, 陈杨,及 吴天亭(2016), [吉林省WRF模式数值预报可视化系统设计](https://m.fx361.com/news/2016/1119/9135816.html), 现代农业科技2016年4期.
 - Kuan-Jung, Huang(2019), [透過 D3.js 調用外部資料集](https://mybaseball52.medium.com/d3-js-using-external-datasets-21f12cb386dc), mybaseball52.medium.com
 
+### about GFS downloading
+- curl command in Github
+  - `curl "http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs.pl?file=gfs.t00z.pgrb2.1p00.f000&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&dir=%2Fgfs.${YYYYMMDD}00" -o gfs.t00z.pgrb2.1p00.f000`  
+- nomads website has been upgraded since cambecc released [earth][ens]. 
+- curl command become:
+  - `curl "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t00z.pgrb2.1p00.f000&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs.${YYYYMMDD}%2F00%2Fatmos"  -o gfs.t00z.pgrb2.1p00.f000`
+
+item|cambecc, 2016|updates|desc
+:-:|:-:|:-:|-
+pl name|filter_gfs.pl| filter_gfs_1p00.pl|with resolutions
+dir name|/gfs.${YYYYMMDD}00|/gfs.${YYYYMMDD}/00/atmos|actually no other choice
+windows of LL|?|addative|may be omitted for global range
+- 
 ### about HTTPS
 - 詮力科技(2019),[為您的網站加上「-ssl憑證-」，成為https網頁](https://blog.ite2.com/為您的網站加上「-ssl憑證-」，成為https網頁/),十二月 13,2019/[技術探討](https://blog.ite2.com/category/technical-discussion-tw/)
 - Mangle Kuo(2021),[設定macOS本地端HTTPs/SSL證書](https://manglekuo.medium.com/設定macos本地端https-ssl證書-b2f79bcdedf0)
