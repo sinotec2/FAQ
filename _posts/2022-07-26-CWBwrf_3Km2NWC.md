@@ -35,9 +35,12 @@ graph TD
   - [source code](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/wind_models/cwbWRF_3Km/uv10_json.py)
   - [IO and program descriptions][uv10_json]
 - [earth][ens]套件讀取gfs檔案的核心程式在[products.js](https://sinotec2.github.io/FAQ/2022/07/26/CWBwrf_3Km2NWC.html#filepath-function)，必須讓它能夠讀取cwb轉成的json檔。
+  - 找到有關gfs的程式碼：`grep gfs $(find . -name "*.js")|more`
 - web rendering
   - intializing by `node dev-server.js 80` or 
   - reload browser
+  - d3：`http://114.32.164.198/#current/wind/surface/level/orthographic=-237.53,23.30,2000`
+  - d1：`http://114.32.164.198/#current/wind/surface/level/orthographic=-236.33,23.30,800`
 
 ## diff of first paramter between gfs and cwbwrf_15Km files
 - [earth][ens]套件與gfs檔案的連結靠的是[grib2json][g2j]這支程式，cambecc也將其公開在github上。其下載、編譯、與應用的細節歷程可以參考[FAQ->json][json]。
