@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-07-26
-modify_date: 2022-07-28 15:49:26
+modify_date: 2022-07-29 16:26:57
 mermaid: true
 ---
 ## 背景
@@ -162,6 +162,77 @@ forecastTime| 3|6
 - 增加`src, res` 2個引數，來源（gfs或cwb）與解析度(`'1p90', '15K', '3K'`)
 - in file `./public/libs/earth/1.0.0/products.js`
 
+## 下載與執行
+- CWB WRF程式結果每6小時更新，分別為每天的2/8/14/20時等4次。每次預報84-6=78小時(0~6小時warm up)
+  - 由於CWB是陸續更新，而其檔名系統又以預報起始時間為0，因此有可能發生錯亂覆蓋的情形。
+  - 解決方式：解析結果按照檔案內的時間(grbs[1].validDate)來命名
+  - 並將結果按照年月日另建目錄擺放(參[earth/public/test/products-test.html][test]內容)
+  - eg: `"/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json"`
+  - 下載、解讀之自動化腳本(earth_cwbwrf.cs)乃在node03執行，以節省頻寬。
+- 網頁程式安放在iMacKuang，以繞過防火牆。  
+  - current目錄下之檔案：每小時執行連結。
+
+### node03作業
+#### 腳本
+- [grbuv10_json.py](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/wind_models/cwbWRF_3Km/grbuv10_json.py)的概略說明可以參考[地面風wrfout檔轉json->grib2 to json directly](https://sinotec2.github.io/FAQ/2022/07/27/uv10_json.html#grib2-to-json-directly)。
+  - node03版本加入了後處理項目：
+    1. 在mac上創新目錄
+    1. 將結果傳遞到mac的指定目錄
+
+```bash
+#kuang@node03 /nas1/Data/javascripts/D3js/earth/public/data/weather/current
+#$ cat earth_cwbwrf.cs
+weather=/nas1/Data/javascripts/D3js/earth/public/data/weather
+cd $weather/current
+for dom in 4;do
+for ((i=6; i<=84; i=i+6)); do
+  ii=`printf "%02d" $i`
+  fn=M-A006${dom}-0$ii.grb2
+  rm -f $fn
+  /usr/bin/wget https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MIC/$fn
+  ./grbuv10_json.py $fn
+done
+done
+```
+#### crontab內容
+
+```bash
+crontab -l|grep earth
+# earth CWB_WRF
+55 2,8,14,20 * * * /nas1/Data/javascripts/D3js/earth/public/data/weather/current/earth_cwbwrf.cs
+```
+### mac上的任務
+#### lnk_curr.cs腳本
+- mac的任務就是保持current檔案隨時都是當下的時間
+- 執行方式是每小時進行UTC時間的計算，並將對的檔案連結到current
+  - `UTC = LST - 8H`
+  - 因為不是每小時都有模擬結果。需要進行計算，將LST逐時對照到UTC逐6小時。
+  - 文字的數字改成10進位計算：`#10$h`，計算完後再轉成2碼數字
+
+```bash
+#kuang@114-32-164-198 /Users/Data/javascripts/D3js/earth/public/data/weather/current
+#$ cat lnk_curr.cs
+now=$(date -v-8H -j  +%Y%m%d%H)
+y=$(date -j -f "%Y%m%d%H" "${now}" +%Y)
+m=$(date -j -f "%Y%m%d%H" "${now}" +%m)
+d=$(date -j -f "%Y%m%d%H" "${now}" +%d)
+h=$(date -j -f "%Y%m%d%H" "${now}" +%H)
+h=$(( 10#$h / 6 * 6|bc -l ))
+h=$(printf "%02d" $h)
+weather=/Users/Data/javascripts/D3js/earth/public/data/weather
+fn=$weather/$y/$m/$d/${h}00-wind-surface-level-cwb-3K.json
+if [ -e $fn ]; then
+  ln -sf $fn $weather/current/current-wind-surface-level-cwb-3K.json
+else
+  echo $fn
+fi
+```
+
+#### crontab
+```bash
+0 * * * * /Users/Data/javascripts/D3js/earth/public/data/weather/current/lnk_curr.cs
+```
+
 ## 成果檢討
 ### 3公里解析度範圍與流線場
 
@@ -223,3 +294,4 @@ windows of LL|?|addative|may be omitted for global range
 [uv10_json]: <https://sinotec2.github.io/FAQ/2022/07/27/uv10_json.html> "地面風wrfout檔轉json "
 [g2j]: <https://github.com/cambecc/grib2json> "grib2json"
 [json]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/netcdf2json/> "FAQ -> utilities -> netCDF -> grib2json"
+[test]: <https://github.com/cambecc/earth/blob/master/public/test/products-test.html> "//            equal(config.toHash(), "2013/11/20/0800Z/a/b/c/x");//            equal(paths.primary(), "/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json");"
