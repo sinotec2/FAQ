@@ -56,3 +56,5 @@ NEPA ... required the government to assess the environmental consequences of fed
 ## 有關糧食價格數據面
 - 企劃處　蕭彩鳳　摘譯(2008), [上漲的糧食價格：事實、看法、影響及因應](https://www.coa.gov.tw/ws.php?id=18650) 農政與農情97年12月（第198期）
 - 郭朝輝(2022)，[推古驗今，淺析糧價波動的影響因子](https://www.usmartsecurities.com/en/news-detail/6921720454558384586) 本文來自格隆匯專欄：中金公司研究部。
+- Ellen Gray, NASA’s Earth Science News Team(2021), [Global Climate Change Impact on Crops Expected Within 10 Years, NASA Study Finds](https://climate.nasa.gov/news/3124/global-climate-change-impact-on-crops-expected-within-10-years-nasa-study-finds/)
+- opendata, [糧食自給率_價格](https://data.gov.tw/dataset/87934)
