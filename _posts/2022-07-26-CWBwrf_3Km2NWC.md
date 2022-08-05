@@ -268,13 +268,15 @@ fi
 - nomads website has been upgraded since cambecc released [earth][ens]. 
 - curl command become:
   - `curl "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t00z.pgrb2.1p00.f000&lev_10_m_above_ground=on&var_UGRD=on&var_VGRD=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs.${YYYYMMDD}%2F00%2Fatmos"  -o gfs.t00z.pgrb2.1p00.f000`
+- [GFS PARAMETERS & UNITS](https://www.nco.ncep.noaa.gov/pmb/docs/on388/table2.html)
+- [GRIB Filters and View the URL](https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20220804%2F00%2Fatmos)
 
 item|cambecc, 2016|updates|desc
 :-:|:-:|:-:|-
 pl name|filter_gfs.pl| filter_gfs_1p00.pl|with resolutions
 dir name|/gfs.${YYYYMMDD}00|/gfs.${YYYYMMDD}/00/atmos|actually no other choice
 windows of LL|?|addative|may be omitted for global range
-- 
+
 ### about HTTPS
 - 詮力科技(2019),[為您的網站加上「-ssl憑證-」，成為https網頁](https://blog.ite2.com/為您的網站加上「-ssl憑證-」，成為https網頁/),十二月 13,2019/[技術探討](https://blog.ite2.com/category/technical-discussion-tw/)
 - Mangle Kuo(2021),[設定macOS本地端HTTPs/SSL證書](https://manglekuo.medium.com/設定macos本地端https-ssl證書-b2f79bcdedf0)
