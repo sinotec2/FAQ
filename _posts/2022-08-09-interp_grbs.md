@@ -17,6 +17,19 @@ mermaid: true
 - 一般使用[pygrib][pygrib]來進行讀取，但不能用在寫出檔案，pygrib.open也沒有控制讀寫的選項，一律唯讀。必須另外寫出binary檔，這部分可以參考[網友jiangleads][jiangleads]的範例。
 - 由於每個grib檔案的內涵多有差異，本程式無法適用所有的grib格式檔，還是需一一檢視。
 
+### grib與netCDF格式之比較
+
+項目|grib|netCDF|說明
+:-:|-|-|-
+版本|2|4|
+字元|binary|binary|
+主要應用|氣象模式|氣象、大氣化學、</br>地球科學|
+順序|循序讀寫|階層讀寫|
+檔頭|無|有|
+python模組|[pygrib][pygrib]|[netCDF4](https://pypi.org/project/netCDF4/)|
+讀寫|唯讀|可讀寫|前者另開binary檔案
+官網|[WMO Guide](https://web.archive.org/web/20201213173506/http://www.wmo.int/pages/prog/www/WMOCodes/Guides/GRIB/GRIB2_062006.pdf)|[www.unidata.ucar.edu</br>/software/netcdf](https://www.unidata.ucar.edu/software/netcdf)|
+
 ## [interp_grbs.py][interp_grbs.py]程式說明
 ### IO
 - 引數：前後正常下載之檔案名稱(間隔12小時)，喪失檔案為其中間時間
@@ -33,7 +46,7 @@ mermaid: true
 1. `grb.values[:]`：此一方法的結果是個numpy.array。類似方法`grb.data()`的結果是個tuple。同樣是取值為什麼需要2種方法，不是很瞭解，只知道`grb.data()`目前還沒有看到實際的範例就是了。
 1. `grb.tostring()`：此方法結果是個很長的字串，類似dump的作用，也是grib檔案message的意涵。將其按照批次順序寫進binary檔案就好了。
 
-### 批次寫進檔案之迴圈
+### 批次內插並寫進檔案之迴圈
 
 ```python
 grbout = open(fnames[0].replace(fcst_hrA[0],s),'wb')
