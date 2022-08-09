@@ -14,7 +14,7 @@ mermaid: true
 - [CWB_WRF數據][CWB_WRF]偶會發生檔案喪失(data missing)的情形。原因不明，或許在下載時正好遇到電腦正在更新檔案，還是什麼環節出問題，總之，會有需要進行補遺的情況。
 - 幸好大多喪失情況是缺少某個一預報檔案。經由前後時間的內插即可解決此一問題。
 - 雖然CWB_WRF數據並沒有統一的維度、雨量也是累加值，所幸前後時間的平均尚能符合定義。
-- 一般使用[pygrib][pygrib]來進行讀取，但不能用在寫出檔案，pygrib.open也沒有控制讀寫的選項，一律唯讀。必須另外寫出binary檔，這部分可以參考[網友jiangleads][jiangleads]的範例。
+- 一般使用[pygrib][pygrib]來進行讀取[grib][grib]檔案，但不能用在寫出檔案，pygrib.open也沒有控制讀寫的選項，一律唯讀。必須另外寫出binary檔，這部分可以參考[網友jiangleads][jiangleads]的範例。
 - 由於每個grib檔案的內涵多有差異，本程式無法適用所有的grib格式檔，還是需一一檢視。
 
 ### grib與netCDF格式之比較
@@ -75,6 +75,7 @@ for i in range(1,grbs[0].messages+1):
 
 [CWB_WRF]: <https://sinotec2.github.io/Focus-on-Air-Quality/wind_models/cwbWRF_3Km/> "中央氣象局WRF_3Km數值預報產品"
 [pygrib]: <https://pypi.org/project/pygrib/> "官網：Provides a high-level interface to the ECWMF ECCODES C library for reading GRIB files. There are limited capabilities for writing GRIB files (you can modify the contents of an existing file, but you can't create one from scratch)"
+[grib]: <https://zh.wikipedia.org/zh-tw/GRIB> "GRIB（GRIdded Binary或通用定期發布的二進位形式資訊）是通常用在氣象學中儲存歷史的和預報的天氣資料的簡明資料格式。它由世界氣象組織的基本系統委員會於1985年標準化，描述於WMO編碼手冊。 第一版GRIB被世界範圍內的多數氣象中心業務化使用，用於數值天氣預報（NWP）輸出。第二版是2003年發表的GRIB2，各國氣象資料發布逐步更新到這個格式與版次。"
 [jiangleads]: <https://www.cnblogs.com/jiangleads/p/9705787.html> "pygrib学习@博客園"
 [interp_grbs.py]: <https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/utilities/grib/interp_grbs.py> "grib數據檔的時間內插程式@github"
 [jswhit]: <https://nbviewer.org/gist/jswhit/8635665> "jswhit：Matplotlib/Basemap and pygrib example@nbviewer"
