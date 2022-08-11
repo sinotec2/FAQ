@@ -54,8 +54,6 @@ modify_date: 2022-08-11 10:15:52
 <td>decimal degrees</td>
 <td>&#160;</td>
 </tr>
-<td><strong>units</strong> (str) : Set to desired units. Default is <em>‘m’</em>.</td>
-</tr>
 <tr class="row-odd"><td>times</td>
 <td>Times in the File or Sequence</td>
 <td>&#160;</td>
@@ -98,6 +96,8 @@ modify_date: 2022-08-11 10:15:52
 <p>ft</p>
 <p class="last">mi</p>
 </td>
+<td><strong>units</strong> (str) : Set to desired units. Default is <em>‘m’</em>.</td>
+</tr>
 <tr class="row-odd"><td>z/height</td>
 <td>Model Height for Mass Grid</td>
 <td><p class="first">m</p>
