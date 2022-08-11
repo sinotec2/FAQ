@@ -25,7 +25,7 @@ mermaid: true
 經度0度|沒有值|有值|前者必須另行自360度取值
 更新頻率|12小時|6小時|需由不同的crontab腳本執行下載與處理
 預報時間(leadtime_hour)|3小時|3小時|相同
-官方圖面|[哥白尼網站](https://atmosphere.copernicus.eu/charts/cams/ozone-forecasts?facets=undefined&time=2022080300,3,2022080303&projection=classical_eastern_asia&layer_name=composition_o3_surface)|[NWS](https://digital.weather.gov/)|後者沒有展示美國以外地區預報結果
+官方圖面|[哥白尼網站](https://atmosphere.copernicus.eu/charts/cams/ozone-forecasts)|[NWS](https://digital.weather.gov/)|後者沒有展示美國以外地區預報結果
 
 
 - 把下載與應用的流程自動化後，不僅可以提供檢視目前的氣流與光化煙霧跨境傳輸現象，也可以使高解析度空品即時模擬向前推動一大步。
