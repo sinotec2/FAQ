@@ -13,15 +13,15 @@ modify_date: 2022-08-11 10:15:52
 ## 變數定義
 - wrf-python最強項的功能除了繪圖之外，就屬[getvar](https://wrf-python.readthedocs.io/en/latest/user_api/generated/wrf.getvar.html)函數及其內插程式。
 - 引數：`(wrfin, varname, timeidx=0, method='cat', squeeze=True, cache=None, meta=True, **kwargs)`
-  - `wrfin`: wrf檔案名稱
-  - `varnam`: wrf-python使用的變數名稱，**不是**wrfout檔案的變數名稱。為區別二者，前者用小寫，後者在ncf檔案中是大寫。
+  - `wrfin`: wrf檔案名稱。以`netCDF4.Dataset()`開啟。
+  - `varnam`: wrf-python使用的變數名稱(詳下表)，**不是**wrfout檔案的變數名稱。為區別二者，前者用小寫，後者在ncf檔案中是大寫。
   - `timeidx`: 時間序，0～nt-1
   - `method`: 時間軸是否壓縮。`'cat'`:保持時間軸（內設）；`'join'`:聯合(壓縮)時間軸
-  - `squeeze`: 如維度僅有一層在輸出矩陣的shape中是否予以去除？內設為`True`
-  - `cache`: 將程式中反覆使用的變數暫存成矩陣名稱（`varnam:ndarray`），以避免反覆讀取增加執行效，內設為`None`。
-  - `meta`: 
+  - `squeeze`: 如維度僅有一層在輸出矩陣的shape中是否予以去除？內設為`True`。
+  - `cache`: 將程式中反覆使用的變數暫存成矩陣名稱（`varnam:ndarray`），以避免反覆讀取、增加執行效能，內設為`None`。
+  - `meta`: 是否附帶數據的重要資訊（如座標等）。內設是`True`。
   - `Additional Keyword Arguments`: 每個變數不太相同，詳下列表格。
-    - 如果只有一種單位，就不能使用`units`選項。
+    - 如果只有一種單位，就**不能**使用`units`選項。
 - 輸出
   - `getvar`會按照新變數定義的意義輸出成帶座標系統(`meta`)的矩陣。
 - 原表格按照字母順序排列，以下按照變數類別分類。
