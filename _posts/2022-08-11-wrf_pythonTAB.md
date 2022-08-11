@@ -26,7 +26,9 @@ modify_date: 2022-08-11 10:15:52
   - `getvar`會按照新變數定義的意義輸出成帶座標系統(`meta`)的矩陣。
 - 原表格按照字母順序排列，以下按照變數類別分類。
 
-### Dimensions and Terran
+## Dimensions and Terran
+### lat, lon, time
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -52,14 +54,6 @@ modify_date: 2022-08-11 10:15:52
 <td>decimal degrees</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td>ter</td>
-<td>Model Terrain Height</td>
-<td><p class="first">m</p>
-<p>km</p>
-<p>dm</p>
-<p>ft</p>
-<p class="last">mi</p>
-</td>
 <td><strong>units</strong> (str) : Set to desired units. Default is <em>‘m’</em>.</td>
 </tr>
 <tr class="row-odd"><td>times</td>
@@ -96,6 +90,14 @@ modify_date: 2022-08-11 10:15:52
 </tr>
 </thead>
 <tbody valign="top">
+<tr class="row-even"><td>ter</td>
+<td>Model Terrain Height</td>
+<td><p class="first">m</p>
+<p>km</p>
+<p>dm</p>
+<p>ft</p>
+<p class="last">mi</p>
+</td>
 <tr class="row-odd"><td>z/height</td>
 <td>Model Height for Mass Grid</td>
 <td><p class="first">m</p>
@@ -133,7 +135,7 @@ modify_date: 2022-08-11 10:15:52
 </tbody>
 </table>
 
-
+## First order physics
 ### Temperatures
 <table border="1" class="docutils">
 <colgroup>
@@ -284,6 +286,7 @@ modify_date: 2022-08-11 10:15:52
 </tbody>
 </table>
 
+## Second order physics
 
 ### Velocities
 <table border="1" class="docutils">
@@ -411,7 +414,7 @@ modify_date: 2022-08-11 10:15:52
 </tbody>
 </table>
 
-
+## 3rd and more orders physics
 ### Energy
 <table border="1" class="docutils">
 <colgroup>
@@ -494,6 +497,7 @@ modify_date: 2022-08-11 10:15:52
 </tbody>
 </table>
 
+## Different Forms of Water
 ### Vapors, Cloudness and Precipitation
 <table border="1" class="docutils">
 <colgroup>
