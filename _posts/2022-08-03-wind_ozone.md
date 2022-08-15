@@ -195,7 +195,7 @@ for ir in range(nr):
 ```
 
 ## 結果討論
-- 實例網址：[http://114.32.164.198/](http://114.32.164.198/)
+- 實例網址：[http://125.229.149.182/](http://125.229.149.182/)
 - 數據提交earth系統之圖面
 
 | ![wind_ozone.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/wind_ozone.PNG) |

@@ -39,8 +39,8 @@ graph TD
 - web rendering
   - intializing by `node dev-server.js 80` or 
   - reload browser
-  - d3：`http://114.32.164.198/#current/wind/surface/level/orthographic=-237.53,23.30,2000`
-  - d1：`http://114.32.164.198/#current/wind/surface/level/orthographic=-236.33,23.30,800`
+  - d3：`http://125.229.149.182/#current/wind/surface/level/orthographic=-237.53,23.30,2000`
+  - d1：`http://125.229.149.182/#current/wind/surface/level/orthographic=-236.33,23.30,800`
 
 ## diff of first paramter between gfs and cwbwrf_15Km files
 - [earth][ens]套件與gfs檔案的連結靠的是[grib2json][g2j]這支程式，cambecc也將其公開在github上。其下載、編譯、與應用的細節歷程可以參考[FAQ->json][json]。
