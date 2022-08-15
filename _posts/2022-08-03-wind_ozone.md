@@ -63,6 +63,31 @@ c.retrieve(
     },
     'ozone_globe.grib')
 ```
+### 有關level
+CAMS高度定義有2種
+- Pressure levels(mb)
+  - 1000/950/925/900/850/800/700/600/500/400/300/250/200/150/100/70/50/30/20/10/7/5/3/2/1
+  - 共25層
+  - 由於定壓層高度會隨時間地點改變，並不用在空品模擬。無法使用。
+- Model levels
+  - 1(top)to 137(surface), 
+  - which are described at https://confluence.ecmwf.int/display/UDOC/L137+model+level+definitions. 
+  - Before 9 July 2019, the vertical levels were 60, which are described at https://confluence.ecmwf.int/display/UDOC/L60+model+level+definitions.
+- 從官網取得table.csv後進行處理如下
+  - bisect即使是bisect_left還是取不到地面，故將其減1。
+
+```python
+df=read_csv('/nas1/ecmwf/CAMS/CAMS_global_atmospheric_composition_forecasts/2022/heights.csv')
+h='Geometric Altitude [m]'
+df=df.sort_values(h)
+h137=list(df[h])
+n137=list(df['n'])
+kk=[bisect(h137,zz[k])-1 for k in range(24)]
+[str(n137[kk[k]]) for k in range(24)]
+```
+- 代入get.py中
+`kk= ['137', '135', '133', '129', '125', '122', '120', '117', '114', '112', '110', '107', '105',  '101', '96', '92', '87', '83', '78', '73', '67', '61', '56', '51']`
+
 ### 數據轉換
 - [grb2json.py@github](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/AQana/GAQuality/ECMWF/grb2json.py)
 
