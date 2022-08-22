@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-07-26
-modify_date: 2022-07-29 16:26:57
+modify_date: 2022-08-21 20:22:54
 mermaid: true
 ---
 ## 背景
@@ -162,6 +162,24 @@ forecastTime| 3|6
 - 增加`src, res` 2個引數，來源（gfs或cwb）與解析度(`'1p90', '15K', '3K'`)
 - in file `./public/libs/earth/1.0.0/products.js`
 
+### default settings
+- in file: `./public/libs/earth/1.0.0/micro.js:14:`
+- 可設定：
+  1. 時間
+  1. 貼上特定屬性的shade等值圖
+  1. 高度(地面或定壓層)
+  1. 座標系統投影方式
+  1. 初始中心點經緯度與zoom倍率
+
+```java
+var DEFAULT_CONFIG = "current/wind/surface/level/orthographic";
+```
+- 修正為
+
+```java
+var DEFAULT_CONFIG = "current/wind/surface/level/orthographic=-238.80,23.73,7500";
+```
+
 ## 下載與執行
 - CWB WRF程式結果每6小時更新，分別為每天的2/8/14/20時等4次。每次預報84-6=78小時(0~6小時warm up)
   - 由於CWB是陸續更新，而其檔名系統又以預報起始時間為0，因此有可能發生錯亂覆蓋的情形。
@@ -169,7 +187,7 @@ forecastTime| 3|6
   - 並將結果按照年月日另建目錄擺放(參[earth/public/test/products-test.html][test]內容)
   - eg: `"/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json"`
   - 下載、解讀之自動化腳本(earth_cwbwrf.cs)乃在node03執行，以節省頻寬。
-- 網頁程式安放在iMacKuang，以繞過防火牆。  
+- 網頁程式安放在iMacKuang，以避免防火牆干擾。  
   - current目錄下之檔案：每小時執行連結。
 
 ### node03作業
