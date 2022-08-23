@@ -119,8 +119,7 @@ for ir in range(nr):
   gfs[ir]['data']=list(np.flip(np.where(zz!=zz,0,zz),axis=0).flatten())
 ```
 - 執行結果放在/Users/Data/javascripts/D3js/earth/public/data/weather/current以利js程式讀取
-- 結果檔名：current-wind-surface-level-gfs-1.0.json
-
+- 結果檔名：current-ozone-surface-level-gfs-1.0.json
 
 ## earth系統新增臭氧之讀取繪圖功能
 ### html程式
@@ -195,7 +194,7 @@ for ir in range(nr):
 ```
 
 ## 結果討論
-- 實例網址：[http://125.229.149.182/](http://125.229.149.182/)
+- 實例網址：[http://125.229.149.182:8080](http://125.229.149.182:8080)
 - 數據提交earth系統之圖面
 
 | ![wind_ozone.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/wind_ozone.PNG) |
