@@ -57,6 +57,7 @@ for i in range(ncol1*nrow1):
   c = var[:,:,:,n[i]//ncol, n[i]%ncol] 
   var1[:,:,:,i]=np.sum(c*w[i],axis=3)
 ```
+https://esrl.noaa.gov/gsd/wrfportal/namelist_input_options.html
 
 ### 線性矩陣之還原
 
