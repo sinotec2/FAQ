@@ -48,8 +48,9 @@ for i in range(ncol1*nrow1):
 
 ### weight(w) and index(n)的引用
 - 將原來2維的griddata內插，改成龐大矩陣的sum_product。這是速率提升的關鍵因素。
-- 因為每點的加權與指標數量都不同，還是需逐一進行篩選、再進行sum_product
-  - w[i]是個較小的1維numpy陣列，其長度與c的最後軸(axis=3)相同，因此直接相乘就OK了。
+- 有關sum_product的說法，numpy與excel有不同的意義，網路有很多介紹，大多用在整個矩陣的相乘(np.dot(),np.matmul(), einsum()等等作法）、不適用在我們全部相乘、部份不加總的情況。
+- 因為每點的加權與指標數量都不同，因此還是需逐一進行篩選、再進行sum_product
+  - w[i]是個較小的1維numpy陣列，其長度與c的最後軸(axis=3)相同，因此直接相乘再相加就會消除其維度了。
 
 ```python
 var1=np.zeros(shape=(nv,nt1,nlay1,nrow1*ncol1))
