@@ -1,6 +1,6 @@
 ---
 title: earth套件讀取CWB_WRF數據
-tags: CWBWRF D3j
+tags: CWBWRF D3j earth
 layout: article
 aside:
   toc: true
