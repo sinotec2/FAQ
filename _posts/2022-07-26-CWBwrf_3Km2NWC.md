@@ -180,11 +180,31 @@ var DEFAULT_CONFIG = "current/wind/surface/level/orthographic";
 var DEFAULT_CONFIG = "current/wind/surface/level/orthographic=-238.80,23.73,7500";
 ```
 
+### 縣市界
+要在[earth][ens]套件中更改海岸線、湖泊線，或是加上縣市界，可以參考詳見[shp檔轉json][shp_json]說明
+- topojson檔案放在./public/data/topo目錄下
+- 有關的js檔包括
+  1. ./public/libs/earth/1.0.0/earth.js (開啟topojson檔)
+  1. ./public/libs/earth/1.0.0/globes.js (變數定義)
+
+### 氣流線之調整
+[earth][ens]套件的動態氣流線在其程式中稱為particle，可能因為看起來像是顆粒的軌跡動態。particle相關設定有：
+1. ./public/libs/earth/1.0.0/products.js：` particles: {velocityScale: 1/3000000, maxIntensity: 1 }`，這2個設定前者為風速的尺度(1/3M ~ 1/60K)，其值越小，流線越短。後者為密集度(1 ~ 17)，其值越小會有越多處有particle起點，即使風速很低，適用在小比例尺圖面。
+1. ./public/libs/earth/1.0.0/earth.js
+
+```java
+    var MAX_PARTICLE_AGE = 100;               // max number of frames a particle is drawn before regeneration
+    var PARTICLE_LINE_WIDTH = 1.0;            // line width of a drawn particle
+    var PARTICLE_MULTIPLIER = 7;              // particle count scalar (completely arbitrary--this values looks nice)
+    var PARTICLE_REDUCTION = 0.75;            // reduce particle count to this much of normal for mobile devices
+```
+
+
 ## 下載與執行
 - CWB WRF程式結果每6小時更新，分別為每天的2/8/14/20時等4次。每次預報84-6=78小時(0~6小時warm up)
   - 由於CWB是陸續更新，而其檔名系統又以預報起始時間為0，因此有可能發生錯亂覆蓋的情形。
   - 解決方式：解析結果按照檔案內的時間(grbs[1].validDate)來命名
-  - 並將結果按照年月日另建目錄擺放(參[earth/public/test/products-test.html][test]內容)
+  - 並將結果按照年月日另建目錄擺放(參[earth/public/test/products-test.html][tst]內容)
   - eg: `"/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json"`
   - 下載、解讀之自動化腳本(earth_cwbwrf.cs)乃在node03執行，以節省頻寬。
 - 網頁程式安放在iMacKuang，以避免防火牆干擾。  
@@ -303,6 +323,7 @@ windows of LL|?|addative|may be omitted for global range
 ### about json TypeError
 - 咸魚(2020), [TypeError: Object of type 'float32' is not JSON serializable解决方案](https://blog.csdn.net/yitanjiong4414/article/details/105902697), blog.csdn.net
 
+
 [wrf_3km]: <https://sinotec2.github.io/Focus-on-Air-Quality/wind_models/cwbWRF_3Km/> "中央氣象局WRF_3Km數值預報產品"
 [ens]: <https://earth.nullschool.net/> "earth, a visualization of global weather conditions, forecast by supercomputers, updated every three hours"
 [windy]: <https://www.windy.com/> "Windy是一家提供天氣預報服務的捷克公司，由伊沃·盧卡喬維奇於2014年11月創立。 Windy提供的天氣預報基於美國國家海洋和大氣管理局全球預報系統、歐洲中期天氣預報中心及瑞士NEMS模型的數據。"
@@ -314,4 +335,5 @@ windows of LL|?|addative|may be omitted for global range
 [uv10_json]: <https://sinotec2.github.io/FAQ/2022/07/27/uv10_json.html> "地面風wrfout檔轉json "
 [g2j]: <https://github.com/cambecc/grib2json> "grib2json"
 [json]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/netcdf2json/> "FAQ -> utilities -> netCDF -> grib2json"
-[test]: <https://github.com/cambecc/earth/blob/master/public/test/products-test.html> "//            equal(config.toHash(), "2013/11/20/0800Z/a/b/c/x");//            equal(paths.primary(), "/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json");"
+[tst]: <https://github.com/cambecc/earth/blob/master/public/test/products-test.html> "equal(config.toHash(), '2013/11/20/0800Z/a/b/c/x');  equal(paths.primary(), '/data/weather/2013/11/20/0800-a-b-c-gfs-1.0.json');"
+[shp_json]: <https://sinotec2.github.io/FAQ/2022/08/08/shp_json.html> "natural earth shp檔轉json"
