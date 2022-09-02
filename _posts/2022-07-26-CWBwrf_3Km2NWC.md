@@ -199,6 +199,13 @@ var DEFAULT_CONFIG = "current/wind/surface/level/orthographic=-238.80,23.73,7500
     var PARTICLE_REDUCTION = 0.75;            // reduce particle count to this much of normal for mobile devices
 ```
 
+項目|js|參數|範圍|效果說明
+-|-|-|:-:|-
+風速尺度|products.js|velocityScale|1/3M ~ 1/60K|偏向靜風~強風
+密集度|product.js|maxIntensity|1~17|其值越小會有越多處有particle起點
+流線的長度|earth.js|MAX_PARTICLE_AGE|10~100|短(無動感無法辨認方向)~長(遮蔽底圖)
+流線寬度|earth.js|PARTICLE_LINE_WIDTH|0.8~1.0|細(辨識不清)~寬(遮蔽底圖)
+
 
 ## 下載與執行
 - CWB WRF程式結果每6小時更新，分別為每天的2/8/14/20時等4次。每次預報84-6=78小時(0~6小時warm up)
