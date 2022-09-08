@@ -94,16 +94,16 @@ for d in [coals, lngs]:
       CP_cmbstk.update({CP:i})
 ```
 
-### 煙囪高度及範圍的篩選
+### 煙囪高度及範圍的篩選([upper_stack.py]())
 - 由於公版模式將所有的煙囪都納入3維的網格內，這項作法可以有一個修正，就是將高空排放量刪除，改以點源方式輸入模式，而這些點源的高度就必須高於第一格的厚度。
-- 由於CMAQ的厚度(metcro3d中的ZF)是每一點都不同，因此必須逐點進行比較。(使用np.where指令)
+- 由於CMAQ的厚度(metcro3d中的ZF)是每一點都不同，因此必須逐點進行比較。(使用2次`np.where`指令)
 - 除此之外，公版模式的範圍也不能納入所有的TEDS點源數據，部分離島無法納入，在進行座標串聯時將出現錯誤。需要2階段篩選
   1. 將既有TEDS點源檔案按照公版模式設定進行座標轉換，去除不在範圍內之點源。
   1. 篩選後點源位置的ZF，如在點源高度以下，則納入計算，如否則予以刪除。
 
 - 點源數據之讀取
-  - 因常數檔及變數檔的時間範圍不同，此處以一個dict(nts)將其記錄下來，以利在未來應用(不同變數名稱搭配不同的時間長度)。
-  - 使用exec指令，直接以變數名稱命名各數據內容。
+  - 因常數檔及變數檔的時間範圍不同，此處以一個dict(`nts`)將其記錄下來，以利在未來應用(不同變數名稱搭配不同的時間長度)。
+  - 使用`exec`指令，直接以變數名稱命名各數據內容。
 
 ```python
 #kuang@master /nas2/cmaqruns/2022fcst/grid03/smoke
@@ -154,7 +154,7 @@ for v in v3:
 ```
 
 - 第2階段篩選
-  1. 符合範圍的指標現在變成(ROW1, COL1)了
+  1. 符合範圍的指標現在變成`(ROW1, COL1)`了
   1. 因為都屬於常數檔案，時間維度為0。 
 
 ```python
@@ -179,6 +179,8 @@ for fn in ['const'+mm+'.nc','timvr'+mm+'.nc']:
   nc1.close()
 ```
 
+### 時間平移
+- 仿照mk_emis.py的做法，讀取同月接近的TEDS數據，切割出進行CMAQ模擬。
 
 [rd_today.py]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast/#前日運轉率之彙整與應用> "opendata中臺灣地區火力機組前日運轉率之彙整與應用"
 [UNRESPFcst]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast> "本土化CALPUFF濃度預報系統之實現"
