@@ -56,7 +56,12 @@ formula = "Y ~ X"
 data=DataFrame({'Y':Y,'X':X})
 ```
 
-- ` mod1 = smf.glm(formula=formula, data=data, family=sm.families.Binomial()).fit()`
+```python
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+mod1 = smf.glm(formula=formula, data=data, family=sm.families.Binomial()).fit()
+```
 
 ```
                  Generalized Linear Model Regression Results
