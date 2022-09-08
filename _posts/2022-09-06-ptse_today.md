@@ -52,10 +52,9 @@ oil|台電|3|3
 合計|||
 
 
-## 程式設計
-
-### 集束煙囪
-- 集束煙囪有其大氣擴散的意義，然而CMAQ公版模式並沒有特別加以處理，此處以python dictionary的方式予以納入計算。
+## 集束煙囪
+- 集束煙囪有其大氣擴散的意義，然而CMAQ公版模式並沒有辦法特別加以處理，需先將點源自網格排放中分離出來，再將點源中之集束煙囪予以特殊處理。
+- 此處以python dictionary的方式予以納入計算。
 - 火力發電機組整併情形
 
 ```python
@@ -94,7 +93,7 @@ for d in [coals, lngs]:
       CP_cmbstk.update({CP:i})
 ```
 
-### 煙囪高度及範圍的篩選([upper_stack.py]())
+## 煙囪高度及範圍的篩選([upper_stack.py]())
 - 由於公版模式將所有的煙囪都納入3維的網格內，這項作法可以有一個修正，就是將高空排放量刪除，改以點源方式輸入模式，而這些點源的高度就必須高於第一格的厚度。
 - 由於CMAQ的厚度(metcro3d中的ZF)是每一點都不同，因此必須逐點進行比較。(使用2次`np.where`指令)
 - 除此之外，公版模式的範圍也不能納入所有的TEDS點源數據，部分離島無法納入，在進行座標串聯時將出現錯誤。需要2階段篩選
@@ -179,8 +178,53 @@ for fn in ['const'+mm+'.nc','timvr'+mm+'.nc']:
   nc1.close()
 ```
 
-### 時間平移
-- 仿照mk_emis.py的做法，讀取同月接近的TEDS數據，切割出進行CMAQ模擬。
+## 時間平移(mk_ptse.py)
+- 仿照mk_emis.py的做法，讀取同月接近日同一星期(weekday)的TEDS數據，切割出來，以進行CMAQ模擬。
+
+```python
+#kuang@DEVP /nas2/cmaqruns/2022fcst/grid03/smoke
+#$ cat mk_ptse.py
+#!/opt/anaconda3/bin/python
+import numpy as np
+import netCDF4
+import os, sys, subprocess, datetime
+from dtconvertor import dt2jul, jul2dt
+
+ncks=subprocess.check_output('which ncks',shell=True).decode('utf8').strip('\n')
+tdy=sys.argv[1]
+bdate=datetime.datetime.strptime(tdy,"%Y-%m-%d")
+mm=tdy.split('-')[1]
+nts={'const':1,'timvr':121}
+for fn in nts:
+  fname=fn+mm+'.nc'
+  fnameO=fname.replace(mm,'')
+  if 'timvr' in fname:
+    nc = netCDF4.Dataset(fname, 'r')
+    ebdate=datetime.datetime.strptime(str(nc.SDATE),"%Y%j")
+    ebdat2=datetime.datetime.strptime(str(nc.SDATE).replace('19','22'),"%Y%j")
+    dd=(bdate-ebdat2).days+1-3
+    if dd<0:dd+=7
+    begh=dd*24-1
+    endh=begh+nts[fn]
+    os.system(ncks+' -O -d TSTEP,'+str(begh)+','+str(endh)+' '+fname+' '+fnameO)
+  else:
+    os.system('cp '+fname+' '+fnameO)
+  nc1 = netCDF4.Dataset(fnameO,'r+')
+  nc1.SDATE,nc1.STIME=dt2jul(bdate)
+  SDATE=[bdate+datetime.timedelta(hours=int(i)) for i in range(nts[fn])]
+  for t in range(nts[fn]):
+    nc1.variables['TFLAG'][t,0,:]=dt2jul(SDATE[t])
+  var=np.array(nc1.variables['TFLAG'][:,0,:])
+  var3=np.zeros(shape=nc1.variables['TFLAG'].shape)
+  var3[:,:,:]=var[:,None,:]
+  nc1.variables['TFLAG'][:]=var3[:]
+  nc1.TSTEP=10000
+```
+
+- 雖然點源檔案有常數、時變等2個檔案。但此處只是處理時間，就此觀點這2個檔案的差異僅為時間軸的長度(1小時或5天121小時)，同樣以dict型態(`nts`)一併處理。
+- 由模版製作成檔案的過程略有差異
+  1. 常數檔：由模版複製
+  1. 時變檔：由2019年模版檔案以`ncks`切割拮取
 
 [rd_today.py]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast/#前日運轉率之彙整與應用> "opendata中臺灣地區火力機組前日運轉率之彙整與應用"
 [UNRESPFcst]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast> "本土化CALPUFF濃度預報系統之實現"
