@@ -1,6 +1,6 @@
 ---
 title: BCON轉.bc檔
-tags: CAMx fortran bash python
+tags: CAMx fortran bash python BCON ICON 
 layout: article
 aside:
   toc: true
