@@ -137,7 +137,7 @@ for ir in range(nr):
 >                 class="text-button" id="overlay-ozone" title="GEMS Ozone">O3</span>
 ```
 
-### product.js程式
+### [products.js][js1]程式
 - 程式參考溫度(temp)段落
 - 色階也參考溫度的設定
   - 取消粉紅及青色(cyan)，顏色太過顯眼、彩度不足、也不是一般彩虹色階項目
@@ -217,3 +217,4 @@ for ir in range(nr):
 [EC_ReAna]: <https://sinotec2.github.io/Focus-on-Air-Quality/AQana/GAQuality/ECMWF/EC_ReAna/> "Focus-on-Air-Quality→AQ Data Analysis→Global AQ Data Analysis→ECMWF ReAnalysis→歐洲中期天氣預報中心再分析數據之下載"
 [GFS]: <https://en.wikipedia.org/wiki/Global_Forecast_System> "全球預報系統 (GFS) 是一個全球數值天氣預報系統，包含由美國國家氣象局 (NWS) 運行的全球尺度氣象數值預報模式和變分分析。"
 [CAMS_FCST]: <https://confluence.ecmwf.int/display/CKB/CAMS%3A+Global+atmospheric+composition+forecast+data+documentation> "CAMS: Global atmospheric composition forecast data documentation"
+[js1]: <https://github.com/cambecc/earth/blob/master/public/libs/earth/1.0.0/products.js> "cambecc/earth/public/libs/earth/1.0.0/products.js"

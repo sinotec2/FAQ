@@ -189,7 +189,7 @@ var DEFAULT_CONFIG = "current/wind/surface/level/orthographic=-238.80,23.73,7500
 
 ### 氣流線之調整
 [earth][ens]套件的動態氣流線在其程式中稱為particle，可能因為看起來像是顆粒的軌跡動態。particle相關設定有：
-1. ./public/libs/earth/1.0.0/products.js：` particles: {velocityScale: 1/3000000, maxIntensity: 1 }`，這2個設定前者為風速的尺度(1/3M ~ 1/60K)，其值越小，流線越短。後者為密集度(1 ~ 17)，其值越小會有越多處有particle起點，即使風速很低，適用在小比例尺圖面。
+1. ./public/libs/earth/1.0.0/[products.js][js1]：` particles: {velocityScale: 1/3000000, maxIntensity: 1 }`，這2個設定前者為風速的尺度(1/3M ~ 1/60K)，其值越小，流線越短。後者為密集度(1 ~ 17)，其值越小會有越多處有particle起點，即使風速很低，適用在小比例尺圖面。
 1. ./public/libs/earth/1.0.0/earth.js
 
 ```java
@@ -201,8 +201,8 @@ var DEFAULT_CONFIG = "current/wind/surface/level/orthographic=-238.80,23.73,7500
 
 項目|js|參數|範圍|效果說明
 -|-|-|:-:|-
-風速尺度|products.js|velocityScale|1/3M ~ 1/60K|偏向靜風~強風
-密集度|product.js|maxIntensity|1~17|其值越小會有越多處有particle起點
+風速尺度|[products.js][js1]|velocityScale|1/3M ~ 1/60K|偏向靜風~強風
+密集度|[products.js][js1]|maxIntensity|1~17|其值越小會有越多處有particle起點
 流線的長度|earth.js|MAX_PARTICLE_AGE|10~100|短(無動感無法辨認方向)~長(遮蔽底圖)
 流線寬度|earth.js|PARTICLE_LINE_WIDTH|0.8~1.0|細(辨識不清)~寬(遮蔽底圖)
 
