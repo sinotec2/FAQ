@@ -10,7 +10,7 @@ date:  2022-09-23
 modify_date: 2022-09-23
 ---
 ## 背景
-- CAMS模式的海鹽有3項輸出，是按照粒徑的範圍，輸出重量混合比
+- CAMS模式的海鹽(SSA)有3項輸出，是按照粒徑的範圍，輸出重量混合比
   1. 'sea_salt_aerosol_0.03-0.5um_mixing_ratio', 
   1. 'sea_salt_aerosol_0.5-5um_mixing_ratio', 
   1. 'sea_salt_aerosol_5-20um_mixing_ratio',
@@ -43,3 +43,9 @@ modify_date: 2022-09-23
 | <b>PM<sub>2.5</sub>濃度模擬結果</b>|
 | ![PM10_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM10_2022092520.png)|
 | <b>PM<sub>10</sub>濃度模擬結果</b>|
+
+- PM<sub>1</sub>大多分布在中國以及印度的內陸地區，日本排放隨東北季風到達臺灣的可能性是存在的，但是濃度相對並不高。SSA對PM<sub>1</sub>也可能會有貢獻，如臺灣海峽，或其他風速較高地區，但濃度也不高。
+- PM<sub>2.5</sub>相對其他二者，SSA的貢獻似乎更低。
+- PM<sub>10</sub>在太平洋高風速局部地區因海洋飛沫（SSA）的排放機制，確實有較高的可能。
+  - 臺灣海峽高風速區，也造成可觀的濃度。
+  - 東方邊界確實有濃度流入，但其影響相較SSA排放機制而言並不大。
