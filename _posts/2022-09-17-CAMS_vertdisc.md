@@ -47,14 +47,14 @@ df=read_csv('/nas1/ecmwf/CAMS/CAMS_global_atmospheric_composition_forecasts/2022
 cname={'A':'a [Pa]','B':'b'}
 for s in 'AB':
   for i in '01':
-    exec(s+i+'=np.array([df.loc[df.n==k+'+i+',"'+cname[s]+'"][0] for k in kk])')
+    exec(s+i+'=np.array([df.loc[df.n==int(k)-'+i+',"'+cname[s]+'"].values[0] for k in kk])')
 
 root='/nas2/cmaqruns/2022fcst/grid45/wrfout/wrfout_d01_'
 fnames=[root+str(i) for i in range(6)]
 nc = netCDF4.Dataset(fnames[0], 'r')
 nt,nlay,nrow,ncol=(nc.dimensions[i].size for i in ['Time','bottom_top','south_north','west_east'])
-slp=np.zeros(shape=(nt*5+1,nrow,ncol))
-pres,dens=(np.zeros(shape=(nt*5+1,nlay,nrow,ncol)),)*2
+slp=np.zeros(shape=(nt*5,nrow,ncol))
+pres,dens=(np.zeros(shape=(nt*5,nlay,nrow,ncol)),)*2
 p=np.zeros(shape=(nt*5+1,24,nrow,ncol))
 
 t0=0
@@ -66,14 +66,15 @@ for fname in fnames:
     pres[t0+i,:,:,:]=getvar(nc, "pressure",timeidx=i)
   nc.close()
   t0+=nt
-fname='/nas1/cmaqruns/2022fcst/data/mcip/2208_run8/CWBWRF_45k/METCRO3D.nc'
+fname='/nas2/cmaqruns/2022fcst/grid45/mcip/DENS/METCRO3D.'+bdate.strftime('%Y%m%d')
 nc = netCDF4.Dataset(fname,'r')
-dens1=nc.variables['DENS'][:,:,:,:]
+nt1,nlay1,nrow1,ncol1=nc.variables['DENS'].shape
+dens1=nc.variables['DENS'][bt,:,:,:]
 nc.close()
 dens[:,:,:,:]=np.mean(dens1,axis=(0,2,3))[None,:,None,None]
-dens[:,:,2:-2,2:-2]=dens1[:,:,:,:]  
-p[:,:,:,:] =(A0[None,:,None,None]+B0[None,:,None,None]*slp[:,None,:,:])/2.
-p[:,:,:,:]+=(A1[None,:,None,None]+B1[None,:,None,None]*slp[:,None,:,:])/2.
+dens[:,:,1:-1,1:-1]=dens1[:,:,:,:]  
+p[:,:,:,:] =(A0[None,:,None,None]/100+B0[None,:,None,None]*slp[:,None,:,:])/2.
+p[:,:,:,:]+=(A1[None,:,None,None]/100+B1[None,:,None,None]*slp[:,None,:,:])/2.
 dens1 = interplevel(dens, pres, p)[::3,:,2:-2,2:-2]
 ```
 
