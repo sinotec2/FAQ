@@ -19,6 +19,9 @@ modify_date: 2022-09-23
   1. Accumulative mode: ANAK, ACLJ
   1. Coarse mode: ANAK(由SEACAT計算而得), ACLK
   1. 海鹽陽離子：ASEACAT
+- 一般就重量而言：
+  - 海鹽顆粒濃度主要分布在粗粒徑範圍，IJ mode的質量濃度不高。
+  - 風速較大地區、海峽、海岸線會有較高的海鹽顆粒濃度。
 
 ## 對照方式
 - 因此合理的對照方式：
@@ -30,3 +33,13 @@ modify_date: 2022-09-23
 5-20|ASEACAT/陽離子所佔比例、CL所佔比例納入ACLK|~ PM<sub>10</sub>|
 
 - NaCL重量比例：(23:35.5)=39.3:60.7
+
+## 模擬結果定性探討
+
+| ![PM1_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM1_2022092520.png)|
+|:-:|
+| <b>PM<sub>1</sub>濃度模擬結果</b>|   
+| ![PM2.5_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM2.5_2022092520.png)|
+| <b>PM<sub>2.5</sub>濃度模擬結果</b>|
+| ![PM10_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM10_2022092520.png)|
+| <b>PM<sub>10</sub>濃度模擬結果</b>|
