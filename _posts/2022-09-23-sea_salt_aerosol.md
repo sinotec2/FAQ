@@ -35,6 +35,7 @@ modify_date: 2022-09-23
 - NaCL重量比例：(23:35.5)=39.3:60.7
 
 ## 模擬結果定性探討
+### 20220925 東亞地區三種粒徑範圍粒狀物之模擬結果
 
 | ![PM1_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM1_2022092520.png)|
 |:-:|
@@ -44,6 +45,7 @@ modify_date: 2022-09-23
 | ![PM10_2022092520.png](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/PM10_2022092520.png)|
 | <b>PM<sub>10</sub>濃度模擬結果</b>|
 
+### 結果討論
 - PM<sub>1</sub>大多分布在中國以及印度的內陸地區，日本排放隨東北季風到達臺灣的可能性是存在的，但是濃度相對並不高。SSA對PM<sub>1</sub>也可能會有貢獻，如臺灣海峽，或其他風速較高地區，但濃度也不高。
 - PM<sub>2.5</sub>相對其他二者，SSA的貢獻似乎更低。
 - PM<sub>10</sub>在太平洋高風速局部地區因海洋飛沫（SSA）的排放機制，確實有較高的可能。
