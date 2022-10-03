@@ -54,7 +54,8 @@ fnames=[root+str(i) for i in range(6)]
 nc = netCDF4.Dataset(fnames[0], 'r')
 nt,nlay,nrow,ncol=(nc.dimensions[i].size for i in ['Time','bottom_top','south_north','west_east'])
 slp=np.zeros(shape=(nt*5,nrow,ncol))
-pres,dens=(np.zeros(shape=(nt*5,nlay,nrow,ncol)),)*2
+pres=np.zeros(shape=(nt*5,nlay,nrow,ncol))
+dens=np.zeros(shape=(nt*5,nlay,nrow,ncol))
 p=np.zeros(shape=(nt*5+1,24,nrow,ncol))
 
 t0=0
