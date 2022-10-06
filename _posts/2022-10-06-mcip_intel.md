@@ -107,11 +107,11 @@ $ diff $s1 $s2
 ```
 gcc NP=40 fail
 
-time |pnetCDF|intel方案|gccNP=1
-:-:|:-:|:-:|:-:|
-real|12m49.757s|11m22.747s|
-user|33m51.021s|33m55.344s|
-sys |27m20.663s|28m7.542s|
+time |pnetCDF|intel方案|gccNP=40|NP=1
+:-:|:-:|:-:|:-:|:-:
+real|12m49.757s|11m22.747s|5m37.849s|3m3.735s
+user|33m51.021s|33m55.344s|54m41.407s|1m10.621s|
+sys |27m20.663s|28m7.542s|22m21.431s|0m14.550s
 
 
 
