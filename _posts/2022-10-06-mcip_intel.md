@@ -105,11 +105,13 @@ $ diff $s1 $s2
 > DAP2 Support:         yes
 > DAP4 Support:         yes
 ```
+gcc NP=40 fail
 
-intel方案
-real    12m49.757s
-user    33m51.021s
-sys     27m20.663s
+time |pnetCDF|intel方案|gccNP=1
+:-:|:-:|:-:|:-:|
+real|12m49.757s|11m22.747s|
+user|33m51.021s|33m55.344s|
+sys |27m20.663s|28m7.542s|
 
 
 
