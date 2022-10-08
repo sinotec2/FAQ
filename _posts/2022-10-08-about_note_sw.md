@@ -40,9 +40,16 @@ modify_date: 2022-10-08 05:16:54
 - [2021年7大實用筆記軟體推薦][Shining Chan, 2021]
   - 因為是職涯發展公司，介紹的多半是工作筆記，包括了一、[Evernote][Evernote]，二、Microsoft [OneNote][onenote]，三、[Notion][notion]，四、Google [Keep][keep]，五、[GoodNotes][GoodNotes]，六、Notability，七、[SimpleNote][SimpleNote]。
   - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
+
 ### 主打方案
-- 經過近一年的發展，目前[VCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
-  - VCode可以直接進行Github的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
+- 經過近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
+  1. 目前在此領域市佔率最高。GitHub為最大程式共享平台。
+  1. 銜接github.io等等公開分享平台，網站運作穩定、快速
+  1. VSCode有最簡單、完整的編輯界面。
+  1. 符合前述功能需求
+- VScode與GitHub的連結
+  - VSCode就可以直接進行Github的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
+  - Github也提供了網路版的VSCode介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
 
 
 ## 使用經驗與評論
