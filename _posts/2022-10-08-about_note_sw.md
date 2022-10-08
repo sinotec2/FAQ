@@ -42,6 +42,8 @@ modify_date: 2022-10-08 05:16:54
   - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
 ### 主打方案
 - 經過近一年的發展，目前[VCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
+  - VCode可以直接進行Github的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
+
 
 ## 使用經驗與評論
 ### 主要筆記軟體
@@ -64,5 +66,5 @@ modify_date: 2022-10-08 05:16:54
 [keep]: <https://keep.google.com/> "隨時隨地記錄所思所想"
 [SimpleNote]: <https://simplenote.com/> "The simplest way to keep notes, All your notes, synced on all your devices. Get Simplenote now for iOS, Android, Mac, Windows, Linux, or in your browser."
 [知乎]: <https://www.zhihu.com/question/22238071> "iPad 笔记应用 UPad、Noteshelf、GoodNotes 哪个更值得买？"
-
+[vc_gh]: <http://www.rodanthi-alexiou.com/github-101-github-desktop-and-vscode/> "GitHub 101 – GitHub Desktop and VSCode"
 http://simp.ly/p/DGxfVH
