@@ -61,7 +61,12 @@ modify_date: 2022-10-08 05:16:54
 
 ### 使用經驗評論列表
 
-項目|Evernote][Evernote]|notion][notion]|[GoodNotes][GoodNotes]|[VCode+GitHubDesktop][vc_gh]
+項目|Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
+-|-|-|-|-
+格式|自訂|md|pdf|md
+程式碼|縮排會亂掉|OK|無|OK
+費用|付費可存3機器以上||付費app|GHPage功能
+索引系統|HPL|HPL|無|HPL、ref.、Fig.
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
 [Shining Chan, 2021]: <https://glints.com/tw/blog/note-taking-software-recommendation/> " Shining Chan, 2021 職涯成長->技能提升->工具->筆記軟體是什麼？有什麼優點？2021年7大實用筆記軟體推薦"
