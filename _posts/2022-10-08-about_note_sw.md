@@ -42,15 +42,82 @@ modify_date: 2022-10-08 05:16:54
   - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
 
 ### 主打方案
-- 經過近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
-  1. 目前在此領域市佔率最高。GitHub為最大程式共享平台。
+- 經過筆者近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
+  1. 目前在此領域市佔率最高。GitHub為全球最大程式碼共享平台。
   1. 銜接github.io等等公開分享平台，網站運作穩定、快速
   1. VSCode有最簡單、完整的編輯界面。
-  1. 符合前述功能需求
+  1. 符合前述筆記系統功能需求、同時也是執行程式的[IDE][ide]。
 - VScode與GitHub的連結
   - VSCode就可以直接進行Github的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
   - Github也提供了網路版的VSCode介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
 
+## word/ppt as note editors
+- 對於不想面對複雜軟體介面的使用者而言，在日常作業環境中就能滿足筆記需求的軟體，似乎是最好與最後的方案。
+- 如果這些日常作業軟體功能都還有很多尚待熟悉，使用其他專業軟體似乎就有點捨近求遠了。
+  - 例如最常用來作為README、release note檔案的格式，其實是txt，這是迄今每個程式發布時最常用到的格式。簡單的wordpad、小作家、[vim](https://zh.wikipedia.org/zh-tw/Vim)就能達到寫作這類筆記的功能。
+- 此處介紹2種常用軟體作為筆記系統的實例。
+
+### MS Word
+- 筆記寫完馬上就可以印出來、繳交課堂作業，豈不一石兩鳥，這是學生喜歡使用MS Word來做學習筆記的理由，可以參考這篇百萬瀏覽（同時也是first search）的[影片介紹](https://www.youtube.com/watch?v=V-08qJRrGxw)，以及痞客邦的[中文介紹][jinrihdelive]。MS Word作為筆記系統的強項與問題討論如下。
+- [目錄](https://www.techbang.com/posts/12376-let-word-help-you-automatically-generate-the-file-directory)系統(Category)
+  - Word檔寫完、執行一下參照，就可以更新文件的章節與編號系統，雖然是半自動作業，但對複雜的章節系統來說，已經是非常方便的功能了。
+  - Category可以插在文章之前或最後，讓使用者自行瀏覽查詢、翻閱。可惜:
+    1. 目錄不能很方便的合併、展開，對多層次的目錄系統而言，要翻好幾頁才能找到所要去的位置，是個龐雜混亂的經驗。
+    1. 沒法很方便的回到目錄、類似browser的回到上一頁(<-)；再者，
+    1. 要打開文件才能看到文件的章節，這對跨文件、循目錄搜尋的過程，也是非常消耗記憶體的動作。
+    1. 跨平台轉換時，目錄參照不保證能順利轉換，這對龐雜的文件而言，會是個災難。這對使用者持續發展其筆記系統而言，是逐漸走向災難與滅亡的歷程，應趁早有所醒悟與合理的替代。
+- [註腳、章節附註、參考文獻](https://support.microsoft.com/zh-tw/office/插入註腳與章節附註-61f3fb1a-4717-414c-9a8f-015a5f3ff4cb)
+  - Word的註腳參照是個優秀的功能，除了正式的參考文獻之外，也能將重要的註釋、連結訊息等等，都放在這個區塊內，讀者可以追蹤相關訊息、並且不會干擾本文的閱讀。編號也是自動排序，不必擔心插入刪減之後會跳號。如果將太過細節的訊息(檔案目錄、縮寫全名、名詞解釋或定義、法規摘錄等等)放在註腳之內，對讀者來說，會輕鬆很多。搜尋時，word也會搜尋註腳內容。仍可以挑剔的是：
+    1. 轉檔過程註腳參照、連結等有可能會消失
+    1. 註腳篇幅太多會壓縮本文。註腳不是鼠標懸停(mouse hover)呈現方式。
+- [圖表參照](https://aries.dyu.edu.tw/~lhuang/class/office/word-gt-directory.htm)
+  - word的圖表參照對圖表很多的複雜報告，是一項省時省力的功能。word早先發展了圖檔隨文儲存的作法，不單讓檔案容量倍增，也寵壞了使用者圖檔管理的習慣，好在是提供了參照系統，讓使用者的圖檔管理不會失控。這項功能不利於日常筆記的理由：
+    1. 圖檔並不是文字搜尋的對象，圖檔龐大的word檔案要進行跨文搜尋，會浪費大量記憶體於開關檔案的時間。這不符合一般KM系統、部落格、網頁檔案管理的概念。
+    1. 筆記系統的關鍵在單純、獨立，圖表也是以精簡、必要性為原則，參照似乎沒有太大的幫助，好的圖名、圖說反而是有利搜尋的作法，而不是參照連結。況且，
+    1. 在轉檔發布時，參照可能會消失，還是需要一一重建。
+- [註解](https://support.microsoft.com/zh-hk/office/insert-delete-or-change-a-comment-5cb1af25-4dfe-4484-9713-2c80391ecf12)：
+  - Word可以提供右側欄位讓使用者撰寫註釋、修改歷程等等訊息，這在協作過程有非常優秀的表現（[中文介紹][jinrihdelive]）。
+  - 壞處是此類註釋無法關閉。當註釋、批示太多時，會嚴重干擾到本文的閱讀。這是何以正式文件會以頁面、章節之後的註腳來寫註釋的理由，wiki等等電子文件則是以連結(hyperlink)、或鼠標懸停(mouse hover)來呈現註解。
+- [大綱模式](http://homepage.ntu.edu.tw/~huangsl/word/wordoutline.pdf)
+  - 筆記系統與正式文件之間最大的差異就是文件的格式，後者有較嚴格、容易閱讀(不利查找)的版面格式，為此Word提供了大綱模式、預覽模式、整頁模式等等閱讀顯示方式，其中大綱模式對撰寫文章時、可以快速瀏覽剛剛寫好的段落，讓段落語意保持順暢，是非常方便的介面。大綱模式的章節升降調整功能，對文章的整理也是非常方便。這麼優秀的功能，還是有別的軟體來挑戰競爭：
+    1. 不能同時以不同視窗顯示2種顯示模式，必須寫一段落、切換模式來加以檢查。這在插入圖表時，需要看圖表撰寫討論時，會是個打斷思路的重大瓶頸。
+    1. 大綱模式下的字型、整體畫面(版面)太過粗糙，讓人望之卻步，雖然是筆記系統的界面面，應該還有更好的選擇。
+- 分享與發布
+  - 除了列印成書面輸出，Word還能存成pdf檔案、rtf檔案、html網頁、特定部落格(WordPress、SharePoint、TypePad、Telligent Community)等等方式，可供發布。如果有好的發布平台，如[KM系統](https://zh.wikipedia.org/zh-tw/知识管理)、文件管理系統[DMS](https://www.enago.tw/academy/何謂文件管理系統dms？/)，對文件的版本、公開對象、內容摘要等等有進一步的管理，pdf及rtf檔案會是不錯的組合。
+    1. 讀者如果要參與協作，很難全抄修改、需要另外的協作系統。
+    1. html結果非常不理想。是個連官方都[棄養](https://support.microsoft.com/zh-tw/topic/當您將-word-文件儲存為網頁時的限制-f361de08-ca4c-bc53-11ef-138c0e405c44)的功能。
+    1. 大多數的部落客並不使用word內的直接發布，除了格式的問題，主要還有圖檔管理的問題。一般網頁的圖文是分開管理，並不是隨文附圖的概念。（參考[傑哥架站教室2022，高效寫作部落格文章的6個技巧](https://jclassroom.net/6-tips-for-efficient-writing-blog-posts/)）
+    1. 如果沒有好的KM或DMS，發布檔案對讀者來說會有嚴重的版本管理問題。
+- 其他word問題
+  1. 一般word檔案(報告)會隨著計畫儲存備份，有開案結案的時間、有良好的管理。但是筆記卻是跨計畫、技術核心的屬性，無法隨每個計畫儲存，這是報告、筆記這2類文件最大的差異。
+  1. 項目序號更新偶爾會不靈
+  1. 程式碼的縮排：容易出錯
+  1. 跨文搜尋：非常慢
+  1. 字型、格式：無法在每台電腦都保持一致
+  1. 分享發布的形式就是直接複製檔案，沒有版本管理、沒有更新日期管理、沒有同步功能。
+
+### MS PowerPoint
+- 這裡提的不是筆記軟體輸出到ppt、或者在筆記軟體中輸入ppt檔案進行編輯加工，而是直接使用ppt作為跨計畫的筆記檔案格式。
+- ppt檔案的條例大綱寫法，跟筆記形式很接近，同時在[備忘稿](https://support.microsoft.com/zh-tw/office/新增演講者備忘稿到投影片-26985155-35f5-45ba-812b-e1bd3c48928e)，可以提供類似註腳的功能，將詳細的連結、參考文獻、細節訊息等等，都放在此處，待日後或其他讀者進一步追蹤查詢。此外不同視窗可以同時寫筆記、看圖表，這是非常有助寫作的功能。這些是ppt作為筆記檔案格式的強項。
+- 其他跟word類似的強項是
+  1. 筆記與重要圖表整理好，隨時可以簡報、不用另外花時間做簡報。
+  1. 每頁投影片標題、次標題等，會自動彙整到大綱模式，雖然也沒有合併、展開的功能。
+  1. 除了文件外連結，也提供文件內、不同頁面的連結參照。
+  1. 本文、備忘稿、都能快速搜尋
+- 缺點：
+  - ppt基本上不是個完整的編輯軟體，而是單一頁面、專為投影片使用的界面。如果內容超出單頁範圍，編輯起來會很辛苦。筆記的編寫往往會有增減頁面的情況，這是最不利的衝突點。
+  - 備忘稿不是ppt的主要功能，的它界面不是最優秀的設計，雖然也有些格式設定，但還是很簡略。
+  - 發布分享、文件管理的問題，與word一樣。
+  - 沒有人用ppt的備忘稿來寫程式說明文件、至少筆者沒有嘗試、也沒有成功經驗。
+
+## [VS Code][vsc_wiki]簡介
+### [VS Code][vsc_wiki]是什麼
+- 文字編輯軟體、程式編譯與執行界面、檔案總管（[整合開發環境][ide]），有關IDE的習慣、比較與近來的發展，可以參考[這篇中文討論](https://bearask.com/zh-tw/tech/73597.html)、與[英文的完整比較](https://ide.financesonline.com/)、[列表比較](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#Python)
+- MS提供的免費軟體、自由插件平台
+### 特色與必須性
+- 與GitHub平台完全融合、持續共同發展
+- 多種語言自動編譯、執行、預覽。標記式語言(MarkDown)及插件之解析、預覽。
+- 快速跨檔案搜尋、置換
 
 ## 使用經驗與評論
 ### 主要筆記軟體
@@ -61,7 +128,7 @@ modify_date: 2022-10-08 05:16:54
 
 ### 使用經驗評論列表
 
-項目|Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
+項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
 -|-|-|-|-
 格式|自訂|md|pdf|md
 程式碼|縮排會亂掉|OK|無|OK
@@ -79,4 +146,8 @@ modify_date: 2022-10-08 05:16:54
 [SimpleNote]: <https://simplenote.com/> "The simplest way to keep notes, All your notes, synced on all your devices. Get Simplenote now for iOS, Android, Mac, Windows, Linux, or in your browser."
 [知乎]: <https://www.zhihu.com/question/22238071> "iPad 笔记应用 UPad、Noteshelf、GoodNotes 哪个更值得买？"
 [vc_gh]: <http://www.rodanthi-alexiou.com/github-101-github-desktop-and-vscode/> "GitHub 101 – GitHub Desktop and VSCode"
+[jinrihdelive]: <https://jinrihdeliver.pixnet.net/blog/post/276862136> "今日訊息jinrih,Jan 31 2019【Word教學｜筆記術、閱讀筆記】學習第一步？先學如何做筆記！痞客邦 "
+[ide]: <https://zh.wikipedia.org/zh-tw/集成开发环境> "集成开发环境、整合開發環境"
+[vsc_wiki]: <https://zh.wikipedia.org/wiki/Visual_Studio_Code> "Visual Studio Code（簡稱 VS Code）是一款由微軟開發且跨平台的免費原始碼編輯器[6]。該軟體支援語法突顯、程式碼自動補全（又稱 IntelliSense）、程式碼重構功能，並且內建了命令列工具和 Git 版本控制系統[7]。使用者可以更改佈景主題和鍵盤捷徑實現個人化設定，也可以透過內建的擴充元件程式商店安裝擴充元件以加強軟體功能。"
+
 http://simp.ly/p/DGxfVH
