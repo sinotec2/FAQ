@@ -8,6 +8,7 @@ sidebar:
   nav: layouts
 date:  2022-10-08
 modify_date: 2022-10-08 05:16:54
+mermaid: true
 ---
 ## 背景
 ### 功能需求
@@ -42,15 +43,32 @@ modify_date: 2022-10-08 05:16:54
   - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
 
 ### 主打方案
-- 經過筆者近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
+- 經過近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
   1. 目前在此領域市佔率最高。[GitHub][gh]為全球最大程式碼共享平台。
   1. 銜接github.io等等公開分享平台，網站運作穩定、快速
   1. [VS Code][vsc_wiki]有最簡單、完整的編輯界面。
   1. 符合前述筆記系統功能需求、同時也是執行程式的[IDE][ide]。
 - [VS Code][vsc_wiki]與[GitHub][gh]的連結
-  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
+  - 使用[github pages][ghpg]的免費服務資源，作為公開發布筆記之平台。
+  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
   - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
+- 整體作業流程
 
+```mermaid
+graph LR
+    A(LocalFileSystem) -- File/Dir. Create/Open/ --> B((VS Code-Local))
+    B -- Edit/Remove/Save --> A
+    C((GitHub DeskTop-Local)) -- Open --> B 
+    C -- push --> D(GitHub Repositories)
+    D -- clone/pull --> C
+    D -- build --> E(github pages)
+    D -- invoke -->F((VS Code web)) -- edit/save --> D
+```
+
+- [github pages][ghpg]成果範例
+  1. [Focus on Air Quality](https://sinotec2.github.io/Focus-on-Air-Quality/)
+  1. [Dr. Kuang's Utilities](https://sinotec2.github.io/FAQ/)
+  1. [static websites by SINOTEC2](https://sinotec2.github.io/)
 ## word/ppt as note editors
 - 對於不想面對複雜軟體介面的使用者而言，在日常作業環境中就能滿足筆記需求的軟體，似乎是最好與最後的方案。
 - 如果這些日常作業軟體功能都還有很多尚待熟悉，使用其他專業軟體似乎就有點捨近求遠了。
@@ -137,7 +155,38 @@ modify_date: 2022-10-08 05:16:54
 - 與全球優秀資訊人員同步發展
 
 ## [GitHub][gh]簡介
+- 雖然[GitHub][gh]平台大量提供了有關程式碼的支援，包括版本管理、協作系統、論壇、以及程式說明的發布網站([github pages][ghpg])等等，但也有不少人運用在一般性網誌的發布、程式教學的互動平台。
+- 因為是社群媒體網站，發布內容還是以社群可能會有興趣的項目為主。
+- 各國官方程式碼的公開平台，很多也是選擇在[GitHub][gh]發布，其中包括美國環保署、大氣研究聯盟等等。
+- 除了[github pages][ghpg]之外，也開發了[Git Book][gbook]系統，免費提供讓個人使用，讓使用者可以發布正本書的內容。
+### [GitHub][gh]的使用
+1. 登錄會員
+1. 創建新的目錄(Repository)、複製網址（假設名稱為notes）
+1. 貼在本地GitHub DeskTop、創建本地相對應目錄
+1. 開啟[VS Code][vsc_wiki]進行檔案或目錄新增、編寫
+1. 上推至[GitHub][gh]
+### 公開網頁[github pages][ghpg]之創建
+1. 點進前述步驟2.所建立的[GitHub][gh] notes目錄
+1. 按下齒輪 Settings頁面，在左側點進Pages頁面，選擇一個分支(branch)名稱,如main
+,並在root處鍵入新io網頁的名稱（如docs）,按下save之後，系統將會建立https://USERNAME.github.io/notes 網頁
+1. 複製網頁模版到本地目錄，修改成正確的url，將其上推至[GitHub][gh]。
+1. [GitHub][gh]將會自行將md碼編譯成html，建立相對應的網頁。
+1. 如果前述notes目錄不打算公開，就不必（也不能）設定[github pages][ghpg]
+1. 詳參[Just the Docs](https://github.com/just-the-docs/just-the-docs)
+### [github pages][ghpg]模版之選擇
+- 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
+## 標記式(MarkDown)語言
+- 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。
+- 這些格式包括
+  1. 章節標題（用井字號#的個數定義層級）
+  1. 項目符號(-或*)、序號(1.)
+  1. quote或程式碼，以三個引號起訖
+  1. 字型：以1 ～ 3個星號起訖，來呈現斜體、粗體、粗斜體等
+  1. 連結[ ]\( )、註釋引用[ ][ \]，註釋內容 [ ]: < url> "content"
+  1. 圖形、表格等
+  1. 公式
+- 使用範例詳[wiki](https://zh.wikipedia.org/zh-tw/Markdown) 
 
 ## 使用經驗與評論
 ### 主要筆記軟體
@@ -150,10 +199,17 @@ modify_date: 2022-10-08 05:16:54
 
 項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
 -|-|-|-|-
+目錄系統|無|三層|無|無限制
+跨檔案搜尋|快|快|無|快
 格式|自訂|md|pdf|md
+手寫辨識|無|無|有|無
 程式碼|縮排會亂掉|OK|無|OK
-費用|付費可存3機器以上||付費app|GHPage功能
+費用|付費可存3機器以上|付費多存|付費app|免
+url發布|長串隨機碼|長串隨機碼|無|指定目錄
 索引系統|HPL|HPL|無|HPL、ref.、Fig.
+流程圖|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
+
+HPL：hyperlinks
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
 [Shining Chan, 2021]: <https://glints.com/tw/blog/note-taking-software-recommendation/> " Shining Chan, 2021 職涯成長->技能提升->工具->筆記軟體是什麼？有什麼優點？2021年7大實用筆記軟體推薦"
@@ -171,4 +227,6 @@ modify_date: 2022-10-08 05:16:54
 [vsc_wiki]: <https://zh.wikipedia.org/wiki/Visual_Studio_Code> "Visual Studio Code（簡稱 VS Code）是一款由微軟開發且跨平台的免費原始碼編輯器[6]。該軟體支援語法突顯、程式碼自動補全（又稱 IntelliSense）、程式碼重構功能，並且內建了命令列工具和 Git 版本控制系統[7]。使用者可以更改佈景主題和鍵盤捷徑實現個人化設定，也可以透過內建的擴充元件程式商店安裝擴充元件以加強軟體功能。"
 [gh]: <https://zh.wikipedia.org/zh-tw/GitHub> "GitHub是一個線上軟體原始碼代管服務平台，使用Git作為版本控制軟體，由開發者Chris Wanstrath、P. J. Hyett和湯姆·普雷斯頓·沃納使用Ruby on Rails編寫而成。在2018年，GitHub被微軟公司收購。GitHub同時提供付費帳戶和免費帳戶。這兩種帳戶都可以建立公開或私有的代碼倉庫，但付費使用者擁有更多功能。根據在2009年的Git使用者調查，GitHub是最流行的Git存取站點。[5]除了允許個人和組織建立和存取保管中的代碼以外，它也提供了一些方便社會化共同軟體開發的功能，即一般人口中的社群功能，包括允許使用者追蹤其他使用者、組織、軟體庫的動態，對軟體代碼的改動和bug提出評論等。GitHub也提供了圖表功能，用於概觀顯示開發者們怎樣在代碼庫上工作以及軟體的開發活躍程度。 "
 [kms]: <https://zh.wikipedia.org/zh-tw/知识管理> "知識管理（英語：knowledge management，縮寫為KM）包括一系列企業內部定義、創建、傳播、採用新的知識和經驗的戰略和實踐。這些知識和經驗包括認知，可以是個人知識，以及組織中商業流程或實踐。知識管理是一項在1990年代中期開始在全球崛起的學術與商業應用主題，針對個人及社群所擁有的顯性知識和隱性知識的確認、創造、掌握、使用、分享及傳播進行積極及有效的管理。其主要涵蓋的固有理論及應用層面包括學習型組織、企業文化、資訊科技應用，及人事管理等。而由於知識管理的概念通常與企業的各種改善願景扯上關係，知識管理在現今企業上的實踐愈來愈受到重視，亦因此為顧問和科技公司帶來了不少商機。知識管理在非商業上的應用亦很廣泛，其中維基百科經常被指為網際網路上其中一個最成功的知識管理系統。 "
-http://simp.ly/p/DGxfVH
+[ghpg]: <https://zh.wikipedia.org/zh-tw/GitHub_Pages> "GitHub Pages是GitHub提供的一個網頁代管服務，於2008年推出[1][2]。可以用於存放靜態網頁，包括部落格、項目文檔[3][1]甚至整本書。[4]Jekyll軟體可以用於將文檔轉換成靜態網頁，該軟體提供了將網頁上傳到GitHub Pages的功能。[5]一般GitHub Pages的網站使用github.io的子域名，但是用戶也可以使用第三方域名。[6] "
+[gh_dt]: <https://desktop.github.com/> " GitHub Desktop, Focus on what matters instead of fighting with Git. Whether you're new to Git or a seasoned user, GitHub Desktop simplifies your development workflow. "
+[gbook]: <https://www.gitbook.com/> "Where technical teams document, GitBook makes it easy to plan, centralize and share knowledge, from start to ship."
