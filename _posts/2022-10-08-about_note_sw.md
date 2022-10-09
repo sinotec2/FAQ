@@ -50,7 +50,7 @@ mermaid: true
   1. 符合前述筆記系統功能需求、同時也是執行程式的[IDE][ide]。
 - [VS Code][vsc_wiki]與[GitHub][gh]的連結
   - 使用[github pages][ghpg]的免費服務資源，作為公開發布筆記之平台。
-  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
+  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code，GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
   - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
 - 整體作業流程
 
