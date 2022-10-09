@@ -30,7 +30,7 @@ modify_date: 2022-10-08 05:16:54
 - 筆記系統不是：
   1. 隨手塗鴉、無法分享的手札
   1. 特殊目的的便利貼app，如記帳、行程約會日誌、
-  1. KM系統、教學平台
+  1. [KM系統][kms]、教學平台
 
 ### 網路介紹文章
 - 要每年寫這種回顧性的文章不容易，畢竟軟體的領域日新月異、江山代有才人出。
@@ -43,13 +43,13 @@ modify_date: 2022-10-08 05:16:54
 
 ### 主打方案
 - 經過筆者近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
-  1. 目前在此領域市佔率最高。GitHub為全球最大程式碼共享平台。
+  1. 目前在此領域市佔率最高。[GitHub][gh]為全球最大程式碼共享平台。
   1. 銜接github.io等等公開分享平台，網站運作穩定、快速
-  1. VSCode有最簡單、完整的編輯界面。
+  1. [VS Code][vsc_wiki]有最簡單、完整的編輯界面。
   1. 符合前述筆記系統功能需求、同時也是執行程式的[IDE][ide]。
-- VScode與GitHub的連結
-  - VSCode就可以直接進行Github的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
-  - Github也提供了網路版的VSCode介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
+- [VS Code][vsc_wiki]與[GitHub][gh]的連結
+  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code | GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)
+  - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
 
 ## word/ppt as note editors
 - 對於不想面對複雜軟體介面的使用者而言，在日常作業環境中就能滿足筆記需求的軟體，似乎是最好與最後的方案。
@@ -72,7 +72,7 @@ modify_date: 2022-10-08 05:16:54
     1. 註腳篇幅太多會壓縮本文。註腳不是鼠標懸停(mouse hover)呈現方式。
 - [圖表參照](https://aries.dyu.edu.tw/~lhuang/class/office/word-gt-directory.htm)
   - word的圖表參照對圖表很多的複雜報告，是一項省時省力的功能。word早先發展了圖檔隨文儲存的作法，不單讓檔案容量倍增，也寵壞了使用者圖檔管理的習慣，好在是提供了參照系統，讓使用者的圖檔管理不會失控。這項功能不利於日常筆記的理由：
-    1. 圖檔並不是文字搜尋的對象，圖檔龐大的word檔案要進行跨文搜尋，會浪費大量記憶體於開關檔案的時間。這不符合一般KM系統、部落格、網頁檔案管理的概念。
+    1. 圖檔並不是文字搜尋的對象，圖檔龐大的word檔案要進行跨文搜尋，會浪費大量記憶體於開關檔案的時間。這不符合一般[KM系統][kms]、部落格、網頁檔案管理的概念。
     1. 筆記系統的關鍵在單純、獨立，圖表也是以精簡、必要性為原則，參照似乎沒有太大的幫助，好的圖名、圖說反而是有利搜尋的作法，而不是參照連結。況且，
     1. 在轉檔發布時，參照可能會消失，還是需要一一重建。
 - [註解](https://support.microsoft.com/zh-hk/office/insert-delete-or-change-a-comment-5cb1af25-4dfe-4484-9713-2c80391ecf12)：
@@ -83,11 +83,11 @@ modify_date: 2022-10-08 05:16:54
     1. 不能同時以不同視窗顯示2種顯示模式，必須寫一段落、切換模式來加以檢查。這在插入圖表時，需要看圖表撰寫討論時，會是個打斷思路的重大瓶頸。
     1. 大綱模式下的字型、整體畫面(版面)太過粗糙，讓人望之卻步，雖然是筆記系統的界面面，應該還有更好的選擇。
 - 分享與發布
-  - 除了列印成書面輸出，Word還能存成pdf檔案、rtf檔案、html網頁、特定部落格(WordPress、SharePoint、TypePad、Telligent Community)等等方式，可供發布。如果有好的發布平台，如[KM系統](https://zh.wikipedia.org/zh-tw/知识管理)、文件管理系統[DMS](https://www.enago.tw/academy/何謂文件管理系統dms？/)，對文件的版本、公開對象、內容摘要等等有進一步的管理，pdf及rtf檔案會是不錯的組合。
+  - 除了列印成書面輸出，Word還能存成pdf檔案、rtf檔案、html網頁、特定部落格(WordPress、SharePoint、TypePad、Telligent Community)等等方式，可供發布。如果有好的發布平台，如[KM系統][kms]、文件管理系統[DMS](https://www.enago.tw/academy/何謂文件管理系統dms？/)，對文件的版本、公開對象、內容摘要等等有進一步的管理，pdf及rtf檔案會是不錯的組合。
     1. 讀者如果要參與協作，很難全抄修改、需要另外的協作系統。
     1. html結果非常不理想。是個連官方都[棄養](https://support.microsoft.com/zh-tw/topic/當您將-word-文件儲存為網頁時的限制-f361de08-ca4c-bc53-11ef-138c0e405c44)的功能。
     1. 大多數的部落客並不使用word內的直接發布，除了格式的問題，主要還有圖檔管理的問題。一般網頁的圖文是分開管理，並不是隨文附圖的概念。（參考[傑哥架站教室2022，高效寫作部落格文章的6個技巧](https://jclassroom.net/6-tips-for-efficient-writing-blog-posts/)）
-    1. 如果沒有好的KM或DMS，發布檔案對讀者來說會有嚴重的版本管理問題。
+    1. 如果沒有好的[KM][kms]或DMS，發布檔案對讀者來說會有嚴重的版本管理問題。
 - 其他word問題
   1. 一般word檔案(報告)會隨著計畫儲存備份，有開案結案的時間、有良好的管理。但是筆記卻是跨計畫、技術核心的屬性，無法隨每個計畫儲存，這是報告、筆記這2類文件最大的差異。
   1. 項目序號更新偶爾會不靈
@@ -112,12 +112,32 @@ modify_date: 2022-10-08 05:16:54
 
 ## [VS Code][vsc_wiki]簡介
 ### [VS Code][vsc_wiki]是什麼
-- 文字編輯軟體、程式編譯與執行界面、檔案總管（[整合開發環境][ide]），有關IDE的習慣、比較與近來的發展，可以參考[這篇中文討論](https://bearask.com/zh-tw/tech/73597.html)、與[英文的完整比較](https://ide.financesonline.com/)、[列表比較](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#Python)
+- (後台)文字編輯軟體、程式編譯與執行界面、檔案總管（[整合開發環境][ide]），
+  1. 有關[IDE][ide]的習慣、比較與近來的發展，可以參考[這篇中文討論](https://bearask.com/zh-tw/tech/73597.html)、與
+  1. [英文的完整比較](https://ide.financesonline.com/)、
+  1. [列表比較](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#Python)
 - MS提供的免費軟體、自由插件平台
-### 特色與必須性
-- 與GitHub平台完全融合、持續共同發展
+- [GitHub][gh]官方指定、推薦、內設連結之[IDE][ide]
+### 為何需要[VS Code][vsc_wiki](特色與必須性)
+- 與[GitHub][gh]平台完全融合、持續共同發展
 - 多種語言自動編譯、執行、預覽。標記式語言(MarkDown)及插件之解析、預覽。
 - 快速跨檔案搜尋、置換
+- 低度記憶體使用，以iMac平台而言，開啟Page需要200MB，開啟VS Code只需60MB。
+- 跨越平台：MS Window、Mac OS、Linux、Web Service（與MS Window有最好的相容性）
+### [VS Code][vsc_wiki]的使用
+- 複製(下拉)遠端Repo
+- 創建本地資料夾與檔案
+- 檔案與目錄之上傳更新
+- Repo全文搜尋、置換
+- 標記式語言(MarkDown)之解析、預覽
+- 插件安裝
+
+### [VS Code][vsc_wiki]的充分特性
+- 熟悉程式發展作業環境，逐步學習程式語言，工作成果、工具數位化、模式化。
+- 與全球優秀資訊人員同步發展
+
+## [GitHub][gh]簡介
+
 
 ## 使用經驗與評論
 ### 主要筆記軟體
@@ -149,5 +169,6 @@ modify_date: 2022-10-08 05:16:54
 [jinrihdelive]: <https://jinrihdeliver.pixnet.net/blog/post/276862136> "今日訊息jinrih,Jan 31 2019【Word教學｜筆記術、閱讀筆記】學習第一步？先學如何做筆記！痞客邦 "
 [ide]: <https://zh.wikipedia.org/zh-tw/集成开发环境> "集成开发环境、整合開發環境"
 [vsc_wiki]: <https://zh.wikipedia.org/wiki/Visual_Studio_Code> "Visual Studio Code（簡稱 VS Code）是一款由微軟開發且跨平台的免費原始碼編輯器[6]。該軟體支援語法突顯、程式碼自動補全（又稱 IntelliSense）、程式碼重構功能，並且內建了命令列工具和 Git 版本控制系統[7]。使用者可以更改佈景主題和鍵盤捷徑實現個人化設定，也可以透過內建的擴充元件程式商店安裝擴充元件以加強軟體功能。"
-
+[gh]: <https://zh.wikipedia.org/zh-tw/GitHub> "GitHub是一個線上軟體原始碼代管服務平台，使用Git作為版本控制軟體，由開發者Chris Wanstrath、P. J. Hyett和湯姆·普雷斯頓·沃納使用Ruby on Rails編寫而成。在2018年，GitHub被微軟公司收購。GitHub同時提供付費帳戶和免費帳戶。這兩種帳戶都可以建立公開或私有的代碼倉庫，但付費使用者擁有更多功能。根據在2009年的Git使用者調查，GitHub是最流行的Git存取站點。[5]除了允許個人和組織建立和存取保管中的代碼以外，它也提供了一些方便社會化共同軟體開發的功能，即一般人口中的社群功能，包括允許使用者追蹤其他使用者、組織、軟體庫的動態，對軟體代碼的改動和bug提出評論等。GitHub也提供了圖表功能，用於概觀顯示開發者們怎樣在代碼庫上工作以及軟體的開發活躍程度。 "
+[kms]: <https://zh.wikipedia.org/zh-tw/知识管理> "知識管理（英語：knowledge management，縮寫為KM）包括一系列企業內部定義、創建、傳播、採用新的知識和經驗的戰略和實踐。這些知識和經驗包括認知，可以是個人知識，以及組織中商業流程或實踐。知識管理是一項在1990年代中期開始在全球崛起的學術與商業應用主題，針對個人及社群所擁有的顯性知識和隱性知識的確認、創造、掌握、使用、分享及傳播進行積極及有效的管理。其主要涵蓋的固有理論及應用層面包括學習型組織、企業文化、資訊科技應用，及人事管理等。而由於知識管理的概念通常與企業的各種改善願景扯上關係，知識管理在現今企業上的實踐愈來愈受到重視，亦因此為顧問和科技公司帶來了不少商機。知識管理在非商業上的應用亦很廣泛，其中維基百科經常被指為網際網路上其中一個最成功的知識管理系統。 "
 http://simp.ly/p/DGxfVH
