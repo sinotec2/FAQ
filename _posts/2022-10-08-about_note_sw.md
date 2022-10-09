@@ -11,6 +11,7 @@ modify_date: 2022-10-08 05:16:54
 mermaid: true
 ---
 ## 背景
+
 ### 功能需求
 - 如題所示，這篇筆記是針對這些年來筆記系統的發展與個人的使用經驗心得。先就筆記系統的重要元件要求條例如下：
   - 介面
@@ -69,6 +70,7 @@ graph LR
   1. [Focus on Air Quality](https://sinotec2.github.io/Focus-on-Air-Quality/)
   1. [Dr. Kuang's Utilities](https://sinotec2.github.io/FAQ/)
   1. [static websites by SINOTEC2](https://sinotec2.github.io/)
+
 ## word/ppt as note editors
 - 對於不想面對複雜軟體介面的使用者而言，在日常作業環境中就能滿足筆記需求的軟體，似乎是最好與最後的方案。
 - 如果這些日常作業軟體功能都還有很多尚待熟悉，使用其他專業軟體似乎就有點捨近求遠了。
@@ -129,6 +131,7 @@ graph LR
   - 沒有人用ppt的備忘稿來寫程式說明文件、至少筆者沒有嘗試、也沒有成功經驗。
 
 ## [VS Code][vsc_wiki]簡介
+
 ### [VS Code][vsc_wiki]是什麼
 - (後台)文字編輯軟體、程式編譯與執行界面、檔案總管（[整合開發環境][ide]），
   1. 有關[IDE][ide]的習慣、比較與近來的發展，可以參考[這篇中文討論](https://bearask.com/zh-tw/tech/73597.html)、與
@@ -136,12 +139,14 @@ graph LR
   1. [列表比較](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#Python)
 - MS提供的免費軟體、自由插件平台
 - [GitHub][gh]官方指定、推薦、內設連結之[IDE][ide]
+
 ### 為何需要[VS Code][vsc_wiki](特色與必須性)
 - 與[GitHub][gh]平台完全融合、持續共同發展
 - 多種語言自動編譯、執行、預覽。標記式語言(MarkDown)及插件之解析、預覽。
 - 快速跨檔案搜尋、置換
 - 低度記憶體使用，以iMac平台而言，開啟Page需要200MB，開啟VS Code只需60MB。
 - 跨越平台：MS Window、Mac OS、Linux、Web Service（與MS Window有最好的相容性）
+
 ### [VS Code][vsc_wiki]的使用
 - 複製(下拉)遠端Repo
 - 創建本地資料夾與檔案
@@ -159,12 +164,14 @@ graph LR
 - 因為是社群媒體網站，發布內容還是以社群可能會有興趣的項目為主。
 - 各國官方程式碼的公開平台，很多也是選擇在[GitHub][gh]發布，其中包括美國環保署、大氣研究聯盟等等。
 - 除了[github pages][ghpg]之外，也開發了[Git Book][gbook]系統，免費提供讓個人使用，讓使用者可以發布正本書的內容。
+
 ### [GitHub][gh]的使用
 1. 登錄會員
 1. 創建新的目錄(Repository)、複製網址（假設名稱為notes）
 1. 貼在本地GitHub DeskTop、創建本地相對應目錄
 1. 開啟[VS Code][vsc_wiki]進行檔案或目錄新增、編寫
 1. 上推至[GitHub][gh]
+
 ### 公開網頁[github pages][ghpg]之創建
 1. 點進前述步驟2.所建立的[GitHub][gh] notes目錄
 1. 按下齒輪 Settings頁面，在左側點進Pages頁面，選擇一個分支(branch)名稱,如main
@@ -173,6 +180,7 @@ graph LR
 1. [GitHub][gh]將會自行將md碼編譯成html，建立相對應的網頁。
 1. 如果前述notes目錄不打算公開，就不必（也不能）設定[github pages][ghpg]
 1. 詳參[Just the Docs](https://github.com/just-the-docs/just-the-docs)
+
 ### [github pages][ghpg]模版之選擇
 - 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
@@ -189,6 +197,7 @@ graph LR
 - 使用範例詳[wiki](https://zh.wikipedia.org/zh-tw/Markdown) 
 
 ## 使用經驗與評論
+
 ### 主要筆記軟體
 - 前述筆記軟體中[Evernote][Evernote]筆者使用時間最長、也成為付費會員，但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
 - [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)，iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
