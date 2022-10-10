@@ -200,7 +200,7 @@ graph LR
 
 ### 主要筆記軟體
 - 前述筆記軟體中[Evernote][Evernote]筆者使用時間最長、也成為付費會員，但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
-- [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)，iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
+- [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)在手寫界面軟體中有非常優秀的表現，其他iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
 - 在程式員領域有人推薦[notion][notion]，但目錄層次不夠，寫了一些也必須放棄。
 - 其他詳細比較條列如下。
 
@@ -208,9 +208,10 @@ graph LR
 
 項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
 -|-|-|-|-
+本地記憶體需求|>1G|<200M|~|<100M
 目錄系統|無|三層|無|無限制
 跨檔案搜尋|快|快|無|快
-格式|自訂|md|pdf|md
+儲存檔案格式|自訂|md|pdf|md
 手寫辨識|無|無|有|無
 程式碼|縮排會亂掉|OK|無|OK
 費用|付費可存3機器以上|付費多存|付費app|免
@@ -218,6 +219,7 @@ url發布|長串隨機碼|長串隨機碼|無|指定目錄
 索引系統|HPL|HPL|無|HPL、ref.、Fig.
 流程圖|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
 
+md:markdown
 HPL：hyperlinks
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
