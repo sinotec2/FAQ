@@ -23,7 +23,7 @@ mermaid: true
     1. 圖、表、公式、(程式碼)、索引系統
   - 儲存、分享、透明度管理
     1. 雲端儲存、異地備援、版本管理。
-    1. 團隊協作時易於分享、URL不要是亂碼。
+    1. 團隊協作時易於分享、URL不能是長亂碼。
     1. 檔案格式容易轉移、修改。
   - 品牌、系列
     1. 系統持續更新。不更新的棄養軟體趁早轉換，然而更新速度如果太快也蠻干擾的。
@@ -163,11 +163,11 @@ graph LR
 - 雖然[GitHub][gh]平台大量提供了有關程式碼的支援，包括版本管理、協作系統、論壇、以及程式說明的發布網站([github pages][ghpg])等等，但也有不少人運用在一般性網誌的發布、程式教學的互動平台。
 - 因為是社群媒體網站，發布內容還是以社群可能會有興趣的項目為主。
 - 各國官方程式碼的公開平台，很多也是選擇在[GitHub][gh]發布，其中包括美國環保署、大氣研究聯盟等等。
-- 除了[github pages][ghpg]之外，也開發了[Git Book][gbook]系統，免費提供讓個人使用，讓使用者可以發布正本書的內容。
+- 除了[github pages][ghpg]之外，也開發了[Git Book][gbook]系統，免費提供讓個人使用，讓使用者可以發布整本書的內容。
 
 ### [GitHub][gh]的使用
 1. 登錄會員
-1. 創建新的目錄(Repository)、複製網址（假設名稱為notes）
+1. 創建新的目錄(Repository)、設定開放對象、複製網址（假設名稱為notes）
 1. 貼在本地GitHub DeskTop、創建本地相對應目錄
 1. 開啟[VS Code][vsc_wiki]進行檔案或目錄新增、編寫
 1. 上推至[GitHub][gh]
@@ -176,7 +176,7 @@ graph LR
 1. 點進前述步驟2.所建立的[GitHub][gh] notes目錄
 1. 按下齒輪 Settings頁面，在左側點進Pages頁面，選擇一個分支(branch)名稱,如main
 ,並在root處鍵入新io網頁的名稱（如docs）,按下save之後，系統將會建立https://USERNAME.github.io/notes 網頁
-1. 複製網頁模版到本地目錄，修改成正確的url，將其上推至[GitHub][gh]。
+1. 複製網頁模版到本地暫存目錄、貼到本地Repository目錄，將所有個別帳戶名稱處都修改成正確的url，再將其上推至[GitHub][gh]。
 1. [GitHub][gh]將會自行將md碼編譯成html，建立相對應的網頁。
 1. 如果前述notes目錄不打算公開，就不必（也不能）設定[github pages][ghpg]
 1. 詳參[Just the Docs](https://github.com/just-the-docs/just-the-docs)
