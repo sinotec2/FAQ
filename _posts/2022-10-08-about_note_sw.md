@@ -184,6 +184,9 @@ graph LR
 ### [github pages][ghpg]模版之選擇
 - 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
+### [GitHub][gh]的缺點
+- .md檔案可以直接在Repository中呈現，但在公開的Github Pages上呈現會需要編譯部署的時間，複雜的系統可能會花費到5 ～ 10 分鐘以上。
+
 ## 標記式(MarkDown)語言
 - 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。
 - 這些格式包括
@@ -194,7 +197,7 @@ graph LR
   1. 連結[ ]\( )、註釋引用[ ][ \]，註釋內容 [ ]: < url> "content"
   1. 圖形、表格等
   1. 公式
-- 使用範例詳[wiki](https://zh.wikipedia.org/zh-tw/Markdown) 
+- 使用範例詳[wiki](https://zh.wikipedia.org/zh-tw/Markdown) 、[Mac範例](https://teshenglin.github.io/post/2019_markdown/)、[markdown math 数学公式语法](https://blog.csdn.net/dss_dssssd/article/details/82692894)
 
 ## 使用經驗與評論
 
@@ -206,9 +209,10 @@ graph LR
 
 ### 使用經驗評論列表
 
-項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]
--|-|-|-|-
+項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]+[GitHub][gh]
+:-:|:-:|:-:|:-:|:-:
 本地記憶體需求|>1G|<200M|~|<100M
+網頁界面|有|有|無|有
 目錄系統|無|三層|無|無限制
 跨檔案搜尋|快|快|無|快
 儲存檔案格式|自訂|md|pdf|md
@@ -218,9 +222,10 @@ graph LR
 url發布|長串隨機碼|長串隨機碼|無|指定目錄
 索引系統|HPL|HPL|無|HPL、ref.、Fig.
 流程圖|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
+公式|圖形|無|手寫|有
 
-md:markdown
-HPL：hyperlinks
+- md:markdown
+- HPL：hyperlinks
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
 [Shining Chan, 2021]: <https://glints.com/tw/blog/note-taking-software-recommendation/> " Shining Chan, 2021 職涯成長->技能提升->工具->筆記軟體是什麼？有什麼優點？2021年7大實用筆記軟體推薦"
