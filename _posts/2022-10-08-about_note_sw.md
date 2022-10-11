@@ -57,7 +57,7 @@ mermaid: true
   - 使用[github pages][ghpg]的免費服務資源，作為公開發布筆記之平台。
   - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code，GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
   - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
-- 整體作業流程(如果圖形無法顯示請看[這裡](https://github.com/sinotec2/FAQ/blob/main/_posts/2022-10-08-about_note_sw.md#主打方案))
+- 整體作業流程(如果圖形無法顯示請看[這裡](https://github.com/sinotec2/FAQ/blob/main/_posts/2022-10-08-about_note_sw.md#本文主打方案))
 
 ```mermaid
 graph LR
@@ -217,6 +217,7 @@ graph LR
 - [玉樹芝蘭2017,如何用Markdown寫(學術)論文？](https://kknews.cc/zh-tw/education/rpgy9vv.html)
 
 ## 使用經驗與評論
+- 此處討論對象以完整的筆記軟體系統(editor+filesystem)為主，前述僅半套的word/ppt作法則不予列表討論。
 
 ### 主要筆記軟體
 - 前述筆記軟體中[Evernote][Evernote]筆者使用時間最長、也成為付費會員，但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
