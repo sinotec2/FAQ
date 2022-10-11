@@ -13,17 +13,18 @@ mermaid: true
 ## 背景
 
 ### 功能需求
-- 如題所示，這篇筆記是針對這些年來筆記系統的發展與個人的使用經驗心得。先就筆記系統的重要元件要求條例如下：
+- 如題所示，這篇筆記是針對這些年來筆記系統的發展與個人的使用經驗心得。先就筆記系統的重要元件及功能要求、條例如下：
   - 介面
     1. 容易操作、容易上手、軟體介面親人性
     1. 中文化輸入、輸出
     1. 有簡潔的顯示版面，最好可以直接展示、用在簡報、教學，不必另外做ppt檔案。
     1. 項目符號、自動排序
   - 索引系統
-    1. 目錄系統：文章內、外；無限制、多層次目錄；目錄展開、合併
+    1. 目錄系統：文章內、外；無限制、多層次目錄；目錄要能展開、合併
     1. 時間標籤：文件創始、文件修改日期時間
     1. 跨檔全文搜尋、置換、關鍵字索引系統
     1. 圖、表、公式、(程式碼)、索引系統
+    1. (再)訪問次數記錄
   - 儲存、分享、透明度管理
     1. 雲端儲存、異地備援、版本管理。
     1. 團隊協作時易於分享、URL不能是長亂碼。
@@ -32,10 +33,10 @@ mermaid: true
     1. 系統持續更新。不更新的棄養軟體趁早轉換，然而更新速度如果太快也蠻干擾的。
     1. 市佔高、主流化
     1. 系列其他產品功能
-- 筆記系統不是：
+- 筆記系統不是(不能取代)：
   1. 隨手塗鴉、無法分享的手札
   1. 特殊目的的便利貼app，如記帳、行程約會日誌、
-  1. [KM系統][kms]、教學平台
+  1. 完整功能的[KM系統][kms]、教學平台
 
 ### 網路介紹文章
 - 要每年寫這種回顧性的文章不容易，畢竟軟體的領域日新月異、江山代有才人出。
@@ -46,7 +47,7 @@ mermaid: true
   - 因為是職涯發展公司，介紹的多半是工作筆記，包括了一、[Evernote][Evernote]，二、Microsoft [OneNote][onenote]，三、[Notion][notion]，四、Google [Keep][keep]，五、[GoodNotes][GoodNotes]，六、Notability，七、[SimpleNote][SimpleNote]。
   - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
 
-### 主打方案
+### 本文主打方案
 - 經過近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
   1. 目前在此領域市佔率最高。[GitHub][gh]為全球最大程式碼共享平台。
   1. 銜接github.io等等公開分享平台，網站運作穩定、快速
@@ -92,7 +93,7 @@ graph LR
 - [註腳、章節附註、參考文獻](https://support.microsoft.com/zh-tw/office/插入註腳與章節附註-61f3fb1a-4717-414c-9a8f-015a5f3ff4cb)
   - Word的註腳參照是個優秀的功能，除了正式的參考文獻之外，也能將重要的註釋、連結訊息等等，都放在這個區塊內，讀者可以追蹤相關訊息、並且不會干擾本文的閱讀。編號也是自動排序，不必擔心插入刪減之後會跳號。如果將太過細節的訊息(檔案目錄、縮寫全名、名詞解釋或定義、法規摘錄等等)放在註腳之內，對讀者來說，會輕鬆很多。搜尋時，word也會搜尋註腳內容。仍可以挑剔的是：
     1. 轉檔過程註腳參照、連結等有可能會消失
-    1. 註腳篇幅太多會壓縮本文。註腳不是鼠標懸停(mouse hover)呈現方式。
+    1. 註腳篇幅太多會壓縮本文。註腳不是鼠標懸停([mouse hover][hover])呈現方式。
 - [圖表參照](https://aries.dyu.edu.tw/~lhuang/class/office/word-gt-directory.htm)
   - word的圖表參照對圖表很多的複雜報告，是一項省時省力的功能。word早先發展了圖檔隨文儲存的作法，不單讓檔案容量倍增，也寵壞了使用者圖檔管理的習慣，好在是提供了參照系統，讓使用者的圖檔管理不會失控。這項功能不利於日常筆記的理由：
     1. 圖檔並不是文字搜尋的對象，圖檔龐大的word檔案要進行跨文搜尋，會浪費大量記憶體於開關檔案的時間。這不符合一般[KM系統][kms]、部落格、網頁檔案管理的概念。
@@ -188,17 +189,19 @@ graph LR
 - 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
 ### 本地git界面的選擇
-- [git][git]作為是遠端與本地檔案及版本管理的程式，可以在任何unix-like界面、window命令列上執行，同時也有多個界面軟體可供選擇。如(詳[DEVART, 2021, Best Git GUI Clients for Windows](https://blog.devart.com/best-git-gui-clients-for-windows.html))：
+- [git][git]作為是遠端與本地檔案及版本管理的程式，可以在任何unix-like界面、window命令列上執行，同時也有多個界面軟體可供選擇。如(參[DEVART, 2021, Best Git GUI Clients for Windows](https://blog.devart.com/best-git-gui-clients-for-windows.html))：
   1. [GitHub Desktop](https://desktop.github.com/)
-  1. [https://git-scm.com/][https://git-scm.com/]
+  1. 其他[GUI Clients](https://git-scm.com/downloads/guis) tools
   1. [SmartGit](https://www.syntevo.com/smartgit/)
 - 選擇[GitHub Desktop](https://desktop.github.com/)的理由
+  1. [VS Code][vsc_wiki]內部的git功能會需要最新的.Net程式與設定，需要更新windown版本，這對本地作業平台的管理是項挑戰。因此[VS Code][vsc_wiki]外部簡易的git GUI有其必要。
   1. GitHub官方維護、發展、推荐
   1. 如果是單一檔案的更新，會自動代出檔案名稱作為更新批次標籤
   1. 記憶體需求量低
-  
+
 ### [GitHub][gh]的缺點
 - .md檔案可以直接在Repository中呈現，但在公開的Github Pages上呈現會需要編譯部署的時間，複雜的系統可能會花費到5 ～ 10 分鐘以上。
+- 下班時間公司會關閉[GitHub][gh]部分功能、不能進行檔案更新上載。對於長時間工作的程式發展者而言是項嚴重的限制。
 
 ## 標記式(MarkDown)語言
 - 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。
@@ -260,3 +263,4 @@ url發布|長串隨機碼|長串隨機碼|無|指定目錄
 [gh_dt]: <https://desktop.github.com/> " GitHub Desktop, Focus on what matters instead of fighting with Git. Whether you're new to Git or a seasoned user, GitHub Desktop simplifies your development workflow. "
 [gbook]: <https://www.gitbook.com/> "Where technical teams document, GitBook makes it easy to plan, centralize and share knowledge, from start to ship."
 [git]: <https://backlog.com/git-tutorial/tw/intro/intro1_1.html> "git是一個分散式版本控制軟體，最初由林納斯·托瓦茲創作，於2005年以GPL授權條款釋出。最初目的是為了更好地管理Linux核心開發而設計。應注意的是，這與GNU Interactive Tools不同。 git最初的開發動力來自於BitKeeper和Monotone。"
+[hover]: <> "滑鼠滑到反白處即顯示註釋文字"
