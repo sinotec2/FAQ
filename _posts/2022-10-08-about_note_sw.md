@@ -78,7 +78,7 @@ graph LR
 ## word/ppt as note editors
 - 對於不想面對複雜軟體介面的使用者而言，在日常作業環境中就能滿足筆記需求的軟體，似乎是最好與最後的方案。
 - 如果這些日常作業軟體功能都還有很多尚待熟悉，使用其他專業軟體似乎就有點捨近求遠了。
-  - 例如最常用來作為README、release note檔案的格式，其實是txt，這是迄今每個程式發布時最常用到的格式。簡單的wordpad、小作家、[vim](https://zh.wikipedia.org/zh-tw/Vim)就能達到寫作這類筆記的功能。
+  - 例如最常用來作為README、release note檔案的格式，其實是`.txt`，這是迄今每個程式發布時最常用到的格式。簡單的wordpad、小作家、[vim](https://zh.wikipedia.org/zh-tw/Vim)就能達到寫作這類筆記的功能。
 - 此處介紹2種常用軟體作為筆記系統的實例。
 
 ### MS Word
@@ -107,11 +107,11 @@ graph LR
     1. 不能同時以不同視窗顯示2種顯示模式，必須寫一段落、切換模式來加以檢查。這在插入圖表時，需要看圖表撰寫討論時，會是個打斷思路的重大瓶頸。
     1. 大綱模式下的字型、整體畫面(版面)太過粗糙，讓人望之卻步，雖然只是用做筆記系統的界面，但應該還有更好的選擇。
 - 分享與發布
-  - 除了列印成書面輸出，Word還能存成pdf檔案、rtf檔案、html網頁、特定部落格(WordPress、SharePoint、TypePad、Telligent Community)等等方式，可供發布。如果有好的發布平台，如[KM系統][kms]、文件管理系統[DMS](https://www.enago.tw/academy/何謂文件管理系統dms？/)，對文件的版本、公開對象、內容摘要等等有進一步的管理，pdf及rtf檔案會是不錯的組合。
+  - 除了列印成書面輸出，Word還能存成pdf檔案、rtf檔案、html網頁、特定部落格(WordPress、SharePoint、TypePad、Telligent Community)等等方式，可供發布。如果有好的發布平台，如[KM系統][kms]、文件管理系統[DMS][dms]，對文件的版本、公開對象、內容摘要等等有進一步的管理，pdf及rtf檔案會是不錯的組合。
     1. 讀者如果要參與協作，很難全抄修改、需要另外的協作系統。
     1. html結果非常不理想。是個連官方都[棄養](https://support.microsoft.com/zh-tw/topic/當您將-word-文件儲存為網頁時的限制-f361de08-ca4c-bc53-11ef-138c0e405c44)的功能。
     1. 大多數的部落客並不使用word內的直接發布，除了格式的問題，主要還有圖檔管理的問題。一般網頁的圖文是分開管理，並不是隨文附圖的概念。（參考[傑哥架站教室2022，高效寫作部落格文章的6個技巧](https://jclassroom.net/6-tips-for-efficient-writing-blog-posts/)）
-    1. 如果沒有好的[KM][kms]或DMS，發布檔案對讀者來說會有嚴重的版本管理問題。
+    1. 如果沒有好的[KM][kms]或[DMS][dms]，發布檔案對讀者來說會有嚴重的版本管理問題。
 - 其他word問題
   1. 一般word檔案(報告)會隨著計畫儲存備份，有開案結案的時間、有良好的管理。但是筆記卻是跨計畫、技術核心的屬性，無法隨每個計畫儲存，這是報告、筆記這2類文件最大的差異。
   1. 項目序號更新偶爾會不靈
@@ -179,7 +179,7 @@ graph LR
 ### 公開網頁[github pages][ghpg]之創建
 1. 點進前述步驟2.所建立的[GitHub][gh] notes目錄
 1. 按下齒輪 Settings頁面，在左側點進Pages頁面，選擇一個分支(branch)名稱,如main
-,並在root處鍵入新io網頁的名稱（如docs）,按下save之後，系統將會建立https://USERNAME.github.io/notes 網頁
+,並在root處鍵入新io網頁的名稱（如`docs`）,按下save之後，系統將會建立https://USERNAME.github.io/notes 網頁
 1. 複製網頁模版到本地暫存目錄、貼到本地Repository目錄，將所有個別帳戶名稱處都修改成正確的url，再將其上推至[GitHub][gh]。
 1. [GitHub][gh]將會自行將md碼編譯成html，建立相對應的網頁。
 1. 如果前述notes目錄不打算公開，就不必（也不能）設定[github pages][ghpg]
@@ -204,7 +204,7 @@ graph LR
 - 下班時間公司會關閉[GitHub][gh]部分功能、不能進行檔案更新上載。對於長時間工作的程式發展者而言是項嚴重的限制。
 
 ## 標記式(MarkDown)語言
-- 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。
+- 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。如果要讓筆記軟體不佔據大量的記憶體、又能呈現必要的文件格式，會需要較文字檔`.txt`略為複雜、又比`.doc`、`.rtf`等特殊軟體格式簡略一些的文件檔案格式。
 - 這些格式包括
   1. 章節標題（用井字號#的個數定義層級）
   1. 項目符號(-或*)、序號(1.)
@@ -214,6 +214,7 @@ graph LR
   1. 圖形、表格等
   1. 公式
 - 使用範例詳[wiki](https://zh.wikipedia.org/zh-tw/Markdown) 、[Mac範例](https://teshenglin.github.io/post/2019_markdown/)、[markdown math 数学公式语法](https://blog.csdn.net/dss_dssssd/article/details/82692894)
+- [玉樹芝蘭2017,如何用Markdown寫(學術)論文？](https://kknews.cc/zh-tw/education/rpgy9vv.html)
 
 ## 使用經驗與評論
 
@@ -264,3 +265,4 @@ url發布|長串隨機碼|長串隨機碼|無|指定目錄
 [gbook]: <https://www.gitbook.com/> "Where technical teams document, GitBook makes it easy to plan, centralize and share knowledge, from start to ship."
 [git]: <https://backlog.com/git-tutorial/tw/intro/intro1_1.html> "git是一個分散式版本控制軟體，最初由林納斯·托瓦茲創作，於2005年以GPL授權條款釋出。最初目的是為了更好地管理Linux核心開發而設計。應注意的是，這與GNU Interactive Tools不同。 git最初的開發動力來自於BitKeeper和Monotone。"
 [hover]: <> "滑鼠滑到反白處即顯示註釋文字"
+[dms]: <https://www.enago.tw/academy/何謂文件管理系統dms？/> "enago.tw/academy/何謂文件管理系統dms？"
