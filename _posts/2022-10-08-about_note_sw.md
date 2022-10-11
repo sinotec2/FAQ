@@ -187,6 +187,16 @@ graph LR
 ### [github pages][ghpg]模版之選擇
 - 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
+### 本地git界面的選擇
+- [git][git]作為是遠端與本地檔案及版本管理的程式，可以在任何unix-like界面、window命令列上執行，同時也有多個界面軟體可供選擇。如(詳[DEVART, 2021, Best Git GUI Clients for Windows](https://blog.devart.com/best-git-gui-clients-for-windows.html))：
+  1. [GitHub Desktop](https://desktop.github.com/)
+  1. [https://git-scm.com/][https://git-scm.com/]
+  1. [SmartGit](https://www.syntevo.com/smartgit/)
+- 選擇[GitHub Desktop](https://desktop.github.com/)的理由
+  1. GitHub官方維護、發展、推荐
+  1. 如果是單一檔案的更新，會自動代出檔案名稱作為更新批次標籤
+  1. 記憶體需求量低
+  
 ### [GitHub][gh]的缺點
 - .md檔案可以直接在Repository中呈現，但在公開的Github Pages上呈現會需要編譯部署的時間，複雜的系統可能會花費到5 ～ 10 分鐘以上。
 
@@ -249,3 +259,4 @@ url發布|長串隨機碼|長串隨機碼|無|指定目錄
 [ghpg]: <https://zh.wikipedia.org/zh-tw/GitHub_Pages> "GitHub Pages是GitHub提供的一個網頁代管服務，於2008年推出[1][2]。可以用於存放靜態網頁，包括部落格、項目文檔[3][1]甚至整本書。[4]Jekyll軟體可以用於將文檔轉換成靜態網頁，該軟體提供了將網頁上傳到GitHub Pages的功能。[5]一般GitHub Pages的網站使用github.io的子域名，但是用戶也可以使用第三方域名。[6] "
 [gh_dt]: <https://desktop.github.com/> " GitHub Desktop, Focus on what matters instead of fighting with Git. Whether you're new to Git or a seasoned user, GitHub Desktop simplifies your development workflow. "
 [gbook]: <https://www.gitbook.com/> "Where technical teams document, GitBook makes it easy to plan, centralize and share knowledge, from start to ship."
+[git]: <https://backlog.com/git-tutorial/tw/intro/intro1_1.html> "git是一個分散式版本控制軟體，最初由林納斯·托瓦茲創作，於2005年以GPL授權條款釋出。最初目的是為了更好地管理Linux核心開發而設計。應注意的是，這與GNU Interactive Tools不同。 git最初的開發動力來自於BitKeeper和Monotone。"
