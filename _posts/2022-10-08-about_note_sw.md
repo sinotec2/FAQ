@@ -17,9 +17,11 @@ mermaid: true
   - 介面
     1. 容易操作、容易上手、軟體介面親人性
     1. 中文化輸入、輸出
-    1. 目錄系統：文章內、外；無限制、多層次目錄、
+    1. 目錄系統：文章內、外；無限制、多層次目錄；目錄展開、合併
+    1. 項目符號、自動排序
+    1. 時間標籤：文件創始、文件修改日期時間
     1. 有簡潔的顯示版面，最好可以直接展示、用在簡報、教學，不必另外做ppt檔案。
-    1. 跨文搜尋、置換、關鍵字索引系統
+    1. 跨檔全文搜尋、置換、關鍵字索引系統
     1. 圖、表、公式、(程式碼)、索引系統
   - 儲存、分享、透明度管理
     1. 雲端儲存、異地備援、版本管理。
@@ -53,7 +55,7 @@ mermaid: true
   - 使用[github pages][ghpg]的免費服務資源，作為公開發布筆記之平台。
   - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code，GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
   - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
-- 整體作業流程
+- 整體作業流程(如果圖形無法顯示請看[這裡](https://github.com/sinotec2/FAQ/blob/main/_posts/2022-10-08-about_note_sw.md#主打方案))
 
 ```mermaid
 graph LR
