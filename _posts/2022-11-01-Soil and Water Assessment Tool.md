@@ -1,5 +1,5 @@
 ---
-title: SWAT 
+title: SWAT(Soil and Water Assessment Tool) 
 tags: 
 layout: article
 aside:
@@ -10,8 +10,7 @@ date:  2022-11-03
 modify_date: 2022-11-03 15:00:29
 ---
 
-### SWAT official [site](https://swat.tamu.edu/)
-
+## Literatural Reviews
 ### SWAT model([Rahman et al. 2022][Rahman et al. 2022])
 - The SWAT model 
   - is a process-based semi-distributed, Hydrological Response Unit (HRU)-based, spatially explicit, and time-continuous hydrological model developed by the agricultural research service of the United States Department of Agriculture ([Arnold et al. 1998][Arnold et al. 1998]). 
@@ -87,12 +86,6 @@ USDAARS）的 Jeff Arnold 博士所開發，是一個具有物理機制，須參
 - [Sushil Kumar Himanshu et al.(2017)][Himanshu et al.(2017)]應用 SWAT 模式評估印度中部流域的流量、泥砂量與水平衡，其根據不同的土地利用、土壤與坡度，將整個流域劃分成 10 個子集水區，其中包括 143 個水文響應單元(Hydrological Response Units, HRU)，並分別對1985 年至 1995 年和 1996 年至 2005 年的流量和泥砂觀測資料，進行日與月的檢定驗證。結果顯示，流量日檢定與日驗證的判定係數分別為 0.766 和 0.780，月檢定和月驗證的判定係數分別為 0.946 和 0.959；泥砂日檢定與日驗證的判定係數分別為 0.429和 0.379，月檢定和月驗證的判定係數分別為 0.748 和 0.721，而蒸發散量占全流域年平均降水量的 44.6%，顯示 SWAT 模式有能力成功地預測流量和泥砂，並且可用此模式進一步針對水量平衡進行研究。
 - [Anna Malago et al.(2017)][Malago et al.(2017)]使用 SWAT 模式模擬多瑙河流域的水文和營養鹽，以1995 年至 2009 年的多個測站觀測資料進行檢定驗證。結果顯示在檢定和驗證期間，分別約有 70%和 61%的月流量站達到令人滿意的結果，而營養鹽方面，儘管 SWAT
 不能準確地反應反硝化過程的空間變異性，但硝酸鹽氮的月濃度與觀測結果非常吻合，且總氮和總磷也被很好的模擬。透過模式的模擬結果，可作為決策者對集水區管理的參考依據。
-- [林子平等人(2016)][林子平等人(2016)]、[林子平(2016)][林子平(2016)]
-  - 應用 SWAT 模式評估臺灣大屯區流域之未來土地利用改變與氣候變遷情境下，對於流量造成的衝擊。其使用近未來(2020 年至 2039 年)時段之土地利用改變情形和氣象資料，輸入 SWAT 模式模擬土地利用改變、氣候條件改變及土地利用與氣候條件同時改變，三種情況下對大屯溪流域之流量造成的影響。
-  - 結果顯示，
-    - 在大屯溪流域土地利用改變僅略微影響流量，氣候條件改變才是影響流量的主要因素，
-    - 另外，流量型態在時間上也有改變的情形，高流量月份由原本的 9 到 11 月提前至 8
-到 10 月，而低流量發生月份也由 7 月改變至 3 月及 4 月，因此氣候變遷和土地利用變化帶來的影響，對於未來水資源調配與管理，將是一項嚴峻的挑戰。
 - [范麗麗等人(2008)][范麗麗等人(2008)]
   - 應用 SWAT 模式模擬位於三峽庫區大寧河流域的非點源汙染負荷，使用巫溪水文站 2000 年至 2004 年的實測日流量與泥砂進行模式檢定驗證。
   - 研究結果顯示，月平均流量和月泥砂量的檢定和驗證的相關係數分別均在 0.83 和 0.73 以上，而效率係數分別皆在 0.78 及 0.66 以上。
@@ -145,20 +138,30 @@ USDAARS）的 Jeff Arnold 博士所開發，是一個具有物理機制，須參
     - (2) the d-factor, which is the ratio of the average distance between the above percentiles and the standard deviation of the corresponding measured variable. 
     - These statistics showed excellent results for discharge and nitrate and quite good results for sediment and total phosphorous.
 
-### 應用SWAT模式結合最大熵法模擬灌溉配水過程 ([李佳穎(2018)][李佳穎(2018)])
+#### 應用SWAT模式結合最大熵法模擬灌溉配水過程 ([李佳穎(2018)][李佳穎(2018)])
 - nnAGNPS and SWAT ([Parajuli et al. 2009][Parajuli et al. 2009])
 - SWAT and GWLF ([Qi et al. 2017][Qi et al. 2017])
 - MODELLING OF CROP WATER DEMAND USING SWAT ([Singh and Singh 2016][Singh and Singh 2016])
 - Streamflow prediction uncertainty ([Yesuf et al. 2016][Yesuf et al. 2016])
 
+#### 氣候變遷與土地利用變遷對水文服務的影響([陳珮琦(2017)][陳珮琦(2017)])
 
+#### 地下水資源開發及海水入侵([張祉凱(2017)][張祉凱(2017)])
 
-闕亦吟,范致豪 (2018). 河川中懸浮固體的流布對水體與底泥中重金屬銅傳輸的影響 生物環境系統工程學研究所. 國立臺灣大學, 台北市.
-張祉凱,譚義績 (2017). 發展複合型地下水數值模式評析地下水資源開發及海水入侵 生物環境系統工程學研究所. 國立臺灣大學, 台北市.
-陳珮琦,林裕彬 (2017). 氣候變遷與土地利用變遷對水文服務的影響-以大屯溪流域為例 生物環境系統工程學研究所. 國立臺灣大學, 台北市.
+#### [林子平等人(2016)][林子平等人(2016)]、[林子平(2016)][林子平(2016)]
+- 應用 SWAT 模式評估臺灣大屯區流域之未來土地利用改變與氣候變遷情境下，對於流量造成的衝擊。其使用近未來(2020 年至 2039 年)時段之土地利用改變情形和氣象資料，輸入 SWAT 模式模擬土地利用改變、氣候條件改變及土地利用與氣候條件同時改變，三種情況下對大屯溪流域之流量造成的影響。
+- 結果顯示，
+  - 在大屯溪流域土地利用改變僅略微影響流量，氣候條件改變才是影響流量的主要因素，
+  - 另外，流量型態在時間上也有改變的情形，高流量月份由原本的 9 到 11 月提前至 8到 10 月，而低流量發生月份也由 7 月改變至 3 月及 4 月，因此氣候變遷和土地利用變化帶來的影響，對於未來水資源調配與管理，將是一項嚴峻的挑戰。
 
+### 水質管理
+#### 河川SS對水體與底泥中重金屬銅傳輸的影響 ([闕亦吟(2018)][闕亦吟(2018)])
 
 ## 生工系江莉琦教授及其團隊
+- 江教授為環保署[110年度土壤及地下水污染整治基金補助研究與模場試驗專案][江莉琦2022]主持人
+
+[江莉琦2022]: <https://srfs.epa.gov.tw/Web/FileDownload.ashx?file=Finalized_20220401170959.pdf> "國立臺灣大學／生物環境系統工程學系江莉琦 副教授 (2022). 農用渠道底泥重金屬傳輸機制與電解還原法整治技術之研析 (期末報告（定稿） No. LAB-R-I-H1-M), 110年度土壤及地下水污染整治基金補助研究與模場試驗專案. 行政院環境保護署, 台北市."
+
 ### SWAT-Paddy
 #### 探討SWAT模式應用於台灣水田水文模擬之適宜性([黃俊壹2022][黃俊壹2022])
 - 桃園市為北台灣第二大水稻生產區，其中，南崁溪流域為重要水稻灌區之一，緻密的灌溉渠道網絡提供該地區穩定的灌溉水源。目前國內在水田灌溉管理操作之研究中，尚未有利用水文模式評估水田灌溉管理策略對整體流域之水資源影響，而在使用模式模擬研究進行前，應優先評估模式應用於研究區域是否適用。因此，本研究將利用SWAT水文模式對南崁溪流域進行水文模擬，透過比較灌溉排水操作、評估水田水文特性模擬結果、計算水田之水平衡等，以了解水文模式SWAT模擬水田之水文機制，並評估模式應用於臺灣兩期作水田水文模擬之適宜性分析。
@@ -289,6 +292,93 @@ USDAARS）的 Jeff Arnold 博士所開發，是一個具有物理機制，須參
     - [Chang et al.(2015)][Chang et al. 2015]利用 SWAT 模式模擬高屏溪因莫拉克颱風所導致之輸砂、含砂量變化，並利用衛星影像判1994~2012 年之崩塌地變遷情形，雖然模型對流量的模擬是令人滿意的，但輸砂量有低估的狀況，而在逐年更新崩塌區域，增加模擬之輸砂量後，模擬結果仍然低估，因此建議SWAT 模式應考慮崩塌地及崩塌事件發生後對河川輸砂的長遠影響。
 
 
+## 中國相關研究
+#### 2000—2021年农田土壤污染领域研究进展与前沿分析([王成尘 et al. 2022][王成尘 et al. 2022])
+
+```
+重金属(Heavymetal)、农业灌溉(Agriculturalirrigation)、有机氯农药(Organochlorinepesticides)、富营养化(Eutrophication)、水土流失评估工具(Soil and water assessment tool,SWAT )、多 环 芳 烃 (PAHs)、磷(Phosphorus)、聚合酶链式反应(PCR)和硝酸盐(Nitrate)为 排 名 前 9 位 的 标 签,代 表 了 本领域2000—2021年的主要研究内容及发展方向。
+大部分聚类标签与农田土壤污染有直接联系,其中,重金属、农业灌溉、富营养化和SWAT 聚类规模较大,体
+现了这些研究方向在农田土壤污染领域的突出地位。
+```
+
+```
+2.4.5 聚类#4:水土流失评估工具
+本聚类是一种农田土壤污染的研究方法,该聚类规模较大,体现了SWAT 在农田土壤污染领域的突出地位。SWAT 是一种应用广泛的基于流域和连续时间尺度的流域水文和水质模型[43],近年来得到了广泛的应用和发展。其主要是基于 GIS提供的空间信息,模拟多种流域水文的物理化学过程,如水质、水量、灌溉、粮食产粮、洪水和干旱、农业面源污染(磷、硝酸盐扩散)、气候影响评估、土地利用和杀虫剂的迁移转化过程等[44],有助于更好地理解环境变化带来的各种挑战以及对水、粮食安全和环境质量的相关影响。与此同时,SWAT 拥有专属的技术支持论坛服务于全球用户社区,促进其全球应用发展。
+```
+- [43] [Arnold et al. 1998][Arnold et al. 1998]
+- [44]`SamimiM,MirchiA,MoriasiD,AhnS,AlianS,Taghvaeian S,ShengZP. Modeling arid/semi-arid irrigated agricultural watersheds with SWAT: Applications, challenges, and solution strategies[J].Journalof Hydrology,2020,590:125418`
+
+```
+从2000年开始的关键词有 Runoff、Nitrate、Losse、Atrazine、Simulation 和 Nonpoint source
+pollution,表明21世纪初,在农田土壤污染领域的研究热点 为 径 流、硝 态 氮、阿 特 拉 津 (1 种 除 草 剂名)、模拟和非点源污染等,大部分关键词直接对应了文献共被引聚类分析的聚类#1农业灌溉、聚类#4SWAT 模型和聚类#8硝酸盐的相关研究内容。
+关键词突显强度代表该关键词的高关注度。其中突显强度较 高 的 有 Healthrisk(突 显 强 度 =97.28,
+2018—2021)、Sourceapportionment(突 显 强 度 =63.32,2018—2021)和 Biochar(61.64,2017—2021)
+等,时间皆延续至今,表明当前的研究热点为农田土壤污染的健康风险、源解析和生物炭修复。
+```
+[王成尘 et al. 2022]: <http://zgnydxxb.ijournals.cn/zgnydxxb/ch/reader/create_pdf.aspx?file_no=20220218> "王成尘, 田稳, 马娇阳, 保欣晨, 邓志华, and 向萍 (2022). 2000—2021年农田土壤污染领域研究进展与前沿分析. 中国农业大学学报 27 (2):186–201. doi:10.11841/j.issn.1007-4333.2022.02.18."
+
+### [杨宝林 et al. 2016][杨宝林 et al. 2016]這篇有詳細執行過程的介紹
+
+```
+[3]	张皓天, 张弛, 周惠成, 等. 基于SWAT 模型的流域非点源污染模拟[J]. 河海大学学报(自然科学版), 2010, 38(6): 644–650.
+Zhang Haotian, Zhang Chi, Zhou Huicheng, et al. Simulation of non-point source pollution in watershed based on SWAT model[J]. Journal of Hohai University( Natural Sciences), 2010, 38(6): 644–650.
+[4]	唐达方, 刘薇, 王翠文. SWAT模型在丘陵地区的非点源污染模拟研究[J]. 水利科技与经济, 2010, 16(11): 1267–1270.
+Tang Dafang, Liu Wei, Wang Cuiwen. Simulation and application of non-point source pollution based on SWAT model in hilly area[J]. Water Conservancy Science and Technology and Economy, 2010, 16(11): 1267–1270.
+[5]	吴春玲. 基于分布式水文模型 SWAT 的非点源关键源区识别[J]. 广东水利水电, 2013(1): 37–41.
+Wu Chunling. Identifying the key non-point source area based on distributed hydrological model SWAT model[J]. Guangdong Water Resources and Hydropower, 2013(1): 37–41.
+[6]	李家科, 刘健, 秦耀民, 等. 基于 SWAT模型的渭河流域非点源氮污染分布式模拟[J]. 西安理工大学学报, 2008, 24(3): 278–285.
+Li Jiake, Liu Jian, Qin Yaomin, et al. Distributed simulation on nitrogen non-point source pollution in the Weihe river watershed based on SWAT model[J]. Journal of Xi’an University of Technology, 2008, 24(3): 278–285.
+[7]	邹松兵, 陆志翔, 龙爱华, 等. ArcSWAT 2009 用户指南[M]. 郑州: 黄河水利出版社, 2012.
+Zou Songbing, Lu Zhixiang, Long Aihua, et al. The user guide of ArcSWAT 2009[M]. Zhenzhou: The Yellow River Water Conservancy Press, 2012.
+[8]	Douglas-Mankin K R, Srinivasan R, Arnold J G. Soil and Water Assessment Tool (SWAT) model: Current developments and applications[J]. Transactions of the Asabe, 2010, 53(5): 1423–1431. DOI:10.13031/2013.34915
+[9]	Arnold J G, Fohrer N. SWAT2000: current capabilities and research opportunities in applied watershed modelling[J]. Hydrological Processes, 2005, 19(3): 563–572. DOI:10.1002/(ISSN)1099-1085
+[10] <https://www.researchgate.net/publication/256756899_Hydrologic_and_geochemical_modeling_of_a_karstic_Mediterranean_watershed>	Nikolaidis N P, Bouraoui F, Bidoglio G. Hydrologic and geochemical modeling of a karstic Mediterranean watershed[J]. Journal of Hydrology, 2013, 477: 129–138. DOI:10.1016/j.jhydrol.2012.11.018 
+[11]	Yasin H Q, Clemente R S. Application of SWAT model for hydrologic and water quality modeling in Thachin river basin, Thailand[J]. Arabian Journal for Science and Engineering, 2014, 39(3): 1671–1684. DOI:10.1007/s13369-013-0770-3
+[12]	史伟达, 崔远来, 王建鹏, 等. 不同施肥制度下水稻灌区面源污染排放的数值模拟[J]. 灌溉排水学报, 2011, 30(2): 23–26.
+Shi Weida, Cui Yuanlai, Wang Jianpeng, et al. Simulation of different fertilizer application regimes impact on agricultural non-point source pollution in rice irrigation district[J]. Journal of Irrigation and Drainage, 2011, 30(2): 23–26.
+[13]	谢学俭, 陈晶中, 宋玉芝, 等. 磷肥施用量对稻麦轮作土壤中麦季磷素及氮素径流损失的影响[J]. 农业环境科学学报, 2007, 26(6): 2156–2161.
+Xie Xuejian, Chen Jingzhong, Song Yuzhi, et al. Effects of phosphorus application rates on surface runoff losses of soil nitrogen and phosphorus during wheat season in rice-wheat rotation field[J]. Journal of Agro-Environment Science, 2007, 26(6): 2156–2161.
+```
+
+### [李颖 et al. 2014][李颖 et al. 2014]
+[李颖 et al. 2014]: <https://www.ingentaconnect.com/content/tcsae/tcsae/2014/00000030/00000007/art00006?crawler=true> "李颖, 王康, and 周祖昊 (2014). 基于 SWAT 模型的东北水稻灌区水文及面源污染过程模拟. 农业工程学报 30 (7):42–53."
+
+```
+Gosain A K, Sandhya Rao, Srinivasan R, et al. Return-flow assessment for irrigation command in the Palleru river basin using SWAT model[J]. Hydrological Processes, 2005, 19(3): 673－682. 
+
+Zheng Jie, Li Guangyong, Han Zhenzhong, et al. Hydrological cycle simulation of an irrigation district based on a SWAT model[J]. Mathematical and Computer Modelling, 2010, 51(11): 1312－1318.
+
+钱坤，叶水根，朱琴. 基于 SWAT 模型的房山区不同情景方案下的蒸腾蒸发模拟[J]. 农业工程学报，2011，
+27(1)：99－105. 
+
+MiSeon Lee, GeunAe Park, MinJi Park, et al. Evaluation of non-point source pollution reduction by applying Best Management Practices using a SWAT model and QuickBird high resolution satellite imagery[J]. Journal of Environmental Sciences, 2010, 22(6): 826－833.
+
+张展羽，司涵，孔莉莉. 基于 SWAT 模型的小流域非点源氮磷迁移规律研究[J]. 农业工程学报，2013，
+29(2)：93－100.
+
+李晓，李致家，董佳瑞. SWAT 模型在伊河上游径流模拟中的应用[J]. 河海大学学报：自然科学版，2009，
+37(1)：23－26.
+
+代俊峰，崔远来. 基于 SWAT 的灌区分布式水文模型—I 模型构建的原理与方法[J]. 水利学报，2009，40(2)：145－152. 
+
+王鹏. 基于 SWAT 模型的岔路河星星哨水库以上流域径流模拟[D]. 长春：吉林大学，2007. 
+
+尹刚，王宁，袁星，等. 基于 SWAT 模型的图们江流域氮磷营养物非点源污染研究[J]. 农业环境科学学
+报，2011，30(4)：704－710.
+
+仕玉治，张弛，周惠成，等. SWAT 模型在水稻灌区的改进及应用研究[J]. 水电能源科学，2010，28(7)：18
+－22. 
+
+Xuesong Zhang, Raghavan Srinivasan, Bekele Debele, et al. Runoff simulation of the headwaters of the yellow river using the SWAT model with three snowmelt algorithms[J]. Journal of the American Water Resources Association, 2008, 44(1): 48－61.
+
+Fontaine T A, Cruickshank T S, Arnold J G, et al. Development of a snowfall-snowmelt routine for mountainous terrain for the soil water assessment tool (SWAT)[J]. Journal of Hydrology, 2002, 262(1/4): 209－223. 
+
+余文君. SWAT 模型在黑河山区流域的改进与应用[D].南京：南京师范大学，2012. 
+```
+
+## SWAT installations
+
+### SWAT official [site](https://swat.tamu.edu/)
 
 ### CMake rebuild
 - source：[Kitware](https://github.com/Kitware/CMake)
@@ -354,7 +444,7 @@ q_obs
 plot(q_obs, type = 'l')
 ```
 
-### links
+## links
 
 [wiki]: <https://en.wikipedia.org/wiki/Soil_and_Water_Assessment_Tool> "Soil and Water Assessment Tool (SWAT) is a free and open source hydrology model and GIS computer simulation sponsored by the USDA(U.S. DEPARTMENT OF AGRICULTURE). SWAT is a well known geographic hydrological model in use by many universities and government agencies around the world, and integrates with commercial products like ArcGIS."
 [Rahman et al. 2022]: <https://doi.org/10.1007/s13201-022-01692-6> "Rahman, K.U., Pham, Q.B., Jadoon, K.Z., Shahid, M., Kushwaha, D.P., Duan, Z., Mohammadi, B., Khedher, K.M., and Anh, D.T. (2022). Comparison of machine learning and process-based SWAT model in simulating streamflow in the Upper Indus Basin. Appl Water Sci 12 (8):178. doi:10.1007/s13201-022-01692-6."
@@ -444,5 +534,9 @@ plot(q_obs, type = 'l')
 [Qi et al. 2017]: <https://www.mdpi.com/2073-4441/9/8/567> "Qi, Z., Kang, G., Chu, C., Qiu, Y., Xu, Z., and Wang, Y. (2017). Comparison of SWAT and GWLF Model Simulation Performance in Humid South and Semi-Arid North of China. Water 9 (8). doi:10.3390/w9080567."
 [Singh and Singh 2016]: <http://www.iwrs.org.in/journal/oct2016/2oct.pdf> "Singh, N. and Singh, K.K. (2016). SIMULATION MODELLING OF CROP WATER DEMAND USING SWAT MODEL: A CASE STUDY OF BUTANA DISTRIBUTARY, HARYANA, INDIA. J. Indian Water Resour. Soc. 36 (4):9."
 [Yesuf et al. 2016]: <https://doi.org/10.1007/s12665-016-5636-z> "Yesuf, H.M., Melesse, A.M., Zeleke, G., and Alamirew, T. (2016). Streamflow prediction uncertainty analysis and verification of SWAT model in a tropical watershed. Environmental Earth Sciences 75 (9):806. doi:10.1007/s12665-016-5636-z."
+[張祉凱(2017)]: <https://hdl.handle.net/11296/rybjj7> "張祉凱,譚義績 (2017). 發展複合型地下水數值模式評析地下水資源開發及海水入侵 生物環境系統工程學研究所. 國立臺灣大學, 台北市."
+[陳珮琦(2017)]: <https://hdl.handle.net/11296/xaf244> "陳珮琦,林裕彬 (2017). 氣候變遷與土地利用變遷對水文服務的影響-以大屯溪流域為例 生物環境系統工程學研究所. 國立臺灣大學, 台北市."
+[闕亦吟(2018)]: <https://hdl.handle.net/11296/rvp69w> "闕亦吟,范致豪 (2018). 河川中懸浮固體的流布對水體與底泥中重金屬銅傳輸的影響 生物環境系統工程學研究所. 國立臺灣大學, 台北市."
+[杨宝林 et al. 2016]: <http://www.xml-data.org/WHDXXBGXB/html/3b082f22-d4fa-47df-a151-d17fc857dc62.htm>  "杨宝林, 崔远来, 赵树君, 吕成长, and 陈苏春 (2016). 基于SWAT模型的莲塘口流域农业面源污染模拟. 武汉大学学报(工学版) 49 (3):359–364."
 
 ## EOF
