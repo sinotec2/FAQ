@@ -12,7 +12,6 @@ modify_date: 2022-11-03 15:00:29
 
 ### SWAT official [site](https://swat.tamu.edu/)
 
-
 ### SWAT model([Rahman et al. 2022][Rahman et al. 2022])
 - The SWAT model 
   - is a process-based semi-distributed, Hydrological Response Unit (HRU)-based, spatially explicit, and time-continuous hydrological model developed by the agricultural research service of the United States Department of Agriculture ([Arnold et al. 1998][Arnold et al. 1998]). 
@@ -360,8 +359,7 @@ plot(q_obs, type = 'l')
 [wiki]: <https://en.wikipedia.org/wiki/Soil_and_Water_Assessment_Tool> "Soil and Water Assessment Tool (SWAT) is a free and open source hydrology model and GIS computer simulation sponsored by the USDA(U.S. DEPARTMENT OF AGRICULTURE). SWAT is a well known geographic hydrological model in use by many universities and government agencies around the world, and integrates with commercial products like ArcGIS."
 [Rahman et al. 2022]: <https://doi.org/10.1007/s13201-022-01692-6> "Rahman, K.U., Pham, Q.B., Jadoon, K.Z., Shahid, M., Kushwaha, D.P., Duan, Z., Mohammadi, B., Khedher, K.M., and Anh, D.T. (2022). Comparison of machine learning and process-based SWAT model in simulating streamflow in the Upper Indus Basin. Appl Water Sci 12 (8):178. doi:10.1007/s13201-022-01692-6."
 [Arnold et al. 1998]: <https://doi.org/10.1111/j.1752-1688.1998.tb05961.x> "Arnold, J.G., Srinivasan, R., Muttiah, R.S., and Williams, J.R. (1998). LARGE AREA HYDROLOGIC MODELING AND ASSESSMENT PART I: MODEL DEVELOPMENT1. JAWRA Journal of the American Water Resources Association 34 (1):73–89. doi:10.1111/j.1752-1688.1998.tb05961.x."
-[Arnold et al. 2012]: <https://swat.tamu.edu/media/99051/azdezasp.pdf> "Arnold, J.G., Moriasi, D.N., Gassman, P.W., Abbaspour, K.C., White, M.J., Srinivasan, R., Santhi, C., Harmel, R.D., Griensven, A. van, Liew, M.W.V., Kannan, N., and Jha, M.K. (2012). SWAT: MODEL USE, CALIBRATION, AND VALIDATION. TRANSACTIONS OF THE ASABE, American Society of Agricultural and Biological Engineers 55 (4):1491–1508.
-"
+[Arnold et al. 2012]: <https://swat.tamu.edu/media/99051/azdezasp.pdf> "Arnold, J.G., Moriasi, D.N., Gassman, P.W., Abbaspour, K.C., White, M.J., Srinivasan, R., Santhi, C., Harmel, R.D., Griensven, A. van, Liew, M.W.V., Kannan, N., and Jha, M.K. (2012). SWAT: MODEL USE, CALIBRATION, AND VALIDATION. TRANSACTIONS OF THE ASABE, American Society of Agricultural and Biological Engineers 55 (4):1491–1508."
 [Abbaspour et al. 2004]: <https://onlinelibrary.wiley.com/doi/abs/10.2136/vzj2004.1340> "Abbaspour, K.C., Johnson, C.A., and van Genuchten, M.Th. (2004). Estimating Uncertain Flow and Transport Parameters Using a Sequential Uncertainty Fitting Procedure. Vadose Zone Journal 3 (4):1340–1352. doi:10.2136/vzj2004.1340."
 [Jha et al. 2004]: <https://doi.org/10.1111/j.1752-1688.2004.tb04460.x> "Jha, M., Gassman, P.W., Secchi, S., Gu, R., and Arnold, J. (2004). EFFECT OF WATERSHED SUBDIVISION ON SWAT FLOW, SEDIMENT, AND NUTRIENT PREDICTIONS1. JAWRA Journal of the American Water Resources Association 40 (3):811–825. doi:10.1111/j.1752-1688.2004.tb04460.x."
 [Gassman et al. 2007]: <https://elibrary.asabe.org/abstract.asp?aid=23637&t=3> "W. Gassman, P., R. Reyes, M., H. Green, C., and G. Arnold, J. (2007). The Soil and Water Assessment Tool: Historical Development, Applications, and Future Research Directions. Transactions of the ASABE 50 (4):1211–1250. doi:10.13031/2013.23637."
