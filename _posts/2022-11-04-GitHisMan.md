@@ -41,7 +41,7 @@ modify_date: 2022-11-04 11:48:01
 - 如果本地版本錯亂，可以直接刪除目錄，再行`git clone ...(repo)`
 - 不要嘗試使用`github desktop`
 
-### 批次檔
+### 批次檔clean_his.cs
 
 ```bash
 cd ~/GitHubRepos/sinotec2.github.io/
@@ -81,7 +81,7 @@ git push -f https://sinotec2:$TOKEN@github.com/sinotec2/sinotec2.github.io.git m
 ### github desktop
 - 會存有歷史紀錄的標籤，如果實質上已遭清除，此時無法順利對照。
   1. 刪除`github desktop`之repository開啟紀錄與設定
-  1. 重新clone一份新、無紀錄的版本
-
+  1. 重新clone一份新的、無紀錄的版本
+- 正常使用`github desktop`
 
 
