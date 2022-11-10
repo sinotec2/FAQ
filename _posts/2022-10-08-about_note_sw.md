@@ -138,13 +138,6 @@ graph LR
   - 發布分享、文件管理的問題，與word一樣。
   - 沒有人用ppt的備忘稿來寫程式說明文件、至少筆者沒有嘗試、也沒有成功經驗。
 
-## notion and evernote
-### notion
-- 
-- 無法繼續理由
-  1. 只能有2層目錄不夠用。
-  1. 
-
 ## [VS Code][vsc_wiki]簡介
 
 ### [VS Code][vsc_wiki]是什麼
@@ -249,21 +242,41 @@ graph LR
 
 項目|[Evernote][Evernote]|[notion][notion]|[boostnote][boostnote]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]+[GitHub][gh]
 :-:|:-:|:-:|:-:|:-:|:-:
-本地記憶體需求|>1G|<200M|<200M|~|<100M
+本地記憶體需求|>1G|>200M|<100M|~|<120M
 網頁界面|有|有|有|無|有
+離線開啟|可|否|否|可|可
 目錄系統|無|二層|二層|無|無限制
 跨檔案搜尋|快|快|搜尋完整字|慢|快
 儲存檔案格式|自訂|md|md|pdf|md
 手寫辨識|無|無|有|無|無
 **程式碼**|縮排會亂掉|OK|OK|無|OK
-費用|付費可存3機器以上|付費多存|付費多存|付費app|免
+費用|付費可存3機器以上|付費多存|5~8 USD/月|付費app|免
 url發布|長串隨機碼|長串隨機碼|可轉html檔|無|指定目錄
 索引系統|HPL|HPL|HPL|無|HPL、ref.、Fig.
 流程圖|無|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
 公式|圖形|無|無|手寫|有
+IDE|n|n|n|n|yes
 
 - md:markdown
 - HPL：hyperlinks
+
+## [VS Code][vsc_wiki]的使用
+- Visual Studio Code開發網站入門教學、[Romaz Rau, 2020](https://medium.com/@success85911/visual-studio-code開發網站入門教學-7514ea9299bf)
+- Visual Studio Code 介面的基礎使用介紹(使用Python)、[ITWALKER,2020](https://walker-a.com/archives/6242)
+
+### 下載安裝
+- 不需要系統管理者。
+- 前往[Visual Studio Code官網](https://code.visualstudio.com/Download)，有window、MacOS、與linux 等3種版本可供選擇。
+- 有[過去版本](https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions)可下載。如機器太舊可選擇舊版。
+
+### 開啟[VS Code][vsc_wiki]
+- 如已有檔案系統，可以選擇在window開始畫面(圖1)、或[VS Code][vsc_wiki]歡迎畫面點選(圖2)。
+
+| ![code_2.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/code_2.PNG)|![code_1.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/code_1.PNG)|
+|:--:|:--:|
+| <b>D2模擬結果。VERDI內設海岸線| <b>加上大陸省份及臺灣縣份行政區底圖</b>|
+
+
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
 [Shining Chan, 2021]: <https://glints.com/tw/blog/note-taking-software-recommendation/> " Shining Chan, 2021 職涯成長->技能提升->工具->筆記軟體是什麼？有什麼優點？2021年7大實用筆記軟體推薦"
