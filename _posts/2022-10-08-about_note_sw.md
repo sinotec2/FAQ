@@ -274,7 +274,7 @@ IDE|n|n|n|n|yes
 [keep]: <https://keep.google.com/> "隨時隨地記錄所思所想"
 [SimpleNote]: <https://simplenote.com/> "The simplest way to keep notes, All your notes, synced on all your devices. Get Simplenote now for iOS, Android, Mac, Windows, Linux, or in your browser."
 [知乎]: <https://www.zhihu.com/question/22238071> "iPad 笔记应用 UPad、Noteshelf、GoodNotes 哪个更值得买？"
-[vc_gh]: <http://www.rodanthi-alexiou.com/github-101-github-desktop-and-vscode/> "GitHub 101 – GitHub Desktop and VSCode"
+[vc_gh]: <https://code.visualstudio.com/docs/sourcecontrol/github> "Working with GitHub in VS Code"
 [jinrihdelive]: <https://jinrihdeliver.pixnet.net/blog/post/276862136> "今日訊息jinrih,Jan 31 2019【Word教學｜筆記術、閱讀筆記】學習第一步？先學如何做筆記！痞客邦 "
 [ide]: <https://zh.wikipedia.org/zh-tw/集成开发环境> "集成开发环境、整合開發環境"
 [vsc_wiki]: <https://zh.wikipedia.org/wiki/Visual_Studio_Code> "Visual Studio Code（簡稱 VS Code）是一款由微軟開發且跨平台的免費原始碼編輯器[6]。該軟體支援語法突顯、程式碼自動補全（又稱 IntelliSense）、程式碼重構功能，並且內建了命令列工具和 Git 版本控制系統[7]。使用者可以更改佈景主題和鍵盤捷徑實現個人化設定，也可以透過內建的擴充元件程式商店安裝擴充元件以加強軟體功能。"
