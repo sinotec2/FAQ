@@ -1,5 +1,5 @@
 ---
-title: 筆記系統使用心得
+title: 數位筆記系統使用心得
 tags: note_system
 layout: article
 aside:
@@ -13,12 +13,13 @@ mermaid: true
 ## 背景
 
 ### 功能需求
-- 如題所示，這篇筆記是針對這些年來筆記系統的發展與個人的使用經驗心得。先就筆記系統的重要元件及功能要求、條例如下：
+- 如題所示，這篇筆記是針對這些年來[筆記系統][NS]的**數位**發展與個人的使用經驗心得。先就筆記系統的重要元件及功能要求、條例如下：
   - 介面
     1. 容易操作、容易上手、軟體介面親人性
     1. 中文化輸入、輸出
     1. 有簡潔的顯示版面，最好可以直接展示、用在簡報、教學，不必另外做ppt檔案。
     1. 項目符號、自動排序
+    1. 是否接受手寫辨識，要按使用者手寫工整程度而定。
   - 索引系統
     1. 目錄系統：文章內、外；無限制、多層次目錄；目錄要能展開、合併
     1. 時間標籤：文件創始、文件修改日期時間
@@ -30,11 +31,11 @@ mermaid: true
     1. 團隊協作時易於分享、URL不能是長亂碼。
     1. 檔案格式容易轉移、修改。
   - 品牌、系列
-    1. 系統持續更新。不更新的棄養軟體趁早轉換，然而更新速度如果太快也蠻干擾的。
+    1. 系統持續更新。不更新的棄養軟體趁早轉換，然而更新速度如果太快也很干擾。
     1. 市佔高、主流化
     1. 系列其他產品功能
 - 筆記系統不是(不能取代)：
-  1. 隨手塗鴉、無法分享的手札
+  1. 隨手速記、概念手記、無法分享的手札
   1. 特殊目的的便利貼app，如記帳、行程約會日誌、
   1. 完整功能的[KM系統][kms]、教學平台
 
@@ -45,7 +46,7 @@ mermaid: true
   - 這篇介紹筆記軟體的應用範圍不限於工作及學習，還包括生活中的代辦事項、隨手札記、旅行筆記、記帳、行事曆等模板也一應俱全。
 - [2021年7大實用筆記軟體推薦][Shining Chan, 2021]
   - 因為是職涯發展公司，介紹的多半是工作筆記，包括了一、[Evernote][Evernote]，二、Microsoft [OneNote][onenote]，三、[Notion][notion]，四、Google [Keep][keep]，五、[GoodNotes][GoodNotes]，六、Notability，七、[SimpleNote][SimpleNote]。
-  - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調電子化筆記的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
+  - 這一篇開頭就把場景拉到學生時代寫紙本筆記的場域，來強調**數位筆記**的必要性與好處。這對剛踏出學校的社會新鮮人會有誘因。不過現在大學生也普遍在使用筆記軟體系統，這篇就顯得有點粗淺了。
 
 ### 本文主打方案
 - 經過近一年的發展，目前[VSCode+GitHubDesktop][vc_gh]方案已漸趨穩定，適用在程式說明、文獻回顧等領域，有其值得推薦之處。
@@ -54,8 +55,11 @@ mermaid: true
   1. [VS Code][vsc_wiki]有最簡單、完整的編輯界面。
   1. 符合前述筆記系統功能需求、同時也是執行程式的[IDE][ide]。
 - [VS Code][vsc_wiki]與[GitHub][gh]的連結
+  - [VS Code][vsc_wiki]除了編輯本地檔案之外，也能存取雲端[GitHub][gh]內容。
+    - 在[VS Code][vsc_wiki]內直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code，GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，
+    - 也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。  
   - 使用[github pages][ghpg]的免費服務資源，作為公開發布筆記之平台。
-  - [VS Code][vsc_wiki]就可以直接進行[GitHub][gh]的存取，詳見[ CoderDave: How To Use GitHub with Visual Studio Code，GitHub VSCode showtime](https://www.youtube.com/watch?v=aUhl3B6ZweQ)，也可經由本地安裝的[GitHub DeskTop][gh_dt]來存取[GitHub][gh]。
+  
   - [GitHub][gh]也提供了網路版的[VS Code][vsc_wiki]介面，只需要在Repository畫面下[按下鍵盤“.”](https://www.minwt.com/webdesign-dev/html/23154.html)。
 - 整體作業流程(如果圖形無法顯示請看[這裡](https://github.com/sinotec2/FAQ/blob/main/_posts/2022-10-08-about_note_sw.md#本文主打方案))
 
@@ -133,6 +137,13 @@ graph LR
   - 備忘稿不是ppt的主要功能，的它界面不是最優秀的設計，雖然也有些格式設定，但還是很簡略。
   - 發布分享、文件管理的問題，與word一樣。
   - 沒有人用ppt的備忘稿來寫程式說明文件、至少筆者沒有嘗試、也沒有成功經驗。
+
+## notion and evernote
+### notion
+- 
+- 無法繼續理由
+  1. 只能有2層目錄不夠用。
+  1. 
 
 ## [VS Code][vsc_wiki]簡介
 
@@ -220,27 +231,36 @@ graph LR
 - 此處討論對象以完整的筆記軟體系統(editor+filesystem)為主，前述僅半套的word/ppt作法則不予列表討論。
 
 ### 主要筆記軟體
-- 前述筆記軟體中[Evernote][Evernote]筆者使用時間最長、也成為付費會員，但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
-- [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)在手寫界面軟體中有非常優秀的表現，其他iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
-- 在程式員領域有人推薦[notion][notion]，但目錄層次不夠，寫了一些也必須放棄。
+#### [Evernote][Evernote]
+- 使用時間最長、也成為付費會員，現停止付費，仍然使用中。
+- 但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
+
+#### ios APPs 
+- [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。
+- 值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)在手寫界面軟體中有非常優秀的表現，其他iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
+
+#### [notion][notion]
+- 在程式員領域有人推薦[notion][notion]，可以協作、也可以接受照片。
+- 但目錄層次僅有2層，寫了一些也必須放棄(見[範例](.https://www.notion.so/dbf2csv-py-048fc056841d48d98b5f12e601c07318))。
+
 - 其他詳細比較條列如下。
 
 ### 使用經驗評論列表
 
-項目|[Evernote][Evernote]|[notion][notion]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]+[GitHub][gh]
-:-:|:-:|:-:|:-:|:-:
-本地記憶體需求|>1G|<200M|~|<100M
-網頁界面|有|有|無|有
-目錄系統|無|三層|無|無限制
-跨檔案搜尋|快|快|無|快
-儲存檔案格式|自訂|md|pdf|md
-手寫辨識|無|無|有|無
-程式碼|縮排會亂掉|OK|無|OK
-費用|付費可存3機器以上|付費多存|付費app|免
-url發布|長串隨機碼|長串隨機碼|無|指定目錄
-索引系統|HPL|HPL|無|HPL、ref.、Fig.
-流程圖|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
-公式|圖形|無|手寫|有
+項目|[Evernote][Evernote]|[notion][notion]|[boostnote][boostnote]|[GoodNotes][GoodNotes]|[VSCode][vc_gh]+[GitHub][gh]
+:-:|:-:|:-:|:-:|:-:|:-:
+本地記憶體需求|>1G|<200M|<200M|~|<100M
+網頁界面|有|有|有|無|有
+目錄系統|無|二層|二層|無|無限制
+跨檔案搜尋|快|快|搜尋完整字|慢|快
+儲存檔案格式|自訂|md|md|pdf|md
+手寫辨識|無|無|有|無|無
+**程式碼**|縮排會亂掉|OK|OK|無|OK
+費用|付費可存3機器以上|付費多存|付費多存|付費app|免
+url發布|長串隨機碼|長串隨機碼|可轉html檔|無|指定目錄
+索引系統|HPL|HPL|HPL|無|HPL、ref.、Fig.
+流程圖|無|無|無|手繪|[mermaid](https://mermaidjs.github.io/)
+公式|圖形|無|無|手寫|有
 
 - md:markdown
 - HPL：hyperlinks
@@ -267,3 +287,5 @@ url發布|長串隨機碼|長串隨機碼|無|指定目錄
 [git]: <https://backlog.com/git-tutorial/tw/intro/intro1_1.html> "git是一個分散式版本控制軟體，最初由林納斯·托瓦茲創作，於2005年以GPL授權條款釋出。最初目的是為了更好地管理Linux核心開發而設計。應注意的是，這與GNU Interactive Tools不同。 git最初的開發動力來自於BitKeeper和Monotone。"
 [hover]: <> "滑鼠滑到反白處即顯示註釋文字"
 [dms]: <https://www.enago.tw/academy/何謂文件管理系統dms？/> "enago.tw/academy/何謂文件管理系統dms？"
+[NS]: <https://en.wikipedia.org/wiki/Note-taking> "Note-taking (sometimes written as notetaking or note taking) is the practice of recording information from different sources and platforms. By taking notes, the writer records the essence of the information, freeing their mind from having to recall everything.[1] Notes are commonly drawn from a transient source, such as an oral discussion at a meeting, or a lecture (notes of a meeting are usually called minutes), in which case the notes may be the only record of the event. Since the advent of writing and literacy, notes traditionally were almost always handwritten (often in notebooks), but the advent of notetaking software has made digital notetaking possible and widespread."
+[boostnote]: <https://boostnote.io/> "Boost Note, your way. Trusted by many, Boost Note powers developer teams all around the world. Explore which option is right for you."
