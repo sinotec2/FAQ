@@ -260,22 +260,8 @@ IDE|n|n|n|n|yes
 - md:markdown
 - HPL：hyperlinks
 
-## [VS Code][vsc_wiki]的使用
-- Visual Studio Code開發網站入門教學、[Romaz Rau, 2020](https://medium.com/@success85911/visual-studio-code開發網站入門教學-7514ea9299bf)
-- Visual Studio Code 介面的基礎使用介紹(使用Python)、[ITWALKER,2020](https://walker-a.com/archives/6242)
-
-### 下載安裝
-- 不需要系統管理者。
-- 前往[Visual Studio Code官網](https://code.visualstudio.com/Download)，有window、MacOS、與linux 等3種版本可供選擇。
-- 有[過去版本](https://code.visualstudio.com/docs/supporting/faq#_previous-release-versions)可下載。如機器太舊可選擇舊版。
-
-### 開啟[VS Code][vsc_wiki]
-- 如已有檔案系統，可以選擇在window開始畫面(圖1)、或[VS Code][vsc_wiki]歡迎畫面點選(圖2)。
-
-| ![code_2.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/code_2.PNG)|![code_1.PNG](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/assets/images/code_1.PNG)|
-|:--:|:--:|
-| <b>D2模擬結果。VERDI內設海岸線| <b>加上大陸省份及臺灣縣份行政區底圖</b>|
-
+## [VS Code][vsc_wiki]安裝使用
+- 詳見[另文]()
 
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
@@ -302,3 +288,4 @@ IDE|n|n|n|n|yes
 [dms]: <https://www.enago.tw/academy/何謂文件管理系統dms？/> "enago.tw/academy/何謂文件管理系統dms？"
 [NS]: <https://en.wikipedia.org/wiki/Note-taking> "Note-taking (sometimes written as notetaking or note taking) is the practice of recording information from different sources and platforms. By taking notes, the writer records the essence of the information, freeing their mind from having to recall everything.[1] Notes are commonly drawn from a transient source, such as an oral discussion at a meeting, or a lecture (notes of a meeting are usually called minutes), in which case the notes may be the only record of the event. Since the advent of writing and literacy, notes traditionally were almost always handwritten (often in notebooks), but the advent of notetaking software has made digital notetaking possible and widespread."
 [boostnote]: <https://boostnote.io/> "Boost Note, your way. Trusted by many, Boost Note powers developer teams all around the world. Explore which option is right for you."
+[repo]: <https://zh.wikipedia.org/wiki/儲存庫> "儲存庫（英語：repository）[1]亦稱倉庫、資源庫、資源庫、版本庫、代碼庫、存放庫，在版本控制系統中是指在磁碟儲存上的資料結構，其中包含了檔案、目錄以及元資料。儲存庫可能為分散式（如Git）或集中式（如Subversion）。[2]分散式的儲存庫可以複製到每個使用者的本地；集中式的儲存庫只能儲存在伺服器上。[3]"
