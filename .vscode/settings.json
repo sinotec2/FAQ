@@ -1,4 +1,11 @@
 {
   "editor.wordWrap": "on",
   "markdown.preview.fontSize": 18
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.wrappingColumn": 0,
+    "editor.renderWhitespace": "all",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestions": true
+  }  
 }
