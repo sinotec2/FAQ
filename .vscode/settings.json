@@ -11,5 +11,6 @@
       "strings": "on",
       "other": "on"
     }
-  }  
+  },
+  "markdown.extension.print.validateUrls": true
 }
