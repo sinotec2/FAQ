@@ -146,12 +146,21 @@ graph LR
 
 ### MS Excel
 
-- 筆者曾經使用excel來記錄常用的unix指令、使用方法、範例與心得。
-- 
+- 筆者曾經使用excel來記錄常用的unix指令、使用方法、範例、心得與自製小工具(如[unix.csv](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/utilities/OperationSystem/unix.csv)、[unix_kbin](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/utilities/OperationSystem/unix_kbin.csv))。
+- 好處
+  - 隨意排序、搜尋快速、一覽無遺
+  - 檔案不大、方便更新。容易傳遞。
+  - 檔案留在桌面上方便開啟
+- 不足之處
+  - 範例太少、說明文字太少、難以編輯、儲存格內不方便製作多個超連結、(別人看不懂)
+  - 開啟excel太慢，還不如直接搜尋網路。
+  - 發布、共筆、版本管理...：無此等功能
+
 
 ## [VS Code][vsc_wiki]簡介
 
 ### [VS Code][vsc_wiki]是什麼
+
 - (後台)文字編輯軟體、程式編譯與執行界面、檔案總管（[整合開發環境][ide]），
   1. 有關[IDE][ide]的習慣、比較與近來的發展，可以參考[這篇中文討論](https://bearask.com/zh-tw/tech/73597.html)、與
   1. [英文的完整比較](https://ide.financesonline.com/)、
@@ -160,6 +169,7 @@ graph LR
 - [GitHub][gh]官方指定、推薦、內設連結之[IDE][ide]
 
 ### 為何需要[VS Code][vsc_wiki](特色與必須性)
+
 - 與[GitHub][gh]平台完全融合、持續共同發展
 - 多種語言自動編譯、執行、預覽。標記式語言(MarkDown)及插件之解析、預覽。
 - 快速跨檔案搜尋、置換
@@ -167,6 +177,7 @@ graph LR
 - 跨越平台：MS Window、Mac OS、Linux、Web Service（與MS Window有最好的相容性）
 
 ### [VS Code][vsc_wiki]的使用
+
 - 複製(下拉)遠端Repo
 - 創建本地資料夾與檔案
 - 檔案與目錄之上傳更新
@@ -175,16 +186,19 @@ graph LR
 - 插件安裝
 
 ### [VS Code][vsc_wiki]的充分特性
+
 - 熟悉程式發展作業環境，逐步學習程式語言，工作成果、工具數位化、模式化。
 - 與全球優秀資訊人員同步發展
 
 ## [GitHub][gh]簡介
+
 - 雖然[GitHub][gh]平台大量提供了有關程式碼的支援，包括版本管理、協作系統、論壇、以及程式說明的發布網站([github pages][ghpg])等等，但也有不少人運用在一般性網誌的發布、程式教學的互動平台。
 - 因為是社群媒體網站，發布內容還是以社群可能會有興趣的項目為主。
 - 各國官方程式碼的公開平台，很多也是選擇在[GitHub][gh]發布，其中包括美國環保署、大氣研究聯盟等等。
 - 除了[github pages][ghpg]之外，也開發了[Git Book][gbook]系統，免費提供讓個人使用，讓使用者可以發布整本書的內容。
 
 ### [GitHub][gh]的使用
+
 1. 登錄會員
 1. 創建新的目錄(Repository)、設定開放對象、複製網址（假設名稱為notes）
 1. 貼在本地GitHub DeskTop、創建本地相對應目錄
@@ -192,6 +206,7 @@ graph LR
 1. 上推至[GitHub][gh]
 
 ### 公開網頁[github pages][ghpg]之創建
+
 1. 點進前述步驟2.所建立的[GitHub][gh] notes目錄
 1. 按下齒輪 Settings頁面，在左側點進Pages頁面，選擇一個分支(branch)名稱,如main
 ,並在root處鍵入新io網頁的名稱（如`docs`）,按下save之後，系統將會建立https://USERNAME.github.io/notes 網頁
@@ -201,9 +216,11 @@ graph LR
 1. 詳參[Just the Docs](https://github.com/just-the-docs/just-the-docs)
 
 ### [github pages][ghpg]模版之選擇
+
 - 參考[jekyll主題版本比較評估](https://sinotec2.github.io/FAQ/2022/06/24/NotesAboutPageViews.html#jekyll主題版本比較評估)，以[JTD](https://just-the-docs.github.io/just-the-docs)與[TeXt](https://tianqi.name/jekyll-TeXt-theme/)較為合用。
 
 ### 本地git界面的選擇
+
 - [git][git]作為是遠端與本地檔案及版本管理的程式，可以在任何unix-like界面、window命令列上執行，同時也有多個界面軟體可供選擇。如(參[DEVART, 2021, Best Git GUI Clients for Windows](https://blog.devart.com/best-git-gui-clients-for-windows.html))：
   1. [GitHub Desktop](https://desktop.github.com/)
   1. 其他[GUI Clients](https://git-scm.com/downloads/guis) tools
@@ -215,10 +232,12 @@ graph LR
   1. 記憶體需求量低
 
 ### [GitHub][gh]的缺點
+
 - .md檔案可以直接在Repository中呈現，但在公開的Github Pages上呈現會需要編譯部署的時間，複雜的系統可能會花費到5 ～ 10 分鐘以上。
 - 下班時間公司會關閉[GitHub][gh]部分功能、不能進行檔案更新上載。對於長時間工作的程式發展者而言是項嚴重的限制。
 
 ## 標記式(MarkDown)語言
+
 - 標記式(MarkDown)語言是讓文件在各個平台都能保持彈性、並且呈現出相同格式的重要語言。如果要讓筆記軟體不佔據大量的記憶體、又能呈現必要的文件格式，會需要較文字檔`.txt`略為複雜、又比`.doc`、`.rtf`等特殊軟體格式簡略一些的文件檔案格式。
 - 這些格式包括
   1. 章節標題（用井字號#的個數定義層級）
@@ -232,18 +251,23 @@ graph LR
 - [玉樹芝蘭2017,如何用Markdown寫(學術)論文？](https://kknews.cc/zh-tw/education/rpgy9vv.html)
 
 ## 使用經驗與評論
-- 此處討論對象以完整的筆記軟體系統(editor+filesystem)為主，前述僅半套的word/ppt作法則不予列表討論。
+
+- 此處討論對象以完整的**筆記軟體系統**(editor+filesystem)為主，前述僅半套的word/ppt作法則不予列表討論。
 
 ### 主要筆記軟體
+
 #### [Evernote][Evernote]
+
 - 使用時間最長、也成為付費會員，現停止付費，仍然使用中。
 - 但後來因為對程式碼太不友善、且網路更新速度超慢、分享網站是長串隨機碼，看了許多付費網友紛紛解約，也就不再維護了。
 
 #### ios APPs 
+
 - [GoodNotes][GoodNotes]用在ipad上看報告、改報告很好用，但隨著筆者公司職務的調動不再需要改報告，硬體也沒有持續更新，在iPad平台上就沒有持續發展。
 - 值得一提的是[noteshelf](https://apps.apple.com/tw/app/noteshelf-%E8%A8%BB%E9%87%8B-%E8%A8%BB%E9%87%8B/id1271086060)在手寫界面軟體中有非常優秀的表現，其他iPad平台上的應用比較，可以看[知乎][知乎]這一篇。
 
 #### [notion][notion]
+
 - 在程式員領域有人推薦[notion][notion]，可以協作、也可以接受照片。
 - 但目錄層次僅有2層，寫了一些也必須放棄(見[範例](.https://www.notion.so/dbf2csv-py-048fc056841d48d98b5f12e601c07318))。
 
@@ -272,8 +296,9 @@ IDE|n|n|n|n|yes
 - HPL：hyperlinks
 
 ## [VS Code][vsc_wiki]安裝使用
-- 詳見[另文]()
 
+- 詳見[另文](https://sinotec2.github.io/FAQ/2022/11/10/code_ug.html)
+- 針對筆記內容如果以Markdown語言撰寫，[VS Code][vsc_wiki]提供了哪些特別能提高編寫效率的功能([VS Code提供Markdown語言的功能](https://sinotec2.github.io/FAQ/2022/11/15/md_code.html))
 
 [welcometw]: <https://www.welcometw.com/筆記軟體推薦/> "好好玩台灣電子報，    2022-08-01工具教學	，2022筆記軟體｜筆記app軟體正夯，推薦10個大家都在用的熱門筆記軟體，線上作筆記超便利"
 [Shining Chan, 2021]: <https://glints.com/tw/blog/note-taking-software-recommendation/> " Shining Chan, 2021 職涯成長->技能提升->工具->筆記軟體是什麼？有什麼優點？2021年7大實用筆記軟體推薦"
