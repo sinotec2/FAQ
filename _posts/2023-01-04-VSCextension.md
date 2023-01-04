@@ -25,7 +25,7 @@ modify_date: 2023-01-04 10:36:19
 ### [Markdown][md_wiki] Footnote
 
 - 作者為 [Mai Hou][MH][^1]
-- 基本上，就只是執行[VScode][VScode]的某項功能`vscode-markdown-footnote.insertFootnote`)
+- 基本上，就只是執行[VScode][VScode]的某項功能(`vscode-markdown-footnote.insertFootnote`)
 - [VScode][VScode] preview時會自動在本文與附註之間加上分隔線
 - 在[markdown][md_wiki]文字處會有滑鼠顯示
   - 如果已經建好附註，會顯示文字內容
@@ -47,7 +47,7 @@ modify_date: 2023-01-04 10:36:19
   - `peak(^)`符號後只能接數字，不能接文字
   - `column(:)`冒號後須至少空一格
   - 其後文字、連結、網址、附註等皆可接受
-  - 附註與本文間會自動產生一分隔線(是軟體而定)，如果沒有(如Jekyll，可自行加線)
+  - 附註與本文間會自動產生一分隔線(是軟體而定)，如果沒有(如[Jekyll][Jekyll]-[Just The Doc][jtd]，可自行加線)
 - 附註與參照之間必須分組條列，不能混合。
 - 本文與附註的對應數字理論上是1對1關係，如果是多對1的關係，編排後會本文會出現`[1]`、`[1:1]`~`[1:2]`等附註，以顯示引用同一附註。
 - 有了插件之後，[VScode][VScode]預覽的本文附註編號是帶著中括弧的，與實際[Jekyll][Jekyll]網頁有差異，後者是沒帶中括弧。下表比較來看，似乎多數平台的附註編號是帶著中括弧。
@@ -78,3 +78,4 @@ wikimedia|X|-
 [Jekyll]: <https://zh.wikipedia.org/zh-tw/Jekyll_(博客生成工具)> "Jekyll是一個簡單的靜態網站生成器，用於生成個人，專案或組織的網站。 它由GitHub聯合創始人湯姆·普雷斯頓·沃納用Ruby編寫，並根據MIT授權條款釋出。"
 [github]: <https://zh.wikipedia.org/zh-tw/GitHub> "GitHub是一個線上軟體原始碼代管服務平台，使用Git作為版本控制軟體，由開發者Chris Wanstrath、P. J. Hyett和湯姆·普雷斯頓·沃納使用Ruby on Rails編寫而成。在2018年，GitHub被微軟公司收購。"
 [marketplace]: <https://marketplace.visualstudio.com/> "Extensions for Visual Studio Code"
+[jtd]: <https://just-the-docs.github.io/just-the-docs> "Focus on writing good documentation. Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
