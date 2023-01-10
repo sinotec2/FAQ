@@ -10,7 +10,7 @@ date: 2023-01-10
 modify_date: 2023-01-10 11:43:05
 ---
 
-![](../attachments/2023-01-10-11-32-56.png)
+![](https://raw.githubusercontent.com/sinotec2/foam1/master/attachments/2023-01-10-11-32-56.png)
 > 3C工程師的福音
 > 從此貼圖有word的便利、卻能有markdown的簡約感、未來感
 
