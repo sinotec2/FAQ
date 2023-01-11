@@ -199,6 +199,8 @@ graph LR
 
 ### [GitHub][gh]的使用
 
+參見[[2022-11-10-code_ug]]
+
 1. 登錄會員
 1. 創建新的目錄(Repository)、設定開放對象、複製網址（假設名稱為notes）
 1. 貼在本地GitHub DeskTop、創建本地相對應目錄

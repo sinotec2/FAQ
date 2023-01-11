@@ -4,7 +4,7 @@ title:  點狀資訊KML檔之撰寫
 parent: GIS Relatives
 grand_parent: Utilities
 last_modified_date: 2023-01-11 15:06:42
-tags: KML 
+tags: KML GIS
 ---
 
 # 點狀資訊KML檔之撰寫(csv2kml.py)

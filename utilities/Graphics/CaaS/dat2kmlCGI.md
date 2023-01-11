@@ -4,7 +4,9 @@ title:  dat2kml遠端計算服務
 parent: CaaS to Graphs
 grand_parent: Graphics
 last_modified_date: 2022-06-11 22:00:06
+tags: GIS KML
 ---
+
 # dat2kml遠端計算服務
 {: .no_toc }
 
@@ -20,6 +22,7 @@ last_modified_date: 2022-06-11 22:00:06
 ---
 
 ## 背景
+
 - dat2kml.py跨平台執行的困難、以及提供遠端服務的必要性
   - 需要特殊模組`legacycontour._cntr`，在python3為第3方提供的軟體，並不屬`matplotlib`內容，需另行自[githup](https://github.com/matplotlib/legacycontour.git)安裝，如果安裝不成就不能執行。
   - 使用[引數][arg]還不少，造成困擾。
