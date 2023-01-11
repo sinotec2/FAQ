@@ -81,5 +81,7 @@ p[:,:,:,:]+=(A1[None,:,None,None]/100+B1[None,:,None,None]*slp[:,None,:,:])/2.
 dens1 = interplevel(dens, pres, p)[::3,:,2:-2,2:-2]
 ```
 
+- getvar:[[2022-08-11-wrf_pythonTAB]]
+
 [ifs]: <https://www.ecmwf.int/en/elibrary/9203-ifs-documentation-cy40r1-part-iii-dynamics-and-numerical-procedures> "IFS(Integrated Forecast System) Documentation CY40R1 - Part III: Dynamics and Numerical Procedures->2.2 DISCRETISATION->2.2.1 Vertical discretisation"
 [wind_ozone]: <https://sinotec2.github.io/FAQ/2022/08/03/wind_ozone.html#有關level> "earth套件貼上CAMS臭氧濃度->數據下載與轉換->有關level"

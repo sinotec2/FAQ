@@ -4,6 +4,7 @@ title: math in Jekyll
 parent: Markdown
 grand_parent: Utilities
 last_modified_date: 2022-06-17 10:21:23
+tags: JTD
 ---
 
 # math in Jakyll

@@ -4,6 +4,7 @@ title:  rotate_kml
 parent: CGI-pythons
 grand_parent: Utilities
 last_modified_date: 2022-06-07 20:21:17
+tags: KML
 ---
 # 
 {: .no_toc }
