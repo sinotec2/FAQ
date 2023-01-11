@@ -29,7 +29,7 @@ modify_date: 2023-01-10 11:43:05
 
 ### Paste Image系列
 
-- 1.0.4(2019版)市集介紹：[Paste Image, mushan(2019)](https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image)
+- 1.0.4(2019版)市集介紹：[Paste Image, mushan(2019)]([[2023-01-11]])
 - [Markdown Paste, telesoho(2022)](https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image)：這個版本的paster比之前的更受歡迎，除了會分辨剪貼簿(clipboard, `ctrl-c`進入記憶體)的內容格式，按照格式貼上並進行必要的重整，圖形加上檔案連結、程式碼加上格式、Ruby tag(華語及日語的心情插圖)等等服務。
 
 ### 其他改進
