@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  可排序搜尋之表格
-parent: HTML
+parent: HTML trajectory
 grand_parent: Graphics
 last_modified_date: 2022-06-02 16:13:54
 ---

@@ -12,7 +12,7 @@ mermaid: true
 ---
 ## 背景
 ### 動機與目的
-- 中央氣象局雖然每天進行[WRF數值預報][wrf_3km]，網路上卻沒有開發者使用來做氣流線等加值應用。雖然過去發展了[高解析度軌跡近5日預報](https://sinotec2.github.io/traj/)、[calpuff每日的預報](https://sinotec2.github.io/cpuff_forecast/)等等，卻還沒有嘗試以[earth.nullschool][ens]套件來加以延伸、展示。
+- 中央氣象局雖然每天進行[WRF數值預報][wrf_3km]，網路上卻沒有開發者使用來做氣流線等加值應用。雖然過去發展了[高解析度軌跡近5日預報](https://sinotec2.github.io/traj/)(see also [[2022-11-04-daily_traj]])、[calpuff每日的預報](https://sinotec2.github.io/cpuff_forecast/)等等，卻還沒有嘗試以[earth.nullschool][ens]套件來加以延伸、展示。
 - 除了每日、即時的展示之外，還有儲存、檢視的內部需求。相較[windy][windy]，[earth.nullschool][ens]可以按照使用者的需要，在url地址列簡單的指令，即可顯示過去特定時間的氣象與(或)濃度場。這個方案目前似乎是網路存取、檢視龐雜的氣象-空品模擬系統成果的最佳平台。
 
 ### [earth][ens]的發展與應用
