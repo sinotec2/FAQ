@@ -7,10 +7,11 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-08-03
-modify_date: 2022-08-03 14:31:59
+modify_date: 2023-01-11 13:10:15
 mermaid: true
 ---
 ## 背景
+
 - 雖然臭氧是光化煙霧的重要指標，也是本土石化業與汽機車污染所影響的空品項目，然而[earth.nullschool][ens]或是[windy][windy]目前都沒有貼上臭氧濃度之實例，原因不明，可能並不是很多人這麼瞭解臭氧的指標意義吧。
 - [ECWMF][ECWMF]的[CAMS][CAMS]全球空品預報有這個項目，解析度為0.4度每12小時更新，貼在背景1度的[GFS][GFS]風場，檔案小、反應快、有其便利性。
   - [CAMS][CAMS]有每半年更新的再分析數據、有近實時再分析、也有[空品預報數據][CAMS_FCST]，這三者雖然精確性以最後者最低，但時效性卻最高。
@@ -37,7 +38,9 @@ mermaid: true
 - 也能接近[環保署官方網站](https://airtw.epa.gov.tw/)的展示方式。
 
 ## 數據下載與轉換
+
 - 數據量雖然不大，但還需在[CAMS][CAMS]排隊等候下載，會需要一些時間(~20分鐘)。
+
 ### 數據下載
 - 詳[歐洲中期天氣預報中心再分析數據之下載][EC_ReAna]
   - 對話網頁：[https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-atmospheric-composition-forecasts?tab=form](https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-atmospheric-composition-forecasts?tab=form)
@@ -89,6 +92,7 @@ kk=[bisect(h137,zz[k])-1 for k in range(24)]
 `kk= ['137', '135', '133', '129', '125', '122', '120', '117', '114', '112', '110', '107', '105',  '101', '96', '92', '87', '83', '78', '73', '67', '61', '56', '51']`
 
 ### 數據轉換
+
 - [grb2json.py@github](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/AQana/GAQuality/ECMWF/grb2json.py)
 
 - [CAMS][CAMS]檔案內容之讀取
@@ -121,8 +125,14 @@ for ir in range(nr):
 - 執行結果放在/Users/Data/javascripts/D3js/earth/public/data/weather/current以利js程式讀取
 - 結果檔名：current-ozone-surface-level-gfs-1.0.json
 
+### 20220908 CAMS空品預報下載項目之更新
+
+詳見[[2022-09-13-get_All]]
+
 ## earth系統新增臭氧之讀取繪圖功能
+
 ### html程式
+
 - 在下拉對話框增加貼上O3數據
   - 直接在氣象數據後面接上空品項目
   - 並不像[nullschool][ens]將污染項目分類，以減少程式修改。
