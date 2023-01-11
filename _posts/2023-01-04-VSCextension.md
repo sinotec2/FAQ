@@ -26,7 +26,14 @@ alias: 插件
   - 如果還沒有，會提示並按`ctrl-click`跳到文章最末端，並寫好`[^]:`直接打附註內容文字即可。
 - 其他選擇、各個發布平台的表現等詳見[Footnoter][8]
 
+## Paste Image
+
+- 雖然Paste Image[^2]這個插件並非最新、不是最完整、也不是最多人下載，算是非常單純又好用的插件，安裝並使用詳見[[2023-01-10-PasteImage]]
+
 [^1]: Markdown Footnote by [Mai Hou][MH](2021)
+[^2]: Paste Image 1.0.4(2019版), [mushan(2019)][mushan(2019)]
+
+[mushan(2019)]: https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image "Paste Image 1.0.4(2019版), mushan(2019)"
 
 [MH]: <https://marketplace.visualstudio.com/publishers/houkanshan> "Markdown Footnote"
 [mse]: <https://meta.stackexchange.com/questions/5017/markdown-footnotes> "Markdown footnotes? Asked 13 years, 5 months ago, Modified 1 month ago, Viewed 38k times"
@@ -35,4 +42,4 @@ alias: 插件
 [md_wiki]: <https://zh.wikipedia.org/zh-tw/Markdown> "Markdown是一種輕量級標記式語言，創始人為約翰·格魯伯。它允許人們使用易讀易寫的純文字格式編寫文件，然後轉換成有效的XHTML（或者HTML）文件。[4]這種語言吸收了很多在電子郵件中已有的純文字標記的特性。"
 [github]: <https://zh.wikipedia.org/zh-tw/GitHub> "GitHub是一個線上軟體原始碼代管服務平台，使用Git作為版本控制軟體，由開發者Chris Wanstrath、P. J. Hyett和湯姆·普雷斯頓·沃納使用Ruby on Rails編寫而成。在2018年，GitHub被微軟公司收購。"
 [marketplace]: <https://marketplace.visualstudio.com/> "Extensions for Visual Studio Code"
-[8]: 
+[8]: https://sinotec2.github.io/FAQ/2023/01/04/FootNoter.html "註腳不是學術論文的專利，在word、wiki、markdown文件中，註腳與數字參照也都是提升整體參考價值的利器。"
