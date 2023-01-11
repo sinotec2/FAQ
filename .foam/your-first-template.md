@@ -8,6 +8,8 @@ Templates support the [VS Code's Snippet Syntax](https://code.visualstudio.com/d
 - add tabstop to automatically navigate to the key parts of the note, just like a form
 Below you can see an example showing a todo list and a timestamp.
 
+
+
 ## Todo List
 
 1. ${1:First tabstop}

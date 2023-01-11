@@ -1,7 +1,7 @@
 ---
 title: Jekyll - Code Blocks
 key: 20160616
-tags: Jekyll
+tags: Jekyll markdown
 ---
 
 ## Code Spans
