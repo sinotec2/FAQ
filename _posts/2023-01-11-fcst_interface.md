@@ -17,6 +17,7 @@ modify_date: 2023-01-11 11:36:41
   1. 新增時間控制bar(播放、點選、滑動)如圖1
   2. 增加城市名稱如圖2
   3. 優化控制介面：同一時間、不同範圍之切換、如圖3
+- js程式碼：https://github.com/cambecc/earth
 
 |![圖1](https://raw.githubusercontent.com/sinotec2/foam1/master/attachments/2023-01-11-11-21-33.png)|
 |:-:|
