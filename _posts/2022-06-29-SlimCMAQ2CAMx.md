@@ -1,6 +1,6 @@
 ---
 title: BCON轉.bc檔
-tags: CAMx fortran bash python BCON ICON 
+tags: CAMx fortran bash python BCON ICON CMAQ
 layout: article
 aside:
   toc: true
@@ -9,7 +9,8 @@ sidebar:
 ---
 
 ## 背景大要
-- 這項作業是從CMAQ的邊界檔案(BCON)轉寫成CAMx的邊界檔(.bc)。雖然官網有提供轉換程式([cmaq2camx][cmaq2camx])，但是還是有時間與空間上需要調整：
+
+- 這項作業是從CMAQ的邊界檔案(BCON)轉寫成CAMx的邊界檔(.bc)。雖然官網有提供轉換程式([cmaq2camx][cmaq2camx]，詳參[[2022-07-05-cmaq2camx]])，但是還是有時間與空間上需要調整：
   - BCON檔案有40層，而CAMx模擬只用到15層，因此在垂直向需要進行篩選(slim_bc.py)。
     - BCON最後一小時是00，不是23，這點也在slim_bc.py內解決。
   - BCON是按照WRF的執行批次，兩個批次之間有重疊一天(需先用[brk_days2.cs][brk]按照日期拆開後、再按照CAMx的執行批次時間範圍、以ncrcat合併成一個BCON大檔)
@@ -21,7 +22,9 @@ sidebar:
   - 這表示BCON是自ECWMF的再分析檔案切割出來的。其時間解析度是3小時。
 
 ## slim_bc.py
+
 ### 批次檔執行腳本
+
 - 需要模版檔案：bc_template.nc，為CMAQ之BCON檔案，但垂直已經改成15層。
 
 ```bash
@@ -31,7 +34,9 @@ for nc in $(ls BCON_v53_16${1}*);do
 python slim_bc.py $nc
 done
 ```
+
 ### slim_bc.py程式
+
 - 程式時間2021-05-21 09:00
 - 因各批次BCON檔案間會重複1天+1小時(自00Z開始、在00Z結束，不是在23Z)，重複1天可以將BCON按日拆解、再行組合，但重複1小時在和其他天整併到全月檔案時將會出錯，因此時間迴圈跳過最後一小時不執行，以保持每日都是24個時間框。
 - 高度層的選擇，可以參考wrfcamx的腳本，同樣是由WRF的40層選其中的15層。
@@ -63,11 +68,14 @@ nc1.NLAYS=15
 nc1.SDATE=nc.SDATE
 nc1.close()
 ```
+
 ## 使用cmaq2camx套件
+
 - cmaq2camx是Ramboll公司提供的套件程式，將CMAQ模式的ICON、BCON、EMIS、PTSE等重要模擬條件檔，轉到CAMx平台上，符合[uamiv][uamiv]、[lateral_boundary][bnd]及[point_source][pnc_camx]之格式。
 - 程式之下載、編譯、輸入環境變數或標準輸入的選項內容，詳參[CMAQ2CAMx之單向轉換][https://sinotec2.github.io/FAQ/2022/07/05/cmaq2camx.html]
 
 ### 執行腳本範例
+
 - 先執行spcmap，再執行cmaq2camx主程式
 - 腳本為執行2016年6~7月之範例
 
@@ -84,6 +92,7 @@ set SPECIES_MAPPING  = ${SRC}/Species_Mapping_Tables/MAPTBL.CAMx6.2_CB05_CF.CMAQ
 set OUTPUT_TIMEZONE  = -8
 ...
 ```
+
 - CMAQ使用UTC，CAMx使用當地時間，臺北時間為較國際換日線提前8小時(0=UTC,美國本土5=EST,6=CST,7=MST,8=PST)。
 
 [cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
