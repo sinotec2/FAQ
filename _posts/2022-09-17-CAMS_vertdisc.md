@@ -1,6 +1,6 @@
 ---
 title: CAMS高度之內插方式
-tags: python  CAMS  
+tags: python  CAMS CMAQ BCON ICON
 layout: article
 aside:
   toc: true
@@ -10,6 +10,7 @@ date:  2022-09-17
 modify_date: 2022-09-17 20:05:09
 ---
 ## 背景
+
 - 此處詳細處理CAMS之[IFS模式][ifs]與CMAQ之高度對照及內插議題。
   - CMAQ並不定義高度，而是沿用WRF之設定，在real/wrf所讀取的namelist.input檔中（eta_levels）
   - [CAMS空品預報濃度](https://ads.atmosphere.copernicus.eu/cdsapp#!/dataset/cams-global-atmospheric-composition-forecasts?tab=form)提供2種高度下載方式：[25層定壓層][wind_ozone]、與模式內設層數（137層）。其定義在[IFS Documentation][ifs]
@@ -35,6 +36,7 @@ n|a [Pa]|b|ph [hPa]|pf [hPa]|Geopotential Altitude [m]|Geometric Altitude [m]|Te
 - 壓力的內插，可以使用[wrf-python](https://wrf-python.readthedocs.io/en/latest/)的函數（詳[範例](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/Graphics/wrf-python/2.horizon/#等壓面垂直內插)）。
 - WRF 24層對應到ifs之層數（約略對照地理高度[求得][wind_ozone]）
   - `kk= ['137', '135', '133', '129', '125', '122', '120', '117', '114', '112', '110', '107', '105',  '101', '96', '92', '87', '83', '78', '73', '67', '61', '56', '51']`
+- 影響所及包括[[2022-08-16-CAMS_bc]]、[[2022-08-16-CAMS_ic]]
 
 ## 程式設計
 

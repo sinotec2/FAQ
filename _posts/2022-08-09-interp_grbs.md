@@ -1,6 +1,6 @@
 ---
 title: CWB_WRF grib數據檔的時間內插
-tags: grib python
+tags: grib python CWBWRF
 layout: article
 aside:
   toc: true
@@ -15,7 +15,9 @@ mermaid: true
 - 幸好大多喪失情況是缺少某一個特定時間的預報檔案。經由前後時間的內插即可解決此一問題。
 - 雖然CWB_WRF數據並沒有統一的維度、雨量也是累加值，所幸前後時間的平均尚能符合定義。
 - 一般使用[pygrib][pygrib]來進行讀取[grib][grib]檔案，但不能用在寫出檔案，pygrib.open也沒有控制讀寫的選項，一律唯讀。必須另外寫出binary檔，這部分可以參考[網友jiangleads][jiangleads]的範例。
-- 由於每個grib檔案的內涵多有差異，本程式無法適用所有的grib格式檔，還是需一一檢視。
+- 由於每個grib檔案的內涵多有差異，本程式無法適用所有的grib格式檔，還是需一一檢視。- 下載檔案的時間標籤可以使用[[EAC4_Times]]來檢視。
+
+- 應用在[[2022-11-04-daily_traj]]
 
 ### grib與netCDF格式之比較
 

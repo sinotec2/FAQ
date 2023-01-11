@@ -1,6 +1,6 @@
 ---
 title: datetime跨月日數的計算
-tags: python
+tags: python datetime
 layout: article
 aside:
   toc: true
@@ -11,6 +11,8 @@ modify_date: 2022-09-05 10:51:33
 ---
 
 ## 背景
+
+- 這項困難主要發生在[[2022-10-13-mk_emis]]。
 - python datetime.timedelta()函數的特性
   1. 適用在「精確」時間差的計算，
   1. 除了年以外的其他時間單位，都還能適用實數的時差
@@ -26,6 +28,7 @@ $ ls -lh */grid03/smoke/b3*
 grid03/smoke/b3gts_l.20191025.37.d4.ea2019_d4.tar.xz
 -rw-r--r-- 1 kuang SESAir 172M  1▒▒ 11  2022 201912/grid03/smoke/b3gts_l.20191124.38.d4.ea2019_d4.tar.xz
 ```
+
 - 檔名中的35、37、38即為各月份檔案的日數，為`當月日數+前月日數-25日+1`的結果。
 - 公版模式將日數寫在檔案名稱，好處是
   1. 直接顯示檔案日數，可以直接控制與檔案大小有關的作業，如搬遷、壓縮、儲存等等。
