@@ -11,12 +11,14 @@ modify_date: 2022-11-04 11:48:01
 ---
 
 ## 背景
+
 - [git](https://zh.wikipedia.org/wiki/Git)做為一個版本管理的系統軟件，會將每次更新的內容進行備份，同時儲存在用戶端及遠端，以備查詢、比較。這對文件(txt format)或程式碼的管理，是非常有幫助的。但對於圖像檔案(gif, png, jpg etc)的管理，則會是一個災難。
   - 所謂的更新紀錄，是指得新舊版本間的**文字**差異
   - 而圖像檔並沒有可以拆分成文字的機會，因此系統必須同時儲存新舊2個版本。因此時間久了，系統將會儲存每個版本的圖像檔案，那儲存空間會很驚人，遠大於[repo][repo]檔案本身。
 
-### 應用情況  
-- 以實務而言，sinotec2.github.io上[臺灣未來3天重要點源空品影響預報](https://sinotec2.github.io/cpuff_forecast/)（[[2022-06-06-cpuff_fcst]]）每天會更新模式預報的風場流線檔(png)，以及濃度時序變化的動畫檔(gif)，
+### 應用情況
+
+- 以實務而言，sinotec2.github.io上[臺灣未來3天重要點源空品影響預報](https://sinotec2.github.io/cpuff_forecast/)（[2022-06-06-cpuff_fcst][2022-06-06-cpuff_fcst]）每天會更新模式預報的風場流線檔(png)，以及濃度時序變化的動畫檔(gif)，
   - 目前只有3天PM<sub>10</sub>的預報，檔案雖然不大、最多合計僅有10MB，但因更新紀錄日積月累、很快就使得儲存空間有上GB的消耗，到了必須予以清理的地步。
   - 尤有進者，如果還要持續擴充這個[GitHub Pages](https://pages.github.com/)的功能，如新增別的污染項目、別的模式預報、延長預報的時間長度、等等，每一項都會消耗系統的(儲存)資源。
 - github並沒有一處界面可以讓使用者清除紀錄(尚未找到)。而是將此一(危險)動作留給使用者在本地、以git指令進行操作，這是一項保險措施，以避免不可挽回的錯誤。
@@ -37,6 +39,7 @@ modify_date: 2022-11-04 11:48:01
   
 ## 清除git紀錄的作法
 ### 準備
+
 - 如果本地版本與遠端不符，需要先進行`git pull`
 - 如果本地版本錯亂，可以直接刪除目錄，再行`git clone ...(repo)`
 - 不要嘗試使用`github desktop`
@@ -80,9 +83,11 @@ git push -f https://sinotec2:$TOKEN@github.com/sinotec2/sinotec2.github.io.git m
 ```
 
 ### github desktop
+
 - 會存有歷史紀錄的標籤，如果實質上已遭清除，此時無法順利對照。
   1. 刪除`github desktop`之repository開啟紀錄與設定
   1. 重新clone一份新的、無紀錄的版本
 - 正常使用`github desktop`
 
-
+[repo]: <https://zh.wikipedia.org/wiki/儲存庫> "儲存庫（英語：repository）[1]亦稱倉庫、資源庫、資源庫、版本庫、代碼庫、存放庫，在版本控制系統中是指在磁碟儲存上的資料結構，其中包含了檔案、目錄以及元資料。儲存庫可能為分散式（如Git）或集中式（如Subversion）。[2]分散式的儲存庫可以複製到每個使用者的本地；集中式的儲存庫只能儲存在伺服器上。[3]"
+[2022-06-06-cpuff_fcst]: https://sinotec2.github.io/FAQ/2022/06/06/cpuff_fcst.html " 濃度預報系統之實現"

@@ -11,7 +11,7 @@ modify_date: 2022-10-06 16:12:40
 ---
 ## 背景
 - 以多核執行mcip(gcc版本)會有儲存的問題，容易發生問題。檔頭即發生錯誤。
-- 由於多數執行皆以平行化，如在mcip階段以單核循序處理，將造成作業上的瓶頸，不利未來發展（[[2022-12-06-fcst10days]]）。
+- 由於多數執行皆以平行化，如在mcip階段以單核循序處理，將造成作業上的瓶頸，不利未來發展（[[2022-12-06-fcst10days]][^1]）。
 - 修改方案
   1. 改以[pnetcdf][PnetCDF]方式，讓程式可以平行方式撰寫結果。(CCTM現行執行檔即為[pnetcdf][PnetCDF]編譯成功經驗)
   1. 其他非gcc方案
@@ -119,3 +119,5 @@ user(每核心)|0m50.7755s|0m50.883s|1m22.0351s|1m10.621s|1m10.621s
 sys(系统CPU时间) |27m20.663s|28m7.542s|22m21.431s|0m14.550s|0m14.550s
 sys(每核心) |0m41.016s|0m42.188s|0m33.535s|0m14.550s|0m14.550s
 
+[PnetCDF]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/lib_comp/#pnetcdf> "Focus-on-Air-Quality->Utilities->NetCDF Relatives->程式庫之編譯NC相關程式庫之編譯->pnetcdf"
+[^1]: https://sinotec2.github.io/FAQ/2022/12/06/fcst10days.html " 空品預報時距之延長"

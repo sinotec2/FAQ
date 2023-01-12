@@ -15,7 +15,7 @@ mermaid: true
 
 - 這個內插機制主要針對2維griddata速度太慢所因應的修改方案。同時也需要規避griddata結果會有NaN內插錯誤的結果。
 - 主要因為空氣品質或排放量的內插會與距離的遠近有關，太遠的數據對內插影響也較低，還是適用距離相關的內插機制較為合理。同時摒除遙遠的數據對提升計算速度有非常重要的貢獻。
-- 程式主要應用在每日的下載與軌跡分析過程，參見[[2022-11-04-daily_traj]]。
+- 程式主要應用在每日的下載與軌跡分析過程，參見[[2022-11-04-daily_traj]][^1]。
 
 ## 程式設計重點
 
@@ -72,3 +72,4 @@ for i in range(ncol1*nrow1):
 var1=var1.flatten().reshape(nv,nt1,nlay1,nrow1,ncol1)
 ```
 
+[^1]: https://sinotec2.github.io/FAQ/2022/11/04/daily_traj.html " daily_traj.cs"

@@ -23,8 +23,8 @@ modify_date: 2022-09-23
 - 一般就重量而言：
   - 海鹽顆粒濃度主要分布在粗粒徑範圍，IJ mode的質量濃度不高。
   - 風速較大地區、海峽、海岸線會有較高的海鹽顆粒濃度。
-- 影響到程式 grb2icon.py([[2022-08-16-CAMS_ic]])
-  - grb2bcon.py([[2022-08-16-CAMS_bc]])
+- 影響到程式 grb2icon.py([[2022-08-16-CAMS_ic]][^1])
+  - grb2bcon.py([[2022-08-16-CAMS_bc]][^2])
 
 ## 對照方式
 
@@ -58,3 +58,6 @@ modify_date: 2022-09-23
   - 臺灣海峽高風速區，也造成可觀的濃度。
   - 東方邊界確實有濃度流入，但其影響相較SSA排放機制而言並不大。
 
+
+[^1]: https://sinotec2.github.io/FAQ/2022/08/16/CAMS_ic.html " CAMS預報數據寫成CMAQ初始檔"
+[^2]: https://sinotec2.github.io/FAQ/2022/08/16/CAMS_bc.html " CAMS預報數據寫成CMAQ邊界檔"

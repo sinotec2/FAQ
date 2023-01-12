@@ -12,7 +12,7 @@ modify_date: 2022-09-05 10:51:33
 
 ## 背景
 
-- 這項困難主要發生在[[2022-10-13-mk_emis]]。
+- 這項困難主要發生在[[2022-10-13-mk_emis]][^1]。
 - python datetime.timedelta()函數的特性
   1. 適用在「精確」時間差的計算，
   1. 除了年以外的其他時間單位，都還能適用實數的時差
@@ -43,7 +43,9 @@ grid03/smoke/b3gts_l.20191025.37.d4.ea2019_d4.tar.xz
   1. 用`dateutil.relativedelta`：[這個方案][segmentfault2017]會更容易跟datetime融合。雖然相對時差只能應用在整數月份，但也足夠應付此處之計算需求。
 
 ## 作法
+
 ### [dateutil.relativedelta][segmentfault2017]的應用
+
 - 將[dateutil.relativedelta][segmentfault2017]寫成簡單版本的函數型態，可以回應次月、前月的年份、月份
 - [dateutil.relativedelta][segmentfault2017]的好處就是與datetime完全融合在日期的計算中，不會像[calendar.monthrange()][monrange]只回應整數。用法幾乎像timedelta一樣，卻又沒有那麼嚴謹。
 
@@ -76,3 +78,6 @@ bdate=datetime.datetime.strptime(tdy,"%Y-%m-%d")
 - 此處將其名稱規則化、程式化，會更方便未來程式的發展，並減少檔名對照的錯誤。
 
 
+[monrange]: <https://vimsky.com/zh-tw/examples/usage/python-calendar-monthrange-method-with-example-02.html> " 純淨天空：Python calendar monthrange()用法及代碼示例：monthrange(year, month)"
+[segmentfault2017]: <https://segmentfault.com/q/1010000012025203> "segmentfault, 2017：python的timedelta为什么不支持month? from dateutil.relativedelta import relativedelta; print datetime.now() + relativedelta(months=1)"
+[^1]: https://sinotec2.github.io/FAQ/2022/10/13/mk_emis.html " 逐日排放檔案之切割程式"
