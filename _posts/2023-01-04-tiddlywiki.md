@@ -13,7 +13,6 @@ modify_date: 2023-01-12 20:01:44
 ## 背景
 
 - Wiki.js的特色自然是其執行node.js的網站架構，目前還有[Nuclino][Nuclino]、[TiddlyWiki][TiddlyWiki]等其他的系統也是使用javascript的網頁程式，前者是個公司經營的協作系統、後者適合個人筆記系統，沒有資料庫系統程式支援搜尋引擎。
-- [使用tiddlywiki的用途和心得](https://www.getit01.com/p20180112331214433/)
 - 整體筆記系統可以參考[[2022-10-08-about_note_sw]][^2]、[[2023-01-04-wikijs]]也有wiki.js安裝、使用的介紹。
 
 ## TiddlyWiki安裝執行
@@ -68,12 +67,18 @@ Try it out:
 
 ![](https://raw.githubusercontent.com/sinotec2/FAQ/master/attachments/2023-01-12-20-27-19.png)
 
+## 心得評論
+
+### 其他人的意見
+
+- [使用tiddlywiki的用途和心得](https://www.getit01.com/p20180112331214433/)
+
 ### 使用時機
 
 - 因為還是有簡單的帳密管理，不是很公開的資訊，適合在此發布。
 - 適合短篇的內容。因為(還)沒有toc，篇幅太長切換不容易。
 - 沒有註腳功能
-- 會對熱門、特殊的名詞，會自動產生placehoder，呈現出暗藍色。
+- 會對熱門、特殊的名詞，會自動產生placehoder，呈現出暗藍色。（似乎提醒使用者有空還是得一一建起來），但是不像[foam][foam]有個頁面專門講這些匯集在一起，這樣就不會找不到了。
 
 [^1]: Comparison of wiki software, [wikipedia][cmp](2022)
 
@@ -87,3 +92,4 @@ Try it out:
 [gnu]: https://en.wikipedia.org/wiki/GNU_Affero_General_Public_License "GNU Affero General Public License"
 [cmp]: https://en.wikipedia.org/wiki/Comparison_of_wiki_software "Comparison of wiki software"
 [wikijs_official]: https://js.wiki/ "The most powerful and extensible open source Wiki software, Make documentation a joy to write using Wiki.js's beautiful and intuitive interface!"
+[foam]: https://sinotec2.github.io/FAQ/2023/01/12/FOAM.html "foam"
