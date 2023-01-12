@@ -13,6 +13,7 @@ modify_date: 2023-01-12 20:01:44
 ## 背景
 
 - Wiki.js的特色自然是其執行node.js的網站架構，目前還有[Nuclino][Nuclino]、[TiddlyWiki][TiddlyWiki]等其他的系統也是使用javascript的網頁程式，前者是個公司經營的協作系統、後者適合個人筆記系統，沒有資料庫系統程式支援搜尋引擎。
+- [使用tiddlywiki的用途和心得](https://www.getit01.com/p20180112331214433/)
 - 整體筆記系統可以參考[[2022-10-08-about_note_sw]][^2]、[[2023-01-04-wikijs]]也有wiki.js安裝、使用的介紹。
 
 ## TiddlyWiki安裝執行
@@ -63,11 +64,16 @@ Try it out:
     3. port number
     4. 資料庫名稱
 
-![](https://raw.githubusercontent.com/sinotec2/FAQ/master/attachments/2023-01-12-20-27-19.png)
-
 - `tiddlywiki mynewwiki --listen username=ku*ng  password=sino***2 host=125.229.149.182 port=8080`
 
-- [使用tiddlywiki的用途和心得？](https://www.getit01.com/p20180112331214433/)
+![](https://raw.githubusercontent.com/sinotec2/FAQ/master/attachments/2023-01-12-20-27-19.png)
+
+### 使用時機
+
+- 因為還是有簡單的帳密管理，不是很公開的資訊，適合在此發布。
+- 適合短篇的內容。因為(還)沒有toc，篇幅太長切換不容易。
+- 沒有註腳功能
+- 會對熱門、特殊的名詞，會自動產生placehoder，呈現出暗藍色。
 
 [^1]: Comparison of wiki software, [wikipedia][cmp](2022)
 
