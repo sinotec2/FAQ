@@ -40,6 +40,6 @@ with open(fname,'w',encoding='utf8') as f:
   n=len(ttl)
   f.write('\n')
   for i in range(n):
-    url=llnk[i].replace('-','/')+'.html'
-    f.write('[^'+str(nsb0+i)+']: '+urlroot+url+' "'+ttl[i]+'"\n')
+    url=urlroot+llnk[i].replace('-','/')+'.html'
+    f.write('[^'+str(nsb0+i)+']: '+url+' "['+ttl[i]+']('+url+')"\n')
 
