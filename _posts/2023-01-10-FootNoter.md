@@ -15,7 +15,7 @@ modify_date: 2023-01-10 11:43:05
 
 ## 背景
 
-- [[wikitext]]中的註腳幾乎是內設功能，這篇[^2]歷時13年的討論，集中了之前許多的爭論。
+- [[2023-01-12-wikitext]][^5]中的註腳幾乎是內設功能，這篇[^2]歷時13年的討論，集中了之前許多的爭論。
   - 總而言之，[markdown][md_wiki]還是沒有把自動編排註釋順序當成是內設、普遍的語言功能，至少在沒有插件的[VScode][VScode]中仍然是看不懂的。
   - 自動編排的需求仍然存在，而且短期內應該是不會改變了。
 - 然而`peak(^)`符號+數字已經在很多軟體中以被普遍接受(至少[GitHub][GitHub]、[Jekyll][Jekyll]做出來的部落格)。
@@ -67,6 +67,7 @@ wikimedia|X|-
 [^1]: Markdown Footnote by [Mai Hou][MH](2021)
 [^2]: [Markdown footnotes?][mse] meta.stackexchange.com/questions/5017, 2009~2022
 [^3]: Adds `[^1]` footnote syntax support to VS Code's built-in Markdown preview, by [Matt Bierner][MB](2022)
+[^5]: [WikiText][1]** 是撰寫wiki的一種語法，同時也是[wiki家族][2]中最簡單的語法。 See also [Help:格式化文本][3].[https://sinotec2.github.io/FAQ/2023/01/12/wikitext.html](https://sinotec2.github.io/FAQ/2023/01/12/wikitext.html)
 
 ## wikitext與markdown註腳寫法的比較
 
@@ -75,4 +76,15 @@ wikimedia|X|-
 註腳引用|`<ref>參考文字</ref>`|`[^1]`|md只能用數字作為參照，但最後會自動排序(需啟用[插件][4])
 註腳彙總|`</Reference>`|`[^1]: 參考文字`|wikitext會自動彙總所有註腳
 
+[MH]: https://marketplace.visualstudio.com/publishers/houkanshan "Markdown Footnote"
+[mse]: https://meta.stackexchange.com/questions/5017/markdown-footnotes "Markdown footnotes? Asked 13 years, 5 months ago, Modified 1 month ago, Viewed 38k times"
+[MB]: https://marketplace.visualstudio.com/publishers/bierner "Matt Bierner,是個多產的插件作家，本身是VR軟體工程師 https://blog.mattbierner.com/"
+[vscode]: https://zh.wikipedia.org/zh-tw/Visual_Studio_Code "Visual Studio Code（簡稱 VS Code）是一款由微軟開發且跨平台的免費原始碼編輯器[8]。該軟體支援語法突顯、程式碼自動補全（又稱 IntelliSense）、程式碼重構功能，並且內建了命令列工具和 Git 版本控制系統[9]。使用者可以更改佈景主題和鍵盤捷徑實現個人化設定，也可以透過內建的擴充元件程式商店安裝擴充元件以加強軟體功能。"
+[ide]: https://zh.wikipedia.org/zh-tw/集成开发环境 "集成开发环境、整合開發環境"
+[md_wiki]: https://zh.wikipedia.org/zh-tw/Markdown "Markdown是一種輕量級標記式語言，創始人為約翰·格魯伯。它允許人們使用易讀易寫的純文字格式編寫文件，然後轉換成有效的XHTML（或者HTML）文件。[4]這種語言吸收了很多在電子郵件中已有的純文字標記的特性。"
+[Jekyll]: https://zh.wikipedia.org/zh-tw/Jekyll_(博客生成工具) "Jekyll是一個簡單的靜態網站生成器，用於生成個人，專案或組織的網站。 它由GitHub聯合創始人湯姆·普雷斯頓·沃納用Ruby編寫，並根據MIT授權條款釋出。"
+[github]: https://zh.wikipedia.org/zh-tw/GitHub "GitHub是一個線上軟體原始碼代管服務平台，使用Git作為版本控制軟體，由開發者Chris Wanstrath、P. J. Hyett和湯姆·普雷斯頓·沃納使用Ruby on Rails編寫而成。在2018年，GitHub被微軟公司收購。"
+[marketplace]: https://marketplace.visualstudio.com/ "Extensions for Visual Studio Code"
+[jtd]: https://just-the-docs.github.io/just-the-docs "Focus on writing good documentation. Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
+[3]: https://www.mediawiki.org/wiki/Help:Formatting/zh "mediawiki->Help:格式化文本"
 
