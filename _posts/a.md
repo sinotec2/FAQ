@@ -1,119 +1,78 @@
 ---
-title: CMAQ2CAMx之單向轉換
-tags: CMAQ CAMx ICON BCON emis ptse uamiv
+title: Wiki.js and tiddlywiki
+tags: note_system wiki.js tiddlywiki
 layout: article
 aside:
   toc: true
 sidebar:
   nav: layouts
+date: 2023-01-04
+modify_date: 2023-01-04 10:36:19
 ---
 
-## [cmaq2camx][cmaq2camx]背景
-- cmaq2camx是Ramboll公司提供的套件程式，將CMAQ模式的ICON、BCON、EMIS、PTSE等重要模擬條件檔，轉到CAMx平台上，符合[uamiv][uamiv]、[lateral_boundary][bnd]及[point_source][pnc_camx]之格式。
-- 雖然CMAQ和CAMx二者不斷在更新、化學反應機制也更新到CB6及CB7，但[cmaq2camx][cmaq2camx]仍然停留在2016年CB5的狀態，不論程式或反應機制對照檔，都無法套用在最新的模式，使用者需自行注意是否合用，也要對轉出的結果再三檢查。
-- 使用[pseudonetcdf][pseudonetcdf]的[pncgen][pncgen]來產生前述CAMx所需格式檔案，是否會比較方便？經過檢討並非這麼理想，可以參考[這一個比較表][camx2ioapivspncgen]，轉檔的方向雖然不同，但面臨的細節問題應該是一樣。
-- BCON轉.bc的[實作歷程](https://sinotec2.github.io/FAQ/2022/06/29/SlimCMAQ2CAMx.html)發現
-  - [cmaq2camx][cmaq2camx]還有一個最大的困難就是垂直層的概念差異很大，CMAQv5+不允許使用者合併WRF的垂直層，來提升高空的計算效率，但是CAMx在這方面並沒有這麼堅持。
-  - 如果2者的垂直層定義不同，[cmaq2camx][cmaq2camx]並沒有提供調整的選項，使用者需自行調整匹配。
-- 此處詳細說明程式之下載、編譯、輸入環境變數或標準輸入的選項內容。
-- camx2cmaq詳參[[2022-07-04-camx2cmaqd4.py]][^1]、[[2022-07-04-emis]][^2]、[[2022-07-04-CAMx2IOapi]][^3]
-## 下載及編譯
+## 背景
 
-- 下載點：[https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz](https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz)
+- Wiki.js是在Node.js上運行並用JavaScript編寫的Wiki引擎。它是根據Affero GNU[通用公共許可][gnu]發布的免費軟件。提供方式可以作為自託管解決方案，也可以在DigitalOcean和AWS市場上使用“單擊”安裝。([wiki][cmp])
+- 根據wikipedia[^1]上的數據，Wiki.js誕生於28 January 2017，是wiki家族最年輕的系統(相對最年長的系統[WikiWikiWeb][WikiWikiWeb]是1995誕生)，雖然如此，也是最為活耀的系統，目前已經更新到2.5版。
+- Wiki.js的特色自然是其執行node.js的網站架構，目前還有[Nuclino][Nuclino]、[TiddlyWiki][TiddlyWiki]等其他的系統也是使用javascript的網頁程式，前者是個公司經營的協作系統、後者適合個人筆記系統，沒有資料庫系統程式支援搜尋引擎。
+- 整體筆記系統可以參考[[2022-10-08-about_note_sw]][^3][^2]
+- [Wiki.js官網][wikijs_official]
+- [wiki.js 使用 postgres 支持中文全文检索](https://zhuanlan.zhihu.com/p/335359081)
 
-### linux編譯
-- 使用Makefile，修正程式庫位置(配合編譯器)，如
+## TiddlyWiki
 
-```bash
-IOAPI_INC  = /opt/ioapi-3.2/ioapi/fixed_src
-IOAPI_LIB  = /opt/ioapi-3.2/Linux2_x86_64gfort
-NETCDF_LIB = /opt/netcdf/netcdf4_gcc/lib
-```
-- 編譯器(gfortran)
+### system installation
+
+- 安裝與啟動，詳參[ Jermolene /TiddlyWiki5][Jermo]
+- 中文之設定，詳參[bramchen][bramchen]：修改 `./MyWiki/tiddlywiki.info` ，加入
 
 ```bash
-FC  = gfortran
-OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
-LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
-INC = -I$(IOAPI_INC)
+Open a command line terminal and type:
+
+    npm install -g tiddlywiki
+    If it fails with an error you may need to re-run the command as an administrator:
+    sudo npm install -g tiddlywiki (Mac/Linux)
+
+Ensure TiddlyWiki is installed by typing:
+
+    tiddlywiki --version
+
+    In response, you should see TiddlyWiki report its current version (eg "5.2.5". You may also see other debugging information reported.)
+
+Try it out:
+
+    tiddlywiki mynewwiki --init server to create a folder for a new wiki that includes server-related components
+    tiddlywiki mynewwiki --listen to start TiddlyWiki
+    Visit http://127.0.0.1:8080/ in your browser
 ```
 
-### macOS
-- 以macOS之gfortran為例，Makefile如下表，重要設定說明如下：
-  - IOAPI_INC  ：特別連結到固定格式之包括檔(fixed_src)
-  - IOAPI_LIB ：按照機器及編譯器的規格設定(preset)
-  - NETCDF_LIB ：除了netcdf(C)之外，也需要有netcdff(FORTRAN)程式庫
-  - gomp ：有的gcc會需要omp程式庫(gomp)
+### language
 
-```bash
-IOAPI_INC  = /Users/IOAPI/ioapi-3.2/ioapi/fixed_src
-IOAPI_LIB  = /Users/IOAPI/ioapi-3.2/OSX_x86_gfortran
-NETCDF_LIB = /usr/local/NetCDF4/lib
-...
-FC  = gfortran
-OPT = -mcmodel=medium -O2 -fno-align-commons -fconvert=big-endian -frecord-marker=4 -ffixed-line-length-0
-LIB = -L$(IOAPI_LIB) -lioapi -L$(NETCDF_LIB) -lnetcdf -lnetcdff -lgomp
-INC = -I$(IOAPI_INC)
+- 注意如果後面還有設定，在"`]`"後要加上"`,`"
+
+```java
+    "languages": [
+        "zh-Hant"
+    ]
 ```
-## 執行轉檔
-### 三支程式用途
 
-項次|程式|處理對象|說明
-:-:|-|-|-
-1|spcmap|CMAQ濃度或排放量物種對應|每一類檔案都需先執行
-2|cmaq2uam|CMAQ轉換到CAMx|主程式
-3|ptht|點源後處理|按照逐時有效高度加入點源檔中的高度位置資訊
+`tiddlywiki mynewwiki --listen username=ku*ng  password=sino***2 host=125.229.149.182 port=8080`
 
-### 所有腳本內容
+https://www.getit01.com/p20180112331214433/
 
-項次|處理對象|範本
-:-:|-|-
-1|轉換邊界濃度|[conv_bcon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_bcon.job) 
-2|轉換排放量檔|[conv_emis.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_emis.job) 
-3|轉換初始濃度(1轉2)|[conv_icon.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_icon.job) 
-4|轉換點源(2合1)|[conv_ipnt.job](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/POST/conv_ipnt.job) 
+[^1]: Comparison of wiki software, [wikipedia][cmp](2022)
 
-### 環境變數(env var)與程式標準輸入(std input)
+[^2]: https://sinotec2.github.io/FAQ/2022/10/08/about_note_sw.html " 數位筆記系統使用心得"
+[^3]: https://sinotec2.github.io/FAQ/2022/10/08/about_note_sw.html " 數位筆記系統使用心得"
 
-程式|env var / std input|變數/前導|內容|說明
-:-:|:-:|-|-|-
-spcmap|e|INFILE|CMAQ輸入檔|可以是前述4種檔案(點源為排放量檔)
-spcmap|e|OUTFILE|spcmap輸出之暫存檔|連到以下CMAQEMIS, CMAQICON, CMAQBCON|最終會將其移除
-spcmap|e|MAPTBL|物種對照表|如[下表](https://sinotec2.github.io/FAQ/2022/06/29/SlimCMAQ2CAMx.html#species_mapping的選項)|
-cmaq2uam|e|CMAQEMIS|地面或點源排放量|經spcmap轉換結果，適用2者排放量檔
-cmaq2uam|e|CMAQICON|初始檔|經spcmap轉換結果
-cmaq2uam|e|CMAQBCON|邊界檔|經spcmap轉換結果
-cmaq2uam|e|STKGROUP|點源參數檔|CMAQ原始檔。只有點源需要
-cmaq2uam|s|File Type|4碼字元|BCON, ICON, EMIS, IPNT 4擇1
-cmaq2uam|s|OutFile1 (IC,BC,AR)|第1輸出檔|$OUTPUT_CAMx_BC
-cmaq2uam|s|OutFile2 (TopC,PT) |第2輸出檔|上層濃度或CAMx點源檔
-cmaq2uam|s|Output Timezone|$OUTPUT_TIMEZONE|CAMx時區8=PST, -8=TPE
-ptht|s|Input CAMx PT|IPNT處理的第2輸出檔|
-ptht|s|Input CAMx Z|舊版的高度壓力檔或新版的3D檔|$CAMx_HEIGHT
-ptht|s|Output CAMx PT|輸出CAMx點源結果檔案|$OUTPUT_CAMx_PNT
-ptht|s|No. of MET layers|輸出層數|$OUTPUT_N_LAYERS
-
-### $SPECIES_MAPPING的選項
-- 這些對照表仍然停留在2016年的狀態
-- Ramboll提供了MAPTBL.sample檔案針對未知或其他反應機制，讓使用者可以自行撰寫適用的對照表。
-
-|CAMx版本|CAMx機制|CMAQ機制|排放/邊界|檔名|
-|:-:|:-:|:-:|:-:|:-|
-|CAMx6.2|CB05_CF|CB05_AE5|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_EMIS| 
-|CAMx6.2|CB05_CF|CB05_AE5|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE5_ICBC|
-|CAMx6.2|CB05_CF|CB05_AE6|EMIS|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_EMIS|
-|CAMx6.2|CB05_CF|CB05_AE6|ICBC|MAPTBL.CAMx6.2_CB05_CF.CMAQ_CB05_AE6_ICBC|
-|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|EMIS|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_EMIS|
-|CAMx6.2|SAPRC99_CF|SAPRC99_AE5|ICBC|MAPTBL.CAMx6.2_SAPRC99_CF.CMAQ_SAPRC99_AE5_ICBC|
+[Jermo]: https://github.com/Jermolene/TiddlyWiki5 "Installing TiddlyWiki on Node.js"
+[bramchen]: http://bramchen.objectis.net/ "bramchen"
+[TiddlyWiki]: https://en.wikipedia.org/wiki/TiddlyWiki "TiddlyWiki is a personal wiki and a non-linear notebook for organising and sharing complex information. It is an open-source single page application wiki in the form of a single HTML file that includes CSS, JavaScript, embedded files such as images, and the text content. It is designed to be easy to customize and re-shape depending on application. It facilitates re-use of content by dividing it into small pieces called Tiddlers."
+[Nuclino]: https://en.wikipedia.org/wiki/Nuclino "Nuclino is a cloud-based team collaboration software which allows teams to collaborate and share information in real time.[2][3] It was founded in Munich, Germany in 2015.[4] Some notable features include a WYSIWYG collaborative real-time editor and a visual representation of a team's knowledge in a graph. In addition to its web-based and desktop application, in 2018, Nuclino launched a free mobile app for Android and iOS."
+[WikiWikiWeb]: https://zh.wikipedia.org/wiki/WikiWikiWeb "WikiWikiWeb是第一個用戶可編輯的維基網站，於1995年3月25日由其發明者程序員沃德·坎寧安與Portland Pattern Repository網站一起討論軟件設計模式後推出。WikiWikiWeb這個名字最初也是於運行這個網站的維基軟件名稱。這個維基軟件用Perl編程語言編寫，後更名為“WikiBase”。WikiWikiWeb是由坎寧安在1994年開發的，目的是方便程序員之間的思想交流。這個概念是基於坎寧安在20世紀80年代後期編寫HyperCard堆程式時想到的"
+[gnu]: https://en.wikipedia.org/wiki/GNU_Affero_General_Public_License "GNU Affero General Public License"
+[cmp]: https://en.wikipedia.org/wiki/Comparison_of_wiki_software "Comparison of wiki software"
+[wikijs_official]: https://js.wiki/ "The most powerful and extensible open source Wiki software, Make documentation a joy to write using Wiki.js's beautiful and intuitive interface!"
 
 
-[cmaq2camx]: <https://camx-wp.azurewebsites.net/getmedia/cmaq2camx.22sep16.tgz> "CMAQ2CAMx converts CMAQ-formatted emissions and IC/BC files to CAMx Fortran binary formats.  See README and job scripts for more information.  You will need IO-API and netCDF libraries to compile and run this program.  Updated 8 April 2016 to process CAMx Polar and Mercator projections.  Updated 22 September 2016 to fix a minor bug checking map projection type for in-line point source files."
-[uamiv]: <https://github.com/sinotec2/camxruns/wiki/CAMx(UAM)的檔案格式> "CAMx所有二進制 I / O文件的格式，乃是遵循早期UAM(城市空氣流域模型EPA，1990年）建立的慣例。 該二進制文件包含4筆不隨時間改變的表頭記錄，其後則為時間序列的數據記錄。詳見CAMx(UAM)的檔案格式"
-[bnd]: <https://sinotec2.github.io/FAQ/2022/06/27/CAMx_BC.html#uamiv與lateral_boundary格式內容之比較> "uamiv與lateral_boundary格式內容之比較"
-[pnc_camx]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/pncgen/#camx> "FAQ -> Utilitie -> NetCDF Relatives -> ncgen & pncgen -> CAMx"
-[pseudonetcdf]: <https://github.com/barronh/pseudonetcdf/blob/master/scripts/pncgen> "PseudoNetCDF provides read, plot, and sometimes write capabilities for atmospheric science data formats including: CAMx (www.camx.org), RACM2 box-model outputs, Kinetic Pre-Processor outputs, ICARTT Data files (ffi1001), CMAQ Files, GEOS-Chem Binary Punch/NetCDF files, etc. visit  barronh /pseudonetcdf @GitHub."
-[pncgen]: <https://sinotec2.github.io/Focus-on-Air-Quality/utilities/netCDF/pncgen/#pncgen> "FAQ -> Utilitie -> NetCDF Relatives -> ncgen & pncgen -> pncgen"
-[camx2ioapivspncgen]: <https://sinotec2.github.io/FAQ/2022/07/04/CAMx2IOapi.html#camx2ioapi與pncgen之間的差異比較> "FAQ -> CAMx2IOAPI檔案之轉換 -> CAMx2IOAPI與pncgen之間的差異比較"
-[^1]: https://sinotec2.github.io/FAQ/2022/07/04/camx2cmaqd4.py.html " D4範圍地面排放檔案之轉換"
-[^2]: https://sinotec2.github.io/FAQ/2022/07/04/emis.html " CMAQ/CAMx排放量檔案之轉換"
-[^3]: https://sinotec2.github.io/FAQ/2022/07/04/CAMx2IOapi.html " CAMx2IOAPI檔案之轉換"
+
