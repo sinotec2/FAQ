@@ -63,9 +63,11 @@ Try it out:
     3. port number
     4. 資料庫名稱
 
-`tiddlywiki mynewwiki --listen username=ku*ng  password=sino***2 host=125.229.149.182 port=8080`
+![](https://raw.githubusercontent.com/sinotec2/FAQ/master/attachments/2023-01-12-20-27-19.png)
 
-https://www.getit01.com/p20180112331214433/
+- `tiddlywiki mynewwiki --listen username=ku*ng  password=sino***2 host=125.229.149.182 port=8080`
+
+- [使用tiddlywiki的用途和心得？](https://www.getit01.com/p20180112331214433/)
 
 [^1]: Comparison of wiki software, [wikipedia][cmp](2022)
 
