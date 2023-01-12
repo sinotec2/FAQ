@@ -17,6 +17,7 @@ mermaid: true
 - 整體計算邏輯
   1. 公版模式中已將所有的點源以高空網格形式輸入，需先將這些污染源自基準排放量(`base`)切割出來後成為**無**火力機組排放量(`baseX`)，再加入增量檔案(`baseN`)，以計算其濃度差值：`dC = cmaq(baseN)-cmaq(baseX)`，`cmaq()`表示CMAQ模式之執行，輸入排放量產出濃度之函數。
   1. 此處之`baseX`除少數可自網格內獨立出來(如大型燃煤電廠、高空網格無其他污染源併列)，其餘機組無法清楚切割，則以額外(重複)添加方式辦理，因光化反應的非線性過程，此舉可能對這些機組的貢獻量造成高估。
+- 參照[[2022-06-06-cpuff_fcst]]的做法
 
 ### 整體作業流程
 
@@ -230,6 +231,3 @@ for fn in nts:
   1. 常數檔：由模版複製
   1. 時變檔：由2019年模版檔案以`ncks`切割拮取
 
-[rd_today.py]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast/#前日運轉率之彙整與應用> "opendata中臺灣地區火力機組前日運轉率之彙整與應用"
-[UNRESPFcst]: <https://sinotec2.github.io/Focus-on-Air-Quality/TrajModels/CALPUFF/Forecast> "本土化CALPUFF濃度預報系統之實現"
-[fcst]: <https://sinotec2.github.io/FAQ/2022/08/20/CMAQ_fcst.html> "運用GFS/CWB/CAMS數值預報數進行台灣地區CMAQ模擬"

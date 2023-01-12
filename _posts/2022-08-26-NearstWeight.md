@@ -1,6 +1,6 @@
 ---
 title: 搜尋半徑距離平方反比加權之內插機制
-tags: CWB WRF trajectory
+tags: CWBWRF trajectory
 layout: article
 aside:
   toc: true
@@ -71,3 +71,4 @@ for i in range(ncol1*nrow1):
 ```python
 var1=var1.flatten().reshape(nv,nt1,nlay1,nrow1,ncol1)
 ```
+

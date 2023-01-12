@@ -4,6 +4,7 @@ title:  WRF的時間標籤
 parent: Dates and Times
 grand_parent: Utilities
 last_modified_date:   2021-12-28 21:21:21
+tags: python datetime
 ---
 # WRF的時間標籤
 {: .no_toc }
@@ -19,6 +20,7 @@ last_modified_date:   2021-12-28 21:21:21
 
 ---
 ## nc bytes to datetime
+
 - `wrfout`的時間標籤變數名稱為`Times`， 為時間及**12**個`byte`的2維序列，內容為`%Y-%m-%d_%H:00:00`
   - 因標籤不是單純的整數，而是含有減號及冒號的字串，在netCDF檔案內要儲存字串，必須是`byte`形式才能儲存。  
 - 因此須先轉成**12**個字元的序列，以`decode`指令逐一進行轉換。
@@ -36,6 +38,7 @@ tflag=[i.strftime('%Y%m%d%H') for i in Times]
 ```
 
 ## datetime to nc bytes
+
 - 在儲存wrfout檔案時，則需反向操作，如以下範例
   1. 先產生一個空白序列的容器`b`、將發展成時間及byte數的2維矩陣，未來每個單元長度為12個bytes。
   1. 進行迴圈處理每一個時間的標籤
@@ -53,3 +56,6 @@ nc.variables[v][:,:]=[b[t][:] for t in range(tmax)]
 ```
 
 ## Reference
+
+- [[EAC4_Times]]
+
