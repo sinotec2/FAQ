@@ -8,8 +8,8 @@ for i in range(n):
   if '[[' in line[i]:nsb+=1
   if '[^' in line[i]:npk+=1
 if nsb==0: sys.exit()
-if npk%2==1:sys.exit('odd num of peeks')
-nsb=npk//2+1
+if npk%2==1:print('odd num of peeks')
+nsb0=int(npk//2)+2;nsb=nsb0
 llnk=[];ttl=[]
 urlroot='https://sinotec2.github.io/FAQ/'
 with open(fname,'w',encoding='utf8') as f:
@@ -41,4 +41,5 @@ with open(fname,'w',encoding='utf8') as f:
   f.write('\n')
   for i in range(n):
     url=llnk[i].replace('-','/')+'.html'
-    f.write('[^'+str(npk//2+1+i)+']: '+urlroot+url+' "'+ttl[i]+'"\n')
+    f.write('[^'+str(nsb0+i)+']: '+urlroot+url+' "'+ttl[i]+'"\n')
+
