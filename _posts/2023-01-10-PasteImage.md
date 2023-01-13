@@ -28,7 +28,7 @@ modify_date: 2023-01-10 11:43:05
 
 ### Paste Image系列
 
-- 1.0.4(2019版)市集介紹：[Paste Image, mushan(2019)]([[2023-01-11]])
+- 1.0.4(2019版)市集介紹：[Paste Image, mushan(2019)][mushan2019]
 - [Markdown Paste, telesoho(2022)](https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image)：這個版本的paster比之前的更受歡迎，除了會分辨剪貼簿(clipboard, `ctrl-c`進入記憶體)的內容格式，按照格式貼上並進行必要的重整，圖形加上檔案連結、程式碼加上格式、Ruby tag(華語及日語的心情插圖)等等服務。
 
 ### 其他改進
@@ -73,3 +73,4 @@ modify_date: 2023-01-10 11:43:05
 [8]: https://marketplace.visualstudio.com/ "  Visual Studio   |   Marketplace"
 [9]: http://125.229.149.182:8000/zh-tw/note_system/剪貼簿/paste_image "Paste Image：3C工程師的福音 > 從此貼圖有word的便利、卻能有markdown的簡約感、未來感"
 [10]: https://sinotec2.github.io/FAQ/2023/01/10/PasteImage.html "Paste Image"
+[mushan2019]: https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image "Paste Image, mushan |  266,862 installs, (45) Free, paste image from clipboard directly"
