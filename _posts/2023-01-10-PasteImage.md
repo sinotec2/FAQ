@@ -72,4 +72,4 @@ modify_date: 2023-01-10 11:43:05
 [7]:https://marketplace.visualstudio.com/items?itemName=ziok2010.vscode-paste-image-ftp "Paste Image Ftp v0.2.2, by ziok2010(2017)paste image from clipboard directly and upload ftp server"
 [8]: https://marketplace.visualstudio.com/ "  Visual Studio   |   Marketplace"
 [9]: http://125.229.149.182:8000/zh-tw/note_system/剪貼簿/paste_image "Paste Image：3C工程師的福音 > 從此貼圖有word的便利、卻能有markdown的簡約感、未來感"
-[10]: https://sinotec2.github.io/FAQ/Paste_Image "Paste Image"
+[10]: https://sinotec2.github.io/FAQ/2023/01/10/PasteImage.html "Paste Image"
