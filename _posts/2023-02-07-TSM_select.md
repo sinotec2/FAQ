@@ -42,20 +42,20 @@ sidebar:
 顯示速度|慢|快|如果太慢會拉長總連線時間
 應用範例|[L.TimeDimension][3]、[sliderControl][4]|[glify][1]、[GridCluster][2]|
 
-|![TimeDimension](../attachments/2023-02-07-09-31-04.png)|
+|![TimeDimension](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-31-04.png)|
 |:-:|
 |[TimeDimension][33]：Add time dimension capabilities on a Leaflet map.|
 
-|![](../attachments/2023-02-07-09-26-01.png)|
+|![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-26-01.png)|
 |:-:|
 |[sliderControl][44]:Leaflet-WMS-Time-Slider from BobTorgerson
 |
 
-|![glify](../attachments/2023-02-07-08-48-36.png)|
+|![glify](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-08-48-36.png)|
 |:-:|
 |[glify][11]:Fast rendering for large (+100MB) GeoJSON datasets with WebGL.|
 
-|![GridCluster](../attachments/2023-02-07-09-12-35.png)|
+|![GridCluster](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-12-35.png)|
 |:-:|
 |[GridCluster][22]:Create grid-based clusters in realtime.|
 
