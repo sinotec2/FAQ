@@ -42,22 +42,29 @@ sidebar:
 顯示速度|慢|快|如果太慢會拉長總連線時間
 應用範例|[L.TimeDimension][3]、[sliderControl][4]|[glify][1]、[GridCluster][2]|
 
+### TimeDimension
+
 |![TimeDimension](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-31-04.png)|
 |:-:|
-|[TimeDimension][33]：Add time dimension capabilities on a Leaflet map.|
+|[TimeDimension][33]：Add time dimension capabilities on a Leaflet map.([demo site][3])|
+
+### sliderControl
 
 |![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-26-01.png)|
 |:-:|
-|[sliderControl][44]:Leaflet-WMS-Time-Slider from BobTorgerson
-|
+|[sliderControl][44]:Leaflet-WMS-Time-Slider from BobTorgerson([demo site][4])|
+
+### glify
 
 |![glify](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-08-48-36.png)|
 |:-:|
-|[glify][11]:Fast rendering for large (+100MB) GeoJSON datasets with WebGL.|
+|[glify][11]:Fast rendering for large (+100MB) GeoJSON datasets with WebGL.([demo site][1])|
+
+### GridCluster
 
 |![GridCluster](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-09-12-35.png)|
 |:-:|
-|[GridCluster][22]:Create grid-based clusters in realtime.|
+|[GridCluster][22]:Create grid-based clusters in realtime.([demo site][2])|
 
 [1]: https://onaci.github.io/Leaflet.glify.layer/ "Fast rendering for large (+100MB) GeoJSON datasets with WebGL."
 [11]: https://www.npmjs.com/package/leaflet.glify "web gl renderer plugin for leaflet in typescript"
