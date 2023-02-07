@@ -18,16 +18,22 @@ sidebar:
 - 目前空品預報官方網頁
   - [歐洲哥白尼官網][CAMS_FCST]
   - [AirNow Interactive Map of Air Quality, USA](https://gispub.epa.gov/airnow/?showgreencontours=false)
+  - UK Air Information Resource, [Air pollution forecast map](https://uk-air.defra.gov.uk/forecasting/) by Department for Environment Food & Rural Affairs and Met Office, UK
   - USA
     - EPA [air now](https://www.airnow.gov/?city=New%20York&state=NY&country=USA)
     - [GMO forecast](https://fluid.nccs.nasa.gov/cf/classic_geos_cf/), NASA
     - National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/), NOAA
+  - city region
     - Spare the Air：[Air Quality Forecast](https://www.sparetheair.org/understanding-air-quality/air-quality-forecast), Bay Area Air Quality Management District, CA.
+    - [sdapcd.org](https://www.sdapcd.org/content/sdapcd/air-quality/air-quality-forecast.html) by San Diego County Air Pollution Control District
+    - [里加市](https://rigaairtext.lv/), 拉脫維亞
   - 環保署空氣品質監測網[全國各空品區空氣品質指標(AQI)預報](https://airtw.epa.gov.tw/CHT/Forecast/Forecast_3days.aspx)
 - 民間空品預報
   - [日本大氣污染情報的網站](https://pm25.jp/)
   - [https://aqicn.org](https://aqicn.org/here/)
   - 中研院環境變遷研究中心[高解析度空氣品質診斷與預報模式發展計畫模擬預報資料](https://ci.taiwan.gov.tw/dsp/forcast_air.aspx)
+  - 24-HOUR  and DAILY [AIR QUALITY FORECAST](https://www.accuweather.com/en/tw/taipei-city/315078/air-quality-index/315078) by AccuWeather.com
+  - Air quality in Taiwan, Air quality index (AQI) and PM2.5 air pollution in Taiwan, [map](https://www.iqair.com/taiwan) and [globe](https://www.iqair.com/earth?nav=) by iqair.com.
 
 ## 比較leaflet插件方案
 
