@@ -41,7 +41,7 @@ sidebar:
   - 24-HOUR  and DAILY [AIR QUALITY FORECAST](https://www.accuweather.com/en/tw/taipei-city/315078/air-quality-index/315078) by AccuWeather.com
   - Air quality in Taiwan, Air quality index (AQI) and PM2.5 air pollution in Taiwan, [map](https://www.iqair.com/taiwan) and [globe](https://www.iqair.com/earth?nav=) by iqair.com.
 
-## CGI 服務網頁之比較
+## 服務網頁之內容及比較
 
 ### NASA GMAO classic_geos_cf
 
@@ -165,9 +165,24 @@ animate=1">
 
 - 內部js程式，啟動esri leaflet相關模組
   - see [custom.js](custom.js)
+  - 觸發新網頁之方法
 
 ```java
-  
+            var popupContent = '<form action="/cf_map/gram/" id="popup-form" method="POST">'
+                                + '<p>Coordinates: <br>Latitude: '+lat+'<br>Longitude: '+lng+'</p>'
+                                + '<input type="hidden" id="lat" name="lat" value="'+lat+'" />'
+                                + '<input type="hidden" id="lon" name="lon" value="'+lng+'" />'
+                                + '<input type="hidden" id="product" name="product" value="no2" />'
+                                + '<input type="hidden" id="plot_type" name="plot_type" value="surf_plot" />'
+                                + '<input type="submit" value="Get Forecast Data" onclick="showLoader();">'
+                                + '</form>'
+                                + '<form action="/cf_map/hist/" method="POST">'
+                                + '<input type="hidden" id="lat" name="lat" value="'+lat+'" />'
+                                + '<input type="hidden" id="lon" name="lon" value="'+lng+'" />'
+                                + '<input type="hidden" id="product" name="product" value="no2" />'
+                                + '<input type="hidden" id="num_days" name="num_days" value="30"/>'
+                                + '<br><input type="submit" value="Get Historical Data" onclick="showLoader();">'
+                                + '</form>';  
 ```  
 
 ### NASA GMAO DATAGRAMS
