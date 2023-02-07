@@ -17,12 +17,15 @@ sidebar:
 
 - 目前空品預報官方網頁
   - [歐洲哥白尼官網][CAMS_FCST]
-  - [AirNow Interactive Map of Air Quality, USA](https://gispub.epa.gov/airnow/?showgreencontours=false)
+
   - UK Air Information Resource, [Air pollution forecast map](https://uk-air.defra.gov.uk/forecasting/) by Department for Environment Food & Rural Affairs and Met Office, UK
   - USA
-    - EPA [air now](https://www.airnow.gov/?city=New%20York&state=NY&country=USA)
+    - EPA 
+      - [air now@cities](https://www.airnow.gov/?city=New%20York&state=NY&country=USA)
+      - [AirNow Interactive Map of Air Quality, USA](https://gispub.epa.gov/airnow/?showgreencontours=false)
     - [GMO forecast](https://fluid.nccs.nasa.gov/cf/classic_geos_cf/), NASA
     - National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/), NOAA
+  - Air Quality Health Index [most recent forecast values at provices and cities](https://weather.gc.ca/airquality/pages/index_e.html), Canada
   - city region
     - Spare the Air：[Air Quality Forecast](https://www.sparetheair.org/understanding-air-quality/air-quality-forecast), Bay Area Air Quality Management District, CA.
     - [sdapcd.org](https://www.sdapcd.org/content/sdapcd/air-quality/air-quality-forecast.html) by San Diego County Air Pollution Control District
