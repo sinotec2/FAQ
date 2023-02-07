@@ -164,7 +164,7 @@ animate=1">
 ```
 
 - 內部js程式，啟動esri leaflet相關模組
-  - see [custom.js](custom.js)
+  - see [custom.js](https://github.com/sinotec2/FAQ/blob/main/_posts/custom.js)
   - 觸發新網頁之方法
 
 ```java
