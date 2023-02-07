@@ -20,10 +20,13 @@ sidebar:
 
   - UK Air Information Resource, [Air pollution forecast map](https://uk-air.defra.gov.uk/forecasting/) by Department for Environment Food & Rural Affairs and Met Office, UK
   - USA
-    - EPA 
+    - EPA
       - [air now@cities](https://www.airnow.gov/?city=New%20York&state=NY&country=USA)
       - [AirNow Interactive Map of Air Quality, USA](https://gispub.epa.gov/airnow/?showgreencontours=false)
-    - [GMO forecast](https://fluid.nccs.nasa.gov/cf/classic_geos_cf/), NASA
+    - NASA GMAO[^2] forecasts
+      - classic_geos_cf [preselective grads][cf] and
+      - dragable GeoTiff leaflet, "Interactive CF Map Tool" ([cf_map][fluid]), with
+        - site historical and forecast time series [DATAGRAMS](https://fluid.nccs.nasa.gov/cf_map/gram/)
     - National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/), NOAA
   - Air Quality Health Index [most recent forecast values at provices and cities](https://weather.gc.ca/airquality/pages/index_e.html), Canada
   - city region
@@ -37,6 +40,54 @@ sidebar:
   - 中研院環境變遷研究中心[高解析度空氣品質診斷與預報模式發展計畫模擬預報資料](https://ci.taiwan.gov.tw/dsp/forcast_air.aspx)
   - 24-HOUR  and DAILY [AIR QUALITY FORECAST](https://www.accuweather.com/en/tw/taipei-city/315078/air-quality-index/315078) by AccuWeather.com
   - Air quality in Taiwan, Air quality index (AQI) and PM2.5 air pollution in Taiwan, [map](https://www.iqair.com/taiwan) and [globe](https://www.iqair.com/earth?nav=) by iqair.com.
+
+## CGI 服務網頁之比較
+
+### NASA GMAO classic_geos_cf
+
+- 位置：https://fluid.nccs.nasa.gov/cf/classic_geos_cf/
+- 連動選項(此4項使用同一個action POST)
+  - field(污染項目)、
+  - fcst(預報起始時間)、
+  - tau(前置小時-顯示起始時間)
+  - region(預先設定之地區)
+- 動作選項
+  - control_form：animate(1=連續播放或2=下載mp4檔案)
+
+```html
+<a href="/cf/classic_geos_cf/?
+one_click=1&
+tau=024&
+stream=GEOSCFFC&
+level=0&
+region=nam&
+fcst=20230205T120000&
+field=no2sfc&
+animate=1">
+```
+
+|![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-15-28-29.png)|
+|:-:|
+|NASA GMAO 空品預報圖檔播放器|
+
+### NASA GMAO FLUID home
+
+- 位置：https://fluid.nccs.nasa.gov/cf_map/index
+- 地圖或下拉選單觸發DATAGRAMS CGI選單畫面
+- leaflet.js + GeoTiff
+
+### NASA GMAO DATAGRAMS
+
+- 位置
+  - 未來5天預報：https://fluid.nccs.nasa.gov/cf_map/gram/
+  - 指定起始日與日數之歷史數據：https://fluid.nccs.nasa.gov/cf_map/hist/
+- 按照使用者指定之項目產生測站逐時空品與氣象時間序列圖檔如下
+
+```html
+<img src="/cf_map/static/plots/cf_map_grams/plots/2023-02-06T12:00:00.000000000/cf_surf_plot_pm25_23.0_120.25.png" alt="my_plot" style="width:100%;height:100%">
+```
+
+![](https://fluid.nccs.nasa.gov/cf_map/static/plots/cf_map_grams/plots/2023-02-06T12:00:00.000000000/cf_surf_plot_pm25_23.0_120.25.png)
 
 ## 比較leaflet插件方案
 
@@ -84,3 +135,8 @@ sidebar:
 [4]: http://bobtorgerson.github.io/Leaflet-WMS-Time-Slider/ "Leaflet WMS Time Slider Example"
 [44]: https://github.com/BobTorgerson/Leaflet-WMS-Time-Slider "The Leaflet WMS Time Slider enables you to dynamically update a WMS layer based on a dimension such as time. This tool uses the JQuery UI slider . For WMS layers where a range of time is more desirable than a single time step, two sliders appear to allow for a tailored time range to be created."
 [CAMS_FCST]: https://confluence.ecmwf.int/display/CKB/CAMS%3A+Global+atmospheric+composition+forecast+data+documentation "CAMS: Global atmospheric composition forecast data documentation"
+[cf]: https://fluid.nccs.nasa.gov/cf/classic_geos_cf/ "Composition Forecast Maps web site by NASA GMAO"
+[fluid]: https://gmao.gsfc.nasa.gov/news/geos_system_news/2018/wx_viz_updated.php "GMAO's FLUID:  Visualizations are generated using an interactive Python-based framework named FLUID, developed within the GMAO."
+
+[^1]: web site of [Composition Forecast Maps][cf], see FLUID() [descriptions][FLUID] 
+[^2]: The Global Modeling and Assimilation Office, Goddard Space Flight Center, [NASA](https://gmao.gsfc.nasa.gov/) 
