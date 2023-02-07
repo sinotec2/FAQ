@@ -24,7 +24,7 @@ sidebar:
       - [air now@cities](https://www.airnow.gov/?city=New%20York&state=NY&country=USA)
       - [AirNow Interactive Map of Air Quality, USA](https://gispub.epa.gov/airnow/?showgreencontours=false)
     - NASA GMAO[^2] forecasts
-      - classic_geos_cf [preselective grads][cf] and
+      - classic_geos_cf [preselective grads][cf][^1] and
       - dragable GeoTiff leaflet, "Interactive CF Map Tool" ([cf_map][fluid]), with
         - site historical and forecast time series [DATAGRAMS](https://fluid.nccs.nasa.gov/cf_map/gram/)
     - National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/), NOAA
@@ -66,15 +66,109 @@ field=no2sfc&
 animate=1">
 ```
 
-|![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-15-28-29.png)|
+|![NASA GMAO 空品預報圖檔播放器](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-07-15-28-29.png)|
 |:-:|
 |NASA GMAO 空品預報圖檔播放器|
+
+- 共啟動8個外部.js
+  - [slicknav](https://computerwolf.github.io/SlickNav/) is a responsive **mobile** menu plugin for jQuery.
+  - [HAniS](https://www.ssec.wisc.edu/hanis/) - the HTML5 Image AnimationS webapp
+
+```html
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="/static/js/respond.js"></script>
+<script src="/static/js/new_jquery.min.js"></script>
+<script src="/static/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/static/js/hanis_min.js"> </script>
+<script language="javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC&dclink=true"></script>
+<!--  if 'gram' not in request.endpoint %}-->
+<script src="/static/js/jquery.slicknav.js"></script>
+<!--  else %}
+  <script src="/static/js/jquery.slicknav_gram.js"></script>
+   endif %}-->
+<script src="/wxmaps/static/plots/ops-notice.js"></script>
+```
+
+- 內部js程式，啟動HAniS及slicknav相關模組
+  
+```java
+<script>
+      function setwin() {
+        var head = document.getElementById("top-box");
+        var nav = document.getElementById("menu-container");
+        var foot = document.getElementById("footer");
+
+        var newW = window.innerWidth - (nav.offsetLeft + nav.offsetWidth);
+        var newH = window.innerHeight - foot.offsetHeight - head.offsetHeight;
+
+        HAniS.setWindowSize(newW, newH);
+      }
+      window.addEventListener("resize", function() {
+        setwin();
+      },false);
+      $(window).bind('resize', function(e)
+      {
+        if (window.RT) clearTimeout(window.RT);
+        window.RT = setTimeout(function()
+        {
+          this.location.reload(false); /* false to get page from cache */ 
+        }, 100);
+      });
+      function hloop(){
+        HAniS.setup('bottom_controls\=startstop, step, refresh, looprock,speed, capture \n bottom_controls_style\=padding-top:20px;padding-right:5px;padding-bottom:20px;padding-left:5px;
+         \n speed_labels\=Slower, Faster 
+         \n dwell\=200ms \n pause\=2000 
+         \n start_looping\=true 
+         \n enable_smoothing=t 
+         \n window_size=div 
+         \n filenames\=/cf/static//plots/6fa2664a-288c-313a-a6af-67fd160fec32.png, ... /cf/static//plots/967b9e27-eb9a-3331-8b4f-04adea686227.png','handiv');
+        setwin;
+      };
+      window.onload = hloop;
+  </script>    
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#menu").slicknav();
+    });
+  </script>    
+```  
 
 ### NASA GMAO FLUID home
 
 - 位置：https://fluid.nccs.nasa.gov/cf_map/index
-- 地圖或下拉選單觸發DATAGRAMS CGI選單畫面
+- 點擊地圖或下拉選單觸發DATAGRAMS CGI選單畫面
+- 由網頁取得資訊做為下一步html之內容
+  - forecast_date, forecast_hour
+  - cmp(Colormap Options, =[jet(青紅), plasma(黃紫), viridis(黃綠)])
+  - national_dd(國家測點)、world_dd(其他國家測點)
+  - aero_dd(各洲測點aeronet測點，africa/asia/aus/europe/na/sa_dd)
+  - mc_dd:mega_city
+  - ac_dd：ACTIVE CAMPAIGNS計畫測點，包括above(ABOVE)/ace(ACEPOL)/mosaic(MOSAIC)/or(ORACLES)/scoape(SCOAPE)/wecan(WE-CAN)
 - leaflet.js + GeoTiff
+
+- 共啟動11個外部.js
+  - [esri leaflet API](https://developers.arcgis.com/esri-leaflet/)
+  - [stuartmatthews/leaflet-geotiff](https://github.com/stuartmatthews/leaflet-geotiff),  plugin for displaying geoTIFF raster data, [geotiff and browserify](https://www.unpkg.com/browse/geotiff@1.0.0-beta.6/README.md) is generated during build-up process.
+```html
+<script src="/static/js/respond.js"></script>
+<script src="/static/js/leaflet.js"></script>
+<script src="/static/js/geotiff.browserify.js"></script>
+<script src="/static/js/plotty.js"></script>
+<script src="/static/js/leaflet-geotiff.js"></script>
+<script src="/static/js/leaflet-geotiff-plotty.js"></script>
+<script src="/static/js/leaflet-geotiff-vector-arrows.js"></script>
+<script src="https://ihcantabria.github.io/Leaflet.CanvasLayer.Field/dist/leaflet.canvaslayer.field.js"></script>
+<script src="https://unpkg.com/esri-leaflet@2.5.1/dist/esri-leaflet.js" integrity="sha512-q7X96AASUF0hol5Ih7AeZpRF6smJS55lcvy+GLWzJfZN+31/BQ8cgNx2FGF+IQSA4z2jHwB20vml+drmooqzzQ==" crossorigin=""></script>
+<script src="/static/js/new_jquery3.min.js"></script>
+<script src="/static/js/jquery.slicknav.js"></script>
+```
+
+- 內部js程式，啟動esri leaflet相關模組
+  - see [custom.js](custom.js)
+
+```java
+  
+```  
 
 ### NASA GMAO DATAGRAMS
 
@@ -137,6 +231,6 @@ animate=1">
 [CAMS_FCST]: https://confluence.ecmwf.int/display/CKB/CAMS%3A+Global+atmospheric+composition+forecast+data+documentation "CAMS: Global atmospheric composition forecast data documentation"
 [cf]: https://fluid.nccs.nasa.gov/cf/classic_geos_cf/ "Composition Forecast Maps web site by NASA GMAO"
 [fluid]: https://gmao.gsfc.nasa.gov/news/geos_system_news/2018/wx_viz_updated.php "GMAO's FLUID:  Visualizations are generated using an interactive Python-based framework named FLUID, developed within the GMAO."
-
-[^1]: web site of [Composition Forecast Maps][cf], see FLUID() [descriptions][FLUID] 
+[about]: https://fluid.nccs.nasa.gov/about/ "About GMAO FLUID(Framework for Live User-Invoked Data)"
+[^1]: web site of [Composition Forecast Maps][cf], see FLUID(Framework for Live User-Invoked Data) [news][FLUID] and [about][about]
 [^2]: The Global Modeling and Assimilation Office, Goddard Space Flight Center, [NASA](https://gmao.gsfc.nasa.gov/) 
