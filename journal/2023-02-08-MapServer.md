@@ -1,12 +1,34 @@
-# Wednesday, February 8, 2023
+---
+layout: default
+title: 地圖伺服器
+parent: earth
+grand_parent: Graphics
+date: 2023-02-04 09:20:35
+last_modified_date: 2023-02-04 09:20:35
+tags: earth GFS CAMS graphics
+---
+
+# 地圖伺服器
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 
-
+## 增量模擬
 
 https://mapserver.org/tr/introduction.html#contents
 
 https://download.osgeo.org/mapserver/docs/MapServer.pdf
-MapServer Itasca Demo Application
+
+### MapServer Itasca Demo Application
 
 http://114.32.164.198/ms4w/Apache/htdocs/mapserv-demo.pkg.html
 http://114.32.164.198/cgi-bin/
@@ -25,6 +47,8 @@ layer=lakespy2&layer=dlgstln2&zoomsize=2&map_web=+TEMPLATE+itasca_basic.html&map
 
 
 http://114.32.164.198/cgi-bin/mapserv.exe?VERSION=1.1.1&REQUEST=GetCapabilities&SERVICE=WMS&map=%2Fms4w%2Fapps%2Fmapserv-demo%2Fitasca.map&
+
+```html
   $ cat ~/Downloads/mapserv\(1\).exe
 <?xml version='1.0' encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE WMT_MS_Capabilities SYSTEM "http://schemas.opengis.net/wms/1.1.1/WMS_MS_Capabilities.dtd"
