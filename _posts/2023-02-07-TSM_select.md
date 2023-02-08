@@ -165,7 +165,7 @@ animate=1">
 
 - 內部js程式，啟動esri leaflet相關模組
   - see [custom.js](https://github.com/sinotec2/FAQ/blob/main/_posts/custom.js)
-  - 觸發新網頁之方法
+  - 前述測站點選、或地圖上點擊，都會啟動popup、為觸發新網頁之方法
 
 ```java
             var popupContent = '<form action="/cf_map/gram/" id="popup-form" method="POST">'
