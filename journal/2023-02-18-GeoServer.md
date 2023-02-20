@@ -57,9 +57,59 @@ fi
 
 ## 重要工具
 
+### NetCDF plugin
+
+- [How to install NetCDF plugin to GeoServer](https://gis.stackexchange.com/questions/342942/how-to-install-netcdf-plugin-to-geoserver)
+- [How to install NetCDF plugin to GeoServer
+](https://copyprogramming.com/howto/how-to-install-netcdf-plugin-to-geoserver)
+
+```quote
+There was an error trying to connect to store PM25.nc. Do you want to save it anyway?
+
+Original exception error:
+
+Failed to create reader from file:///nas2/cmaqruns/2022fcst/grid09/cctm.fcst/daily/PM25.nc and hints Hints: LENIENT_DATUM_SHIFT = true REPOSITORY = org.geoserver.catalog.CatalogRepository@44015fa4 FORCE_AXIS_ORDER_HONORING = http GRID_COVERAGE_FACTORY = GridCoverageFactory TILE_ENCODING = null COMPARISON_TOLERANCE = 1.0E-8 STYLE_FACTORY = StyleFactoryImpl FEATURE_FACTORY = org.geotools.feature.LenientFeatureFactoryImpl@646811d6 FILTER_FACTORY = FilterFactoryImpl EXECUTOR_SERVICE = java.util.concurrent.ThreadPoolExecutor@5434c827[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0] FORCE_LONGITUDE_FIRST_AXIS_ORDER = true
+```
+
+### UItool.jar
+
+- [toolsUI-4.6.jar](https://www.gfd-dennou.org/arch/ucar/unidata/pub/netcdf-java/v4.6/toolsUI-4.6.jar)
+- [toolsUI-5.5.3.jar](https://downloads.unidata.ucar.edu/netcdf-java/5.5.3/toolsUI-5.5.3.jar)
+- ucar提供的工具。不適用m3 convention
+
 ### nc2tiff
 
 - [使用python对NetCDF数据批处理并生成Geotiff文件](https://blog.csdn.net/weixin_46629224/article/details/116087266)
+- [NetCDF to GeoTIFF using Python, Pratiman, 01 August 2020](https://pratiman-91.github.io/2020/08/01/NetCDF-to-GeoTIFF-using-Python.html)
+
+```python
+import xarray as xr
+import rioxarray as rio
+
+#Open the NetCDF
+#Download the sample from https://www.unidata.ucar.edu/software/netcdf/examples/sresa1b_ncar_ccsm3-example.nc
+ncfile = xr.open_dataset('sresa1b_ncar_ccsm3-example.nc')
+
+#Extract the variable
+pr = ncfile['pr']
+
+#(Optional) convert longitude from (0-360) to (-180 to 180) (if required)
+pr.coords['lon'] = (pr.coords['lon'] + 180) % 360 - 180
+pr = pr.sortby(pr.lon)
+
+#Define lat/long 
+pr = pr.rio.set_spatial_dims('lon', 'lat')
+
+#Check for the CRS
+pr.rio.crs
+
+#(Optional) If your CRS is not discovered, you should be able to add it like so:
+pr.rio.set_crs("epsg:4326")
+
+#Saving the file
+pr.rio.to_raster("GeoTIFF.tif", driver="COG")
+```
+
 - [netcdf geotiff java_R-NC格式数据转GeoTIFF](https://blog.csdn.net/weixin_33673142/article/details/114353375)
 
 ### 圖磚之產生
@@ -69,6 +119,41 @@ fi
 ### 时间序列栅格数据
 
 - [使用图像镶嵌插件组织并发布时间序列栅格数据](https://zhuanlan.zhihu.com/p/132388558?utm_id=0)
+- [How to add date and time to a geotiff to enable time dimension in geoserver?](https://gis.stackexchange.com/questions/185200/how-to-add-date-and-time-to-a-geotiff-to-enable-time-dimension-in-geoserver)
+  - Geoserver offers the Image Mosaic plugins, which allows either mosaicing or making time series. This pages shows how to build such a time series: http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html
+  - Basically, it consists in having all the tif in a single repository, and creating at least two configuration files: timeregex.properties defining the rules for extracting the date from the filename, and indexer.properties indicating to geoserver how to create the index table. The third file is needed only to create entries in PostGIS (else geoserver will create a shapefile).
+  - Creating a new datastore is quite straightforward. A time parameter can then be passed to the WMS to select a specific image.
+
+### RESTful calling geoserver
+
+- Importer REST API examples
+  - Mass configuring a directory of shapefile
+  - by [curl](https://docs.geoserver.org/latest/en/user/extensions/importer/rest_examples.html)
+
+### publish a GeoTiff file in GeoServer with curl tool
+
+- [gis.stackexchange(2018)](https://gis.stackexchange.com/questions/252004/unable-to-publish-a-geotiff-file-in-geoserver-with-curl-tool)
+- create a coveragestore
+
+```html
+curl -u admin:geoserver -v -H 'Content-type: application/xml' -d \
+'<coverageStore>\
+  <name>input</name>\
+  <workspace>LGHAP</workspace>\
+  <enabled>true</enabled>\
+  <type>GeoTIFF</type>\
+  <url>/home/QGIS/Data/dtm/taiwan2.tiff</url>
+  </coverageStore>' \
+http://200.200.31.47:8080/geoserver/rest/workspaces/LGHAP/coveragestores
+```
+
+- put tiff
+
+```bash
+curl -u admin:geoserver -v -XPUT -H "Content-type: image/tiff"  \
+--data-binary @taiwan2.tif   \
+http://200.200.31.47:8080/geoserver/rest/workspaces/LGHAP/coveragestores/input
+```
 
 ## leaflet.js 之呼叫
 
@@ -114,7 +199,10 @@ var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest
 [^2]: Zhang, C., Di, L., Sun, Z., Lin, L., Yu, E., Gaigalas, J. (2019). Exploring cloud-based Web Processing Service: A case study on the implementation of CMAQ as a Service. [Environmental Modelling and Software][2] 113. https://doi.org/10.1016/j.envsoft.2018.11.019
 [^3]: UPCOM, KARTEKO, ARTEMIS, AUTH (2021). Report on the design of technical framework and system architecture of the ICARUS DSS, WP7: Motivating citizens towards the vision in Integrated Climate forcing and Air Pollution Reduction in Urban Systems([ICURAS][3]).
 
+### Time Support in GeoServer WMS
 
+- within a single Layer see [support](https://docs.geoserver.org/2.22.x/en/user/services/wms/time.html)
+- may use relative time, and Reduced accuracy times
 
 [1]: https://www.earthobservations.org/documents/meetings/201111_geo8_eu/GMOS.Nicola%20Pirrone.pdf "Nicola Pirrone（2011）Global Mercury Observation SystemGlobal Mercury Observation System -- GMOS ––， Funded by: European Commission – DG Research， (2010 – 2015）"
 [2]: https://www.researchgate.net/publication/329635993_Exploring_cloud-based_Web_Processing_Service_A_case_study_on_the_implementation_of_CMAQ_as_a_Service "(Zhang et al., 2019)"
