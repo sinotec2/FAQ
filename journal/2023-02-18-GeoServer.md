@@ -112,6 +112,65 @@ pr.rio.to_raster("GeoTIFF.tif", driver="COG")
 
 - [netcdf geotiff java_R-NC格式数据转GeoTIFF](https://blog.csdn.net/weixin_33673142/article/details/114353375)
 
+
+```bash
+TIFFReadDirectory: Warning, Unknown field with tag 34264 (0x85d8) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 34735 (0x87af) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 34736 (0x87b0) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 34737 (0x87b1) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 42112 (0xa480) encountered.
+TIFF Directory at offset 0xc0 (192)
+  Image Width: 92 Image Length: 131
+  Tile Width: 512 Tile Length: 512
+  Bits/Sample: 64
+  Sample Format: IEEE floating point
+  Compression Scheme: None
+  Photometric Interpretation: min-is-black
+  Samples/Pixel: 1
+  Planar Configuration: single image plane
+  Tag 34264: 0.030598,0.000000,0.000000,119.226797,0.000000,0.027813,0.000000,21.775621,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000
+  Tag 34735: 1,1,0,7,1024,0,1,2,1025,0,1,1,2048,0,1,4326,2049,34737,7,0,2054,0,1,9102,2057,34736,1,1,2059,34736,1,0
+  Tag 34736: 298.257224,6378137.000000
+  Tag 34737: WGS 84|
+  Tag 42112: <GDALMetadata>
+  <Item name="DESCRIPTION" sample="0" role="description">pm</Item>
+</GDALMetadata>
+```
+
+```bash
+TIFFReadDirectory: Warning, Unknown field with tag 33550 (0x830e) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 33922 (0x8482) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 34735 (0x87af) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 34737 (0x87b1) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 42112 (0xa480) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 42113 (0xa481) encountered.
+=== TIFF directory 0 ===
+TIFF Directory at offset 0x4d9ce (317902)
+  Image Width: 634 Image Length: 477
+  Tile Width: 256 Tile Length: 256
+  Bits/Sample: 32
+  Sample Format: IEEE floating point
+  Compression Scheme: AdobeDeflate
+  Photometric Interpretation: min-is-black
+  Samples/Pixel: 1
+  Planar Configuration: single image plane
+  Tag 33550: 30.000000,30.000000,0.000000
+  Tag 33922: 0.000000,0.000000,0.000000,589980.000000,4928010.000000,0.000000
+  Tag 34735: 1,1,0,7,1024,0,1,1,1025,0,1,1,1026,34737,33,0,2049,34737,8,33,2054,0,1,9102,3072,0,1,26713,3076,0,1,9001
+  Tag 34737: UTM Zone 13, Northern Hemisphere|clark66|
+  GDAL Metadata: <GDALMetadata>
+  <Item name="COLOR_TABLE_RULES_COUNT" sample="0">5</Item>
+  <Item name="COLOR_TABLE_RULE_RGB_0" sample="0">0.000000e+000 1.000000e+003 255 255 255 0 255 0</Item>
+  <Item name="COLOR_TABLE_RULE_RGB_1" sample="0">1.000000e+003 1.200000e+003 0 255 0 255 255 0</Item>
+  <Item name="COLOR_TABLE_RULE_RGB_2" sample="0">1.200000e+003 1.400000e+003 255 255 0 255 127 0</Item>
+  <Item name="COLOR_TABLE_RULE_RGB_3" sample="0">1.400000e+003 1.600000e+003 255 127 0 191 127 63</Item>
+  <Item name="COLOR_TABLE_RULE_RGB_4" sample="0">1.600000e+003 2.000000e+003 191 127 63 0 0 0</Item>
+</GDALMetadata>
+
+  GDAL NoDataValue: -9.99999993381581251e+36
+  Predictor: none 1 (0x1)
+```
+
 ### 圖磚之產生
 
 - [利用 gdal2tiles.py 來幫你切圖磚](https://3wa.tw/blog/blog.php?uid=shadow&id=1464&bk_id=16)
