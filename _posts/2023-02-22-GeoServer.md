@@ -4,8 +4,8 @@ title: GeoServer之WMS建置
 parent: GIS
 grand_parent: utilities
 nav_order: 99
-date: 2023-02-18
-last_modified_date: 2023-02-18 16:41:55
+date: 2023-02-22
+last_modified_date: 2023-02-22 16:59:19
 tags: GIS forecast graphics
 aside:
   toc: true
@@ -179,8 +179,8 @@ TIFF Directory at offset 0x4d9ce (317902)
 
 - [使用图像镶嵌插件组织并发布时间序列栅格数据](https://zhuanlan.zhihu.com/p/132388558?utm_id=0)
 - [How to add date and time to a geotiff to enable time dimension in geoserver?](https://gis.stackexchange.com/questions/185200/how-to-add-date-and-time-to-a-geotiff-to-enable-time-dimension-in-geoserver)
-  - Geoserver offers the Image Mosaic plugins, which allows either mosaicing or making time series. This pages shows how to build such a time series: http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html
-  - Basically, it consists in having all the tif in a single repository, and creating at least two configuration files: timeregex.properties defining the rules for extracting the date from the filename, and indexer.properties indicating to geoserver how to create the index table. The third file is needed only to create entries in PostGIS (else geoserver will create a shapefile).
+  - Geoserver offers the Image Mosaic plugins, which allows either mosaicing or making time series. [This pages](http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html) shows how to build such a time series: 
+  - Basically, it consists in having all the tif in a single repository, and creating at least two configuration files: **timeregex.properties** defining the rules for extracting the date from the filename, and **indexer.properties** indicating to geoserver how to create the index table. The third file is needed only to create entries in PostGIS (else geoserver will create a shapefile).
   - Creating a new datastore is quite straightforward. A time parameter can then be passed to the WMS to select a specific image.
 
 ### RESTful calling geoserver
