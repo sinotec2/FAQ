@@ -214,6 +214,56 @@ curl -u admin:geoserver -v -XPUT -H "Content-type: image/tiff"  \
 http://200.200.31.47:8080/geoserver/rest/workspaces/LGHAP/coveragestores/input
 ```
 
+## geoserver內部設定
+
+### raster顏色的設定
+
+- 基本上geoserver內raster等值區間、顏色等等、是由具有個別命名的style檔案所控制的。
+- 由主畫面Data->Style進入`Manage the Styles published by GeoServer`，可以新增、刪除、產生、複製、上傳既有style、或直接修改既有的設定。
+- raster範例如dem，格式為SLD(StyledLayerDescriptor)
+
+```html
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>gtopo</Name>
+    <UserStyle>
+      <Name>dem</Name>
+      <Title>Simple DEM style</Title>
+      <Abstract>Classic elevation color progression</Abstract>
+      <FeatureTypeStyle>
+        <Rule>
+          <RasterSymbolizer>
+            <Opacity>1.0</Opacity>
+            <ColorMap>
+              <ColorMapEntry color="#AAFFAA" quantity="0" label="values" />
+              <ColorMapEntry color="#00FF00" quantity="1000"/>
+              <ColorMapEntry color="#FFFF00" quantity="1200" label="values" />
+              <ColorMapEntry color="#FF7F00" quantity="1400" label="values" />
+              <ColorMapEntry color="#BF7F3F" quantity="1600" label="values" />
+              <ColorMapEntry color="#000000" quantity="2000" label="values" />
+            </ColorMap>
+          </RasterSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+```
+
+level|color|name
+:-:|:-:|:-:
+1|AAFFAA|Mint Green/淡綠色
+2|00FF00|鮮绿色/綠色/Ford Green
+3|FFFF00|Yellow/鮮黃
+4|FF7F00|Dark Orange/橙色
+5|BF7F3F|shade of brown/Brandy Punch
+6|000000|Black/黑
+
+![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-02-22-14-03-11.png)
+
 ## leaflet.js 之呼叫
 
 ### xml parsing
