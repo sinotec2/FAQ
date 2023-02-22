@@ -216,6 +216,8 @@ http://200.200.31.47:8080/geoserver/rest/workspaces/LGHAP/coveragestores/input
 
 ## geoserver內部設定
 
+- 雖然geoserver並不是為了展示成果，而是對外提供圖檔服務，然而檢視過程仍然需要使用正確的顏色設定。
+
 ### raster顏色的設定
 
 - 基本上geoserver內raster等值區間、顏色等等、是由具有個別命名的style檔案所控制的。
