@@ -270,8 +270,7 @@ level|color|name
 
 ### xml parsing
 
-http://localhost:8080/geoserver/wms?service=wms&
-version=1.1.1&request=GetCapabilities
+http://200.200.31.47:8080/geoserver/gwc/service/wmts?service=WMTS&version=1.1.1&request=GetCapabilities
 
 ```html
 ...
@@ -296,6 +295,8 @@ version=1.1.1&request=GetCapabilities
 
 ### java
 
+- demo instance sf:sfdem 
+
 ```java
 var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest/sf:sfdem/EPSG:900913/EPSG:900913:{z}/{y}/{x}?format=image/jpeg', {
             attribution: 'Map data &copy; 2013 OpenStreetMap contributors'
@@ -306,6 +307,17 @@ var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest
         }).addLayer(osm);
 ```
 
+- AQM:newCV instance
+
+```java
+var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest/AQM:newCV/AQM:PM25/EPSG:900913/EPSG:900913:{z}/{y}/{x}?format=image/png'
+```
+
+- 注意
+  1. EPSG:4326似乎與leaflet不合，無法計算出正確的x,y值，必須使用EPSG:900913
+  2. 中心點(lat,lon)必須精確到小數點1位，可以由geoserver->Tile Caching->Tile Layers之預覽由滑鼠得到。
+  3. 測試之網頁：http://200.200.31.47/Leaflet.FileLayer/docs/a.html
+
 [^1]: Global Mercury Observation System Spatial Data Infrastructure (SDI)，in presentation of [Nicola Pirrone（2011）][1]
 [^2]: Zhang, C., Di, L., Sun, Z., Lin, L., Yu, E., Gaigalas, J. (2019). Exploring cloud-based Web Processing Service: A case study on the implementation of CMAQ as a Service. [Environmental Modelling and Software][2] 113. https://doi.org/10.1016/j.envsoft.2018.11.019
 [^3]: UPCOM, KARTEKO, ARTEMIS, AUTH (2021). Report on the design of technical framework and system architecture of the ICARUS DSS, WP7: Motivating citizens towards the vision in Integrated Climate forcing and Air Pollution Reduction in Urban Systems([ICURAS][3]).
@@ -314,6 +326,13 @@ var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest
 
 - within a single Layer see [support](https://docs.geoserver.org/2.22.x/en/user/services/wms/time.html)
 - may use relative time, and Reduced accuracy times
+
+### post a vector file on leaflet map
+
+- How do I add my own map layers to Leaflet
+- [Loading external GeoJSON file into Leaflet map?](https://gis.stackexchange.com/questions/68489/loading-external-geojson-file-into-leaflet-map)
+
+![](https://github.com/sinotec2/FAQ/raw/main//attachments/2023-02-22-16-37-37.png){:width="360px"}
 
 [1]: https://www.earthobservations.org/documents/meetings/201111_geo8_eu/GMOS.Nicola%20Pirrone.pdf "Nicola Pirrone（2011）Global Mercury Observation SystemGlobal Mercury Observation System -- GMOS ––， Funded by: European Commission – DG Research， (2010 – 2015）"
 [2]: https://www.researchgate.net/publication/329635993_Exploring_cloud-based_Web_Processing_Service_A_case_study_on_the_implementation_of_CMAQ_as_a_Service "(Zhang et al., 2019)"
