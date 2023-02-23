@@ -20,16 +20,18 @@ sidebar:
 - GIS用作CMAQ或其他模式模擬結果的顯示界面，雖然有些大材小用，也有其應用上的必要性。
   - 如早期因為跨平台模式教學沒有適合的顯示軟體，而必須使用到QGIS來繪製等值圖。
   - 其他既有系統架構如[GMOS SDI][1][^1]資訊架構、雲端網頁處理及服務系統[^2]、ICARUS DSS[^3]等等，都是使用圖台服務系統成為模式及分析工具的案例。
-- GIService在提供遠端使用者地理資訊的過程中，為不可或缺的重要伺服器。常用的免費軟體有MapServer 及GeoServer2款。前者適用大型數據如NASA、後者則為中小型機構所愛用。
+- GIService在提供遠端使用者地理資訊的過程中，為不可或缺的重要伺服器。常用的免費軟體有[MapServer][MapServer] 及[GeoServer][GeoServer]等2款。前者適用大型數據如NASA就是其最早的支持者、後者則為中小型機構所愛用。
 - GeoServer可以直接讀取自帶網格經緯度座標的nc檔
-  - 目前運作的案例多為UCAR的氣候檔案分析、
+  - 目前運作的案例多為UCAR的[氣候檔案分析][ucar]以及[NetCDF Java][nc-jar]之toolsUI、
   - 也可以自nc檔中地理座標相關屬性計算網格座標，並將格柵資訊、在指定範圍、指定解析度，進行圖磚製作，啟動WMS或向量檔的TMS服務，前者格式如png,jpeg,後者格式也包括了geojson等等。
-  - 尚無WRF、CMAQ等模式IO之應用
+  - 尚無WRF、CMAQ等模式IO之應用。主要的理由是GIS系統的約定是LL網格系統，等間距的格柵檔案需要轉換格點系統(resampling or regrid)。
 
 ### 資源需求及限制
 
 - GeoServer基本上是平行化接受使用者（也包括本地圖磚製作）的呼叫，使用超過一個以上的核心、也可以限定平行作業的上限數。實則java只是使用單一個pid進行運送，並沒有傳統同步運作的形式。
-- 記憶體需求量大。以IMac 16GB記憶體而言，執行node.js再執行geoserver的start.jar，記憶體就可以達到8成，將會對其他記憶體較大的作業造成排擠。
+- 記憶體需求量大。
+  - 以IMac 16GB記憶體而言，執行node.js再執行geoserver的start.jar，記憶體就可以達到8成，將會對其他記憶體較大的作業造成排擠。
+  - 以node03 DEC工作站而言，平時記憶體最大6G、加上start.jar會再加上1.5G，對於夜間下載分析工作([get_all.cs](./2022-08-20-CMAQ_fcst.md))而言，平時記憶體(Cach)使用即超過9成，geoserver工作不適合放在夜間運作時段。
 
 ## 下載與啟動
 
@@ -70,9 +72,10 @@ fi
 
 ### NetCDF plugin
 
-- [How to install NetCDF plugin to GeoServer](https://gis.stackexchange.com/questions/342942/how-to-install-netcdf-plugin-to-geoserver)
-- [How to install NetCDF plugin to GeoServer
-](https://copyprogramming.com/howto/how-to-install-netcdf-plugin-to-geoserver)
+- How to install NetCDF plugin to GeoServer
+- [gis.stackexchange](https://gis.stackexchange.com/questions/342942/how-to-install-netcdf-plugin-to-geoserver)
+- [copyprogramming](https://copyprogramming.com/howto/how-to-install-netcdf-plugin-to-geoserver)
+- 目前wrf/CMAQ等nc檔皆為等間距座標系統，不符合GIS之等經緯度系統(網格點的經緯度必須為1維)，無法應用。
 
 ```quote
 There was an error trying to connect to store PM25.nc. Do you want to save it anyway?
@@ -82,47 +85,22 @@ Original exception error:
 Failed to create reader from file:///nas2/cmaqruns/2022fcst/grid09/cctm.fcst/daily/PM25.nc and hints Hints: LENIENT_DATUM_SHIFT = true REPOSITORY = org.geoserver.catalog.CatalogRepository@44015fa4 FORCE_AXIS_ORDER_HONORING = http GRID_COVERAGE_FACTORY = GridCoverageFactory TILE_ENCODING = null COMPARISON_TOLERANCE = 1.0E-8 STYLE_FACTORY = StyleFactoryImpl FEATURE_FACTORY = org.geotools.feature.LenientFeatureFactoryImpl@646811d6 FILTER_FACTORY = FilterFactoryImpl EXECUTOR_SERVICE = java.util.concurrent.ThreadPoolExecutor@5434c827[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0] FORCE_LONGITUDE_FIRST_AXIS_ORDER = true
 ```
 
-### UItool.jar
+### toolsUI
 
-- [toolsUI-4.6.jar](https://www.gfd-dennou.org/arch/ucar/unidata/pub/netcdf-java/v4.6/toolsUI-4.6.jar)
-- [toolsUI-5.5.3.jar](https://downloads.unidata.ucar.edu/netcdf-java/5.5.3/toolsUI-5.5.3.jar)
-- ucar提供的工具。不適用m3 convention
+- toolsUI是UCAR提供的NetCDF Java程式庫之一
+- NetCDF Java 程式庫的目標在於實現數據的通用化，即通用數據模型（CDM），用於將 netCDF 文件與各種數據格式（例如 netCDF、HDF、GRIB）進行轉換對接。除了基本數據的訪問，CDM使用檔案中的 metadata（元數據、數據的描述信息）來提供更高層次的接口、充分使用檔案中的屬性數據，以便使用地球科學特定功能，特別是在座標空間中提供地理定位、和切割出特定空間的數據子集等。
+- toolsUI-5.5.3.jar：[下載點](https://downloads.unidata.ucar.edu/netcdf-java/5.5.3/toolsUI-5.5.3.jar)
+- 目前適用格式以[COARDS][COARDS]協定為主、不適用m3 convention。
 
 ### nc2tiff
 
 - [使用python对NetCDF数据批处理并生成Geotiff文件](https://blog.csdn.net/weixin_46629224/article/details/116087266)
 - [NetCDF to GeoTIFF using Python, Pratiman, 01 August 2020](https://pratiman-91.github.io/2020/08/01/NetCDF-to-GeoTIFF-using-Python.html)
-
-```python
-import xarray as xr
-import rioxarray as rio
-
-#Open the NetCDF
-#Download the sample from https://www.unidata.ucar.edu/software/netcdf/examples/sresa1b_ncar_ccsm3-example.nc
-ncfile = xr.open_dataset('sresa1b_ncar_ccsm3-example.nc')
-
-#Extract the variable
-pr = ncfile['pr']
-
-#(Optional) convert longitude from (0-360) to (-180 to 180) (if required)
-pr.coords['lon'] = (pr.coords['lon'] + 180) % 360 - 180
-pr = pr.sortby(pr.lon)
-
-#Define lat/long 
-pr = pr.rio.set_spatial_dims('lon', 'lat')
-
-#Check for the CRS
-pr.rio.crs
-
-#(Optional) If your CRS is not discovered, you should be able to add it like so:
-pr.rio.set_crs("epsg:4326")
-
-#Saving the file
-pr.rio.to_raster("GeoTIFF.tif", driver="COG")
-```
-
+- [nc2gtiff.py](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/utilities/GIS/nc2gtiff.py)，詳見[說明](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/GIS/nc2gtiff/)
 - [netcdf geotiff java_R-NC格式数据转GeoTIFF](https://blog.csdn.net/weixin_33673142/article/details/114353375)
 
+- tiffinfo的差異
+  - PM25.tiff
 
 ```bash
 TIFFReadDirectory: Warning, Unknown field with tag 34264 (0x85d8) encountered.
@@ -147,6 +125,8 @@ TIFF Directory at offset 0xc0 (192)
   <Item name="DESCRIPTION" sample="0" role="description">pm</Item>
 </GDALMetadata>
 ```
+
+- sf:sfdem
 
 ```bash
 TIFFReadDirectory: Warning, Unknown field with tag 33550 (0x830e) encountered.
@@ -182,6 +162,9 @@ TIFF Directory at offset 0x4d9ce (317902)
   Predictor: none 1 (0x1)
 ```
 
+- PM25.tiff圖形(詳[下述](#raster顏色的設定))
+
+
 ### 圖磚之產生
 
 - [利用 gdal2tiles.py 來幫你切圖磚](https://3wa.tw/blog/blog.php?uid=shadow&id=1464&bk_id=16)
@@ -189,9 +172,13 @@ TIFF Directory at offset 0x4d9ce (317902)
 ### 时间序列栅格数据
 
 - [使用图像镶嵌插件组织并发布时间序列栅格数据](https://zhuanlan.zhihu.com/p/132388558?utm_id=0)
+- [tutorial](https://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html)
 - [How to add date and time to a geotiff to enable time dimension in geoserver?](https://gis.stackexchange.com/questions/185200/how-to-add-date-and-time-to-a-geotiff-to-enable-time-dimension-in-geoserver)
-  - Geoserver offers the Image Mosaic plugins, which allows either mosaicing or making time series. [This pages](http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html) shows how to build such a time series: 
-  - Basically, it consists in having all the tif in a single repository, and creating at least two configuration files: **timeregex.properties** defining the rules for extracting the date from the filename, and **indexer.properties** indicating to geoserver how to create the index table. The third file is needed only to create entries in PostGIS (else geoserver will create a shapefile).
+  - Geoserver offers the Image Mosaic plugins, which allows either mosaicing or making time series. [This pages](http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html) shows how to build such a time series:
+  - Basically, it consists in having all the tif in a single repository, and creating at least two configuration files:
+    - **timeregex.properties** defining the rules for extracting the date from the filename, and
+    - **indexer.properties** indicating to geoserver how to create the index table. 
+    - The third file is needed only to create entries in PostGIS (else geoserver will create a shapefile).
   - Creating a new datastore is quite straightforward. A time parameter can then be passed to the WMS to select a specific image.
 
 ### RESTful calling geoserver
@@ -281,7 +268,7 @@ level|color|name
 
 ### xml parsing
 
-http://200.200.31.47:8080/geoserver/gwc/service/wmts?service=WMTS&version=1.1.1&request=GetCapabilities
+格式紀錄在GetCapabilities內：Welcome -> GeoServer Web Map Tile Service -> [WMTS](http://200.200.31.47:8080/geoserver/gwc/service/wmts?service=WMTS&version=1.1.1&request=GetCapabilities)(內部ip)
 
 ```html
 ...
@@ -299,7 +286,7 @@ http://200.200.31.47:8080/geoserver/gwc/service/wmts?service=WMTS&version=1.1.1&
 ```
 
 - substute into index.js
-  - {style} not def
+  - {style}：dem
   - {TileMatrixSet} = EPSG:900913
   - {TileMatrix} = EPSG:900913:30
   - {z}=30
@@ -329,9 +316,7 @@ var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest
   2. 中心點(lat,lon)必須精確到小數點1位，可以由geoserver->Tile Caching->Tile Layers之預覽由滑鼠得到。
   3. 測試之網頁：http://200.200.31.47/Leaflet.FileLayer/docs/a.html
 
-[^1]: Global Mercury Observation System Spatial Data Infrastructure (SDI)，in presentation of [Nicola Pirrone（2011）][1]
-[^2]: Zhang, C., Di, L., Sun, Z., Lin, L., Yu, E., Gaigalas, J. (2019). Exploring cloud-based Web Processing Service: A case study on the implementation of CMAQ as a Service. [Environmental Modelling and Software][2] 113. https://doi.org/10.1016/j.envsoft.2018.11.019
-[^3]: UPCOM, KARTEKO, ARTEMIS, AUTH (2021). Report on the design of technical framework and system architecture of the ICARUS DSS, WP7: Motivating citizens towards the vision in Integrated Climate forcing and Air Pollution Reduction in Urban Systems([ICURAS][3]).
+
 
 ### Time Support in GeoServer WMS
 
@@ -342,9 +327,40 @@ var osm = L.tileLayer('http://200.200.31.47:8080/geoserver/gwc/service/wmts/rest
 
 - How do I add my own map layers to Leaflet
 - [Loading external GeoJSON file into Leaflet map?](https://gis.stackexchange.com/questions/68489/loading-external-geojson-file-into-leaflet-map)
+- download[^5] `leaflet.ajax.min.js` to local dir. and invoked in html and index.js
+
+```html
+<script src="leaflet.ajax.min.js"></script>
+```
+
+```java
+        var geojsonLayer = new L.GeoJSON.AJAX("COUNTY_MOI_1090820.geojson");
+        var myStyle =
+        {
+        color: 'black',
+            weight: 3
+        };
+        geojsonLayer.setStyle(myStyle).addTo(map);
+```
+
+- Notes
+  1. setStyle seems useless
+  2. (TODO) line color, line width, transparaency need further modifications
+  3. (TODO) mouse hovers and clicks may be further defined.
+
+[^1]: Global Mercury Observation System Spatial Data Infrastructure (SDI)，in presentation of [Nicola Pirrone（2011）][1]
+[^2]: Zhang, C., Di, L., Sun, Z., Lin, L., Yu, E., Gaigalas, J. (2019). Exploring cloud-based Web Processing Service: A case study on the implementation of CMAQ as a Service. [Environmental Modelling and Software][2] 113. https://doi.org/10.1016/j.envsoft.2018.11.019
+[^3]: UPCOM, KARTEKO, ARTEMIS, AUTH (2021). Report on the design of technical framework and system architecture of the ICARUS DSS, WP7: Motivating citizens towards the vision in Integrated Climate forcing and Air Pollution Reduction in Urban Systems([ICURAS][3]).
+[^5]: Calvin Metcalf(2016) leaflet-ajax, download [site][5]
 
 ![](https://github.com/sinotec2/FAQ/raw/main//attachments/2023-02-22-16-37-37.png){:width="360px"}
 
 [1]: https://www.earthobservations.org/documents/meetings/201111_geo8_eu/GMOS.Nicola%20Pirrone.pdf "Nicola Pirrone（2011）Global Mercury Observation SystemGlobal Mercury Observation System -- GMOS ––， Funded by: European Commission – DG Research， (2010 – 2015）"
 [2]: https://www.researchgate.net/publication/329635993_Exploring_cloud-based_Web_Processing_Service_A_case_study_on_the_implementation_of_CMAQ_as_a_Service "(Zhang et al., 2019)"
 [3]: https://icarus2020.eu/wp-content/uploads/2017/08/D.7.2_ICARUS_Design_of_%2520technical_framework_and_system_architecture_of_the_ICARUS_DSS_FINAL.pdf "Integrated Climate forcing and Air Pollution Reduction in Urban Systems"
+[5]: https://raw.githubusercontent.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js "calvinmetcalf/leaflet-ajax @ github "
+[MapServer]: https://zh.wikipedia.org/zh-tw/MapServer "MapServer 是一個開放原始碼的開發環境，用於建立空間網際網路應用。它可以作為 CGI 程式或通過 MapScript 執行。MapScript 支援數種程式語言（通過SWIG)。MapServer 由明尼蘇達大學開發。它的開發最初由 NASA 支援，以使其衛星影像開放給公眾。[3]"
+[GeoServer]: https://zh.wikipedia.org/zh-tw/GeoServer "在計算領域，GeoServer是一個用Java編寫的開源伺服器，它允許用戶共享、處理和編輯地理空間數據。為了互操作性而設計，它使用開源標準發布來自任何主要空間數據源的數據。GeoServer已經發展成為一種將現有信息與Google地球、NASA World Wind等虛擬地球儀以及OpenLayers、Leaflet、Google地圖和必應地圖等基於網絡的地圖連接起來的簡單方法。GeoServer的功能是開放地理空間協會Web要素服務（WFS）標準的參考實現，同時也實現了Web地圖服務（WMS）、Web覆蓋服務（WCS）和Web地理信息處理服務（WPS）規範。[2]"
+[ucar]: https://wiki.ucar.edu/display/ral/GOES16+-+George's+Notes#GOES16George'sNotes-GeoServer "The NetCDF plugin for GeoServer supports gridded NetCDF files having dimensions following the COARDS convention (custom, Time, Elevation, Lat, Lon)."
+[nc-jar]: https://www.unidata.ucar.edu/software/netcdf-java/ "The NetCDF Java library implements the Common Data Model (CDM) to interface netCDF files to a variety of data formats (e.g., netCDF, HDF, GRIB). Layered above the basic data access, the CDM uses the metadata contained in datasets to provide a higher-level interface to geoscience specific features of datasets, in particular, providing geolocation and data subsetting in coordinate space."
+[COARDS]: https://ferret.pmel.noaa.gov/Ferret/documentation/coards-netcdf-conventions "Conventions for the standardization of NetCDF files. Sponsored by the Cooperative Ocean/Atmosphere Research Data Service , a NOAA/university cooperative for the sharing and distribution of global atmospheric and oceanographic research data sets, Pacific Marine Environmental Laboratory, Ferret Support, NOAA, 09/25/2020 - 10:15"
