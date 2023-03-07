@@ -48,6 +48,12 @@ BC|實測|實測|全球模式之預報
 
 ![messageImage_1678169355957.jpg](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/messageImage_1678169355957.jpg)
 
+- 山區高濃度線段分布
+  - 原因不明、待查，可能與降雨有關
+  - sinica並無此類結果，ncu雖然也有，但高農區域數目與濃度值似乎不是很明顯
+- 北飄煙陣迴流
+  - ncu有最完整模擬，環保署公版模式範圍顯然不足夠。
+
 ### 夜間結果比較
 
 ![messageImage_1678170307529.jpg](https://raw.githubusercontent.com/sinotec2/Focus-on-Air-Quality/main/assets/images/messageImage_1678170307529.jpg)
