@@ -64,7 +64,7 @@ nt,nrow,ncol=nc0[v].shape
 print(nt)
 for t in range(nt):
   nc[v][t,:,:]=nc0[v][t,:,:]
-for v in V[3][1:]:
+for v in V[3]:
   nc[v][:,:,:,:]=nc0[v][:,:,:,:]
 for v in V[2]:
   if v not in V0[2]:continue
@@ -74,7 +74,6 @@ for v in V[1]:
   nc[v][:,:]=nc0[v][:,:]
 for v in V[0]:
   nc[v][:]=nc0[v][:]
-
 ```
 
 ### 屬性轉移
@@ -105,6 +104,7 @@ for v in var:
   - `targ=fcst+'/grid45/wrfout'`
   - mcip使用的`$InMetFiles`仍為固定檔名之暫存檔
     - `nam0=pwd+'/wrfout_d0'+ad0+'_'+dates[jj]+'_00:00:00'`
+- 以下範例為台灣杉3號
 
 ```python
 tdy=sys.argv[1]
