@@ -140,3 +140,6 @@ for ii in range(ndms):
 ## 結果
 
 - 用最簡便的方式解決。
+- wrfout檔案會增加至少1/4
+
+{% include download.html content="轉換wrfout格式：[trans_wrfout.py](https://github.com/sinotec2/Focus-on-Air-Quality/blob/main/GridModels/MCIP/trans_wrfout.py)" %}
