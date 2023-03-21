@@ -4,7 +4,7 @@ title: 轉換wrfout格式
 parent: forecast
 grand_parent: Graphics
 date: 2023-03-17
-last_modified_date: 2023-03-17 21:17:33
+last_modified_date: 2023-03-20 15:32:45
 tags: wrf forecast NCHC
 ---
 
@@ -44,6 +44,8 @@ mcip|5.0/5.1|ifort|無mpi之序列版本。不能使用平行作業
 
 - 去除`Time`維度，以減少檔案容量
 - 分別準備grid45/grid09/grid03等等3個範圍
+- 模板和真正執行的wrf之間，**必須有相同的版次**。
+  - 檢視：`ncdump -h $nc|grep WRF`
 
 ### 陣列變數
 
@@ -90,6 +92,49 @@ for v in var:
     exec('nc.'+v+'=nc0.'+v)
   except:
     continue
+```
+
+### 檔案管理
+
+- 引數：`$BEGD`
+- 取代之前從`$gfs`目錄連結到`$fcst`之作法
+- 讀取檔案目錄名稱
+  - 目錄：即執行wrf的目錄(`pwd`)
+  - 檔名：逐日標記(`dates`)
+- 輸出目標`targ`
+  - `targ=fcst+'/grid45/wrfout'`
+  - mcip使用的`$InMetFiles`仍為固定檔名之暫存檔
+    - `nam0=pwd+'/wrfout_d0'+ad0+'_'+dates[jj]+'_00:00:00'`
+
+```python
+tdy=sys.argv[1]
+bdate=datetime.datetime.strptime(tdy,"%Y-%m-%d")
+nd=12
+dates=[(bdate+datetime.timedelta(days=i)).strftime("%Y-%m-%d") for i in range(nd)]
+...
+pwd=subprocess.check_output("pwd" ,shell=True).decode('utf8').strip('\n')
+fcst='/work/sinotec2/cmaqruns/forecast'
+targ=fcst+'/grid45/wrfout'
+
+ads={1:['3'],2:['1','2']}
+gds={1:['03'],2:['45','09']}
+ndms=1
+if pwd[-3:]=='45k':
+  ndms=2
+with open(targ+'/att.txt', 'r') as f:
+  var=[i.split(':')[1].split('=')[0].replace(' ','') for i in f if len(i)>0]
+for ii in range(ndms):
+  ad=ads[ndms][ii]
+  ad0=ad
+  if ndms==1:ad0='1'
+  ftemp=targ+'/wrfout_d0'+ad+'_template'
+  for jj in range(nd):
+    fnam0=pwd+'/wrfout_d0'+ad0+'_'+dates[jj]+'_00:00:00'
+    if not os.path.isfile(fnam0):continue
+    nc0= netCDF4.Dataset(fnam0,'r')
+    fname=targ+'/wrfout_d0'+ad+'_'+str(jj)
+    os.system('test -e '+fname+' && rm -f '+fname+';cp '+ftemp+' '+fname)
+    nc = netCDF4.Dataset(fname,'r+')
 ```
 
 ## 結果
