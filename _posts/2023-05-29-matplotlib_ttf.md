@@ -16,7 +16,7 @@ sidebar:
 ## 背景
 
 - matplotlib繪製圖形、地圖等，需要貼上說明文字時，內設是英數，python 2或matplotlib2時代，對中文確實不太友善，並沒有中文字型。
-- 雖然新版的matplotlib已經會字型連結電腦系統的字型，不再需要./matplotlib/fontList.json檔案，但此一筆記也可以應用在需要安裝特定字型情況。
+- 雖然新版的matplotlib已經會自動連結電腦系統的字型，不再需要./matplotlib/fontList.json檔案，但此一筆記也可以應用在需要安裝特定字型情況。
 
 ### 問題
 
