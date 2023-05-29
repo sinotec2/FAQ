@@ -190,5 +190,16 @@ which are lists of font names.
     - 經執行[matplotlib.font_manager](#顯示所有目前已經載入記憶體的字型)以及[fc-list](#找到系統現有的字型)
     - 新版matplotlib(3.5.3)安裝時已經將電腦系統的字型納入
     - 選取`plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']`即可
+  3. 縣市界：因Wesly將東沙島不畫在範圍內，此一邏輯將整個高雄市都排除了，因此需要逐點檢查。此處應用panda.loc來篩選
+
+```python
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+        df=pd.DataFrame({'x':x,'y':y})
+        df=df.loc[(df.x>118) & (df.x<123) ].reset_index(drop=True)
+        x,y=list(df.x),list(df.y)
+```
 
 ![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-05-29-10-52-05.png)
+
+![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-05-29-11-40-52.png)
