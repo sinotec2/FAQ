@@ -130,7 +130,7 @@ In [18]: !fc-list|grep Songti
 
 - 將所要增加的字型檔案、從本機原來位置，或自網路下載檔案，複製到前述`$root/mpl-data/fonts/ttf`目錄下
 - 修改`$root/mpl-data/matplotlibrc`檔案
-  - 此法不是官網所建議，但許多網友還是這樣做。主要官網考慮的是其他使用者(unix系統)的權益，而網友的實作大多是在PC上，並沒有這個顧慮。
+  - 此法不是官網所建議，但許多網友還是這樣做。官網主要考慮的是其他使用者(unix系統)的權益，而網友的實作大多是在PC上，並沒有這層顧慮。只是重灌matplotlib時必須重新再做一遍。
   - 將字型名稱增加在指定的rcParam參數位置，如。
     - `font.sans-serif:simhei, ...`
 
