@@ -191,4 +191,4 @@ which are lists of font names.
     - 新版matplotlib(3.5.3)安裝時已經將電腦系統的字型納入
     - 選取`plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']`即可
 
-![](../attachments/2023-05-29-10-52-05.png)
+![](https://github.com/sinotec2/FAQ/raw/main/attachments/2023-05-29-10-52-05.png)
