@@ -88,7 +88,7 @@ https://matplotlib.org/users/text_props.html?highlight=configuring%20font%20fami
 
 ### 找到系統現有的字型
 
-- linux/mac可以執行fc-list列出電腦所有可用的字型，要記住字型的**名稱**，以便在python程式內正確選取。
+- linux/mac可以執行[fc-list](http://samwhelp.github.io/book-ubuntu-qna/read/howto/configure-font/fontconfig/util/fc-list)列出電腦所有可用的字型，要記住字型的**名稱**，以便在python程式內正確選取。
 
 ```bash
 $ fc-list :lang=zh family
@@ -153,7 +153,7 @@ plt.rcParams['font.family'] = 'Microsoft JhengHei UI'
 
 ### rcParams
 
-The base default font is controlled by a set of rcParams:
+The base default font is controlled by a set of [rcParams](https://tw511.com/24/256/9294.html):
 
 rcParam|usage
 -|-
@@ -178,21 +178,21 @@ family alias|rcParam with mappings
 
 which are lists of font names.
 
-## 鄉鎮區名稱及邊界之繪製
+## 鄉鎮區中文名稱及邊界之繪製
 
-### Wesley之貢獻
+### Wesely之貢獻
 
 - 原始shp檔：[內政部](https://data.gov.tw/dataset/7441)
 - 程式：[WeselyOng(2021)](https://github.com/Wesely/Taiwan-Python-Map)
 - 程式修改
   1. shape檔案存放的位置
   2. 中文字型
-    - 經執行[matplotlib.font_manager](#顯示所有目前已經載入記憶體的字型)以及[fc-list](#找到系統現有的字型)
     - 新版matplotlib(3.5.3)安裝時已經將電腦系統的字型納入
-    - 選取`plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']`即可
+    - 經執行[matplotlib.font_manager](#顯示所有目前已經載入記憶體的字型)(顯示matplotlib已建立的字型庫)、以及[fc-list](#找到系統現有的字型)(顯示電腦目前有的字型庫)，取二者的交集(以devp工作站為例，找到[文泉驛](https://zh.wikipedia.org/zh-tw/文泉驿)共9筆字型)。
+     - 選取`plt.rcParams['font.sans-serif'] = ['WenQuanYi Micro Hei']`即可
   3. 縣市界
-     1. 因Wesly將東沙島不畫在範圍內，此一邏輯將整個高雄市都排除了，因此需要逐點檢查。此處應用panda.loc來篩選
-     2. 縣市界檔案中的中文名稱不是在`shape.record[3]`，而是在`shape.record[2]`。
+     1. 因Wesely原作主題是鄉鎮區、刻意(逐筆檢查)未將東沙島畫在範圍內以減小圖幅，應用到繪製縣市界線圖時，此一邏輯會將整個高雄市都排除了。因此需要**逐點**檢查。此處應用`panda.DataFramne.loc`來篩選
+     2. 縣市界檔案中的中文名稱序位，不是`shape.record[3]`，而是在`shape.record[2]`。
 
 ```python
         x = [i[0] for i in shape.shape.points[:]]
