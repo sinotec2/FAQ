@@ -40,4 +40,7 @@
   "pasteImage.path": "${projectRoot}/attachments",
   "pasteImage.showFilePathConfirmInputBox": true,
   "prettier.singleQuote": false,
+  "dataworkspace.excludedProjects": [
+    "test2/test2.sqlproj"
+  ],
 }
