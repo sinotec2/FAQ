@@ -48,7 +48,7 @@ sidebar:
 
 ### NASA GMAO classic_geos_cf
 
-- NASA GMAO供提供了傳統png播放之classic_geos_cf、以及互動式地圖cf_map、與其下之cf_map/gram、cf_map/his等4個服務網頁，其重要js應用與變數傳輸項目詳見[NASA GMAO](2023-02-08-NASA_GMAO.md)說明。
+- NASA GMAO供提供了傳統png播放之classic_geos_cf、以及互動式地圖cf_map、與其下之cf_map/gram、cf_map/his等4個服務網頁，其重要js應用與變數傳輸項目詳見[NASA GMAO](https://sinotec2.github.io/FAQ/2023/02/08/NASA_GMAO.html)說明。
 - 此外，pm25.jp、[CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/particulate-matter-forecasts?base_time=202304230000&layer_name=composition_pm2p5&projection=classical_eastern_asia&valid_time=202304280000)、NCDR/NCU、sinica等等系統，也是以png+js,或gif方案。
 
 ## 比較leaflet插件方案
