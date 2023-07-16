@@ -5,7 +5,7 @@ parent: DB
 grand_parent: utilities
 nav_order: 99
 date: 2023-07-06
-last_modified_date: 2023-07-15 19:13:33
+last_modified_date: 2023-07-16 19:26:55
 tags: python matplotlib
 aside:
   toc: true
@@ -39,12 +39,12 @@ sidebar:
 ## 工廠煙流偵測
 
 - [呂承恩, 2022][url5]除了用YOLO4進行影像的辨識、分框，分框後的煙流影像則以kmeans法進行叢集，以建立與林格曼色盤之間的關聯性。[^5]
-- **分水嶺分割法**是連續分布影響數位化的重要方式之一，常用在光學檢測、圖像分析、醫學像處理等領域，鄭州技術學院團隊[(Ju and Wang, 2022)][doi6]將其應用在工業煤煙之FCN (fully convolutional network)機械辨識系統之中。[^6]
+- [**分水嶺分割法**](#wssa)是連續分布影響數位化的重要方式之一，常用在光學檢測、圖像分析、醫學像處理等領域，鄭州技術學院團隊[(Ju and Wang, 2022)][doi6]將其應用在工業煤煙之FCN (fully convolutional network)機械辨識系統之中。[^6]
 - 影像分析
   - 煙流辨識的目的在取代目測判煙，因此除了標示煙流之外，還必須要能夠較林格曼色盤更佳的定量鑑別能力。這篇來自西班牙阿斯圖里亞斯奧維多大學團隊[(Pedrayes et al., 2023)][doi7]的研究，建立了背景藍光百分比法(SBPB，Sky and Building Percentiles in the Blue channel.)，除了透光度，也將煙流與背景的**色度**應用在影像定量分析，特別對逸散源煙流的解析有其穩定、客觀之優點。這篇雖然沒有應用神經學習方法，但其影像分析技術可供未來自動化監測的重要參考。[^7]
-  - 中國科學院大氣物理研究所大氣邊界層物理與大氣化學國家重點實驗室[Feng et al., (2020)][doi11]這篇研究不是將人工智慧應用在煙流辨識，而是應用在地面PM<sub>2.5</sub>空品濃度對煙流形狀特徵的機械學習。除了數位光學相機之外，團隊還應用了光達進行煙流垂直面的影像掃描。經樹狀邏輯解析之後，篩選出煙流長度與地面PM<sub>2.5</sub>濃度有最高的相關性。[^11]
+  - 中國科學院大氣物理研究所大氣邊界層物理與大氣化學國家重點實驗室[Feng et al., (2020)][doi11]這篇研究不是將人工智慧應用在煙流辨識，而是應用在地面PM<sub>2.5</sub>空品濃度對煙流形狀特徵關係的機械學習。除了數位光學相機之外，團隊還應用了光達進行煙流垂直面的影像掃描。經樹狀邏輯解析之後，篩選出煙流長度與地面PM<sub>2.5</sub>濃度有最高的相關性。[^11]
 - **煙流上升高度**一般只是個煙囪條件、出口處的氣溫風速相對濕度等等氣項因素的函數推估值，如高斯煙流及網格模式中的計算模組，但對於敏感族群的呼吸健康防護、地面污染成因複雜、或鄰近濱海、複雜地形中的空氣品質監測、預警預報等等，即時監測有其必要性。對於發展更新煙流上升計算模組，也是重要的數據來源。為此，來自多倫多大學[Koushafar et al.(2023)][doi8]所提出的深度學習會是一項有效的解析工具。[^8]
-- 鄭州科技大學團隊[(Li et al., 2023)][doi9]將"Generative adversarial network"(生成對抗網絡、GAN、見ChatGPT說明[^12])應用在工業**煙流複雜情況**之辨識，包括背景雲量干擾、大小差異煙流、低濃度煙流、同時多煙流等地辨識解析[^9]
+- 鄭州科技大學團隊[(Li et al., 2023)][doi9]將"Generative adversarial network"(生成對抗網絡、GAN、見[ChatGPT說明](#GAN))應用在工業**煙流複雜情況**之辨識，包括背景雲量干擾、大小差異煙流、低濃度煙流、同時多煙流等地辨識解析[^9]
 
 ## 車輛煙流排放偵測
 
@@ -72,6 +72,73 @@ sidebar:
 
 以林園工業區的影像與地面測站粒狀物空氣品質、AQI等3549組逐時數據庫進行機械學習與類別回歸。[^23]
 
+### 其他
+
+- 赫爾辛基大學理學院[Su et al., 2022][doi15]宣稱他們發展的技術可以同時從數值影像中提取粒狀物（包括PM2.5及PM10）、相對濕度、溫度、能見度等等環境參數資訊，並且不因為影像的對象、範圍尺度而造成很大的差異，表現優於傳統CNN方法如AlexNet, [ResNet-50](#resnet-50), 及DenseNet-121，數據庫、程式以及測試結果公開在[github](https://github.com/cvvsu/RMEP)。[^15]
+- 南京師範大學地理學院[Wang et al., 2022][doi19]這篇也使用多參數的影像學習，包括PM2.5及相對濕度、偵測月份等等，影像來自上海地區不同時間、不同位置的影像。[^19]
+- 這2篇中國地質大學與巴基斯坦奎德-埃-阿瓦姆工程、科學與技術大學合作的論文以巴基斯坦卡拉奇市的影像與AQI進行深度學習，發展出AQE-Net方法，應用在第三世界監測站設施不足地區。 [^20] [^22]
+- [^21]這一篇印度的文章以北京的影像來進行訓練與實驗。
+- 孟加拉達卡布拉克大學這篇研討會海報宣稱他們的方法達到較傳統[ResNet-50](#restnet-50),VGG19更快速的辨識時間與更高的準確率。[^26]
+
+## Notes from ChatGPT
+
+### WSSA
+
+> 人工智能領域中"watershed segmentation algorithm "所指為何?
+
+在人工智能领域中，"watershed segmentation algorithm" 指的是分水岭分割算法。这是一种基于图像处理的分割方法，用于将图像中的目标或区域分离出来。
+
+分水岭算法基于图像的灰度或颜色信息，将图像看作地势表面，其中亮度或颜色较高的区域对应于山峰，亮度或颜色较低的区域对应于山谷。算法的目标是在图像中找到这些山峰和山谷，然后通过在山谷之间建立分割边界来将图像分割成不同的区域。
+
+分水岭算法的步骤通常包括以下几个阶段：
+
+1. 预处理：对图像进行必要的预处理，例如平滑、滤波、梯度计算等，以便提取有用的特征。
+2. 确定标记：通过对图像进行阈值分割或使用其他分割算法，确定前景和背景区域，并对其进行标记。
+3. 计算距离变换：基于标记的位置和强度信息，计算图像的距离变换，得到表示图像区域与标记之间距离的图像。
+4. 寻找分水岭：通过计算图像的梯度或变换，确定图像中的潜在分水岭位置，这些位置是山峰和山谷的边界。
+5. 分割图像：基于找到的分水岭位置，通过建立边界来分割图像，将图像分成不同的区域。
+
+分水岭分割算法在图像分割和计算机视觉任务中广泛应用，可以用于对象检测、图像分析、医学图像处理等领域。它能够有效地分割具有复杂形状和不规则边界的目标，并具有一定的鲁棒性和灵活性。然而，分水岭算法也存在一些挑战，例如对噪声和边缘连接的敏感性，以及在某些情况下可能产生过分分割的问题。因此，根据具体应用场景和图像特点，需要进行适当的参数调整和后处理来改善算法的效果。
+
+### RestNet-50
+
+> 介紹AI領域的ResNet-50方法
+
+ResNet-50 是深度学习中一种经典的卷积神经网络（Convolutional Neural Network，CNN）架构，它属于 ResNet（Residual Network）系列模型的其中一种。
+
+ResNet-50 的主要贡献是引入了残差连接（residual connections）的概念，以解决深层神经网络训练中的梯度消失和梯度爆炸问题。这种残差连接允许信息直接跳过某些层级，从而使网络能够更轻松地学习和优化深层网络结构。
+
+以下是 ResNet-50 的一些关键特点和结构：
+
+1. 残差块（Residual Block）：ResNet-50 由多个残差块组成。每个残差块中包含了多个卷积层、批归一化层和激活函数。残差块中引入了跳跃连接，将输入的特征映射直接加到输出中，使得神经网络能够更好地优化和训练深层结构。
+2. 卷积层和池化层：ResNet-50 使用了一系列的卷积层和池化层，以提取输入图像的特征。其中卷积层使用了不同的卷积核尺寸和通道数，以捕捉不同尺度和抽象层次的特征。
+3. 全局平均池化层：在最后的残差块之后，ResNet-50 使用全局平均池化层将特征图转换为向量。这样可以减少参数数量，并将特征表示压缩成固定长度的向量。
+4. 全连接层和分类器：在全局平均池化层之后，ResNet-50 通过一个或多个全连接层来实现最终的分类器。通常，最后一层是一个具有预定义类别数的 softmax 层，用于进行图像分类任务。
+
+ResNet-50 在计算机视觉任务中表现出色，特别是在图像分类和目标识别方面。它可以处理具有大量类别的复杂数据集，并具有较低的过拟合风险。由于其深层结构和残差连接的引入，ResNet-50 在准确性和特征表示方面具有优势，使其成为许多视觉任务中的首选模型之一。
+
+对于使用 ResNet-50 进行图像分类任务，你可以使用预训练的模型权重，并根据你的数据集进行微调（fine-tuning）或迁移学习（transfer learning）。
+
+### GAN
+
+> "Generative adversarial network"在資料科學中的原理與應用為何？
+
+生成对抗网络（Generative Adversarial Network，GAN）是一种深度学习模型，由生成器（Generator）和判别器（Discriminator）组成。GAN 的原理是通过生成器和判别器之间的对抗训练来生成逼真的样本数据。GAN 的工作原理如下：
+- 生成器（Generator）接受一个随机噪声向量作为输入，并尝试生成与训练数据相似的样本数据。
+- 判别器（Discriminator）接受样本数据（来自训练数据或生成器生成的数据）作为输入，并尝试区分出真实样本和生成样本。
+- 生成器和判别器通过对抗训练相互竞争。生成器的目标是生成尽可能逼真的样本以欺骗判别器，而判别器的目标是准确地识别真实样本和生成样本。
+
+在训练过程中，生成器和判别器通过反复迭代来提高性能。生成器通过学习从随机噪声向量到逼真样本的映射，而判别器通过学习区分真实样本和生成样本。
+通过这种对抗性的训练过程，生成器逐渐改进生成的样本，使其更接近真实样本的分布。最终，生成器可以生成具有高度逼真性质的样本数据。
+GAN 在数据科学中有许多应用，包括：
+- 图像生成：GAN 可以生成逼真的图像样本，例如生成人脸、动物图像、艺术作品等。它可以用于图像增强、数据增强、虚拟现实等领域。
+- 数据合成：GAN 可以生成合成的数据样本，用于数据集的扩充和增强。这对于数据稀缺的情况下进行训练非常有用。
+- 超分辨率图像重建：GAN 可以通过学习低分辨率图像与高分辨率图像之间的关系，实现图像的超分辨率重建。
+- 生成文本和音频：GAN 可以生成逼真的文本段落、对话和音频样本，用于自然语言处理和语音识别等任务。
+- 强化学习：GAN 可以与强化学习结合，用于生成与环境交互的智能体的样本数据，以提高强化学习模型的性能。
+
+尽管 GAN 在生成逼真样本方面取得了重要进展，但训练 GAN 模型仍然具有挑战性，例如模式崩溃、模式塌陷和训练不稳定等问题。然而，随着技术的不断发展，GAN 在数据科学中的应用前景仍然非常广阔。
+
 [^1]: Chaturvedi, S., Khanna, P., Ojha, A. (2022). **A survey on vision-based outdoor smoke detection techniques for environmental safety**. ISPRS Journal of Photogrammetry and Remote Sensing 185, 158–187. [doi][doi1]
 [^2]: Khan, Fawad, Xu, Z., Sun, J., Khan, Fazal, Ahmed, A., Zhao, Y. (2022). Recent Advances in Sensors for Fire Detection. Sensors 22, 3310. [doi][doi2]
 [^3]: Chen, J., Peng, X. (2023). **DB-Net: Detecting Vehicle Smoke with Deep Block Networks**. Applied Sciences 13. [doi][doi3]
@@ -83,35 +150,24 @@ sidebar:
 [^9]: Li, D., Yang, R., Su, C. (2023). **Generative adversarial network based on LSTM and convolutional block attention module for industrial smoke image recognition.** Computer Science and Information Systems 27–27. [doi][doi9]
 [^10]: Peng, X., Fan, X., Wu, Q., Zhao, J., Gao, P. (2022). **Video-based Smoky Vehicle Detection with A Coarse-to-Fine Framework.** arXiv:2207.03708.[doi][doi10]
 [^11]: Feng, L., Yang, T., Wang, D., Wang, Z., Pan, Y., Matsui, I., Chen, Y., Xin, J., Huang, H. (2020). **Identify the contribution of elevated industrial plume to ground air quality by optical and machine learning methods**. Environ. Res. Commun. 2, 021005. [doi][doi11]
-[^12]: 生成对抗网络（Generative Adversarial Network，GAN）是一种深度学习模型，由生成器（Generator）和判别器（Discriminator）组成。GAN 的原理是通过生成器和判别器之间的对抗训练来生成逼真的样本数据。GAN 的工作原理如下：
--生成器（Generator）接受一个随机噪声向量作为输入，并尝试生成与训练数据相似的样本数据。
--判别器（Discriminator）接受样本数据（来自训练数据或生成器生成的数据）作为输入，并尝试区分出真实样本和生成样本。
--生成器和判别器通过对抗训练相互竞争。生成器的目标是生成尽可能逼真的样本以欺骗判别器，而判别器的目标是准确地识别真实样本和生成样本。
-在训练过程中，生成器和判别器通过反复迭代来提高性能。生成器通过学习从随机噪声向量到逼真样本的映射，而判别器通过学习区分真实样本和生成样本。
-通过这种对抗性的训练过程，生成器逐渐改进生成的样本，使其更接近真实样本的分布。最终，生成器可以生成具有高度逼真性质的样本数据。
-GAN 在数据科学中有许多应用，包括：
-    -图像生成：GAN 可以生成逼真的图像样本，例如生成人脸、动物图像、艺术作品等。它可以用于图像增强、数据增强、虚拟现实等领域。
-    -数据合成：GAN 可以生成合成的数据样本，用于数据集的扩充和增强。这对于数据稀缺的情况下进行训练非常有用。
-    -超分辨率图像重建：GAN 可以通过学习低分辨率图像与高分辨率图像之间的关系，实现图像的超分辨率重建。
-    -生成文本和音频：GAN 可以生成逼真的文本段落、对话和音频样本，用于自然语言处理和语音识别等任务。
-    -强化学习：GAN 可以与强化学习结合，用于生成与环境交互的智能体的样本数据，以提高强化学习模型的性能。
-尽管 GAN 在生成逼真样本方面取得了重要进展，但训练 GAN 模型仍然具有挑战性，例如模式崩溃、模式塌陷和训练不稳定等问题。然而，随着技术的不断发展，GAN 在数据科学中的应用前景仍然非常广阔。
+[^12]: 
 [^13]: Grant-Jacob, J., Mills, B. (2022). **Deep learning in airborne particulate matter sensing: a review.** Journal of Physics Communications 6, 122001. [doi][doi13]
-[^15]: Su, P., Liu, Y., Tarkoma, S., Rebeiro-Hargrave, A., Petaja, T., Kulmala, M., Pellikka, P. (2022). **Retrieval of Multiple Atmospheric Environmental Parameters From Images With Deep Learning**. IEEE Geoscience and Remote Sensing Letters 19, 1–1. [doi](https://doi.org/10.1109/LGRS.2022.3149045)
+[^15]: Su, P., Liu, Y., Tarkoma, S., Rebeiro-Hargrave, A., Petaja, T., Kulmala, M., Pellikka, P. (2022). **Retrieval of Multiple Atmospheric Environmental Parameters From Images With Deep Learning**. IEEE Geoscience and Remote Sensing Letters 19, 1–1. [doi][doi15]
 [^16]: Yao, S., Huang, B. (2021). **Extraction of Aerosol Optical Extinction Properties From a Smartphone Photograph to Measure Visibility.** IEEE Transactions on Geoscience and Remote Sensing PP, 1–1. [doi](https://doi.org/10.1109/TGRS.2021.3132431)
 [^17]: Yao, S., Wang, F., Huang, B. (2022). **Measuring PM2.5 Concentrations from a Single Smartphone Photograph.** Remote Sensing 14, 2572. [doi](https://doi.org/10.3390/rs14112572)
 [^18]: Wang, F., Yao, S., Luo, H., Huang, B. (2022). **Estimating High-Resolution PM2.5 Concentrations by Fusing Satellite AOD and Smartphone Photographs Using a Convolutional Neural Network and Ensemble Learning**. Remote Sensing 14, 1515. [doi](https://doi.org/10.3390/rs14061515)
-[^19]: Wang, X., Wang, M., Liu, X., Zhang, X., Li, R. (2022). **A PM2.5 concentration estimation method based on multi-feature combination of image patches**. Environmental Research 211, 113051. [doi](https://doi.org/10.1016/j.envres.2022.113051)
+[^19]: Wang, X., Wang, M., Liu, X., Zhang, X., Li, R. (2022). **A PM2.5 concentration estimation method based on multi-feature combination of image patches**. Environmental Research 211, 113051. [doi][doi19]
 [^20]: Ahmed, Maqsood, Shen, Y., Ahmed, Mansoor, Xiao, Z., Cheng, P., Nafees, A., Ghaffar, A., Ali, S. (2022). **AQE-Net: A Deep Learning Model for Estimating Air Quality of Karachi City from Mobile Images**. Remote Sensing 14, 5732. [doi](https://doi.org/10.3390/rs14225732)
 [^21]: Mohan, A., Abraham, L. (2023). **Particulate Matter Concentration Estimation from Images Based on Convolutional Neural Network**. [doi](https://doi.org/10.1007/978-981-19-7513-4_5)
 [^22]: Ahmed, M., Xiao, Z., Shen, Y. (2022). **Estimation of Ground PM2.5 Concentrations in Pakistan Using Convolutional Neural Network and Multi-Pollutant Satellite Images.** Remote Sensing 14, 1735. [doi](https://doi.org/10.3390/rs14071735)
 [^23]: Pu Yun, K., Hsia, I.-W., Chang, L.-C., Chang, F.-J. (2022). **Real-time image-based air quality estimation by deep learning neural networks.** Journal of Environmental Management 307, 114560. [doi](https://doi.org/10.1016/j.jenvman.2022.114560)
 [^14]: Zhang, Q., Fu, F., Tian, R. (2020). **A deep learning and image-based model for air quality estimation.** Science of The Total Environment 724, 138178. [doi](https://doi.org/10.1016/j.scitotenv.2020.138178)
 [^24]: Zhang, Q., Tian, L., Fu, F., Wu, H., Wei, W., Liu, X. (2022). **Real‐Time and Image‐Based AQI Estimation Based on Deep Learning**. Advanced Theory and Simulations 5. [doi](https://doi.org/10.1002/adts.202100628)
-[^25]: Sheikh, S., Raut, S., Rane, S., Raut, P. (2022). **Air Quality Detection using Land Coverage Machine Learning Techniques- CNN.** International Journal of Advanced Research in Science, Communication and Technology 475–482. [doi](https://doi.org/10.48175/IJARSCT-3957)
+[^25]: Sheikh, S., Raut, S., Rane, S., Raut, P. (2022). **Air Quality Detection using Land Coverage Machine Learning Techniques- CNN.** International Journal of Advanced Research in Science, Communication and Technology 475–482. [doi](https://ijarsct.co.in/Paper3957.pdf)
 [^26]: Mondal, J.J., Islam, M., Islam, R., Rhidi, N., Manab, M.A., Islam, A.B.M.A.A., Noor, J. (2022). **Unmasking the Invisible: Finding Location-Specific Aggregated Air Quality Index with Smartphone Images**, Presented at the 9th International Conference on Networking, Systems and Security (NSysS 2022), Cox’s Bazar, Bangladesh. [doi](https://doi.org/10.13140/RG.2.2.12552.08968)
 
-
+[doi19]: https://doi.org/10.1016/j.envres.2022.113051 "(Wang et al., 2022)"
+[doi15]: https://doi.org/10.1109/LGRS.2022.3149045 "(Su et al., 2022)"
 [doi13]: https://doi.org/10.1088/2399-6528/aca45e "(Grant-Jacob and Mills, 2022)"
 [doi11]: https://doi.org/10.1088/2515-7620/ab7634 "(Feng et al., 2020)"
 [doi10]: https://doi.org/10.48550/arXiv.2207.03708
