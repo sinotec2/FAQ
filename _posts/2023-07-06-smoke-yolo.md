@@ -57,6 +57,9 @@ sidebar:
 - 深圳技術大學大數據與互聯網學院
   - [Peng et al.(2022)][doi10]使用3DCNN(YOLO5tiny)分別辨識車輛與煙流，按照最近距離將此二者配對，[^10]
   - [Chen and Peng(2023)][doi3]匯集了3962個已標車輛註煙流之圖檔資料庫，並公開在[google drive](https://drive.google.com/file/d/1Rt3IEKkriDNQ9wRtpsK5fylvfRlTjjK3/view?usp=share_link)。該文也將過去圖框型態提升到網格化多邊形標示，除了標示作用，也具有發展半定量排放推估模型的潛力。 [^3]
+- 實作:[Abonia Sojasingarayar(2023)](https://github.com/Abonia1/YOLOv8-Fire-and-Smoke-Detection)
+
+- ![](https://github.com/sinotec2/FAQ/raw/main/attachments/yt5s.io.mp4)
 
 ## 不特定對象影像分析之智慧化
 
