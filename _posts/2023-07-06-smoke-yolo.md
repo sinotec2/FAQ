@@ -20,7 +20,7 @@ sidebar:
 - 雖然台灣地區煙囪或車輛排冒大量煙流的情況已經不多了，然而也正是因為如此，仍然存在著下列的問題與契機:
   - 因污染源、污染行為已經越來越少，如何建立有效的監管制度、穩定之實時監測系統、可避免費時費工之人工監看，同時又能掌握污染源之不定期排放?
   - 除了管道排放之外，還存在著逸散性之污染活動、零星短暫之排放行為，還需要持續強化管制。
-  - 如何將自動化系統納入公安管理制度
+  - 如何將自動化系統納入工安管理制度
   - 世界上還是有其他開發中國家需要這項低成本的管制技術
   - 從被動之接受陳情才出動管制，轉成積極性之污染輔導與究查。
   - 火災之智慧化偵測及管理已漸趨成型，有許多的軟件可供參考應用。個別方法在特定個案中表現如何?如何選擇?
@@ -60,6 +60,29 @@ sidebar:
 - 實作:[Abonia Sojasingarayar(2023)](https://github.com/Abonia1/YOLOv8-Fire-and-Smoke-Detection)
 
 - ![](https://github.com/sinotec2/FAQ/raw/main/attachments/yt5s.io.mp4)
+
+## FLIR影像之辨識
+
+基本上路徑有2
+1. FLIR影像直接用以訓練、既有FLIR資料庫轉標籤、再用以訓練
+2. 直接用夜間可見光照片、以特殊方式來訓練
+
+### IR影像之訓練
+
+- 4 classes(car, bicycle, person, dog) by [NIGHT OBJECT DETECTOR | PyTorch and YOLOv5 | FLIR THERMAL IMAGES dataset](https://www.youtube.com/watch?v=yo_ryIS_XYQ) 
+- 11 classes by [ax2mazhr/FLIR2YOLO](https://github.com/ax2mazhr/FLIR2YOLO)
+  - convert the labels of FLIR dataset (https://www.flir.eu/oem/adas/adas-dataset-form/) to YOLO
+  -  ['person','bike','car','motor','bus','train','truck','light','dog','scooter','other vehicle']
+- Jiang et al., (2022)使用地面紅外線影像進行訓練，並將模型運用在UAV上，最小化模型為YOLOv5s、人與車辨識準確率可達 88.69%。[^27]
+- [Human Detection in Heavy Smoke Scenarios](https://encyclopedia.pub/entry/25832)這篇發展在火場或其他災難現場煙霧中的人員辨識系統(動態深度傳感器、夜視、IR、FLIR、LIDAR、雷達、聲納等等之訊號)，作者來自陽明交大資科系(Tsai et al., 2022)[^28]
+- 弗吉尼亞理工大學(Kim and Lattimer, 2015)發展了火場中搜尋機械設備上的火苗與煙氣辨識系統，並以IR影像進行類神經網路訓練。[^29]
+- 香港理工大學及北京石油大學團隊(Shi et al., 2020)以Faster R-CNN發展出實時洩漏監測系統，應用在乙烷裂解工場，所建立之模型經證實較[多框單次檢測](#SSD)為優秀。文中發現加深物件萃取器的深度及參數並不會大幅增加正確率，反而會降低分辨速率。[^33]理工大學團隊也參與在海下氣管洩漏的偵測[^34]，證實Faster R-CNN比YOLOv4更能辨識水下洩漏之氣團。
+
+### 一般影像之特殊訓練
+
+- 約旦扎爾卡大學資訊學院團隊(Al-Smadi et al., 2023)將影像區分為日間及夜間(並沒有使用夜視或IR影像)、按照不同遠近程度先行分類再與訓練，對於野火初期煙流有較佳的辨識。[^30]
+- 韓國啟明大學團隊(Park and Ko, 2020)發展了火災發生過程的時序影像(fire-tube)的訓練方式，除了靜態的YOLO之外也使用了LSTM來進行訓練，針對夜間視線不佳條件下的都市火災有較佳的辨識效果。[^31]
+- 來自廣西大學團隊(Sun and Feng, 2023)建立了移動注意力焦點與自由錨定機制，來規避夜間錯誤的辨識結果，提高夜間煙流及火災的成功辨識機率。[^32]
 
 ## 不特定對象影像分析之智慧化
 
@@ -142,6 +165,28 @@ GAN 在数据科学中有许多应用，包括：
 
 尽管 GAN 在生成逼真样本方面取得了重要进展，但训练 GAN 模型仍然具有挑战性，例如模式崩溃、模式塌陷和训练不稳定等问题。然而，随着技术的不断发展，GAN 在数据科学中的应用前景仍然非常广阔。
 
+### SSD
+
+> Single Shot Detection為何?
+
+Single Shot Detection (SSD) 是一种用于目标检测的深度学习模型，它是一种基于单一网络的端到端目标检测算法。SSD 的主要特点是能够实现实时的目标检测，并且在保持高准确率的同时具有较快的速度。
+
+SSD 的核心思想是将目标检测问题转化为一个回归问题和一个分类问题。SSD 使用卷积神经网络来同时预测图像中目标的边界框（Bounding Box）和对应的类别概率。
+
+SSD 的主要步骤如下：
+
+特征提取：首先，SSD 使用一个预训练的卷积神经网络（通常是 VGG 或 ResNet）来提取输入图像的特征。这些特征图通常包含了不同尺度和抽象层次的信息。
+
+多尺度特征图：SSD 在多个不同层级的特征图上进行检测。通过在不同层级的特征图上应用不同尺寸的卷积核，可以在不同尺度下检测目标。
+
+预测边界框和类别：在每个特征图上，SSD 使用卷积层来同时预测每个位置的目标边界框的位置（回归问题）和每个目标类别的概率（分类问题）。
+
+Non-Maximum Suppression (NMS)：为了避免多个重叠的边界框预测，SSD 使用 NMS 过滤掉高度重叠的边界框，只保留置信度最高的边界框。
+
+SSD 的优势在于它在单一网络中同时进行目标检测和分类，避免了传统目标检测方法中复杂的候选框生成和筛选过程，从而实现了实时目标检测。它可以应用于各种应用场景，如车辆检测、行人检测、物体检测等。
+
+由于 SSD 的设计简单、轻量，并且在速度和准确率上都有良好的表现，因此在计算机视觉领域得到了广泛的应用。随着深度学习技术的不断发展，SSD 的改进版本也在不断涌现，使得目标检测在实际应用中取得了更加出色的效果。
+
 [^1]: Chaturvedi, S., Khanna, P., Ojha, A. (2022). **A survey on vision-based outdoor smoke detection techniques for environmental safety**. ISPRS Journal of Photogrammetry and Remote Sensing 185, 158–187. [doi][doi1]
 [^2]: Khan, Fawad, Xu, Z., Sun, J., Khan, Fazal, Ahmed, A., Zhao, Y. (2022). Recent Advances in Sensors for Fire Detection. Sensors 22, 3310. [doi][doi2]
 [^3]: Chen, J., Peng, X. (2023). **DB-Net: Detecting Vehicle Smoke with Deep Block Networks**. Applied Sciences 13. [doi][doi3]
@@ -168,6 +213,15 @@ GAN 在数据科学中有许多应用，包括：
 [^24]: Zhang, Q., Tian, L., Fu, F., Wu, H., Wei, W., Liu, X. (2022). **Real‐Time and Image‐Based AQI Estimation Based on Deep Learning**. Advanced Theory and Simulations 5. [doi](https://doi.org/10.1002/adts.202100628)
 [^25]: Sheikh, S., Raut, S., Rane, S., Raut, P. (2022). **Air Quality Detection using Land Coverage Machine Learning Techniques- CNN.** International Journal of Advanced Research in Science, Communication and Technology 475–482. [doi](https://ijarsct.co.in/Paper3957.pdf)
 [^26]: Mondal, J.J., Islam, M., Islam, R., Rhidi, N., Manab, M.A., Islam, A.B.M.A.A., Noor, J. (2022). **Unmasking the Invisible: Finding Location-Specific Aggregated Air Quality Index with Smartphone Images**, Presented at the 9th International Conference on Networking, Systems and Security (NSysS 2022), Cox’s Bazar, Bangladesh. [doi](https://doi.org/10.13140/RG.2.2.12552.08968)
+[^27]: Jiang, C., Ye, X., Zhu, J., Zeng, H., Nan, Y., Sun, M., Ren, X., Huo, H.-T. (2022). **Object detection from UAV thermal infrared images and videos using YOLO models**. International Journal of Applied Earth Observation and Geoinformation 112, 102912. [doi](https://doi.org/10.1016/j.jag.2022.102912)
+[^28]: Tsai, P.-F., Liao, C.-H., Yuan, S.-M. (2022). **Using Deep Learning with Thermal Imaging for Human Detection in Heavy Smoke Scenarios**. Sensors 22. [doi](https://doi.org/10.3390/s22145351)
+[^29]: Kim, J.-H., Lattimer, B.Y. (2015). **Real-time probabilistic classification of fire and smoke using thermal imagery for intelligent firefighting robot**. Fire Safety Journal 72, 40–49. [doi](https://doi.org/10.1016/j.firesaf.2015.02.007)
+[^30]: Al-Smadi, Y., Alauthman, M., Al-Qerem, A., Aldweesh, A., Quaddoura, R., Aburub, F., Mansour, K., Alhmiedat, T. (2023). **Early Wildfire Smoke Detection Using Different YOLO Models**. Machines 11, 246. [doi](https://doi.org/10.3390/machines11020246)
+[^31]: Park, M., Ko, B.C. (2020). **Two-Step Real-Time Night-Time Fire Detection in an Urban Environment Using Static ELASTIC-YOLOv3 and Temporal Fire-Tube**. Sensors (Basel) 20, 2202. [doi](https://doi.org/10.3390/s20082202)
+[^32]: Sun, Y., Feng, J. (2023). **Fire and smoke precise detection method based on the attention mechanism and anchor-free mechanism**. Complex Intell. Syst. [doi](https://doi.org/10.1007/s40747-023-00999-4)
+[^33]: Shi, J., Chang, Y., Xu, C., Khan, F., Chen, G., Li, C. (2020). **Real-time leak detection using an infrared camera and Faster R-CNN technique**. Computers & Chemical Engineering 135, 106780. [doi](https://doi.org/10.1016/j.compchemeng.2020.106780)
+[^34]: Zhu, H., Xie, W., Li, J., Shi, J., Fu, M., Qian, X., Zhang, H., Wang, K., Chen, G. (2023). **Advanced Computer Vision-Based Subsea Gas Leaks Monitoring: A Comparison of Two Approaches**. Sensors 23. [doi](https://doi.org/10.3390/s23052566)
+
 
 [doi19]: https://doi.org/10.1016/j.envres.2022.113051 "(Wang et al., 2022)"
 [doi15]: https://doi.org/10.1109/LGRS.2022.3149045 "(Su et al., 2022)"
