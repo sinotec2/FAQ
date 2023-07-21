@@ -61,28 +61,28 @@ sidebar:
 
 - ![](https://github.com/sinotec2/FAQ/raw/main/attachments/yt5s.io.mp4)
 
-## FLIR影像之辨識
+## 夜間或IR影像之辨識
 
 基本上路徑有2
-1. FLIR影像直接用以訓練、既有FLIR資料庫轉標籤、再用以訓練
+1. IR或夜視影像直接用以訓練、既有資料庫轉標籤、再用以訓練
 2. 直接用夜間可見光照片、以特殊方式來訓練
 
-### IR影像之訓練
+### IR或夜視影像之訓練
 
-- 4 classes(car, bicycle, person, dog) by [NIGHT OBJECT DETECTOR | PyTorch and YOLOv5 | FLIR THERMAL IMAGES dataset](https://www.youtube.com/watch?v=yo_ryIS_XYQ) 
+- 4 classes(car, bicycle, person, dog) by **NIGHT OBJECT DETECTOR, PyTorch and YOLOv5, FLIR THERMAL IMAGES dataset**[(youtube)](https://www.youtube.com/watch?v=yo_ryIS_XYQ)
 - 11 classes by [ax2mazhr/FLIR2YOLO](https://github.com/ax2mazhr/FLIR2YOLO)
   - convert the labels of FLIR dataset (https://www.flir.eu/oem/adas/adas-dataset-form/) to YOLO
   -  ['person','bike','car','motor','bus','train','truck','light','dog','scooter','other vehicle']
-- Jiang et al., (2022)使用地面紅外線影像進行訓練，並將模型運用在UAV上，最小化模型為YOLOv5s、人與車辨識準確率可達 88.69%。[^27]
-- [Human Detection in Heavy Smoke Scenarios](https://encyclopedia.pub/entry/25832)這篇發展在火場或其他災難現場煙霧中的人員辨識系統(動態深度傳感器、夜視、IR、FLIR、LIDAR、雷達、聲納等等之訊號)，作者來自陽明交大資科系(Tsai et al., 2022)[^28]
-- 弗吉尼亞理工大學(Kim and Lattimer, 2015)發展了火場中搜尋機械設備上的火苗與煙氣辨識系統，並以IR影像進行類神經網路訓練。[^29]
+- 北大團隊Jiang et al., (2022)使用地面紅外線影像進行訓練，並將模型運用在UAV上，最小化模型為YOLOv5s、人與車辨識準確率可達 88.69%。[^27]
+- [Human Detection in Heavy Smoke Scenarios](https://encyclopedia.pub/entry/25832)這篇發展在火場或其他災難現場煙霧中的人員辨識系統(動態深度傳感器、夜視、IR、FLIR、LIDAR、雷達、聲納等等之訊號)。作者來自陽明交大資科系(Tsai et al., 2022)[^28]
+- 弗吉尼亞理工大學(Kim and Lattimer, 2015)發展了火場中自走搜尋機械設備上的火苗與煙氣辨識系統，並以IR影像進行類神經網路訓練。[^29]
 - 香港理工大學及北京石油大學團隊(Shi et al., 2020)以Faster R-CNN發展出實時洩漏監測系統，應用在乙烷裂解工場，所建立之模型經證實較[多框單次檢測](#SSD)為優秀。文中發現加深物件萃取器的深度及參數並不會大幅增加正確率，反而會降低分辨速率。[^33]理工大學團隊也參與在海下氣管洩漏的偵測[^34]，證實Faster R-CNN比YOLOv4更能辨識水下洩漏之氣團。
 
 ### 一般影像之特殊訓練
 
 - 約旦扎爾卡大學資訊學院團隊(Al-Smadi et al., 2023)將影像區分為日間及夜間(並沒有使用夜視或IR影像)、按照不同遠近程度先行分類再與訓練，對於野火初期煙流有較佳的辨識。[^30]
 - 韓國啟明大學團隊(Park and Ko, 2020)發展了火災發生過程的時序影像(fire-tube)的訓練方式，除了靜態的YOLO之外也使用了LSTM來進行訓練，針對夜間視線不佳條件下的都市火災有較佳的辨識效果。[^31]
-- 來自廣西大學團隊(Sun and Feng, 2023)建立了移動注意力焦點與自由錨定機制，來規避夜間錯誤的辨識結果，提高夜間煙流及火災的成功辨識機率。[^32]
+- 來自廣西大學團隊(Sun and Feng, 2023)建立了移動注意力焦點與自由錨定機制，來規避夜間錯誤的辨識結果，提高夜間煙流及火災的成功辨識機率。[^32] 
 
 ## 不特定對象影像分析之智慧化
 
