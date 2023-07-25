@@ -35,8 +35,8 @@ BC|實測|實測|全球模式之預報
 
 ### sinica 預報
 
-- 公開網頁：來自[民生公共物聯網資訊服務平台](https://ci.taiwan.gov.tw/dsp/index.aspx)
-- 中研院環境變遷研究中心[高解析度空氣品質診斷與預報模式發展計畫模擬預報資料](https://ci.taiwan.gov.tw/dsp/forcast_air.aspx)
+- 公開網頁：來自[民生公共物聯網資訊服務平台](https://ci.taiwan.gov.tw/dsp/)
+- 中研院環境變遷研究中心[高解析度空氣品質診斷與預報模式發展計畫模擬預報資料](https://ci.taiwan.gov.tw/dsp/Views/dataset/forecast_air.aspx)
 
 ### ncu 預報
 
