@@ -16,8 +16,7 @@ sidebar:
 ## 背景
 
 - 目前空品預報官方網頁
-  - [歐洲哥白尼官網][CAMS_FCST]
-
+  - 全球~區域：[歐洲哥白尼官網][CAMS_FCST]
   - UK Air Information Resource, [Air pollution forecast map](https://uk-air.defra.gov.uk/forecasting/) by Department for Environment Food & Rural Affairs and Met Office, UK
   - USA
     - EPA
@@ -27,9 +26,15 @@ sidebar:
       - classic_geos_cf [preselective grads][cf][^1] and
       - dragable GeoTiff leaflet, "Interactive CF Map Tool" ([cf_map][fluid]), with
         - site historical and forecast time series [DATAGRAMS](https://fluid.nccs.nasa.gov/cf_map/gram/)
-    - NOAA, National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/)
+    - NOAA
+      - National Weather Service [Air Quality Forecast Guidance](https://airquality.weather.gov/)
+      - Prototype Air Quality Forecast Guidance [Viewer](https://digital.mdl.nws.noaa.gov/airquality/)
     - 西北8州、美加邊界、太平洋海岸地區之[AIRPACT](https://airpact.wsu.edu/map.html)[^3]
-  - Air Quality Health Index [most recent forecast values at provices and cities](https://weather.gc.ca/airquality/pages/index_e.html), Canada
+  - 加拿大
+    - Meteorological Service of Canada(MSC) GeoMet
+      - The Regional Air Quality Deterministic Prediction System ([RAQDPS](https://eccc-msc.github.io/open-data/msc-data/nwp_raqdps/readme_raqdps_en/)) - raster WMS on openstreatmap, hosted by GitHub Pages.
+      - [Official Site](https://weather.gc.ca/aqfm/aqfm_anim_e.html?area=ec&type=mo&distance=ns&utc=00), pngs player
+    - Air Quality Health Index [most recent forecast values at provices and cities](https://weather.gc.ca/airquality/pages/index_e.html), Canada
   - city region
     - Spare the Air：[Air Quality Forecast](https://www.sparetheair.org/understanding-air-quality/air-quality-forecast), Bay Area Air Quality Management District, CA.
     - [sdapcd.org](https://www.sdapcd.org/content/sdapcd/air-quality/air-quality-forecast.html) by San Diego County Air Pollution Control District
