@@ -84,6 +84,11 @@ sidebar:
 - 韓國啟明大學團隊(Park and Ko, 2020)發展了火災發生過程的時序影像(fire-tube)的訓練方式，除了靜態的YOLO之外也使用了LSTM來進行訓練，針對夜間視線不佳條件下的都市火災有較佳的辨識效果。[^31]
 - 來自廣西大學團隊(Sun and Feng, 2023)建立了移動注意力焦點與自由錨定機制，來規避夜間錯誤的辨識結果，提高夜間煙流及火災的成功辨識機率。[^32] 
 
+### 商用案例
+
+- Real-time Pipeline Leak Detection & Perimeter Intrusion Detection System by [IntelliView](https://youtu.be/YZ0d5n_dsHo)
+
+
 ## 不特定對象影像分析之智慧化
 
 ### 香港中文大學
