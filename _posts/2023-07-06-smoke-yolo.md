@@ -6,7 +6,7 @@ grand_parent: utilities
 nav_order: 99
 date: 2023-07-06
 last_modified_date: 2023-07-16 19:26:55
-tags: python matplotlib
+tags: python matplotlib AI
 aside:
   toc: true
 sidebar:

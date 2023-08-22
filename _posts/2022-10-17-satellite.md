@@ -1,6 +1,6 @@
 ---
 title: 衛星遙測數據在水質監測之應用
-tags: WQM satellite water_quality
+tags: WQM satellite water_quality AI
 layout: article
 aside:
   toc: true
