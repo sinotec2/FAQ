@@ -7,7 +7,7 @@ aside:
 sidebar:
   nav: layouts
 date:  2022-10-08
-modify_date: 2022-10-11 08:57:40
+modify_date: 2023-10-05 13:36:35
 mermaid: true
 ---
 ## 背景
@@ -43,6 +43,7 @@ mermaid: true
 ### 網路介紹文章
 
 - 要每年寫這種回顧性的文章不容易，畢竟軟體的領域日新月異、江山代有才人出。
+- [筆記系統之比較@wikipedia](https://en.wikipedia.org/wiki/Comparison_of_note-taking_software)，這篇是英文更新到2023/9/29，有簡略的中文版。
 - [2022筆記軟體][welcometw]
   - 這篇介紹10大筆記軟體：#1 [Evernote][Evernote]、、＃2 [Notion][notion]、＃3 [GoodNotes][GoodNotes]、＃4 Notability、＃5 Microsoft [Onenote][onenote]、＃6 [SimpleNote][SimpleNote]、＃7 Google [keep][keep]、＃8 Trello、＃9 Ulysses、＃10 Notebook。其中也有不少下面會介紹到。
   - 這篇介紹筆記軟體的應用範圍不限於工作及學習，還包括生活中的代辦事項、隨手札記、旅行筆記、記帳、行事曆等模板也一應俱全。
