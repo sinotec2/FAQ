@@ -95,45 +95,7 @@ func main(){
 
 總之，這段程式碼的主要目的是提供 Swagger 文檔的基本模板和信息，以便 `swaggo/swag` 工具可以使用它來生成完整的 Swagger 文檔。
 
-## api
-
-### pkg/api/base_controller.go
-
-這段 GO [程式碼](https://github.com/1340691923/ElasticView/blob/main/pkg/api/base_controller.go)定義了一個名為 `BaseController` 的 API 控制器，它提供了一些基本的功能，特別是與 HTTP 請求和響應相關的功能。以下是該程式碼的詳細說明：
-
-1. **引入的套件**：程式碼引入了多個外部和內部套件，包括 HTTP 請求處理、HTTP 響應處理、[Gin Web 框架](#gin-web框架)等。
-
-2. **BaseController 結構體**：
-   - `BaseController` 是一個控制器結構體，它包含了兩個指針字段：`Request` 和 `Response`。這兩個字段分別來自 `request` 和 `response` 套件，用於處理 HTTP 請求和響應。
-   - `NewBaseController` 函數是 `BaseController` 的構造函數，它接受一個請求和一個響應對象，並返回一個新的 `BaseController` 實例。
-   - `getPostBody` 方法用於從 [Gin](#gin-web框架) 的上下文中獲取 HTTP POST 請求的主體。它首先使用 `ctx.GetRawData` 方法獲取原始的請求主體，然後將其設置回上下文的請求主體，以便後續的處理器可以再次讀取它。
-
-總之，這段程式碼定義了一個基本的 API 控制器，它提供了一些與 HTTP 請求和響應相關的基本功能。
-
-### pkg/api/dsl_history_controller.go
-
-這段 GO [程式碼](https://github.com/1340691923/ElasticView/blob/main/pkg/api/dsl_history_controller.go)定義了一個名為 `DslHistoryController` 的 API 控制器，它提供了與 [DSL 語法][dsl]查詢歷史記錄相關的功能。以下是該程式碼的詳細說明：
-
-1. **引入的套件**：程式碼引入了多個外部和內部套件，包括日誌記錄、SQL 存儲、JWT 處理、模型定義、HTTP 響應處理、工具函數和 [Gin Web](#gin-web框架) 框架。
-
-2. **DslHistoryController 結構體**：
-   - `DslHistoryController` 是一個控制器結構體，它包含了 JWT 處理、SQL 存儲、日誌和基本控制器的指針字段。
-   - `NewDslHistoryController` 函數是 `DslHistoryController` 的構造函數，它接受 JWT 處理、SQL 存儲、日誌和基本控制器作為參數，並返回一個新的 `DslHistoryController` 實例。
-
-3. **ListAction 方法**：
-   - 這個方法用於查詢 DSL 歷史記錄列表。
-   - 首先，它解析 JWT 令牌以獲取用戶 ID。
-   - 然後，它綁定請求參數到 `GmDslHistoryModel` 模型。
-   - 使用模型的 `List` 和 `Count` 方法來獲取歷史記錄的列表和總數。
-   - 最後，它返回查詢結果。
-
-4. **CleanAction 方法**：
-   - 這個方法用於清空 DSL 查詢記錄。
-   - 首先，它解析 JWT 令牌以獲取用戶 ID。
-   - 然後，它使用 `GmDslHistoryModel` 模型的 `Clean` 方法來清空用戶的 DSL 查詢記錄。
-   - 最後，它返回操作成功的響應。
-
-總之，這段程式碼定義了一個 API 控制器，它提供了查詢和清空 DSL 語法查詢歷史記錄的功能。如果您有其他問題或需要進一步的資訊，請告訴我。
+## es related api
 
 ### pkg/api/es_backup_controller.go
 
@@ -336,6 +298,47 @@ func main(){
    - 在每個功能端點中，對於出現的錯誤都進行了處理。如果遇到錯誤，它會使用`this.Error()`方法返回錯誤信息。對於成功的操作，會使用`this.Success()`方法返回成功消息。
 
 總結：`EsTaskController`是一個專用於管理ElasticSearch任務的控制器，提供了查看任務列表和取消任務的功能。
+
+## other api
+
+
+### pkg/api/base_controller.go
+
+這段 GO [程式碼](https://github.com/1340691923/ElasticView/blob/main/pkg/api/base_controller.go)定義了一個名為 `BaseController` 的 API 控制器，它提供了一些基本的功能，特別是與 HTTP 請求和響應相關的功能。以下是該程式碼的詳細說明：
+
+1. **引入的套件**：程式碼引入了多個外部和內部套件，包括 HTTP 請求處理、HTTP 響應處理、[Gin Web 框架](#gin-web框架)等。
+
+2. **BaseController 結構體**：
+   - `BaseController` 是一個控制器結構體，它包含了兩個指針字段：`Request` 和 `Response`。這兩個字段分別來自 `request` 和 `response` 套件，用於處理 HTTP 請求和響應。
+   - `NewBaseController` 函數是 `BaseController` 的構造函數，它接受一個請求和一個響應對象，並返回一個新的 `BaseController` 實例。
+   - `getPostBody` 方法用於從 [Gin](#gin-web框架) 的上下文中獲取 HTTP POST 請求的主體。它首先使用 `ctx.GetRawData` 方法獲取原始的請求主體，然後將其設置回上下文的請求主體，以便後續的處理器可以再次讀取它。
+
+總之，這段程式碼定義了一個基本的 API 控制器，它提供了一些與 HTTP 請求和響應相關的基本功能。
+
+### pkg/api/dsl_history_controller.go
+
+這段 GO [程式碼](https://github.com/1340691923/ElasticView/blob/main/pkg/api/dsl_history_controller.go)定義了一個名為 `DslHistoryController` 的 API 控制器，它提供了與 [DSL 語法][dsl]查詢歷史記錄相關的功能。以下是該程式碼的詳細說明：
+
+1. **引入的套件**：程式碼引入了多個外部和內部套件，包括日誌記錄、SQL 存儲、JWT 處理、模型定義、HTTP 響應處理、工具函數和 [Gin Web](#gin-web框架) 框架。
+
+2. **DslHistoryController 結構體**：
+   - `DslHistoryController` 是一個控制器結構體，它包含了 JWT 處理、SQL 存儲、日誌和基本控制器的指針字段。
+   - `NewDslHistoryController` 函數是 `DslHistoryController` 的構造函數，它接受 JWT 處理、SQL 存儲、日誌和基本控制器作為參數，並返回一個新的 `DslHistoryController` 實例。
+
+3. **ListAction 方法**：
+   - 這個方法用於查詢 DSL 歷史記錄列表。
+   - 首先，它解析 JWT 令牌以獲取用戶 ID。
+   - 然後，它綁定請求參數到 `GmDslHistoryModel` 模型。
+   - 使用模型的 `List` 和 `Count` 方法來獲取歷史記錄的列表和總數。
+   - 最後，它返回查詢結果。
+
+4. **CleanAction 方法**：
+   - 這個方法用於清空 DSL 查詢記錄。
+   - 首先，它解析 JWT 令牌以獲取用戶 ID。
+   - 然後，它使用 `GmDslHistoryModel` 模型的 `Clean` 方法來清空用戶的 DSL 查詢記錄。
+   - 最後，它返回操作成功的響應。
+
+總之，這段程式碼定義了一個 API 控制器，它提供了查詢和清空 DSL 語法查詢歷史記錄的功能。如果您有其他問題或需要進一步的資訊，請告訴我。
 
 ### pkg/api/gm_operater_log.go
 
